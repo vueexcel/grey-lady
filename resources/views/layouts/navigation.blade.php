@@ -10,7 +10,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/listings">Listings</a></li>
+        <li><a href="/listings">Listings</a></li>
         <li><a href="/zips">Zips</a></li>
         <li><a href="/watchlist">Watchlist</a></li>
       </ul>
