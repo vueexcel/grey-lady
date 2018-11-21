@@ -51,20 +51,18 @@
       </div>
       
     
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="listing-datatable" class="table table-bordered table-striped">
           <!-- Date downloaded, Website downloaded from, link to first image, Address, For Rent/For Sale, Property Type, MLS Number, City, Zip, Beds, Baths, Sale Price / Monthly Rent, Sqft, Price per sqft, HOA Dues, Link to details page -->
 
           <thead>
           <tr>
             <th>Date Downloaded</th>
-            <th style="width: 400px">Address</th>
-            <th>Rent/Sale</th>
+            <th>Address</th>
             <th>Sqft</th>
             <th>Beds</th>
             <th>Baths</th>
-            <th>Price / Rent</th>
+            <th>Price</th>
             <th>Zip</th>
-            <th>MLS Number</th>
             <th>Link</th>
           </tr>
           </thead>
@@ -74,95 +72,16 @@
 
           <tbody>
             <tr>
-              <td>10/16/2018</td>
-              <td>123 Main Street Boston, MA 02108</td>
-              <td>Sale</td>
-              <td>2,000</td>
-              <td>4</td>
-              <td>3</td>
-              <td>$300,000</td>
-              <td>A03121</td>
-              <td>n/a</td>
-              <td><a href="#">Link</a></td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
             </tr>
 
-            <tr>
-              <td>10/16/2018</td>
-              <td>123 Main Street Boston, MA 02108</td>
-              <td>Sale</td>
-              <td>2,000</td>
-              <td>4</td>
-              <td>3</td>
-              <td>$300,000</td>
-              <td>A03121</td>
-              <td>n/a</td>
-              <td><a href="#">Link</a></td>
-            </tr>
-
-            <tr>
-              <td>10/16/2018</td>
-              <td>123 Main Street Boston, MA 02108</td>
-              <td>Sale</td>
-              <td>2,000</td>
-              <td>4</td>
-              <td>3</td>
-              <td>$300,000</td>
-              <td>A03121</td>
-              <td>n/a</td>
-              <td><a href="#">Link</a></td>
-            </tr>
-
-            <tr>
-              <td>10/16/2018</td>
-              <td>123 Main Street Boston, MA 02108</td>
-              <td>Sale</td>
-              <td>2,000</td>
-              <td>4</td>
-              <td>3</td>
-              <td>$300,000</td>
-              <td>A03121</td>
-              <td>n/a</td>
-              <td><a href="#">Link</a></td>
-            </tr>
-
-            <tr>
-              <td>10/16/2018</td>
-              <td>123 Main Street Boston, MA 02108</td>
-              <td>Sale</td>
-              <td>2,000</td>
-              <td>4</td>
-              <td>3</td>
-              <td>$300,000</td>
-              <td>A03121</td>
-              <td>n/a</td>
-              <td><a href="#">Link</a></td>
-            </tr>
-
-            <tr>
-              <td>10/16/2018</td>
-              <td>123 Main Street Boston, MA 02108</td>
-              <td>Sale</td>
-              <td>2,000</td>
-              <td>4</td>
-              <td>3</td>
-              <td>$300,000</td>
-              <td>A03121</td>
-              <td>n/a</td>
-              <td><a href="#">Link</a></td>
-            </tr>
-
-            <tr>
-              <td>10/16/2018</td>
-              <td>123 Main Street Boston, MA 02108</td>
-              <td>Sale</td>
-              <td>2,000</td>
-              <td>4</td>
-              <td>3</td>
-              <td>$300,000</td>
-              <td>A03121</td>
-              <td>n/a</td>
-              <td><a href="#">Link</a></td>
-            </tr>
 
                               
           </tbody>
@@ -174,3 +93,57 @@
 <!-- /.box -->
 
 @endsection
+
+
+@section('content-scripts')
+
+<!-- page script -->
+<script>
+  $(function () {
+
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    $('#listing-datatable').DataTable({
+        'ajax'        : {
+        'url': "https://gulshan.app.greyladyproject.com/api/v1/listings?zip=01603&type=sell&minBed=3&maxBed=3",
+        'dataSrc'     : function (json) {
+          var return_data = new Array();
+          for( var i=0; i< json.items.length; i++){
+            return_data.push({
+              'date_added': moment().format(json.items[i].listing_information.createdAt),
+              'address': json.items[i].listing_information.address,
+              'sqft': json.items[i].listing_information.area,
+              'beds': json.items[i].listing_information.maxBed,
+              'baths': json.items[i].listing_information.baths,
+              'price': json.items[i].listing_information.price,
+              'zip': json.items[i].listing_information.zip,
+              'link': '<a href="http://trulia.com' + json.items[i].listing_information.link + '">Link</a>'
+            })
+          }
+          return return_data;
+
+        }
+      },
+      'columns'    : [
+        {'data': 'date_added'},
+        {'data': 'address'},
+        {'data': 'sqft'},
+        {'data': 'beds'},
+        {'data': 'baths'},
+        {'data': 'price'},
+        {'data': 'zip'},
+        {'data': 'link'}
+      ],
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'scrollCollapse' : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : true
+    });
+  })
+</script>
+
+@endsection 

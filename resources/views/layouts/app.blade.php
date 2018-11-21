@@ -44,25 +44,7 @@
 
   <?php echo View::make('layouts.footer-scripts') ?>
 
+  @yield('content-scripts')
 
-<!-- page script -->
-<script>
-  $(function () {
-
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    // $('#example1').DataTable()
-    $('#example1').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'scrollCollapse' : true,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : true
-    })
-  })
-</script>
 </body>
 </html>

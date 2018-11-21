@@ -1,7 +1,7 @@
 <nav class="navbar navbar-static-top">
   <div class="container">
     <div class="navbar-header">
-      <a href="AdminLTE/index2.html" class="navbar-brand"><b>Grey</b>Lady</a>
+      <a href="/" class="navbar-brand"><b>Grey</b>Lady</a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
         <i class="fa fa-bars"></i>
       </button>
