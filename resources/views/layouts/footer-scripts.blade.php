@@ -1,3 +1,8 @@
+<script src="js/main.js"></script>
+<script src="js/config/listings.js"></script>
+<script src="js/helpers/search-form.js"></script>
+
+
 <!-- jQuery 3 -->
 <script src="AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -18,3 +23,5 @@
 <!-- DataTables -->
 <script src="AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+
