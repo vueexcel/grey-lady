@@ -29,11 +29,11 @@ function createDataTable (config_item) {
 	datatable_html += '</tbody>';
 	datatable_html += '</table>';
 
-	console.log(datatable_html);
 	$('#' + config[config_item].get.datatable_id + '-wrapper').html(datatable_html);
 
 
-	$('#' + config[config_item].get.datatable_id).DataTable({
+	config[config_item].get.datatable = $('#' + config[config_item].get.datatable_id).DataTable({
+      // 'serverSide'	: true,
       'ajax'        : config[config_item].ajax,
       'columns'    : columns_for_datatable,
       'paging'      : true,

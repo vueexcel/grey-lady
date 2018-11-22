@@ -35,18 +35,23 @@ function renderSearchForm (config_type, div_id) {
 	$(div_id).html(search_form_html);
 
 	$('#' + config_type + '_search_button').bind('click', function () {
-		console.log($('#' + config_type + '_search_form').serializeArray() );
+		
+		config[config_type].get.datatable.ajax.reload();
 		event.preventDefault();
 	});
 
-}	
+}
+
+function getSearchFormState (config_type) {
+	return $('#' + config_type + '_search_form').serializeArray();
+}
 
 function buildTextField (search_param_item) {
 	var html_to_return = '';
 
 	html_to_return += '<div class="form-group">'
 	html_to_return += '<label>'+search_param_item.label+'</label>'
-	html_to_return += '<input id="' + search_param_item.param + '" name="' + search_param_item.param + '" type="text" class="form-control" placeholder="'+search_param_item.placeholder+'">'
+	html_to_return += '<input id="' + search_param_item.param + '" name="' + search_param_item.param + '" type="text" class="form-control" placeholder="'+search_param_item.placeholder+'" value="'+search_param_item.value +'">'
 	html_to_return += '</div>'
 
 	return html_to_return;
@@ -63,7 +68,12 @@ function buildDropDown (search_param_item) {
 	html_to_return += '<select class="form-control select2" name="' + search_param_item.param + '">'
 
 	for (var i = search_param_item.options.length - 1; i >= 0; i--) {
-		html_to_return += '<option>'+search_param_item.options[i].value +'</option>';
+		if (search_param_item.options[i].selected) {
+			html_to_return += '<option value="'+search_param_item.options[i].value +'" selected>'+search_param_item.options[i].text +'</option>';
+		} else {
+			html_to_return += '<option value="'+search_param_item.options[i].value +'">'+search_param_item.options[i].text +'</option>';	
+		}
+		
 	}
 	
 	html_to_return += '</select>';

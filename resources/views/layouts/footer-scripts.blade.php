@@ -1,11 +1,17 @@
-<script src="js/main.js"></script>
-<script src="js/config/listings.js"></script>
-<script src="js/helpers/search-form.js"></script>
-<script src="js/helpers/datatable.js"></script>
-
-
 <!-- jQuery 3 -->
 <script src="AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+
+
+<!-- Custom Scripts for the project -->
+<script src="js/helpers/search-form.js"></script>
+<script src="js/helpers/datatable.js"></script>
+<script src="js/main.js"></script>
+<script src="js/config/listings.js"></script>
+
+
+
+
+
 <!-- Bootstrap 3.3.7 -->
 <script src="AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Select2 -->
