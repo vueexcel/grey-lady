@@ -7,6 +7,8 @@
   
   <?php echo View::make('layouts.header-scripts') ?>
 
+  @yield('header-scripts')
+
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-blue layout-top-nav">
@@ -44,7 +46,7 @@
 
   <?php echo View::make('layouts.footer-scripts') ?>
 
-  @yield('content-scripts')
+  @yield('footer-scripts')
 
 </body>
 </html>
