@@ -26,8 +26,6 @@ config.listings.ajax = {
       };
 
 
-
-// config.listings.columns =  [ 'date_added', 'address','sqft', 'beds', 'baths', 'price', 'zip', 'link'];
 config.listings.columns =  [ 'link', 'zip', 'price', 'baths', 'beds', 'sqft', 'address', 'date_added'];
 
 config.listings.search_params = {
