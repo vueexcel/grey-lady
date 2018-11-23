@@ -36,7 +36,7 @@
 
 @section('header-scripts')
 
-  <link rel="stylesheet" href="css/listings.css">
+  
 
 @endsection 
 

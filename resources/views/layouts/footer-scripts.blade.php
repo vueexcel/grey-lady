@@ -3,10 +3,12 @@
 
 
 <!-- Custom Scripts for the project -->
+<script src="js/helpers/general.js"></script>
 <script src="js/helpers/search-form.js"></script>
 <script src="js/helpers/datatable.js"></script>
 <script src="js/main.js"></script>
 <script src="js/config/listings.js"></script>
+<script src="js/config/zips.js"></script>
 
 
 
@@ -15,7 +17,7 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Select2 -->
-<script src="js/moment.js"></script>
+<script src="js/helpers/moment.js"></script>
 <!-- Select2 -->
 <script src="AdminLTE/bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- SlimScroll -->
