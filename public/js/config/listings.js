@@ -7,29 +7,6 @@ config.listings.get.url = 'https://gulshan.app.greyladyproject.com/api/v1/listin
 config.listings.get.datatable_id = 'listing-datatable';
 
 
-config.listings.get.get_search_form = function (d) {
-	var current_state_of_form = $('#listings_search_form').serializeArray();
-	// var query_to_return = '';
-	// query_to_return += '?type=sell';
-
-	d.type = 'sell';
-	
-	// console.log(current_state_of_form);
-
-	// for (var i = current_state_of_form.length - 1; i >= 0; i--) {
-	// 	query_to_return += '&' + current_state_of_form[i].name + '=' + current_state_of_form[i].value; 
-	// }
-
-	console.log(d);
-	// return query_to_return;
-	// return '?zip=01603&type=sell&minBed=3&maxBed=3';
-}
-
-
-// config.listings.get.get_search_form = function () {
-
-// }
-
 config.listings.ajax = {
         'url': config.listings.get.url,
         'data': function (d) {
@@ -49,7 +26,7 @@ config.listings.ajax = {
           var return_data = new Array();
           for( var i=0; i< json.items.length; i++){
             return_data.push({
-              'date_added': json.items[i].listing_information.createdAt,
+              'date_added': formatDate(json.items[i].listing_information.createdAt),
               'address': json.items[i].listing_information.address,
               'sqft': json.items[i].listing_information.area,
               'beds': json.items[i].listing_information.maxBed,
