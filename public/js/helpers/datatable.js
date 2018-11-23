@@ -46,3 +46,4 @@ function createDataTable (config_item) {
     });
 
 }
+
