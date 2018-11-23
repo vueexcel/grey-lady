@@ -24,5 +24,5 @@ Route::get('/zips', function () {
 });
 
 Route::get('/watchlist', function () {
-    return view('watchlist');
+    return view('watchlists');
 });
