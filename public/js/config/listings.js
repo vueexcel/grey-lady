@@ -24,13 +24,18 @@ config.listings.ajax = {
         'cache' : false,
         'dataSrc'     : function (json) {
           var return_data = new Array();
+          var cap_rate = '';
           for( var i=0; i< json.items.length; i++){
+          	if (json.items[i].calculated_fields[0]) {
+          		cap_rate = json.items[i].calculated_fields[0].financial_information.cap_rate;
+          	}
+          	// console.log(json.items[i].calculated_fields[0].financial_information);
             return_data.push({
               'date_added': formatDate(json.items[i].listing_information.createdAt),
               'address': json.items[i].listing_information.address,
               'sqft': json.items[i].listing_information.area,
               'beds': json.items[i].listing_information.maxBed,
-              'baths': json.items[i].listing_information.baths,
+              'cap_rate': formatPercentage(cap_rate),
               'price': json.items[i].listing_information.price,
               'zip': json.items[i].listing_information.zip,
               'link': '<a href="http://trulia.com' + json.items[i].listing_information.link + '">Link</a>'
@@ -41,7 +46,7 @@ config.listings.ajax = {
       };
 
 
-config.listings.columns =  [ 'link', 'zip', 'price', 'baths', 'beds', 'sqft', 'address', 'date_added'];
+config.listings.columns =  [ 'link', 'zip', 'price', 'cap_rate', 'beds', 'sqft', 'address', 'date_added'];
 
 config.listings.search_params = {
 	'zip': {
@@ -50,6 +55,27 @@ config.listings.search_params = {
 		'label'	: 'Zip',
 		'placeholder' : '',
 		'value' : '22101'
+	},
+	'capRate': {
+		'param' : 'capRate',
+		'type'	: 'textfield',
+		'label'	: 'Cap Rate',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'cashOnCash': {
+		'param' : 'cashOnCash',
+		'type'	: 'textfield',
+		'label'	: 'Cash on cash',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'rentToValue': {
+		'param' : 'rentToValue',
+		'type'	: 'textfield',
+		'label'	: 'Rent to value',
+		'placeholder' : '',
+		'value' : ''
 	},
 	'maxBeds': {
 		'param' : 'maxBeds',

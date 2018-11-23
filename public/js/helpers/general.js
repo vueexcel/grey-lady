@@ -5,6 +5,10 @@ function formatDate (date_to_format) {
 	} else {
 		return 'n/a';
 	}
-	
+
+}
+
+function formatPercentage(number_to_format) {
+	return " " + (Number(Math.round((number_to_format * 100)+'e3')+'e-3')) + "%";
 
 }
