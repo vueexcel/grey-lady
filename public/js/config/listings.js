@@ -7,6 +7,14 @@ config.listings.get.url = 'https://gulshan.app.greyladyproject.com/api/v1/listin
 config.listings.get.datatable_id = 'listing-datatable';
 
 
+config.listings.get.actions_column = function (listing_item) {
+	var html_to_return = '';
+	console.log(listing_item);
+	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="http://trulia.com' + listing_item.listing_information.link + '">on Trulia</a>';
+	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + listing_item.listing_information.id + '">Details</a>';
+	return html_to_return;
+}
+
 config.listings.ajax = {
         'url': config.listings.get.url,
         'data': function (d) {
@@ -38,7 +46,7 @@ config.listings.ajax = {
               'cap_rate': formatPercentage(cap_rate),
               'price': json.items[i].listing_information.price,
               'zip': json.items[i].listing_information.zip,
-              'link': '<a href="http://trulia.com' + json.items[i].listing_information.link + '">Link</a>'
+              'actions': config.listings.get.actions_column(json.items[i]) 
             })
           }
           return return_data;
@@ -46,7 +54,7 @@ config.listings.ajax = {
       };
 
 
-config.listings.columns =  [ 'link', 'zip', 'price', 'cap_rate', 'beds', 'sqft', 'address', 'date_added'];
+config.listings.columns =  [ 'actions', 'zip', 'price', 'cap_rate', 'beds', 'sqft', 'address', 'date_added'];
 
 config.listings.search_params = {
 	'zip': {

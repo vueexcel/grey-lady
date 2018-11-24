@@ -15,13 +15,22 @@ Route::get('/', function () {
     return view('zips');
 });
 
+
 Route::get('/listings', function () {
     return view('listings');
 });
+Route::get('/listings/details', function () {
+    return view('listings-details');
+});
+
 
 Route::get('/zips', function () {
     return view('zips');
 });
+Route::get('/zips/{id}', function () {
+    return view('zips-details');
+});
+
 
 Route::get('/watchlist', function () {
     return view('watchlists');
