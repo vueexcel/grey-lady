@@ -2,8 +2,10 @@ config.listings = {};
 
  
 config.listings.get = {}
+config.listings.details = {}
 config.listings.get.datatable = {}
 config.listings.get.url = 'https://gulshan.app.greyladyproject.com/api/v1/listings';
+config.listings.details.url = 'https://gulshan.app.greyladyproject.com/api/v1/listings';
 config.listings.get.datatable_id = 'listing-datatable';
 
 
@@ -11,7 +13,7 @@ config.listings.get.actions_column = function (listing_item) {
 	var html_to_return = '';
 	console.log(listing_item);
 	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="http://trulia.com' + listing_item.listing_information.link + '">on Trulia</a>';
-	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + listing_item.listing_information.id + '">Details</a>';
+	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + listing_item.listing_information.id + '&type=sell">Details</a>';
 	return html_to_return;
 }
 
