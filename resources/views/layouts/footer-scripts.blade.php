@@ -19,6 +19,7 @@
 <script src="/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Select2 -->
 <script src="/js/helpers/moment.js"></script>
+<script src="/js/helpers/accounting.js"></script>
 <!-- Select2 -->
 <script src="/AdminLTE/bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- SlimScroll -->

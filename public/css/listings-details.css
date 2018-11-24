@@ -1,0 +1,7 @@
+#basic-information span {
+	margin-right: 20px;
+}
+
+#financial-info span, #mortgage-info span, #operating-pl span {
+	display: block;
+}

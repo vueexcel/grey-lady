@@ -15,32 +15,35 @@
                 <span id="zip"></span>
               </h3>
             </div>
-            <div class="box-body" id="financial-information"></div>
+            <div class="box-body" id="basic-information"></div>
           </div>
     
+          <div class=col-md-4>
 
-          <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#tab_1" data-toggle="tab">Basic</a></li>
-              <li><a href="#tab_2" data-toggle="tab">Location</a></li>
-              <li><a href="#tab_3" data-toggle="tab">Unit</a></li>
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane active" id="tab_1">
-                <div id="listing-information-basic"></div>
-              </div>
-
-              <div class="tab-pane active" id="tab_2">
-                <div id="listing-information-location"></div>
-              </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_3">
-                <div id="listing-information-units"></div>
-              </div>
-              <!-- /.tab-pane -->
+            <div class="box box-solid">
+              <div class="box-header with-border">Financial Info</div>
+              <div class="box-body" id="financial-info"></div>
             </div>
-            <!-- /.tab-content -->
+          
           </div>
+          <div class=col-md-4>
+          
+            <div class="box box-solid">
+              <div class="box-header with-border">Mortgage Info</div>
+              <div class="box-body" id="mortgage-info"></div>
+            </div>
+
+          </div>
+          <div class=col-md-4>
+
+            <div class="box box-solid">
+              <div class="box-header with-border">Operating P&L</div>
+              <div class="box-body" id="operating-pl"></div>
+            </div>
+          
+          </div>
+
+          
 
 
 @endsection
@@ -65,6 +68,7 @@
 
 @section('header-scripts')
 
+  <link rel="stylesheet" href="/css/listings-details.css">
   
 
 @endsection 
