@@ -7,9 +7,10 @@ config.zips.get.url = 'https://gulshan.app.greyladyproject.com/api/v1/zip';
 config.zips.get.datatable_id = 'zips-datatable';
 
 
-config.zips.get.actions_column = function (zip) {
+config.zips.get.actions_column = function (zip_item) {
 	var html_to_return = '';
-	html_to_return += '<a type="button" class="btn btn-block btn-default" target=_blank href="'+config.listings.get.url + '?type=sell&zip=' + zip + '">Listings in '+zip+'</a>';
+	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="'+config.listings.get.url + '?type=sell&zip=' + zip_item.zip + '">Listings in '+zip_item.zip+'</a>';
+	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + zip_item.zip + '">Details</a>';
 	return html_to_return;
 }
 
@@ -39,7 +40,7 @@ config.zips.ajax = {
               'county': json[i].county,
               'latitude': json[i].latitude,
               'longitude': json[i].longitude,
-              'actions': config.zips.get.actions_column(json[i].zip)
+              'actions': config.zips.get.actions_column(json[i])
             })
           }
           return return_data;

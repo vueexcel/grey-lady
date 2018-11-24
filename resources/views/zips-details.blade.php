@@ -28,7 +28,7 @@
 @section('footer-scripts')
 
   <!-- page script -->
-  <script src="js/listings.js"></script>
+  <script src="/js/zips.js"></script>
 
 @endsection 
 
