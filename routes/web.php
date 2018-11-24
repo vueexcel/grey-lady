@@ -27,7 +27,7 @@ Route::get('/listings/details', function () {
 Route::get('/zips', function () {
     return view('zips');
 });
-Route::get('/zips/{id}', function () {
+Route::get('/zips/details', function () {
     return view('zips-details');
 });
 

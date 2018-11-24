@@ -7,7 +7,7 @@
 
 <div class="box box-default">
   <div class="box-header with-border">
-    <h3 class="box-title">Listing Details for {{ app('request')->input('id') }}</h3>
+    <h3 class="box-title">Zip Details for {{ app('request')->input('id') }}</h3>
   </div>
   <div class="box-body">
     <div style="overflow: auto">
