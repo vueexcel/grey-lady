@@ -50,7 +50,7 @@ config.zips.ajax = {
 
 config.zips.columns =  [ 'actions',  'longitude', 'latitude', 'county', 'state', 'town', 'zip', 'date_added'];
 
-config.zips.search_params = {
+config.zips.get.search_params = {
 	'zip': {
 		'param' : 'zip',
 		'type'	: 'textfield',

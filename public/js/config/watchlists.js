@@ -47,7 +47,7 @@ config.watchlists.ajax = {
 
 config.watchlists.columns =  [ 'actions', 'lastCrawlTime', 'nextRun', 'type', 'zip', 'createdAt'];
 
-config.watchlists.search_params = {
+config.watchlists.get.search_params = {
 	'zip': {
 		'param' : 'zip',
 		'type'	: 'textfield',

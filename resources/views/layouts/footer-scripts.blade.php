@@ -6,6 +6,7 @@
 <script src="/js/helpers/general.js"></script>
 <script src="/js/helpers/search-form.js"></script>
 <script src="/js/helpers/datatable.js"></script>
+<script src="/js/helpers/create-and-edit.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/config/listings.js"></script>
 <script src="/js/config/zips.js"></script>

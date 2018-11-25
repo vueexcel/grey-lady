@@ -1,12 +1,115 @@
 config.listings = {};
 
  
+ //base objects
 config.listings.get = {}
 config.listings.details = {}
-config.listings.get.datatable = {}
+config.listings.create = {}
+
+// apis
 config.listings.get.url = 'https://gulshan.app.greyladyproject.com/api/v1/listings';
 config.listings.details.url = 'https://gulshan.app.greyladyproject.com/api/v1/listings';
+config.listings.create.url = 'https://gulshan.app.greyladyproject.com/api/v1/listings';
+
+
+config.listings.get.datatable = {}
 config.listings.get.datatable_id = 'listing-datatable';
+
+
+config.listings.create.search_params = {
+
+	'type': {
+		'param' : 'type',
+		'type'	: 'dropdown',
+		'options' : [
+			{
+				'id' : 'sell',
+				'text' : 'For Sale',
+				'value' : 'sale',
+				'selected' : true
+			},
+			{
+				'id' : 'rent',
+				'text' : 'For Rent',
+				'value' : 'rent',
+				'selected' : false
+			}
+		],
+		'label'	: 'Property Type',
+		'placeholder' : ''
+	},
+	'address': {
+		'param' : 'address',
+		'type'	: 'textfield',
+		'label'	: 'Address',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'zip': {
+		'param' : 'zip',
+		'type'	: 'textfield',
+		'label'	: 'Zip',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'price': {
+		'param' : 'price',
+		'type'	: 'textfield',
+		'label'	: 'Price',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'beds': {
+		'param' : 'bed',
+		'type'	: 'textfield',
+		'label'	: 'Beds',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'bath': {
+		'param' : 'bath',
+		'type'	: 'textfield',
+		'label'	: 'Beds',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'area': {
+		'param' : 'area',
+		'type'	: 'textfield',
+		'label'	: 'Sqft',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'maxBeds': {
+		'param' : 'maxBeds',
+		'type'	: 'textfield',
+		'label'	: 'Max Beds',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'minBeds': {
+		'param' : 'minBeds',
+		'type'	: 'textfield',
+		'label'	: 'Min Beds',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'minPrice': {
+		'param' : 'minPrice',
+		'type'	: 'textfield',
+		'label'	: 'Min Price',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'maxPrice': {
+		'param' : 'minPrice',
+		'type'	: 'textfield',
+		'label'	: 'Max Price',
+		'placeholder' : '',
+		'value' : ''
+	}
+
+};
 
 
 config.listings.get.actions_column = function (listing_item) {
@@ -58,7 +161,7 @@ config.listings.ajax = {
 
 config.listings.columns =  [ 'actions', 'zip', 'price', 'cap_rate', 'beds', 'sqft', 'address', 'date_added'];
 
-config.listings.search_params = {
+config.listings.get.search_params = {
 	'zip': {
 		'param' : 'zip',
 		'type'	: 'textfield',

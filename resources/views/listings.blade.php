@@ -7,7 +7,8 @@
 
 <div class="box box-default">
   <div class="box-header with-border">
-    <h3 class="box-title">Listings</h3>
+    <h3 class="box-title">Listings</h3> 
+    <a type="button" class="btn btn-default" href="/listings/create">Create New Listing</a>
   </div>
   <div class="box-body">
     <div style="overflow: auto">

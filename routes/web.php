@@ -22,6 +22,9 @@ Route::get('/listings', function () {
 Route::get('/listings/details', function () {
     return view('listings-details');
 });
+Route::get('/listings/create', function () {
+    return view('listings-create');
+});
 
 
 Route::get('/zips', function () {

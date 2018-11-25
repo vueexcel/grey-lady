@@ -1,10 +1,14 @@
-function renderSearchForm (config_type, div_id) {
+function renderSearchForm (config_type, request_type, div_id) {
+	
+
 	if (!config && !config.listings && !config.listings.search_params) {
 		return false;
 	}
 
 	var search_form_html = '';
-	var search_params = config[config_type].search_params;
+	var search_params = config[config_type][request_type].search_params;
+
+	console.log(search_params);
 
 	search_form_html += '<form id="' + config_type + '_search_form" >';
 
@@ -32,13 +36,23 @@ function renderSearchForm (config_type, div_id) {
 	search_form_html += '</div>';
 	search_form_html += '</form>';
 
+	console.log('====================')
+	console.log(search_form_html);
+	console.log('====================')
+
 	$(div_id).html(search_form_html);
 
-	$('#' + config_type + '_search_button').bind('click', function () {
+	if (request_type == 'GET') {
+
+		$('#' + config_type + '_search_button').bind('click', function () {
 		
-		config[config_type].get.datatable.ajax.reload();
-		event.preventDefault();
-	});
+			config[config_type].get.datatable.ajax.reload();
+			event.preventDefault();
+		});
+
+	}
+
+	
 
 }
 
