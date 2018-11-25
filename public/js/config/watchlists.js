@@ -2,9 +2,68 @@ config.watchlists = {};
 
  
 config.watchlists.get = {}
-config.watchlists.get.datatable = {}
+config.watchlists.details = {}
+config.watchlists.create = {}
+
+
+
 config.watchlists.get.url = 'https://gulshan.app.greyladyproject.com/api/v1/watchlist';
+config.watchlists.create.url = 'https://gulshan.app.greyladyproject.com/api/v1/watchlist';
+
+config.watchlists.get.datatable = {}
 config.watchlists.get.datatable_id = 'watchlists-datatable';
+
+
+config.watchlists.create.search_params = {
+
+	'zip': {
+		'param' : 'zip',
+		'type'	: 'textfield',
+		'label'	: 'Zip',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'type': {
+		'param' : 'type',
+		'type'	: 'dropdown',
+		'options' : [
+			{
+				'id' : 'sell',
+				'text' : 'For Sale',
+				'value' : 'sale',
+				'selected' : true
+			},
+			{
+				'id' : 'rent',
+				'text' : 'For Rent',
+				'value' : 'rent',
+				'selected' : false
+			}
+		],
+		'label'	: 'Purchase Type',
+		'placeholder' : ''
+	},
+	'nextRun': {
+		'param' : 'nextRun',
+		'type'	: 'dropdown',
+		'options' : [
+			{
+				'id' : 'yes',
+				'text' : 'Yes',
+				'value' : 'true',
+				'selected' : true
+			},
+			{
+				'id' : 'no',
+				'text' : 'No',
+				'value' : 'false',
+				'selected' : false
+			}
+		],
+		'label'	: 'Add to next run?',
+		'placeholder' : ''
+	}
+};
 
 
 config.watchlists.get.actions_column = function (zip) {

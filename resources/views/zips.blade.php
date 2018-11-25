@@ -8,6 +8,7 @@
 <div class="box box-default">
   <div class="box-header with-border">
     <h3 class="box-title">Zips</h3>
+    <a type="button" class="btn btn-default" href="/zips/create">Create New Zip</a>
   </div>
   <div class="box-body">
     <div style="overflow: auto">

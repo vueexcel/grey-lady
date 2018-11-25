@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('zips');
 });
+Route::get('/zips/create', function () {
+    return view('zips-create');
+});
 
 
 Route::get('/listings', function () {
@@ -37,4 +40,7 @@ Route::get('/zips/details', function () {
 
 Route::get('/watchlist', function () {
     return view('watchlists');
+});
+Route::get('/watchlists/create', function () {
+    return view('watchlists-create');
 });

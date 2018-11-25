@@ -2,9 +2,66 @@ config.zips = {};
 
  
 config.zips.get = {}
-config.zips.get.datatable = {}
+config.zips.create = {}
+config.zips.details = {}
+
 config.zips.get.url = 'https://gulshan.app.greyladyproject.com/api/v1/zip';
+config.zips.create.url = 'https://gulshan.app.greyladyproject.com/api/v1/zip';
+
+config.zips.get.datatable = {}
 config.zips.get.datatable_id = 'zips-datatable';
+
+config.zips.create.search_params = {
+	'zip': {
+		'param' : 'zip',
+		'type'	: 'textfield',
+		'label'	: 'Zip',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'place': {
+		'param' : 'place',
+		'type'	: 'textfield',
+		'label'	: 'Town',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'county': {
+		'param' : 'county',
+		'type'	: 'textfield',
+		'label'	: 'County',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'stateAbbreviation': {
+		'param' : 'stateAbbreviation',
+		'type'	: 'textfield',
+		'label'	: 'State Abbreviation',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'state': {
+		'param' : 'state',
+		'type'	: 'textfield',
+		'label'	: 'State Name',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'latitude': {
+		'param' : 'latitude',
+		'type'	: 'textfield',
+		'label'	: 'Latitude',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'longitude': {
+		'param' : 'longitude',
+		'type'	: 'textfield',
+		'label'	: 'Longitude',
+		'placeholder' : '',
+		'value' : ''
+	}
+}
 
 
 config.zips.get.actions_column = function (zip_item) {

@@ -4,7 +4,7 @@
 	margin-right: 15px;
 }
 
-#new-listing-form .form-group {
+#new-listing-form .form-group, #new-watchlist-form .form-group, #new-zips-form .form-group{
 	width: 500px;
 	width: block;
 }

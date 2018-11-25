@@ -108,7 +108,6 @@ config.listings.create.search_params = {
 		'placeholder' : '',
 		'value' : ''
 	}
-
 };
 
 

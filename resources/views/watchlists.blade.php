@@ -7,7 +7,8 @@
 
 <div class="box box-default">
   <div class="box-header with-border">
-    <h3 class="box-title">watchlists</h3>
+    <h3 class="box-title">Watchlist</h3>
+    <a type="button" class="btn btn-default" href="/watchlists/create">Create New Watchlist</a>
   </div>
   <div class="box-body">
     <div style="overflow: auto">
