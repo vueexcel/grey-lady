@@ -1,11 +1,11 @@
 $( function () {
 
-	console.log(listing_details);
+	// console.log(listing_details);
 
 	if (listing_details && listing_details.id && listing_details.type) {
 
 		getListingDetails(listing_details.id, listing_details.type, function (data) {
-			console.log(data);
+			// console.log(data);
 			if (data) {
 				renderListingDetails(data);
 			} else {

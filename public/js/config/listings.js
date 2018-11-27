@@ -113,8 +113,19 @@ config.listings.create.search_params = {
 
 config.listings.get.actions_column = function (listing_item) {
 	var html_to_return = '';
-	console.log(listing_item);
-	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="http://trulia.com' + listing_item.listing_information.link + '">on Trulia</a>';
+	// console.log(listing_item);
+
+	html_to_return += makeDropDownButton('API Calls', [
+	{
+		'text': 'to Trulia',
+		'link': 'http://trulia.com' + listing_item.listing_information.link
+	},
+	{
+		'text': 'Get Zip API',
+		'link': '//gulshan.app.greyladyproject.com/api/v1/zip?zip=' + listing_item.listing_information.zip
+	},
+	]);
+
 	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + listing_item.listing_information.id + '&type=sell">Details</a>';
 	return html_to_return;
 }
@@ -141,6 +152,11 @@ config.listings.ajax = {
           	if (json.items[i].calculated_fields[0]) {
           		cap_rate = json.items[i].calculated_fields[0].financial_information.cap_rate;
           	}
+
+          	if (json.items[i].calculated_fields[0]) {
+          		cash_on_cash = json.items[i].calculated_fields[0].financial_information.cash_on_cash;
+          	}
+
           	// console.log(json.items[i].calculated_fields[0].financial_information);
             return_data.push({
               'date_added': formatDate(json.items[i].listing_information.createdAt),
@@ -148,6 +164,7 @@ config.listings.ajax = {
               'sqft': json.items[i].listing_information.area,
               'beds': json.items[i].listing_information.maxBed,
               'cap_rate': formatPercentage(cap_rate),
+              'cash_on_cash': formatPercentage(cash_on_cash),
               'price': json.items[i].listing_information.price,
               'zip': json.items[i].listing_information.zip,
               'actions': config.listings.get.actions_column(json.items[i]) 
@@ -158,7 +175,7 @@ config.listings.ajax = {
       };
 
 
-config.listings.columns =  [ 'actions', 'zip', 'price', 'cap_rate', 'beds', 'sqft', 'address', 'date_added'];
+config.listings.columns =  [ 'actions', 'zip', 'price', 'cash_on_cash', 'cap_rate', 'beds', 'sqft', 'address', 'date_added'];
 
 config.listings.get.search_params = {
 	'zip': {

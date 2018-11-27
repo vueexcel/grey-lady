@@ -36,18 +36,19 @@ function renderSearchForm (config_type, request_type, div_id) {
 	search_form_html += '</div>';
 	search_form_html += '</form>';
 
-	console.log('====================')
-	console.log(search_form_html);
-	console.log('====================')
+	// console.log('====================')
+	// console.log(search_form_html);
+	// console.log('====================')
 
 	$(div_id).html(search_form_html);
 
-	if (request_type == 'GET') {
+	if (request_type == 'get') {
 
-		$('#' + config_type + '_search_button').bind('click', function () {
+		$('#' + config_type + '_search_button').bind('click', function (event) {
 		
 			config[config_type].get.datatable.ajax.reload();
 			event.preventDefault();
+			event.stopPropagation();
 		});
 
 	}
