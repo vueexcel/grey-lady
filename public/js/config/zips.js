@@ -101,15 +101,10 @@ config.zips.ajax = {
         'url': config.zips.get.url,
         'data': function (d) {
         	var current_state_of_form = $('#zips_search_form').serializeArray();
-        	
-        	console.log(current_state_of_form);
 
         	for (var i = current_state_of_form.length - 1; i >= 0; i--) {
         		d[current_state_of_form[i].name] = current_state_of_form[i].value;
 			}
-
-			console.log(d);
-
         },
         'cache' : false,
         'dataSrc'     : function (json) {
@@ -119,12 +114,12 @@ config.zips.ajax = {
           console.log('================');
           for( var i=0; i< json.length; i++){
             return_data.push({
-              // 'date_added': formatDate(json[i].createdAt),
+              'date_added': formatDate(json[i].createdAt),
               'zip': json[i].details.zip,
-              'area': json[i].details.place_name + ', ' + json[i].details.state_abbreviation,
-              'cap by bed': formatZipCalculations(json[i]),
-              'on_rent': json[i].watchlist.rent ? '<a href="https://gulshan.app.greyladyproject.com/api/v1/watchlist/'+json[i].watchlist.rent.id+'" target=_blank>Yes - '+json[i].watchlist.rent.number_of_listings+'</a>' : 'No',
-              'on_sell': json[i].watchlist.sell ? '<a href="https://gulshan.app.greyladyproject.com/api/v1/watchlist/'+json[i].watchlist.sell.id+'" target=_blank>Yes  - '+json[i].watchlist.sell.number_of_listings+'</a>' : 'No',
+              'town': json[i].details.place_name,
+              'state': json[i].details.state_name,
+              'lat': json[i].details.lat,
+              'lng': json[i].details.lng,
               'actions': config.zips.get.actions_column(json[i])
             })
           }
@@ -133,8 +128,7 @@ config.zips.ajax = {
       };
 
 
-// config.zips.columns =  [ 'actions',  'longitude', 'latitude', 'county', 'state', 'town', 'zip', 'date_added'];
-config.zips.columns =  [ 'actions', 'on_rent', 'on_sell', 'cap by bed', 'area', 'zip'];
+config.zips.columns =  [ 'actions',  'lng', 'lat', 'state', 'town', 'zip', 'date_added'];
 
 config.zips.get.search_params = {
 	'zip': {

@@ -8,7 +8,7 @@ function renderSearchForm (config_type, request_type, div_id) {
 	var search_form_html = '';
 	var search_params = config[config_type][request_type].search_params;
 
-	console.log(search_params);
+	// console.log(search_params);
 
 	search_form_html += '<form id="' + config_type + '_search_form" >';
 
