@@ -69,16 +69,31 @@ config.zips.get.actions_column = function (zip_item) {
 	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + zip_item.zip + '">Details</a>';
 	html_to_return += makeDropDownButton('API Calls', [
 		{
-			'text' : 'Google',
-			'link' : 'http://google.com',
+			'text' : 'Zip Details',
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/zip?zip=' + zip_item.details.zip,
 		},
 		{
-			'text' : 'Google',
-			'link' : 'http://google.com',
+			'text' : 'Zip Refresh',
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip='  + zip_item.details.zip,
+		},
+		{
+			'text' : 'Listing Rent Search',
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/listings?type=rent&zip='  + zip_item.details.zip,
+		},
+		{
+			'text' : 'Listing Sell Search',
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/listings?type=sell&zip='  + zip_item.details.zip,
+		},
+		{
+			'text' : 'Average Rent',
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/report?zip='  + zip_item.details.zip,
+		},
+		{
+			'text' : 'Search Watchlists',
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/watchlist&zip='  + zip_item.details.zip,
 		},
 	])
-	// html_to_return += '<a type="button" class="btn btn-default" target=_blank href="'+config.listings.get.url + '?type=sell&zip=' + zip_item.zip + '">Listings in '+zip_item.zip+'</a>';
-	
+
 	return html_to_return;
 }
 
