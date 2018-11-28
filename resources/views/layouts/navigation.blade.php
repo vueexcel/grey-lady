@@ -1,22 +1,26 @@
-<nav class="navbar navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a href="/" class="navbar-brand"><b>Grey</b>Lady</a>
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-        <i class="fa fa-bars"></i>
-      </button>
-    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="/listings">Listings</a></li>
-        <li><a href="/zips">Zips</a></li>
-        <li><a href="/watchlist">Watchlist</a></li>
+
+<!-- sidebar: style can be found in sidebar.less -->
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 343px;"><section class="sidebar" style="overflow: hidden; width: auto; height: 343px;">
+      
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu tree" data-widget="tree">
+
+        <li class="treeview active menu-open">
+          <a href="#">
+            <i class=""></i>
+            <span>CRUD Views</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../listings"><i class="fa fa-circle-o"></i>Listings</a></li>
+            <li><a href="../zips"><i class="fa fa-circle-o"></i>Zips</a></li>
+            <li><a href="../watchlist"><i class="fa fa-circle-o"></i>Watchlists</a></li>
+          </ul>
+        </li>
+        
       </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-    
-  </div>
-  <!-- /.container-fluid -->
-</nav>
+    </section><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: -178.375px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 119.319px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+    <!-- /.sidebar -->
