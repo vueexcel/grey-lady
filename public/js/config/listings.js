@@ -176,6 +176,8 @@ config.listings.ajax = {
 
 
 config.listings.columns =  [ 'actions', 'zip', 'price', 'cash_on_cash', 'cap_rate', 'beds', 'sqft', 'address', 'date_added'];
+// config.listings.get.columns_defs =  [{ "width": "150px", "target": 0 }];
+// config.listings.columns =  [ {'data':'actions', 'wdith': '200px'}, {'data':'zip'}, {'data':'price'}, {'data':'cash_on_cash'}, {'data':'cap_rate'}, {'data':'beds'}, {'data':'sqft'}, {'data':'address'}, {'data':'date_added'}];
 
 config.listings.get.search_params = {
 	'zip': {
@@ -183,7 +185,7 @@ config.listings.get.search_params = {
 		'type'	: 'textfield',
 		'label'	: 'Zip',
 		'placeholder' : '',
-		'value' : '22101'
+		'value' : ''
 	},
 	'capRate': {
 		'param' : 'capRate',
