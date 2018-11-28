@@ -66,8 +66,19 @@ config.zips.create.search_params = {
 
 config.zips.get.actions_column = function (zip_item) {
 	var html_to_return = '';
-	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="'+config.listings.get.url + '?type=sell&zip=' + zip_item.zip + '">Listings in '+zip_item.zip+'</a>';
 	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + zip_item.zip + '">Details</a>';
+	html_to_return += makeDropDownButton('API Calls', [
+		{
+			'text' : 'Google',
+			'link' : 'http://google.com',
+		},
+		{
+			'text' : 'Google',
+			'link' : 'http://google.com',
+		},
+	])
+	// html_to_return += '<a type="button" class="btn btn-default" target=_blank href="'+config.listings.get.url + '?type=sell&zip=' + zip_item.zip + '">Listings in '+zip_item.zip+'</a>';
+	
 	return html_to_return;
 }
 
@@ -88,15 +99,16 @@ config.zips.ajax = {
         'cache' : false,
         'dataSrc'     : function (json) {
           var return_data = new Array();
+          console.log('================');
+          console.log(json);
+          console.log('================');
           for( var i=0; i< json.length; i++){
             return_data.push({
-              'date_added': formatDate(json[i].createdAt),
-              'zip': json[i].zip,
-              'town': json[i].place,
-              'state': json[i].state,
-              'county': json[i].county,
-              'latitude': json[i].latitude,
-              'longitude': json[i].longitude,
+              // 'date_added': formatDate(json[i].createdAt),
+              'zip': json[i].details.zip,
+              'area': json[i].details.place_name + ', ' + json[i].details.state_abbreviation,
+              'on_rent': json[i].watchlist.rent ? '<a href="https://gulshan.app.greyladyproject.com/api/v1/watchlist/'+json[i].watchlist.rent.id+'" target=_blank>Yes - '+json[i].watchlist.rent.number_of_listings+'</a>' : 'No',
+              'on_sell': json[i].watchlist.sell ? '<a href="https://gulshan.app.greyladyproject.com/api/v1/watchlist/'+json[i].watchlist.sell.id+'" target=_blank>Yes  - '+json[i].watchlist.sell.number_of_listings+'</a>' : 'No',
               'actions': config.zips.get.actions_column(json[i])
             })
           }
@@ -105,7 +117,8 @@ config.zips.ajax = {
       };
 
 
-config.zips.columns =  [ 'actions',  'longitude', 'latitude', 'county', 'state', 'town', 'zip', 'date_added'];
+// config.zips.columns =  [ 'actions',  'longitude', 'latitude', 'county', 'state', 'town', 'zip', 'date_added'];
+config.zips.columns =  [ 'actions', 'on_rent', 'on_sell', 'area', 'zip'];
 
 config.zips.get.search_params = {
 	'zip': {

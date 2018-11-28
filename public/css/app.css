@@ -8,3 +8,7 @@
 	width: 500px;
 	width: block;
 }
+
+#zips-datatable a.btn {
+	margin-right: 15px;
+}

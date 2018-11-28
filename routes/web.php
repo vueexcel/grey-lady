@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/explore', function () {
+    return view('explore');
+});
+
 Route::get('/', function () {
     return view('zips');
 });

@@ -6,8 +6,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu tree" data-widget="tree">
         <li>
-          <a href="../dashboard">
-            <i class="fa fa-th"></i> <span>Dashboard</span>
+          <a href="../explore">
+            <i class="fa fa-th"></i> <span>Explore</span>
           </a>
         </li>
         <li class="treeview">
