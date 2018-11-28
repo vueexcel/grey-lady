@@ -122,6 +122,7 @@ config.zips.ajax = {
               // 'date_added': formatDate(json[i].createdAt),
               'zip': json[i].details.zip,
               'area': json[i].details.place_name + ', ' + json[i].details.state_abbreviation,
+              'cap by bed': formatZipCalculations(json[i]),
               'on_rent': json[i].watchlist.rent ? '<a href="https://gulshan.app.greyladyproject.com/api/v1/watchlist/'+json[i].watchlist.rent.id+'" target=_blank>Yes - '+json[i].watchlist.rent.number_of_listings+'</a>' : 'No',
               'on_sell': json[i].watchlist.sell ? '<a href="https://gulshan.app.greyladyproject.com/api/v1/watchlist/'+json[i].watchlist.sell.id+'" target=_blank>Yes  - '+json[i].watchlist.sell.number_of_listings+'</a>' : 'No',
               'actions': config.zips.get.actions_column(json[i])
@@ -133,7 +134,7 @@ config.zips.ajax = {
 
 
 // config.zips.columns =  [ 'actions',  'longitude', 'latitude', 'county', 'state', 'town', 'zip', 'date_added'];
-config.zips.columns =  [ 'actions', 'on_rent', 'on_sell', 'area', 'zip'];
+config.zips.columns =  [ 'actions', 'on_rent', 'on_sell', 'cap by bed', 'area', 'zip'];
 
 config.zips.get.search_params = {
 	'zip': {
@@ -141,14 +142,14 @@ config.zips.get.search_params = {
 		'type'	: 'textfield',
 		'label'	: 'Zip',
 		'placeholder' : '',
-		'value' : '22101'
+		'value' : ''
 	},
 	'town': {
 		'param' : 'place',
 		'type'	: 'textfield',
 		'label'	: 'Town',
 		'placeholder' : '',
-		'value' : ''
+		'value' : 'Worcester'
 	},
 	'stateAbbreviation': {
 		'param' : 'stateAbbreviation',

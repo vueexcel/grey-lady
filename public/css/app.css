@@ -12,3 +12,21 @@
 #zips-datatable a.btn {
 	margin-right: 15px;
 }
+
+
+
+
+div.precentage {
+	display: inline-block;
+	margin-right: 10px;
+	padding: 3px;
+	color: grey;
+}
+span.precentage-top {
+	display: block;
+}
+span.precentage-bottom {
+	display: block;
+	text-align: center;
+	border-top: 1px solid black;
+}
