@@ -62,6 +62,8 @@ function formatZipCalculations(zip_item) {
 
 	var html_to_return = '';
 
+	// console.log(zip_item);
+
 	if (zip_item && zip_item.calculated_fields && zip_item.calculated_fields.by_beds) {
 		for (beds in zip_item.calculated_fields.by_beds) {
 			html_to_return +=  '<div class="precentage">';				
@@ -77,13 +79,12 @@ function formatZipCalculations(zip_item) {
 
 	$('#zips-datatable').off().on('click', '#recalculate-zip', function (event) {
 		var click_data = $(this).data(click_data);
-		$.get('https://gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip=' + click_data.zip, function(data) {
-			console.log(data);
+		$.get('//gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip=' + click_data.zip, function(data) {
 			showAlertMessage(false, 'Success', data);
 			$('#zips-datatable').DataTable().ajax.reload();
 		});
 		event.preventDefault();
-	})
+	});
 
 	return html_to_return;
 }
@@ -96,12 +97,63 @@ function showAlertMessage (tpye_of_message, message_title, message_text) {
 	html_to_return += message_text;
 	html_to_return += '</div>';
 	$('#message-area').append(html_to_return).fadeOut('5000');
+}
 
+function makeWatchListButtons (zip_item) {
+	var html_to_return = '';
 
-                
-                
-                
-              
+	html_to_return += '<div class="watchlist-rent-wrapper">';
+	
+	if (zip_item.watchlist.rent) {
+		html_to_return += '<p><b>Rent</b> <span> - '+formatDate(zip_item.watchlist.rent.lastCrawl);
+		html_to_return += ', ' + zip_item.watchlist.rent.number_of_listings + ' listings';
+		html_to_return += '<a href="#" id="add-watchlist-button" data-type="rent" data-zip="'+zip_item.details.zip+'" data-nextRun="true" data-new="false"> (download)</a>';
+	} else {
+		html_to_return += '<p><b>Rent</b><span> - never';
+		html_to_return += '<a href="#" id="add-watchlist-button" data-type="rent" data-zip="'+zip_item.details.zip+'" data-nextRun="true" data-new="true"> (download)</a>';
+	}
+	
+	html_to_return += '</span></p>';
+	html_to_return += '</div>';
+
+	html_to_return += '<div class="watchlist-sell-wrapper">';
+	if (zip_item.watchlist.sell) {
+		html_to_return += '<p><b>Sell</b> <span> - '+formatDate(zip_item.watchlist.sell.lastCrawl);
+		html_to_return += ', ' + zip_item.watchlist.sell.number_of_listings + ' listings';
+		html_to_return += '<a href="#" id="add-watchlist-button" data-type="sell" data-zip="'+zip_item.details.zip+'" data-nextRun="true" data-new="false"> (download)</a>';
+	} else {
+		html_to_return += '<p><b>Sell</b> <span> - never';
+		html_to_return += '<a href="#" id="add-watchlist-button" data-type="sell" data-zip="'+zip_item.details.zip+'" data-nextRun="true" data-new="true"> (download)</a>';
+	}
+	
+	html_to_return += '</span></p>';
+	html_to_return += '</div>';
+
+	$('#zips-datatable').off().on('click', '#add-watchlist-button', function (event) {
+		var click_data = $(this).data(click_data);
+		var request_type = 'PUT';
+		if (click_data.new) {
+			request_type = 'POST';
+		} 
+		
+		console.log(click_data);
+
+		$.ajax({
+			url: 'https://gulshan.app.greyladyproject.com/api/v1/watchlist',
+			type: request_type,
+			data: click_data,
+		})
+		.done(function(data) {
+			console.log(data);
+			showAlertMessage(false, 'Success', data);
+			$('#zips-datatable').DataTable().ajax.reload();
+		});
+		
+		event.preventDefault();
+	});
+
+	return html_to_return;
+
 }
 
 

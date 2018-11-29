@@ -30,3 +30,11 @@ span.precentage-bottom {
 	text-align: center;
 	border-top: 1px solid black;
 }
+
+
+.watchlist-rent-wrapper p, .watchlist-sell-wrapper p {
+	margin-bottom: 0px;
+}
+.watchlist-rent-wrapper span, .watchlist-sell-wrapper span {
+	font-size: 12px;
+}
