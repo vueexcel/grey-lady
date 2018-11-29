@@ -90,7 +90,7 @@ config.zips.get.actions_column = function (zip_item) {
 		},
 		{
 			'text' : 'Search Watchlists',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/watchlist&zip='  + zip_item.details.zip,
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/watchlist?zip='  + zip_item.details.zip,
 		},
 	])
 
