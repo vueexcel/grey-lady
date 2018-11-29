@@ -109,7 +109,7 @@ config.zips.ajax = {
         'cache' : false,
         'dataSrc'     : function (json) {
           var return_data = new Array();
-          console.log('================');
+          console.log('==============RESPONSE============');
           console.log(json);
           console.log('================');
           for( var i=0; i< json.length; i++){

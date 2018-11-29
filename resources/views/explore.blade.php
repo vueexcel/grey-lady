@@ -7,6 +7,7 @@
 
 <div class="box box-default">
   <div class="box-body">
+  	<div id="message-area"></div>
     <div style="overflow: auto">
 
       <div id="zips-search-form"></div>
@@ -30,9 +31,6 @@
   	config.zips.columns =  [ 'actions', 'on_rent', 'on_sell', 'cap by bed', 'area', 'zip'];
   	config.zips.ajax.dataSrc = function (json) {
           var return_data = new Array();
-          console.log('================');
-          console.log(json);
-          console.log('================');
           for( var i=0; i< json.length; i++){
             return_data.push({
               // 'date_added': formatDate(json[i].createdAt),
@@ -46,8 +44,9 @@
           }
           return return_data;
         }
-
   </script>
+
+
   <script src="js/zips.js"></script>
 
 @endsection 

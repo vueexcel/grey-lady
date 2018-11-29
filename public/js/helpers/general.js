@@ -35,20 +35,3 @@ function makeDropDownButton(main_button_text, dropdown_buttons) {
 	return html_to_return;
                 
 }
-
-function formatZipCalculations(zip_item) {
-
-	var html_to_return = '';
-
-	if (zip_item && zip_item.calculated_fields && zip_item.calculated_fields.by_beds) {
-		for (beds in zip_item.calculated_fields.by_beds) {
-			html_to_return +=  '<div class="precentage">';				
-			html_to_return +=  '<span class="precentage-top">' + formatPercentage(zip_item.calculated_fields.by_beds[beds].average_cap_rate,1) + '</span>';				
-			html_to_return +=  '<span class="precentage-bottom">' + beds + 'b</span>';				
-			html_to_return +=  '</div>';				
-		}
-	}
-
-	return html_to_return;
-
-}
