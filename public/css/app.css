@@ -15,7 +15,7 @@
 
 
 
-
+/* For the /explore datatable */
 div.precentage {
 	display: inline-block;
 	margin-right: 10px;
@@ -32,6 +32,7 @@ span.precentage-bottom {
 }
 
 
+/*  For the watchlist buttons in /explore */
 .watchlist-rent-wrapper p, .watchlist-sell-wrapper p {
 	margin-bottom: 0px;
 }
