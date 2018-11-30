@@ -58,3 +58,10 @@
 
 @endsection 
 
+
+
+@section('page-title')
+
+<h3>Explore Zip Codes</h3>
+
+@endsection

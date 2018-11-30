@@ -73,8 +73,12 @@ config.zips.get.actions_column = function (zip_item) {
 			'link' : '//gulshan.app.greyladyproject.com/api/v1/zip?zip=' + zip_item.details.zip,
 		},
 		{
-			'text' : 'Zip Refresh',
+			'text' : 'Recalculate Zip',
 			'link' : '//gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip='  + zip_item.details.zip,
+		},
+		{
+			'text' : 'Recalculate Zip Listings',
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/recalculate/listings?zip='  + zip_item.details.zip,
 		},
 		{
 			'text' : 'Listing Rent Search',

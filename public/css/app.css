@@ -1,3 +1,32 @@
+/* Navigation */
+
+.main-header .logo {
+	min-height: 65px;
+	line-height: 65px;
+}
+
+.main-sidebar {
+	padding-top: 65px;
+}
+
+.fixed .content-wrapper {
+	padding-top: 65px;
+}
+
+.main-header .sidebar-toggle {
+	padding: 22px 15px 15px 15px;
+}
+
+.navbar h3 {
+	color: white;
+	padding-left: 46px;
+	font-size: 21px;
+}
+
+
+
+
+
 .form-group {
 	width: 100px;
 	display: inline-block;

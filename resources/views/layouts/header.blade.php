@@ -15,5 +15,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+      @yield('page-title')
     </nav>
+
+
   </header>
