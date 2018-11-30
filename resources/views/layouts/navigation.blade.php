@@ -6,7 +6,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu tree" data-widget="tree">
         <li class="treeview active">
-          <a href="../explore">
+          <a href="/explore">
             <i class="fa fa-th"></i>
             <span>Explore</span>
             <span class="pull-right-container">
@@ -14,6 +14,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="/explore"><i class="fa fa-circle-o"></i>Search</a></li>
             <li><a href="/explore?town=worcester"><i class="fa fa-circle-o"></i>Worcester, MA</a></li>
             <li><a href="/explore?town=Boston"><i class="fa fa-circle-o"></i>Boston, MA</a></li>
             <li><a href="/explore?town=McLean"><i class="fa fa-circle-o"></i>McLean, VA</a></li>
