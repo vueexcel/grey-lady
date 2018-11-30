@@ -1,5 +1,4 @@
 function renderSearchForm (config_type, request_type, div_id) {
-	
 
 	if (!config && !config.listings && !config.listings.search_params) {
 		return false;
@@ -8,7 +7,16 @@ function renderSearchForm (config_type, request_type, div_id) {
 	var search_form_html = '';
 	var search_params = config[config_type][request_type].search_params;
 
+	var query_string = getUrlVars();
+
 	// console.log(search_params);
+	// console.log(query_string);
+
+	for (query_item in query_string) {
+		if (search_params[query_item]) {
+			search_params[query_item].value = query_string[query_item];
+		}
+	}
 
 	search_form_html += '<form id="' + config_type + '_search_form" >';
 
