@@ -14,6 +14,8 @@
 Route::get('/explore', function () {
     return view('explore');
 });
+Route::get('/explore/{zip}', 'ZipController@details');
+
 
 Route::get('/', function () {
     return view('zips');

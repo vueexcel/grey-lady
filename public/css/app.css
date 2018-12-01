@@ -25,6 +25,11 @@
 
 
 
+.col-md-8, .col-md-4 {
+	padding-left: 0px;
+}
+
+
 
 
 .form-group {
