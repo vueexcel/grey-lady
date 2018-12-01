@@ -11,18 +11,14 @@
 |
 */
 
+Route::get('/', function () {
+    return view('explore');
+});
 Route::get('/explore', function () {
     return view('explore');
 });
 Route::get('/explore/{zip}', 'ZipController@details');
 
-
-Route::get('/', function () {
-    return view('zips');
-});
-Route::get('/zips/create', function () {
-    return view('zips-create');
-});
 
 
 Route::get('/listings', function () {
@@ -36,12 +32,17 @@ Route::get('/listings/create', function () {
 });
 
 
+
 Route::get('/zips', function () {
     return view('zips');
 });
 Route::get('/zips/details', function () {
     return view('zips-details');
 });
+Route::get('/zips/create', function () {
+    return view('zips-create');
+});
+
 
 
 Route::get('/watchlist', function () {
