@@ -183,7 +183,7 @@
 
           <tr>
             {{-- <th>{{ $coc_listing->id }}</th> --}}
-            <td>{{ $bed_zip_stats->average_price }}</td> 
+            <td>${{ number_format($bed_zip_stats->average_price, 0) }}</td> 
             <td>{{ $bed_zip_stats->average_baths }}</td> 
             <td>{{ $bed_zip_stats->average_sqft }}</td> 
             <td>{{ $bed_zip_stats->average_sqft }}</td> 
@@ -276,7 +276,7 @@
 <div class="col-md-12 row"> 
   <div class="box box-default">
     <div class="box-body">
-      {{ var_dump($zip[0]) }}
+      {{ print_r($zip[0]) }}
     </div>
   </div>
 </div>
