@@ -42,7 +42,7 @@
       <div class="pull-right hidden-xs">
         <b>Version</b> 0.1
       </div>
-      <strong>Copyright &copy; 2018 <a href="https://adminlte.io">Matt Barba</a>.</strong> All rights reserved.
+      <!-- <strong>Copyright &copy; 2018 <a href="https://adminlte.io">Matt Barba</a>.</strong> All rights reserved. -->
     </div>
     <!-- /.container -->
   </footer>
