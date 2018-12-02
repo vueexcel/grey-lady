@@ -34,6 +34,10 @@ class ZipController extends Controller
               $formatted_time = str_replace("Z", "", $formatted_time);
               $formatted_time = explode(".", $formatted_time)[0];
               $content[0]->watchlist->rent->lastCrawlFormatted = $formatted_time;
+          } else {
+              
+              $content[0]->watchlist->rent->lastCrawlFormatted = 'no time yet';
+
           }
 
           if (isset($content[0]->watchlist->sell) && isset($content[0]->watchlist->sell->lastCrawl)) {
@@ -42,6 +46,12 @@ class ZipController extends Controller
               $formatted_time = str_replace("Z", "", $formatted_time);
               $formatted_time = explode(".", $formatted_time)[0];
               $content[0]->watchlist->sell->lastCrawlFormatted = $formatted_time;
+          } else {
+              if (isset($content[0]->watchlist->sell)) {
+                $content[0]->watchlist->sell->lastCrawlFormatted = 'no time yet';
+              } else {
+                $content[0]->watchlist->sell = false;
+              }
           }
           
 

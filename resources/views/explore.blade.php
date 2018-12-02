@@ -46,7 +46,7 @@
 
     config.zips.get.actions_column = function (zip_item) {
       var html_to_return = '';
-      html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/explore/' + zip_item.details.zip + '">Details</a>';
+      html_to_return += '<a type="button" class="btn btn-default" href="/explore/' + zip_item.details.zip + '">Details</a>';
       html_to_return += makeDropDownButton('API Calls', [
         {
           'text' : 'Zip Details',
