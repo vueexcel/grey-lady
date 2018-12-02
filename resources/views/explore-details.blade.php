@@ -309,6 +309,26 @@
 
 @section('page-title')
 
-<h3>Explore > {{ $zip[0]->details->zip }}</h3>
+  <div class="explore-details-header">
+    <h3><span>Explore > {{ $zip[0]->details->zip }}</span></h3>
+    <span class="city-and-state">({{ $zip[0]->details->place_name }}, {{ $zip[0]->details->state_abbreviation }})</span>
+    <div class="navbar-custom-menu">
+      <div class="header-rental-section">
+        @if ($zip[0]->watchlist->rent && isset($zip[0]->watchlist->rent->lastCrawl) && isset($zip[0]->watchlist->rent->number_of_listings) )
+          Rent - {{ $zip[0]->watchlist->rent->lastCrawlFormatted }}, {{ $zip[0]->watchlist->rent->number_of_listings }} listings
+        @else
+          <span>Rent - </span><span>hasn't run yet</span>
+        @endif
+      </div>
+      <div class="header-sell-section">
+        @if ($zip[0]->watchlist->sell && isset($zip[0]->watchlist->sell->lastCrawl) && isset($zip[0]->watchlist->sell->number_of_listings) )
+          Sell - {{ $zip[0]->watchlist->sell->lastCrawlFormatted }}, {{ $zip[0]->watchlist->sell->number_of_listings }} listings
+        @else
+          <span>Sell - </span><span>hasn't run yet</span>
+        @endif
+      </div>
+    </div>
+  </div>
+
 
 @endsection

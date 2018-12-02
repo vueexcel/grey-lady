@@ -17,10 +17,20 @@
 	padding: 22px 15px 15px 15px;
 }
 
-.navbar h3 {
+.explore-details-header {
 	color: white;
-	padding-left: 46px;
+}
+.explore-details-header h3 {
+	margin-bottom: 0px;
+	display: inline-block;
 	font-size: 21px;
+}
+.explore-details-header .city-and-state {
+	margin-left: 10px;
+}
+.navbar-custom-menu {
+	margin-top: 13px;
+	margin-right: 68px;
 }
 
 

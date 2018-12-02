@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\Exception\RequestException;
+use Carbon\Carbon;
 
 class ZipController extends Controller
 {
@@ -26,6 +27,23 @@ class ZipController extends Controller
           ]);
 
           $content = json_decode($apiRequest->getBody()->getContents());
+
+          if (isset($content[0]->watchlist->rent) && isset($content[0]->watchlist->rent->lastCrawl)) {
+              
+              $formatted_time = str_replace("T", " ", $content[0]->watchlist->rent->lastCrawl);
+              $formatted_time = str_replace("Z", "", $formatted_time);
+              $formatted_time = explode(".", $formatted_time)[0];
+              $content[0]->watchlist->rent->lastCrawlFormatted = $formatted_time;
+          }
+
+          if (isset($content[0]->watchlist->sell) && isset($content[0]->watchlist->sell->lastCrawl)) {
+              
+              $formatted_time = str_replace("T", " ", $content[0]->watchlist->sell->lastCrawl);
+              $formatted_time = str_replace("Z", "", $formatted_time);
+              $formatted_time = explode(".", $formatted_time)[0];
+              $content[0]->watchlist->sell->lastCrawlFormatted = $formatted_time;
+          }
+          
 
           // dd($id);
           // dd($content);
