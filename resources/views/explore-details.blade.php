@@ -28,14 +28,16 @@
     
     </div>
   </div>
-{{-- 
+
   <div class="box box-default">
     <div class="box-body">
 
-      Listings datatable
+      <div id="listings-search-form" style="overflow: auto"></div>
+    
+      <div id="listing-datatable-wrapper"></div>  
     
     </div>
-  </div> --}}
+  </div>
 
   <div class="col-md-6">
 
@@ -124,6 +126,8 @@
       
       <h4>Actions</h4>
 
+      <button id="explore-details-recalc-all-stats" type="button" class="btn btn-default">Recalc all stats</button>
+
       <div class="btn-group">
           <button type="button" class="btn btn-default">API Calls</button>
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -140,6 +144,48 @@
             <li><a target="_Blank" href="//gulshan.app.greyladyproject.com/api/v1/zip?zip={{ $zip[0]->details->zip }}">Zip Details</a></li>
           </ul>
         </div>
+
+    </div>
+  </div>
+
+  <div class="box box-default">
+    <div class="box-body">
+      
+      <h4>Watchlist</h4>
+
+      Rental - 
+      @if (isset($zip[0]->watchlist->rent))
+
+        <ul>
+
+        @foreach ($zip[0]->watchlist->rent as $key => $rental_item)
+
+          <li><b>{{ $key }}:</b> {{ $rental_item }}</li>
+        
+        @endforeach
+
+        </ul>
+
+      @endif  
+
+      Sale 
+      @if (isset($zip[0]->watchlist->sale))
+
+        <ul>
+
+        @foreach ($zip[0]->watchlist->sale as $key => $sale_item)
+
+          <li><b>{{ $key }}:</b> {{ $sale_item }}</li>
+        
+        @endforeach
+
+        </ul>
+
+      @else 
+        - Nothing
+
+      @endif  
+
 
     </div>
   </div>
@@ -293,7 +339,84 @@
   <script type="text/javascript"></script>
 
 
-  <script src="/js/zips.js"></script>
+  {{-- <script src="/js/zips.js"></script> --}}
+  <script src="/js/listings.js"></script>
+  <script type="text/javascript">
+    
+    config.listings.columns =  [ 'zip', 'price', 'cap_rate', 'beds', 'address', ];
+
+    config.listings.ajax.dataSrc = function (json) {
+          var return_data = new Array();
+          var cap_rate = '';
+          for( var i=0; i< json.items.length; i++){
+            
+            console.log(json.items[i]);
+
+            if (json.items[i].calculated_fields && json.items[i].calculated_fields[0]) {
+              cap_rate = json.items[i].calculated_fields[0].financial_information.cap_rate;
+            }
+
+            
+            return_data.push({
+              'address': json.items[i].listing_information.address,
+              'beds': json.items[i].listing_information.maxBed,
+              'cap_rate': formatPercentage(cap_rate),
+              'price': json.items[i].listing_information.price,
+              'zip': json.items[i].listing_information.zip,
+              // 'actions': config.listings.get.actions_column(json.items[i]) 
+            })
+          }
+          return return_data;
+        }
+
+      config.listings.get.search_params = {
+
+        'sell': {
+          'param' : 'type',
+          'type'  : 'dropdown',
+          'options' : [
+            {
+              'id' : 'sell',
+              'text' : 'For Sale',
+              'value' : 'sale',
+              'selected' : true
+            },
+            {
+              'id' : 'rent',
+              'text' : 'For Rent',
+              'value' : 'rent',
+              'selected' : false
+            }
+          ],
+          'label' : 'Property Type',
+          'placeholder' : ''
+        },
+        'zip': {
+          'param' : 'zip',
+          'type'  : 'textfield',
+          'label' : 'Zip',
+          'placeholder' : '',
+          'value' : '{{$zip[0]->details->zip}}'
+        },
+      }
+
+
+      $("#explore-details-recalc-all-stats").bind('click', function () {
+         $.get('https://gulshan.app.greyladyproject.com/api/v1/recalculate/listings?zip={{$zip[0]->details->zip}}', function(data) {
+           
+            $.get('https://gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip={{$zip[0]->details->zip}}', function(data) {
+              
+              alert('recalculation worked! Reloading...');
+              location.reload(true);
+
+
+            });
+
+         });
+
+      });
+
+  </script>
 
 @endsection 
 
@@ -301,6 +424,7 @@
 
 @section('header-scripts')
 
+  
 
 
 @endsection 
