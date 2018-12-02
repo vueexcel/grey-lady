@@ -34,10 +34,33 @@
 }
 
 
-
+/* For the /explore datatable */
+div.precentage {
+	display: inline-block;
+	margin-right: 10px;
+	padding: 3px;
+}
+span.precentage-top {
+	display: block;
+}
+span.precentage-bottom {
+	display: block;
+	text-align: center;
+	border-top: 1px solid white;
+}
+.bed-by-cap, .watchlist-section {
+	display: inline-block;
+	color: white;
+}
+.bed-by-cap {
+	margin-right: 180px;
+}
 .col-md-8, .col-md-4 {
 	padding-left: 0px;
-}
+}	
+
+
+
 
 
 
@@ -72,21 +95,6 @@
 
 
 
-/* For the /explore datatable */
-div.precentage {
-	display: inline-block;
-	margin-right: 10px;
-	padding: 3px;
-	color: grey;
-}
-span.precentage-top {
-	display: block;
-}
-span.precentage-bottom {
-	display: block;
-	text-align: center;
-	border-top: 1px solid black;
-}
 
 
 /*  For the watchlist buttons in /explore */

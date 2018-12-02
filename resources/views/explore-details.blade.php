@@ -7,27 +7,64 @@
 <div id="message-area"></div>
 
 <div class=" col-md-8">
-  
+
   <div class="box box-default">
     <div class="box-body">
+      
+      <h4>Zip Summary</h4>
 
-      <h4>Beds vs Cap Rate</h4>
+{{--   
+          1: {
+          average_price: 133500,
+          average_baths: null,
+          average_sqft: null,
+          average_cap_rate: 0.08293878403744807,
+          average_cash_on_cash: 0.015829370917824454,
+          average_rent_to_value: 0.00921542044860534,
+          average_debt_coverage_ratio: null,
+          average_revenue: null,
+          number_of_listings: 4
+}, --}}
 
-      @if (isset($zip[0]->calculated_fields->by_beds))
+        @if (isset($zip[0]->calculated_fields->by_beds))
 
-        @foreach ($zip[0]->calculated_fields->by_beds as $bed => $bed_zip_stats)
+          <table class="default-table">
+            <thead>
+                <tr>
+                    <th>Bed</th>
+                    <th>Price</th>
+                    <th>Baths</th>
+                    <th>Sqft</th>
+                    <th>Cap</th>
+                    <th>CoC</th>
+                    <th>rent</th>
+                    <th># listings</th>
+                </tr>
+            </thead>
+            <tbody>
 
-          <div class="precentage">
-            <span class="precentage-top">{{ formatPercentage($bed_zip_stats->average_cap_rate, 1) }}</span>
-            <span class="precentage-bottom">{{ $bed }}b</span>
-          </div>
-        
-        @endforeach
+          @foreach ($zip[0]->calculated_fields->by_beds as $bed => $bed_zip_stats)
 
-      @endif  
-    
+            <tr>
+              <td>{{ $bed }}</td> 
+              <td>{{ formatLargeCurrency($bed_zip_stats->average_price) }}</td> 
+              <td>{{ number_format($bed_zip_stats->average_baths, 1) }}</td> 
+              <td>{{ number_format($bed_zip_stats->average_sqft,0) }}</td> 
+              <td>{{ formatPercentage($bed_zip_stats->average_cap_rate) }}</td> 
+              <td>{{ formatPercentage($bed_zip_stats->average_cash_on_cash) }}</td> 
+              <td> {{ formatLargeCurrency($bed_zip_stats->average_revenue) }}</td> 
+              <td>{{ $bed_zip_stats->number_of_listings }}</td> 
+            </tr>
+          
+          @endforeach
+
+          </tbody>
+          </table>
+
+        @endif  
+
+      </div>
     </div>
-  </div>
 
   <div class="box box-default">
     <div class="box-body">
@@ -196,63 +233,6 @@
       <!-- /.box-body -->
     </div>
 
-  <div class="box box-default">
-    <div class="box-body">
-      
-      <h4>Zip Summary</h4>
-
-{{--   
-          1: {
-          average_price: 133500,
-          average_baths: null,
-          average_sqft: null,
-          average_cap_rate: 0.08293878403744807,
-          average_cash_on_cash: 0.015829370917824454,
-          average_rent_to_value: 0.00921542044860534,
-          average_debt_coverage_ratio: null,
-          average_revenue: null,
-          number_of_listings: 4
-}, --}}
-
-      @if (isset($zip[0]->calculated_fields->by_beds))
-
-        <table class="default-table">
-          <thead>
-              <tr>
-                  <th>Bed</th>
-                  <th>Price</th>
-                  <th>Baths</th>
-                  <th>Sqft</th>
-                  <th>Cap</th>
-                  <th>CoC</th>
-                  <th>rent</th>
-                  <th># listings</th>
-              </tr>
-          </thead>
-          <tbody>
-
-        @foreach ($zip[0]->calculated_fields->by_beds as $bed => $bed_zip_stats)
-
-          <tr>
-            <td>{{ $bed }}</td> 
-            <td>{{ formatLargeCurrency($bed_zip_stats->average_price) }}</td> 
-            <td>{{ number_format($bed_zip_stats->average_baths, 1) }}</td> 
-            <td>{{ number_format($bed_zip_stats->average_sqft,0) }}</td> 
-            <td>{{ formatPercentage($bed_zip_stats->average_cap_rate) }}</td> 
-            <td>{{ formatPercentage($bed_zip_stats->average_cash_on_cash) }}</td> 
-            <td> {{ formatLargeCurrency($bed_zip_stats->average_revenue) }}</td> 
-            <td>{{ $bed_zip_stats->number_of_listings }}</td> 
-          </tr>
-        
-        @endforeach
-
-        </tbody>
-        </table>
-
-      @endif  
-
-    </div>
-  </div>
 
   <div class="box box-default">
     <div class="box-body">
@@ -456,20 +436,41 @@
     <h3><span>Explore > {{ $zip[0]->details->zip }}</span></h3>
     <span class="city-and-state">({{ $zip[0]->details->place_name }}, {{ $zip[0]->details->state_abbreviation }})</span>
     <div class="navbar-custom-menu">
-      <div class="header-rental-section">
-        @if ($zip[0]->watchlist->rent && isset($zip[0]->watchlist->rent->lastCrawl) && isset($zip[0]->watchlist->rent->number_of_listings) )
-          Rent - {{ $zip[0]->watchlist->rent->lastCrawlFormatted }}, {{ $zip[0]->watchlist->rent->number_of_listings }} listings
-        @else
-          <span>Rent - </span><span>hasn't run yet</span>
-        @endif
+      <div class='bed-by-cap'>
+        @if (isset($zip[0]->calculated_fields->by_beds))
+
+          @foreach ($zip[0]->calculated_fields->by_beds as $bed => $bed_zip_stats)
+
+            <div class="precentage">
+              <span class="precentage-top">{{ formatPercentage($bed_zip_stats->average_cap_rate, 1) }}</span>
+              <span class="precentage-bottom">{{ $bed }}b</span>
+            </div>
+          
+          @endforeach
+
+        @endif  
       </div>
-      <div class="header-sell-section">
-        @if ($zip[0]->watchlist->sell && isset($zip[0]->watchlist->sell->lastCrawl) && isset($zip[0]->watchlist->sell->number_of_listings) )
-          Sell - {{ $zip[0]->watchlist->sell->lastCrawlFormatted }}, {{ $zip[0]->watchlist->sell->number_of_listings }} listings
-        @else
-          <span>Sell - </span><span>hasn't run yet</span>
-        @endif
+      <div class="watchlist-section">
+
+        <div class="header-rental-section">
+          @if ($zip[0]->watchlist->rent && isset($zip[0]->watchlist->rent->lastCrawl) && isset($zip[0]->watchlist->rent->number_of_listings) )
+            Rent - {{ $zip[0]->watchlist->rent->lastCrawlFormatted }}, {{ $zip[0]->watchlist->rent->number_of_listings }} listings
+          @else
+            <span>Rent - </span><span>hasn't run yet</span>
+          @endif
+        </div>
+        <div class="header-sell-section">
+          @if ($zip[0]->watchlist->sell && isset($zip[0]->watchlist->sell->lastCrawl) && isset($zip[0]->watchlist->sell->number_of_listings) )
+            Sell - {{ $zip[0]->watchlist->sell->lastCrawlFormatted }}, {{ $zip[0]->watchlist->sell->number_of_listings }} listings
+          @else
+            <span>Sell - </span><span>hasn't run yet</span>
+          @endif
+        </div>
+        
       </div>
+      
+
+
     </div>
   </div>
 
