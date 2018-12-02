@@ -18,7 +18,7 @@
         @foreach ($zip[0]->calculated_fields->by_beds as $bed => $bed_zip_stats)
 
           <div class="precentage">
-            <span class="precentage-top">{{ number_format($bed_zip_stats->average_cap_rate, 2) }}</span>
+            <span class="precentage-top">{{ formatPercentage($bed_zip_stats->average_cap_rate, 1) }}</span>
             <span class="precentage-bottom">{{ $bed }}b</span>
           </div>
         
@@ -63,7 +63,7 @@
                 {{-- <th>{{ $coc_listing->id }}</th> --}}
                 <td>{{ $coc_listing->address }}</td> 
                 <td>{{ $coc_listing->beds }}</td> 
-                <td>{{ number_format($coc_listing->cash_on_cash, 2) }}</td> 
+                <td>{{ formatPercentage($coc_listing->cash_on_cash, 1) }}</td> 
               </tr>
           
           @endforeach
@@ -100,7 +100,7 @@
                 {{-- <th>{{ $coc_listing->id }}</th> --}}
                 <td>{{ $coc_listing->address }}</td> 
                 <td>{{ $coc_listing->beds }}</td> 
-                <td>{{ number_format($coc_listing->cap_rate, 2) }}</td> 
+                <td>{{ formatPercentage($coc_listing->cap_rate, 1) }}</td> 
               </tr>
           
           @endforeach
@@ -148,47 +148,53 @@
     </div>
   </div>
 
-  <div class="box box-default">
-    <div class="box-body">
-      
-      <h4>Watchlist</h4>
+  <div class="box box-default collapsed-box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Watchlist</h3>
 
-      Rental - 
-      @if (isset($zip[0]->watchlist->rent))
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+          </button>
+        </div>
+        <!-- /.box-tools -->
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body" style="display: none;">
+           Rental - 
+          @if (isset($zip[0]->watchlist->rent))
 
-        <ul>
+            <ul>
 
-        @foreach ($zip[0]->watchlist->rent as $key => $rental_item)
+            @foreach ($zip[0]->watchlist->rent as $key => $rental_item)
 
-          <li><b>{{ $key }}:</b> {{ $rental_item }}</li>
-        
-        @endforeach
+              <li><b>{{ $key }}:</b> {{ $rental_item }}</li>
+            
+            @endforeach
 
-        </ul>
+            </ul>
 
-      @endif  
+          @endif  
 
-      Sale 
-      @if (isset($zip[0]->watchlist->sale))
+          Sale 
+          @if (isset($zip[0]->watchlist->sell))
 
-        <ul>
+            <ul>
 
-        @foreach ($zip[0]->watchlist->sale as $key => $sale_item)
+            @foreach ($zip[0]->watchlist->sell as $key => $sell_item)
 
-          <li><b>{{ $key }}:</b> {{ $sale_item }}</li>
-        
-        @endforeach
+              <li><b>{{ $key }}:</b> {{ $sell_item }}</li>
+            
+            @endforeach
 
-        </ul>
+            </ul>
 
-      @else 
-        - Nothing
+          @else 
+            - Nothing
 
-      @endif  
-
-
+          @endif  
+      </div>
+      <!-- /.box-body -->
     </div>
-  </div>
 
   <div class="box box-default">
     <div class="box-body">
@@ -229,12 +235,12 @@
 
           <tr>
             <td>{{ $bed }}</td> 
-            <td>${{ number_format($bed_zip_stats->average_price, 0) }}</td> 
+            <td>{{ formatLargeCurrency($bed_zip_stats->average_price) }}</td> 
             <td>{{ number_format($bed_zip_stats->average_baths, 1) }}</td> 
             <td>{{ number_format($bed_zip_stats->average_sqft,0) }}</td> 
-            <td>{{ number_format($bed_zip_stats->average_cap_rate, 2) }}</td> 
-            <td>{{ number_format($bed_zip_stats->average_cash_on_cash, 2) }}</td> 
-            <td>{{ number_format($bed_zip_stats->average_revenue, 0) }}</td> 
+            <td>{{ formatPercentage($bed_zip_stats->average_cap_rate) }}</td> 
+            <td>{{ formatPercentage($bed_zip_stats->average_cash_on_cash) }}</td> 
+            <td> {{ formatLargeCurrency($bed_zip_stats->average_revenue) }}</td> 
             <td>{{ $bed_zip_stats->number_of_listings }}</td> 
           </tr>
         
