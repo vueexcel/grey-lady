@@ -41,6 +41,19 @@
 
 
 
+.default-table {  
+    width: 100%; 
+    border-collapse: collapse; 
+    border-spacing: 0;
+}
+.default-table  td, .default-table th { 
+	border: 1px solid #CCC; 
+	height: 20px;
+	text-align: center;
+}  
+
+
+
 
 .form-group {
 	width: 100px;

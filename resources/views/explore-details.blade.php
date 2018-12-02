@@ -48,7 +48,7 @@
 
         @if (isset($zip[0]->calculated_fields->best_listings->by_cash_on_cash))
 
-          <table>
+          <table class="default-table">
             <thead>
                 <tr>
                     <th>Address</th>
@@ -85,7 +85,7 @@
         
         @if (isset($zip[0]->calculated_fields->best_listings->by_cap_rate))
 
-          <table>
+          <table class="default-table">
             <thead>
                 <tr>
                     <th>Address</th>
@@ -210,15 +210,15 @@
 
       @if (isset($zip[0]->calculated_fields->by_beds))
 
-        <table>
+        <table class="default-table">
           <thead>
               <tr>
+                  <th>Bed</th>
                   <th>Price</th>
                   <th>Baths</th>
                   <th>Sqft</th>
                   <th>Cap</th>
                   <th>CoC</th>
-                  <th>r2v</th>
                   <th>rent</th>
                   <th># listings</th>
               </tr>
@@ -228,15 +228,13 @@
         @foreach ($zip[0]->calculated_fields->by_beds as $bed => $bed_zip_stats)
 
           <tr>
-            {{-- <th>{{ $coc_listing->id }}</th> --}}
+            <td>{{ $bed }}</td> 
             <td>${{ number_format($bed_zip_stats->average_price, 0) }}</td> 
-            <td>{{ $bed_zip_stats->average_baths }}</td> 
-            <td>{{ $bed_zip_stats->average_sqft }}</td> 
-            <td>{{ $bed_zip_stats->average_sqft }}</td> 
+            <td>{{ number_format($bed_zip_stats->average_baths, 1) }}</td> 
+            <td>{{ number_format($bed_zip_stats->average_sqft,0) }}</td> 
             <td>{{ number_format($bed_zip_stats->average_cap_rate, 2) }}</td> 
             <td>{{ number_format($bed_zip_stats->average_cash_on_cash, 2) }}</td> 
-            <td>{{ number_format($bed_zip_stats->average_rent_to_value, 2) }}</td> 
-            <td>{{ $bed_zip_stats->average_revenue }}</td> 
+            <td>{{ number_format($bed_zip_stats->average_revenue, 0) }}</td> 
             <td>{{ $bed_zip_stats->number_of_listings }}</td> 
           </tr>
         
