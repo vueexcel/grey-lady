@@ -6,7 +6,7 @@
 
 <div id="message-area"></div>
 
-<div class=" col-md-8">
+<div class="col-md-8 explore-details">
 
   <div class="box box-default">
     <div class="box-body">

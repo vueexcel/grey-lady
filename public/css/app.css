@@ -17,7 +17,7 @@
 	padding: 22px 15px 15px 15px;
 }
 
-.explore-details-header {
+.navbar-static-top, .explore-details-header {
 	color: white;
 }
 .explore-details-header h3 {
@@ -34,19 +34,8 @@
 }
 
 
-/* For the /explore datatable */
-div.precentage {
-	display: inline-block;
-	margin-right: 10px;
-	padding: 3px;
-}
-span.precentage-top {
-	display: block;
-}
-span.precentage-bottom {
-	display: block;
-	text-align: center;
-	border-top: 1px solid white;
+.explore-details-header span.precentage-bottom {
+	border-top: 1px solid white;	
 }
 .bed-by-cap, .watchlist-section {
 	display: inline-block;
@@ -94,7 +83,20 @@ span.precentage-bottom {
 }
 
 
-
+/* For the /explore datatable */
+div.precentage {
+	display: inline-block;
+	margin-right: 10px;
+	padding: 3px;
+}
+span.precentage-top {
+	display: block;
+}
+span.precentage-bottom {
+	display: block;
+	text-align: center;
+	border-top: 1px solid black;
+}
 
 
 /*  For the watchlist buttons in /explore */
