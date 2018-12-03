@@ -57,7 +57,7 @@ class ZipController extends Controller
 
           // dd($id);
           // dd($content);
-          return view('explore-details')->with('zip', $content);
+          return view('explore.explore-details')->with('zip', $content);
 
         } catch (RequestException $re) {
           dd($re);

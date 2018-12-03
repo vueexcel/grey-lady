@@ -12,10 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('explore');
+    return view('explore.explore');
 });
 Route::get('/explore', function () {
-    return view('explore');
+    return view('explore.explore');
 });
 Route::get('/explore/{zip}', 'ZipController@details');
 
