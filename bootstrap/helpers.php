@@ -57,3 +57,15 @@ function formatLargeNumber($num) {
 
   return $num;
 }
+
+function formatProgressBar($percentage, $color = 'blue') {
+	$string_to_return = '';
+	$string_to_return .= '<div class="progress vertical">';
+	$string_to_return .= '<div class="progress vertical">';
+	$string_to_return .= '<div class="progress-bar progress-bar-'.$color.'" role="progressbar" aria-valuenow="'.$percentage.'" aria-valuemin="0" aria-valuemax="100" style="height:'.$percentage.'">' ;
+	$string_to_return .= '<span class="sr-only">'.$percentage.'%</span>' ;
+	$string_to_return .= '</div>' ;
+	$string_to_return .= '</div>' ;
+
+	return $string_to_return;
+}
