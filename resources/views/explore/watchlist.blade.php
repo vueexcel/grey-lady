@@ -26,7 +26,7 @@
       @endif  
 
       Sale 
-      @if (isset($zip[0]->watchlist->sell))
+      @if ( isset($zip[0]->watchlist->sell) )
 
         <ul>
 
