@@ -11,7 +11,7 @@
   <!-- /.box-header -->
   <div class="box-body" style="display: none;">
        Rental - 
-      @if (isset($zip[0]->watchlist->rent))
+      @if (isset($zip[0]->watchlist->rent) && is_object($zip[0]->watchlist->rent))
 
         <ul>
 
@@ -26,7 +26,7 @@
       @endif  
 
       Sale 
-      @if ( isset($zip[0]->watchlist->sell) )
+      @if ( isset($zip[0]->watchlist->sell) && is_object($zip[0]->watchlist->sell)  )
 
         <ul>
 
