@@ -42,8 +42,8 @@
               <td>{{ number_format($bed_zip_stats->average_sqft,0) }}</td> 
               <td>{{ formatPercentage($bed_zip_stats->average_cap_rate) }}</td> 
               <td>{{ formatPercentage($bed_zip_stats->average_cash_on_cash) }}</td> 
-              <td> {{ formatLargeCurrency($bed_zip_stats->average_revenue) }}</td> 
-              <td>{{ $bed_zip_stats->number_of_listings }}</td> 
+              <td> <a target="_blank" href="https://gulshan.app.greyladyproject.com/api/v1/report?zip={{$zip[0]->details->zip}}&maxBed={{$bed}}&minBeds={{$bed}}"> {{ formatLargeCurrency($bed_zip_stats->average_revenue) }}</a></td> 
+              <td> <a target="_blank" href="/listings?zip={{$zip[0]->details->zip}}&maxBed={{$bed}}&minBed={{$bed}}">{{ $bed_zip_stats->number_of_listings }}</a></td> 
             </tr>
           
           @endforeach

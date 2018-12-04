@@ -148,14 +148,15 @@ config.listings.ajax = {
         'dataSrc'     : function (json) {
           var return_data = new Array();
           var cap_rate = '';
+          var cash_on_cash = '';
           for( var i=0; i< json.items.length; i++){
           	if (json.items[i].calculated_fields[0]) {
           		cap_rate = json.items[i].calculated_fields[0].financial_information.cap_rate;
           	}
 
-          	if (json.items[i].calculated_fields[0]) {
+          	if (json.items[i].calculated_fields[0] && json.items[i].calculated_fields[0].financial_information.cash_on_cash) {
           		cash_on_cash = json.items[i].calculated_fields[0].financial_information.cash_on_cash;
-          	}
+          	} 
 
           	// console.log(json.items[i].calculated_fields[0].financial_information);
             return_data.push({
@@ -208,15 +209,15 @@ config.listings.get.search_params = {
 		'placeholder' : '',
 		'value' : ''
 	},
-	'maxBeds': {
-		'param' : 'maxBeds',
+	'maxBed': {
+		'param' : 'maxBed',
 		'type'	: 'textfield',
 		'label'	: 'Max Beds',
 		'placeholder' : '',
 		'value' : ''
 	},
-	'minBeds': {
-		'param' : 'minBeds',
+	'minBed': {
+		'param' : 'minBed',
 		'type'	: 'textfield',
 		'label'	: 'Min Beds',
 		'placeholder' : '',
