@@ -5,7 +5,7 @@ config.listings.ajax.dataSrc = function (json) {
     var cap_rate = '';
     for( var i=0; i< json.items.length; i++){
       
-      console.log(json.items[i]);
+      // console.log(json.items[i]);
 
       if (json.items[i].calculated_fields && json.items[i].calculated_fields[0]) {
         cap_rate = json.items[i].calculated_fields[0].financial_information.cap_rate;
@@ -57,16 +57,47 @@ config.listings.get.search_params = {
 
 
 $("#explore-details-recalc-all-stats").bind('click', function () {
-   $.get('https://gulshan.app.greyladyproject.com/api/v1/recalculate/listings?zip=' + explore_details_zip, function(data) {
-     
-      $.get('https://gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip=' + explore_details_zip, function(data) {
-        
-        alert('recalculation worked! Reloading...');
-        location.reload(true);
 
-
-      });
-
-   });
+  reCalculateAllBeds([1,2,3,4,5,6,7,8,9,10,11,12]);
 
 });
+
+function reCalculateAllBeds (beds_array) {
+
+  console.log('function called');
+  console.log(beds_array.length);
+    
+
+  
+  if (beds_array.length > 0) {
+    
+    
+
+    var recalculate_listings_api = 'https://gulshan.app.greyladyproject.com/api/v1/recalculate/listings?zip=' + explore_details_zip;
+    recalculate_listings_api += '&minBed=' + beds_array[0];
+    recalculate_listings_api += '&maxBed=' + beds_array[0];
+
+    console.log(beds_array);
+    console.log(recalculate_listings_api);
+
+    beds_array.shift()
+
+    $.get(recalculate_listings_api, reCalculateAllBeds(beds_array) );
+
+  } else {
+
+    console.log('triggering zip recalculation');
+
+    setTimeout(function () {
+
+      $.get('https://gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip=' + explore_details_zip, function () {
+        alert('recalculation worked! Reloading...');
+        location.reload(true);
+      });
+
+    }, 1000)
+
+    
+
+  }
+}
