@@ -10,6 +10,13 @@ use Carbon\Carbon;
 
 class ZipController extends Controller
 {
+    
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     /**
      * Show the profile for the given user.
      *
@@ -17,7 +24,7 @@ class ZipController extends Controller
      * @return View
      */
     public function details($id) {
-     
+
         try {
 
            $client = new GuzzleHttpClient();
