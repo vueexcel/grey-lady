@@ -1,6 +1,6 @@
-{{-- @extends('layouts.no-auth-app') --}}
+@extends('layouts.no-auth-app')
 
-{{-- @section('content') --}}
+@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
