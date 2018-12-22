@@ -162,5 +162,12 @@ config.zips.get.search_params = {
 		'label'	: 'County',
 		'placeholder' : '',
 		'value' : ''
+	},
+	'limit': {
+		'param' : 'limit',
+		'type'	: 'textfield',
+		'label'	: 'Limit',
+		'placeholder' : '',
+		'value' : ''
 	}
 }

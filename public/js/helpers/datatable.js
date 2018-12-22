@@ -53,7 +53,8 @@ function createDataTable (config_item) {
       'scrollCollapse' : true,
       'ordering'    : true,
       'info'        : true,
-      'autoWidth'   : false
+      'autoWidth'   : false,
+      'pageLength'   : 100
     });
 
 }
