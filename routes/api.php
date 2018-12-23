@@ -30,7 +30,8 @@ Route::put('favoritezips/{id}', 'API\FavoriteZipsController@update')->middleware
 Route::delete('favoritezips/{id}', 'API\FavoriteZipsController@destroy')->middleware('auth:api');
 
 
-
+Route::get('user', 'API\UsersController@show')->middleware('auth:api');
+Route::put('user', 'API\UsersController@update')->middleware('auth:api');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
