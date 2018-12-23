@@ -21,35 +21,35 @@ config.favoritezips.create.search_params = {}
 
 config.favoritezips.get.actions_column = function (zip_item) {
 	var html_to_return = '';
-	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + zip_item.zip + '">Details</a>';
+	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + zip_item.zip_code + '">Details</a>';
 	html_to_return += makeDropDownButton('API Calls', [
 		{
 			'text' : 'Zip Details',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/zip?zip=' + zip_item.details.zip,
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/zip?zip=' + zip_item.zip_code,
 		},
 		{
 			'text' : 'Recalculate Zip',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip='  + zip_item.details.zip,
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip='  + zip_item.zip_code,
 		},
 		{
 			'text' : 'Recalculate Zip Listings',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/recalculate/listings?zip='  + zip_item.details.zip,
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/recalculate/listings?zip='  + zip_item.zip_code,
 		},
 		{
 			'text' : 'Listing Rent Search',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/listings?type=rent&zip='  + zip_item.details.zip,
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/listings?type=rent&zip='  + zip_item.zip_code,
 		},
 		{
 			'text' : 'Listing Sell Search',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/listings?type=sell&zip='  + zip_item.details.zip,
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/listings?type=sell&zip='  + zip_item.zip_code,
 		},
 		{
 			'text' : 'Average Rent',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/report?zip='  + zip_item.details.zip,
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/report?zip='  + zip_item.zip_code,
 		},
 		{
 			'text' : 'Search Watchlists',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/watchlist?zip='  + zip_item.details.zip,
+			'link' : '//gulshan.app.greyladyproject.com/api/v1/watchlist?zip='  + zip_item.zip_code,
 		},
 	])
 
@@ -71,12 +71,15 @@ config.favoritezips.ajax = {
           console.log('==============RESPONSE============');
           console.log(json);
           console.log('================');
-          for( var i=0; i< json.length; i++){
+          var favoritezips = json.data;
+          console.log(favoritezips)
+          for( var i=0; i< favoritezips.length; i++){
+          	// console.log(favoritezips[i])
             return_data.push({
-              'date_added': formatDate(json.data[i].createdAt),
-              'zip_code_town': json.data[i].zip_code_town,
-              'zip_code': json.data[i].zip_code,
-              'actions': config.zips.get.actions_column(json[i])
+              'date_added': formatDate(favoritezips[i].createdAt),
+              'zip_code_town': favoritezips[i].zip_code_town,
+              'zip_code': favoritezips[i].zip_code,
+              'actions': config.favoritezips.get.actions_column(favoritezips[i])
             })
           }
           return return_data;
