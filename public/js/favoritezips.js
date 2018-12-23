@@ -1,0 +1,7 @@
+$( function () {
+
+  createDataTable('favoritezips');
+
+});
+
+

@@ -26,7 +26,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Passport::$ignoreCsrfToken = true;      
+        
         Passport::routes();
+
 
     }
 }

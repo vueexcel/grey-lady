@@ -28,6 +28,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/explore', function () {
         return view('explore.explore');
     });
+    Route::get('/explore/favorites', function () {
+        return view('explore.explore-favorites');
+    });
     Route::get('/explore/{zip}', 'ZipController@details');
 
 

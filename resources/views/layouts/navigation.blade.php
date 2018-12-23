@@ -14,7 +14,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/explore"><i class="fa fa-circle-o"></i>Search</a></li>
+            <li><a href="/explore/favorites"><i class="fa fa-circle-o"></i>Favorite Zips</a></li>
+            <li><a href="/explore"><i class="fa fa-circle-o"></i>Explore all Zips</a></li>
             <li><a href="/explore?town=worcester"><i class="fa fa-circle-o"></i>Worcester, MA</a></li>
             <li><a href="/explore?town=Boston"><i class="fa fa-circle-o"></i>Boston, MA</a></li>
             <li><a href="/explore?town=McLean"><i class="fa fa-circle-o"></i>McLean, VA</a></li>
