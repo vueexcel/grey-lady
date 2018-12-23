@@ -16,18 +16,8 @@ use Illuminate\Http\Request;
 Route::post('register', 'API\RegisterController@register');
 
 
-Route::get('favoritelistings/{id}', 'API\FavoriteListingController@show')->middleware('auth:api');
-Route::get('favoritelistings', 'API\FavoriteListingController@index')->middleware('auth:api');
-Route::post('favoritelistings', 'API\FavoriteListingController@store')->middleware('auth:api');
-Route::put('favoritelistings/{id}', 'API\FavoriteListingController@update')->middleware('auth:api');
-Route::delete('favoritelistings/{id}', 'API\FavoriteListingController@destroy')->middleware('auth:api');
-
-
-Route::get('favoritezips/{id}', 'API\FavoriteZipsController@show')->middleware('auth:api');
-Route::get('favoritezips', 'API\FavoriteZipsController@index')->middleware('auth:api');
-Route::post('favoritezips', 'API\FavoriteZipsController@store')->middleware('auth:api');
-Route::put('favoritezips/{id}', 'API\FavoriteZipsController@update')->middleware('auth:api');
-Route::delete('favoritezips/{id}', 'API\FavoriteZipsController@destroy')->middleware('auth:api');
+Route::apiResource('favoritelistings', 'API\FavoriteListingController')->middleware('auth:api');
+Route::apiResource('favoritezips', 'API\FavoriteZipsController')->middleware('auth:api');
 
 
 Route::get('user', 'API\UsersController@show')->middleware('auth:api');
