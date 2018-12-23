@@ -169,5 +169,19 @@ config.zips.get.search_params = {
 		'label'	: 'Limit',
 		'placeholder' : '',
 		'value' : ''
+	},
+	'min_cap_rate': {
+		'param' : 'min_cap_rate',
+		'type'	: 'textfield',
+		'label'	: 'Min Cap Rate',
+		'placeholder' : '',
+		'value' : ''
+	},
+	'cap_rate_beds': {
+		'param' : 'cap_rate_beds',
+		'type'	: 'textfield',
+		'label'	: 'Cap Rate Beds',
+		'placeholder' : '',
+		'value' : ''
 	}
 }
