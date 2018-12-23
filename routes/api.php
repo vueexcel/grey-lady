@@ -21,6 +21,9 @@ Route::post('favoritelistings', 'API\FavoriteListingController@store')->middlewa
 Route::put('favoritelistings/{id}', 'API\FavoriteListingController@update')->middleware('auth:api');
 Route::delete('favoritelistings/{id}', 'API\FavoriteListingController@destroy')->middleware('auth:api');
 
+
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
