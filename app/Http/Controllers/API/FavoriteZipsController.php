@@ -1,5 +1,6 @@
 <?php
 
+//https://itsolutionstuff.com/post/laravel-57-create-rest-api-with-authentication-using-passport-tutorialexample.html
 
 namespace App\Http\Controllers\API;
 
@@ -136,8 +137,6 @@ class FavoriteZipsController extends BaseController
     {
         
         $FavoriteZips = FavoriteZips::find($id);
-
-        // dd($FavoriteZips);
 
         if (is_null($FavoriteZips) || $FavoriteZips->user_id !== Auth::id() ) {
             return $this->sendError('FavoriteZips not found.');

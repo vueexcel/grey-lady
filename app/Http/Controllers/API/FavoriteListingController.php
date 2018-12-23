@@ -1,5 +1,6 @@
 <?php
 
+//https://itsolutionstuff.com/post/laravel-57-create-rest-api-with-authentication-using-passport-tutorialexample.html
 
 namespace App\Http\Controllers\API;
 
@@ -92,8 +93,6 @@ class FavoriteListingController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        
-        // dd($id);
 
         $input = $request->all();
 
@@ -137,7 +136,7 @@ class FavoriteListingController extends BaseController
         
         $FavoriteListing = FavoriteListing::find($id);
 
-        if ( $FavoriteListing->user_id !== Auth::id() ) {
+        if ( is_null($FavoriteListing) || $FavoriteListing->user_id !== Auth::id() ) {
             return $this->sendError('FavoriteListing not found.');
         }
 
