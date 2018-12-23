@@ -8,6 +8,10 @@ class FavoriteZips extends Model
 {
     //
     protected $fillable = [
-		'user_id', 'zip_code', 'zip_code_town'
+		'zip_code', 'zip_code_town'
 	];
+
+	protected $hidden = [
+        'user_id'
+    ];
 }
