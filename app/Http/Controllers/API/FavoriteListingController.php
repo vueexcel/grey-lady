@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\FavoriteListing;
 use Validator;
@@ -19,8 +20,8 @@ class FavoriteListingController extends BaseController
      */
     public function index()
     {
-        $FavoriteListings = FavoriteListing::all();
-
+     
+        $FavoriteListings = FavoriteListing::where('user_id', Auth::id())->get();
 
         return $this->sendResponse($FavoriteListings->toArray(), 'FavoriteListings retrieved successfully.');
     }
@@ -38,8 +39,8 @@ class FavoriteListingController extends BaseController
 
 
         $validator = Validator::make($input, [
-            'name' => 'required',
-            'detail' => 'required'
+            'listing_id' => 'required',
+            'listing_address' => 'required'
         ]);
 
 
@@ -47,8 +48,9 @@ class FavoriteListingController extends BaseController
             return $this->sendError('Validation Error.', $validator->errors());       
         }
 
-
+        $input['user_id'] = Auth::id();
         $FavoriteListing = FavoriteListing::create($input);
+
 
 
         return $this->sendResponse($FavoriteListing->toArray(), 'FavoriteListing created successfully.');
@@ -66,9 +68,15 @@ class FavoriteListingController extends BaseController
         $FavoriteListing = FavoriteListing::find($id);
 
 
-        if (is_null($FavoriteListing)) {
+        if (is_null($FavoriteListing) ) {
             return $this->sendError('FavoriteListing not found.');
         }
+
+        if ( $FavoriteListing->user_id !== Auth::id() ) {
+            return $this->sendError('FavoriteListing not found.');
+        }
+
+        
 
 
         return $this->sendResponse($FavoriteListing->toArray(), 'FavoriteListing retrieved successfully.');
@@ -82,14 +90,17 @@ class FavoriteListingController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FavoriteListing $FavoriteListing)
+    public function update(Request $request, $id)
     {
+        
+        // dd($id);
+
         $input = $request->all();
 
 
         $validator = Validator::make($input, [
-            'name' => 'required',
-            'detail' => 'required'
+            'listing_id' => 'required',
+            'listing_address' => 'required'
         ]);
 
 
@@ -97,13 +108,21 @@ class FavoriteListingController extends BaseController
             return $this->sendError('Validation Error.', $validator->errors());       
         }
 
+        $FavoriteListing = FavoriteListing::find($id);
 
-        $FavoriteListing->name = $input['name'];
-        $FavoriteListing->detail = $input['detail'];
-        $FavoriteListing->save();
+        if ($FavoriteListing->user_id == Auth::id()) {
 
+            $FavoriteListing->listing_id = $input['listing_id'];
+            $FavoriteListing->listing_address = $input['listing_address'];
+            $FavoriteListing->user_id = Auth::id();
+            $FavoriteListing->save();
 
-        return $this->sendResponse($FavoriteListing->toArray(), 'FavoriteListing updated successfully.');
+            return $this->sendResponse($FavoriteListing->toArray(), 'FavoriteListing updated successfully.');
+            
+        } else {
+            return $this->sendError('You do not have access to this');
+        }
+        
     }
 
 
@@ -113,10 +132,16 @@ class FavoriteListingController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FavoriteListing $FavoriteListing)
+    public function destroy($id)
     {
-        $FavoriteListing->delete();
+        
+        $FavoriteListing = FavoriteListing::find($id);
 
+        if ( $FavoriteListing->user_id !== Auth::id() ) {
+            return $this->sendError('FavoriteListing not found.');
+        }
+
+        $FavoriteListing->delete();
 
         return $this->sendResponse($FavoriteListing->toArray(), 'FavoriteListing deleted successfully.');
     }

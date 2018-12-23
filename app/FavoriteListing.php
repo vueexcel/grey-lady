@@ -9,6 +9,6 @@ class FavoriteListing extends Model
     //
 
 	protected $fillable = [
-		'listing_id', 'listing_address'
+		'listing_id', 'listing_address', 'user_id'
 	];
 }
