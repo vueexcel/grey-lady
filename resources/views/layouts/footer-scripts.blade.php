@@ -36,3 +36,14 @@
 <!-- DataTables -->
 <script src="/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131322874-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131322874-1');
+</script>
