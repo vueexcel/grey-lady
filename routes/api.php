@@ -18,7 +18,7 @@ Route::post('register', 'API\RegisterController@register');
 
 Route::apiResource('favoritelistings', 'API\FavoriteListingController')->middleware('auth:api');
 Route::apiResource('favoritezips', 'API\FavoriteZipsController')->middleware('auth:api');
-
+Route::get('favorites/all', 'API\AllFavoritesController@bothZipsAndListings')->middleware('auth:api');
 
 Route::get('user', 'API\UsersController@show')->middleware('auth:api');
 Route::put('user', 'API\UsersController@update')->middleware('auth:api');
