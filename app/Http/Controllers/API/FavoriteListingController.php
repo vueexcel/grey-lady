@@ -50,7 +50,7 @@ class FavoriteListingController extends BaseController
         }
 
         $input['user_id'] = Auth::id();
-        $FavoriteListing = FavoriteListing::create($input);
+        $FavoriteListing = FavoriteListing::updateOrCreate($input);
 
 
 

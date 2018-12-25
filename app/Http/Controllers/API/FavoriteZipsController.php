@@ -50,7 +50,7 @@ class FavoriteZipsController extends BaseController
         }
 
         $input['user_id'] = Auth::id();
-        $FavoriteZips = FavoriteZips::create($input);
+        $FavoriteZips = FavoriteZips::updateOrCreate($input);
 
 
 
