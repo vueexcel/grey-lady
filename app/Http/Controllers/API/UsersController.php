@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\User;
+use App\FavoriteZips;
+use App\FavoriteListing;
 use Validator;
 
 
@@ -66,6 +68,22 @@ class UsersController extends BaseController
         return $this->sendResponse($Users->toArray(), 'Users updated successfully.');
             
         
+    }
+
+    public function allInfo()
+    {
+     
+
+        $FavoriteZips = FavoriteZips::where('user_id', Auth::id())->get();
+        $FavoriteListings = FavoriteListing::where('user_id', Auth::id())->get();
+        $Users = Auth::user();
+
+        $response = array();
+        $response['user'] = $Users->toArray();
+        $response['favorite_listings'] = $FavoriteListings->toArray();
+        $response['favorite_zips'] = $FavoriteListings->toArray();
+
+        return $this->sendResponse($response, 'User, FavoriteZips and FavoriteListings retrieved successfully.');
     }
 
 }
