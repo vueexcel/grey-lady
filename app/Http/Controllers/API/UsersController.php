@@ -81,7 +81,7 @@ class UsersController extends BaseController
         $response = array();
         $response['user'] = $Users->toArray();
         $response['favorite_listings'] = $FavoriteListings->toArray();
-        $response['favorite_zips'] = $FavoriteListings->toArray();
+        $response['favorite_zips'] = $FavoriteZips->toArray();
 
         return $this->sendResponse($response, 'User, FavoriteZips and FavoriteListings retrieved successfully.');
     }
