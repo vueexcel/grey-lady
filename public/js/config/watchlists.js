@@ -7,8 +7,8 @@ config.watchlists.create = {}
 
 
 
-config.watchlists.get.url = 'https://gulshan.app.greyladyproject.com/api/v1/watchlist';
-config.watchlists.create.url = 'https://gulshan.app.greyladyproject.com/api/v1/watchlist';
+config.watchlists.get.url = 'https://api.greyladyproject.com/api/v1/watchlist';
+config.watchlists.create.url = 'https://api.greyladyproject.com/api/v1/watchlist';
 
 config.watchlists.get.datatable = {}
 config.watchlists.get.datatable_id = 'watchlists-datatable';

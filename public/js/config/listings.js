@@ -7,9 +7,9 @@ config.listings.details = {}
 config.listings.create = {}
 
 // apis
-config.listings.get.url = 'https://gulshan.app.greyladyproject.com/api/v1/listings';
-config.listings.details.url = 'https://gulshan.app.greyladyproject.com/api/v1/listings';
-config.listings.create.url = 'https://gulshan.app.greyladyproject.com/api/v1/listings';
+config.listings.get.url = 'https://api.greyladyproject.com/api/v1/listings';
+config.listings.details.url = 'https://api.greyladyproject.com/api/v1/listings';
+config.listings.create.url = 'https://api.greyladyproject.com/api/v1/listings';
 
 
 config.listings.get.datatable = {}
@@ -122,7 +122,7 @@ config.listings.get.actions_column = function (listing_item) {
 	},
 	{
 		'text': 'Get Zip API',
-		'link': '//gulshan.app.greyladyproject.com/api/v1/zip?zip=' + listing_item.listing_information.zip
+		'link': '//api.greyladyproject.com/api/v1/zip?zip=' + listing_item.listing_information.zip
 	},
 	]);
 

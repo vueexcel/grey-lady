@@ -73,7 +73,7 @@ function reCalculateAllBeds (beds_array) {
     
     
 
-    var recalculate_listings_api = 'https://gulshan.app.greyladyproject.com/api/v1/recalculate/listings?zip=' + explore_details_zip;
+    var recalculate_listings_api = 'https://api.greyladyproject.com/api/v1/recalculate/listings?zip=' + explore_details_zip;
     recalculate_listings_api += '&minBed=' + beds_array[0];
     recalculate_listings_api += '&maxBed=' + beds_array[0];
 
@@ -90,7 +90,7 @@ function reCalculateAllBeds (beds_array) {
 
     setTimeout(function () {
 
-      $.get('https://gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip=' + explore_details_zip, function () {
+      $.get('https://api.greyladyproject.com/api/v1/recalculate/zips?zip=' + explore_details_zip, function () {
         alert('recalculation worked! Reloading...');
         location.reload(true);
       });

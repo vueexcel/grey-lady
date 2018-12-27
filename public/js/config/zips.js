@@ -5,8 +5,8 @@ config.zips.get = {}
 config.zips.create = {}
 config.zips.details = {}
 
-config.zips.get.url = 'https://gulshan.app.greyladyproject.com/api/v1/zip';
-config.zips.create.url = 'https://gulshan.app.greyladyproject.com/api/v1/zip';
+config.zips.get.url = 'https://api.greyladyproject.com/api/v1/zip';
+config.zips.create.url = 'https://api.greyladyproject.com/api/v1/zip';
 
 config.zips.get.datatable = {}
 config.zips.get.datatable_id = 'zips-datatable';
@@ -70,31 +70,31 @@ config.zips.get.actions_column = function (zip_item) {
 	html_to_return += makeDropDownButton('API Calls', [
 		{
 			'text' : 'Zip Details',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/zip?zip=' + zip_item.details.zip,
+			'link' : '//api.greyladyproject.com/api/v1/zip?zip=' + zip_item.details.zip,
 		},
 		{
 			'text' : 'Recalculate Zip',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip='  + zip_item.details.zip,
+			'link' : '//api.greyladyproject.com/api/v1/recalculate/zips?zip='  + zip_item.details.zip,
 		},
 		{
 			'text' : 'Recalculate Zip Listings',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/recalculate/listings?zip='  + zip_item.details.zip,
+			'link' : '//api.greyladyproject.com/api/v1/recalculate/listings?zip='  + zip_item.details.zip,
 		},
 		{
 			'text' : 'Listing Rent Search',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/listings?type=rent&zip='  + zip_item.details.zip,
+			'link' : '//api.greyladyproject.com/api/v1/listings?type=rent&zip='  + zip_item.details.zip,
 		},
 		{
 			'text' : 'Listing Sell Search',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/listings?type=sell&zip='  + zip_item.details.zip,
+			'link' : '//api.greyladyproject.com/api/v1/listings?type=sell&zip='  + zip_item.details.zip,
 		},
 		{
 			'text' : 'Average Rent',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/report?zip='  + zip_item.details.zip,
+			'link' : '//api.greyladyproject.com/api/v1/report?zip='  + zip_item.details.zip,
 		},
 		{
 			'text' : 'Search Watchlists',
-			'link' : '//gulshan.app.greyladyproject.com/api/v1/watchlist?zip='  + zip_item.details.zip,
+			'link' : '//api.greyladyproject.com/api/v1/watchlist?zip='  + zip_item.details.zip,
 		},
 	])
 

@@ -80,7 +80,7 @@ function formatZipCalculations(zip_item) {
 
 	$('#zips-datatable').off().on('click', '#recalculate-zip', function (event) {
 		var click_data = $(this).data(click_data);
-		$.get('//gulshan.app.greyladyproject.com/api/v1/recalculate/zips?zip=' + click_data.zip, function(data) {
+		$.get('//api.greyladyproject.com/api/v1/recalculate/zips?zip=' + click_data.zip, function(data) {
 			showAlertMessage(false, 'Success', data);
 			$('#zips-datatable').DataTable().ajax.reload(null, false);
 		});
@@ -147,7 +147,7 @@ function makeWatchListButtons (zip_item) {
 		console.log(request_data);
 
 		$.ajax({
-			url: 'https://gulshan.app.greyladyproject.com/api/v1/watchlist',
+			url: 'https://api.greyladyproject.com/api/v1/watchlist',
 			type: request_type,
 			data: request_data,
 		})

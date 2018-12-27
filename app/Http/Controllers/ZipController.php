@@ -29,7 +29,7 @@ class ZipController extends Controller
 
            $client = new GuzzleHttpClient();
 
-           $apiRequest = $client->request('GET', 'https://gulshan.app.greyladyproject.com/api/v1/zip', [
+           $apiRequest = $client->request('GET', 'https://api.greyladyproject.com/api/v1/zip', [
                 'query' => ['zip' => $id],
           ]);
 
