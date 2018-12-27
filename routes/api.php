@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('register', 'API\RegisterController@register');
+
 
 
 Route::apiResource('favoritelistings', 'API\FavoriteListingController')->middleware('auth:api');
@@ -21,8 +21,10 @@ Route::apiResource('favoritezips', 'API\FavoriteZipsController')->middleware('au
 Route::get('user/all', 'API\UsersController@allInfo')->middleware('auth:api');
 
 Route::get('user', 'API\UsersController@show')->middleware('auth:api');
-Route::put('user', 'API\UsersController@update')->middleware('auth:api');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+// Route::post('register', 'API\RegisterController@register');
+// Route::put('user', 'API\UsersController@update')->middleware('auth:api');
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
