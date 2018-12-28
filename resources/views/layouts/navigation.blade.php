@@ -7,6 +7,19 @@
       <ul class="sidebar-menu tree" data-widget="tree">
         <li class="treeview active">
           <a href="/explore">
+            <i class="fa fa-check-circle-o"></i>
+            <span>Favorite</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/explore/favorites/zips"><i class="fa fa-circle-o"></i>Zips</a></li>
+            <li><a href="/explore/favorites/listings"><i class="fa fa-circle-o"></i>Listings</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="/explore">
             <i class="fa fa-th"></i>
             <span>Explore</span>
             <span class="pull-right-container">
