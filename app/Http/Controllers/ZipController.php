@@ -31,6 +31,7 @@ class ZipController extends Controller
 
            $apiRequest = $client->request('GET', 'https://api.greyladyproject.com/api/v1/zip', [
                 'query' => ['zip' => $id],
+                 'headers' => ['apiKey' => 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ'],
           ]);
 
           $content = json_decode($apiRequest->getBody()->getContents());

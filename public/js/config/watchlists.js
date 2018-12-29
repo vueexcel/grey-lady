@@ -86,6 +86,9 @@ config.watchlists.ajax = {
 			console.log(d);
 
         },
+        headers: {
+        	apiKey: 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ'
+        },
         'cache' : false,
         'dataSrc'     : function (json) {
           var return_data = new Array();
