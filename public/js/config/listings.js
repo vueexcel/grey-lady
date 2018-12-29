@@ -118,15 +118,15 @@ config.listings.get.actions_column = function (listing_item) {
 	html_to_return += makeDropDownButton('API Calls', [
 	{
 		'text': 'to Trulia',
-		'link': 'http://trulia.com' + listing_item.listing_information.link
+		'link': 'http://trulia.com' + listing_item.source.source_link
 	},
 	{
 		'text': 'Get Zip API',
-		'link': '//api.greyladyproject.com/api/v1/zip?zip=' + listing_item.listing_information.zip
+		'link': '//api.greyladyproject.com/api/v1/zip?zip=' + listing_item.details.location.zip
 	},
 	]);
 
-	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + listing_item.listing_information.id + '&type=sell">Details</a>';
+	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + listing_item.id + '&type=sell">Details</a>';
 	return html_to_return;
 }
 
@@ -161,12 +161,12 @@ config.listings.ajax = {
           		cash_on_cash = json.items[i].calculated_fields[0].financial_information.cash_on_cash;
           	} 
 
-          	console.log(json.items[i]);
+          	// console.log(json.items[i]);
             
             return_data.push({
               'date_added': formatDate(json.items[i].createdAt),
               'address': json.items[i].details.location.address,
-              'sqft': json.items[i].details.sqft,
+              'sqft': json.items[i].details.LivingArea,
               'beds': json.items[i].details.beds,
               'cap_rate': formatPercentage(cap_rate),
               'cash_on_cash': formatPercentage(cash_on_cash),
