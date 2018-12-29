@@ -30,7 +30,7 @@ config.watchlists.create.search_params = {
 			{
 				'id' : 'sell',
 				'text' : 'For Sale',
-				'value' : 'sale',
+				'value' : 'sell',
 				'selected' : true
 			},
 			{

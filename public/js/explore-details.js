@@ -3,6 +3,7 @@ config.listings.columns =  [ 'zip', 'price', 'cap_rate', 'beds', 'address', ];
 config.listings.ajax.dataSrc = function (json) {
     var return_data = new Array();
     var cap_rate = '';
+    // console.log(json);
     for( var i=0; i< json.items.length; i++){
       
       // console.log(json.items[i]);
@@ -10,14 +11,13 @@ config.listings.ajax.dataSrc = function (json) {
       if (json.items[i].calculated_fields && json.items[i].calculated_fields[0]) {
         cap_rate = json.items[i].calculated_fields[0].financial_information.cap_rate;
       }
-
       
       return_data.push({
-        'address': json.items[i].listing_information.address,
-        'beds': json.items[i].listing_information.maxBed,
+        'address': json.items[i].details.location.address,
+        'beds': json.items[i].details.beds,
         'cap_rate': formatPercentage(cap_rate),
-        'price': json.items[i].listing_information.price,
-        'zip': json.items[i].listing_information.zip,
+        'price': json.items[i].details.price,
+        'zip': json.items[i].details.location.zip,
         // 'actions': config.listings.get.actions_column(json.items[i]) 
       })
     }
@@ -33,7 +33,7 @@ config.listings.get.search_params = {
       {
         'id' : 'sell',
         'text' : 'For Sale',
-        'value' : 'sale',
+        'value' : 'sell',
         'selected' : true
       },
       {

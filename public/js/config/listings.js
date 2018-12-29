@@ -25,7 +25,7 @@ config.listings.create.search_params = {
 			{
 				'id' : 'sell',
 				'text' : 'For Sale',
-				'value' : 'sale',
+				'value' : 'sell',
 				'selected' : true
 			},
 			{
@@ -161,16 +161,17 @@ config.listings.ajax = {
           		cash_on_cash = json.items[i].calculated_fields[0].financial_information.cash_on_cash;
           	} 
 
-          	// console.log(json.items[i].calculated_fields[0].financial_information);
+          	console.log(json.items[i]);
+            
             return_data.push({
-              'date_added': formatDate(json.items[i].listing_information.createdAt),
-              'address': json.items[i].listing_information.address,
-              'sqft': json.items[i].listing_information.area,
-              'beds': json.items[i].listing_information.maxBed,
+              'date_added': formatDate(json.items[i].createdAt),
+              'address': json.items[i].details.location.address,
+              'sqft': json.items[i].details.sqft,
+              'beds': json.items[i].details.beds,
               'cap_rate': formatPercentage(cap_rate),
               'cash_on_cash': formatPercentage(cash_on_cash),
-              'price': json.items[i].listing_information.price,
-              'zip': json.items[i].listing_information.zip,
+              'price': json.items[i].details.price,
+              'zip': json.items[i].details.location.address,
               'actions': config.listings.get.actions_column(json.items[i]) 
             })
           }
@@ -233,7 +234,7 @@ config.listings.get.search_params = {
 			{
 				'id' : 'sell',
 				'text' : 'For Sale',
-				'value' : 'sale',
+				'value' : 'sell',
 				'selected' : true
 			},
 			{
