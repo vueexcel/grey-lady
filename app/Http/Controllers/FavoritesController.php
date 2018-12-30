@@ -36,9 +36,17 @@ class FavoritesController extends Controller
     {    
         $FavoriteListings = FavoriteListing::where('user_id', Auth::id())->get();
 
-        $json_favorite_ids = json_encode( $FavoriteListings->toArray() );
+        $favorites_as_array = $FavoriteListings->toArray();
 
-        return view('favorites.explore-favorites-listings')->with('favorite_ids', $json_favorite_ids);        
+        $ids_as_array = array();
+
+        foreach ($favorites_as_array as $key => $item) {
+            $ids_as_array[] = $item['greylady_id'];
+        }
+
+        $ids_as_string = implode(',', $ids_as_array);
+
+        return view('favorites.explore-favorites-listings')->with('favorite_ids', $ids_as_string);        
     }
 
 }
