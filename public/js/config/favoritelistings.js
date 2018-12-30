@@ -44,8 +44,6 @@ config.favoritelistings.ajax = {
 config.favoritelistings.get.actions_column = function (listing_item) {
   var html_to_return = '';
   
-  console.log(listing_item);
-
   html_to_return += '<a id="remove-favorite-listing" data-listingid="'+listing_item.id+'" type="button" class="btn btn-default" href="#">Remove</a>';
   html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + listing_item.id + '&type=sell">Details</a>';
 

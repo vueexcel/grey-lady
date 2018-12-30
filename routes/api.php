@@ -21,6 +21,8 @@ Route::apiResource('favoritelistings', 'API\FavoriteListingController')->middlew
 Route::delete('favoritelistings/byGreylady/{id}', 'API\FavoriteListingController@destroyByGreylady')->middleware('auth:api');
 
 Route::apiResource('favoritezips', 'API\FavoriteZipsController')->middleware('auth:api');
+Route::delete('favoritezips/byGreylady/{id}', 'API\FavoriteZipsController@destroyByGreylady')->middleware('auth:api');
+
 Route::get('user/all', 'API\UsersController@allInfo')->middleware('auth:api');
 
 Route::get('secure', 'API\SecureController@get')->middleware('auth:api');

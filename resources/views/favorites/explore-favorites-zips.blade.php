@@ -29,6 +29,22 @@
   <script src="/js/config/favoritezips.js"></script>
   <script src="/js/favoritezips.js"></script>
 
+  <script type="text/javascript">
+    
+    $("#favoritezips-datatable-wrapper").on('click', '#remove-favorite-zip' ,function(event) {
+        event.preventDefault();
+        var zipid = $(this).data('zipid');
+
+        DeleteZipAsFavoritebyGreylady(zipid, function () {
+          alert('removed!! reloading....');
+          location.reload(true);
+        });
+
+
+      });
+
+  </script>
+
 @endsection 
 
 

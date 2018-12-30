@@ -148,4 +148,17 @@ class FavoriteZipsController extends BaseController
 
         return $this->sendResponse($FavoriteZips->toArray(), 'FavoriteZips deleted successfully.');
     }
+
+    function destroyByGreylady($id) {
+        
+        $FavoriteZips = FavoriteZips::where('greylady_id', '=', $id)->first();
+
+        if (is_null($FavoriteZips) || $FavoriteZips->user_id !== Auth::id() ) {
+            return $this->sendError('FavoriteZips not found.');
+        }
+
+        $FavoriteZips->delete();
+
+        return $this->sendResponse($FavoriteZips->toArray(), 'FavoriteZips deleted successfully.');
+    }
 }

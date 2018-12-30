@@ -57,9 +57,18 @@ function saveListingAsFavorite (listing_id_in_greylady, listing_address, callbac
 
 	makeGreyLadyRequest(api_url, 'POST', data_to_save, true, callback);	
 }
+
 function DeleteZipAsFavorite (favorite_id, callback) {
 
 	var api_url = '/api/favoritezips/' + favorite_id;
+	var data_to_save = {};
+
+	makeGreyLadyRequest(api_url, 'DELETE', data_to_save, true, callback);	
+}
+
+function DeleteZipAsFavoritebyGreylady (favorite_id, callback) {
+
+	var api_url = '/api/favoritezips/byGreylady/' + favorite_id;
 	var data_to_save = {};
 
 	makeGreyLadyRequest(api_url, 'DELETE', data_to_save, true, callback);	
