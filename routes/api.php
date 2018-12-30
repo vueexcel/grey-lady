@@ -20,6 +20,8 @@ Route::apiResource('favoritelistings', 'API\FavoriteListingController')->middlew
 Route::apiResource('favoritezips', 'API\FavoriteZipsController')->middleware('auth:api');
 Route::get('user/all', 'API\UsersController@allInfo')->middleware('auth:api');
 
+Route::get('secure', 'API\SecureController@get')->middleware('auth:api');
+
 Route::get('user', 'API\UsersController@show')->middleware('auth:api');
 
 
