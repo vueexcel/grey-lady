@@ -25,7 +25,8 @@
 
 
 @section('footer-scripts')
-
+  
+  <script src="/js/config/favoritelistings.js"></script>
   <script src="/js/favoritelistings.js"></script>
 
 @endsection 

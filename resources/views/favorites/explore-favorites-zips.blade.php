@@ -25,7 +25,8 @@
 
 
 @section('footer-scripts')
-
+  
+  <script src="/js/config/favoritezips.js"></script>
   <script src="/js/favoritezips.js"></script>
 
 @endsection 
