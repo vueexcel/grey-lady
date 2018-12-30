@@ -12,6 +12,7 @@
 <script src="/js/config/zips.js"></script>
 <script src="/js/config/watchlists.js"></script>
 <script src="/js/config/favoritezips.js"></script>
+<script src="/js/config/favoritelistings.js"></script>
 
 
 

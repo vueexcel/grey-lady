@@ -11,9 +11,9 @@
   	<div id="message-area"></div>
     <div style="overflow: auto">
 
-      {{-- <div id="zips-search-form"></div> --}}
+      {{-- <div id="listings-search-form"></div> --}}
     
-      <div id="favoritezips-datatable-wrapper"></div>  
+      <div id="favoritelistings-datatable-wrapper"></div>  
 
     </div>
   </div>
@@ -26,7 +26,7 @@
 
 @section('footer-scripts')
 
-  <script src="/js/favoritezips.js"></script>
+  <script src="/js/favoritelistings.js"></script>
 
 @endsection 
 
