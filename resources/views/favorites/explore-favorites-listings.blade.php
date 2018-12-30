@@ -36,7 +36,7 @@
 @section('header-scripts')
   <!-- page script -->
   <script type="text/javascript">
-    var favorite_zip_ids = '{!! $favorite_ids !!}';
+    var favorite_listing_ids = '{!! $favorite_ids !!}';
   </script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
