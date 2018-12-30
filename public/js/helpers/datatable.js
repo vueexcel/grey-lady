@@ -5,7 +5,6 @@ function createDataTable (config_item) {
 	for (var i = config[config_item].columns.length - 1; i >= 0; i--) {
 		columns_for_datatable.push({'data': config[config_item].columns[i]});
 	}	
-	
 
 	var datatable_html = '';
 	datatable_html += '<table id="'+config[config_item].get.datatable_id+'" class="table table-bordered table-striped">';
@@ -18,7 +17,6 @@ function createDataTable (config_item) {
 	}
 	datatable_html += '</tr>';
 	datatable_html += '</thead>';
-	
 
 
 	datatable_html += '<tbody>';
@@ -39,7 +37,6 @@ function createDataTable (config_item) {
 		// alert(columns_defs);
 
 	}
-
 
 	config[config_item].get.datatable = $('#' + config[config_item].get.datatable_id).DataTable({
       // 'serverSide'	: true,
