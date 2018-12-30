@@ -144,4 +144,24 @@ class FavoriteListingController extends BaseController
 
         return $this->sendResponse($FavoriteListing->toArray(), 'FavoriteListing deleted successfully.');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyByGreylady($id)
+    {
+
+        $FavoriteListing = FavoriteListing::where('greylady_id', '=', $id)->first();
+
+        if ( is_null($FavoriteListing) || $FavoriteListing->user_id !== Auth::id() ) {
+            return $this->sendError('FavoriteListing not found.');
+        }
+
+        $FavoriteListing->delete();
+
+        return $this->sendResponse($FavoriteListing->toArray(), 'FavoriteListing deleted successfully.');
+    }
 }

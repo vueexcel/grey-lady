@@ -29,6 +29,22 @@
   <script src="/js/config/favoritelistings.js"></script>
   <script src="/js/favoritelistings.js"></script>
 
+  <script type="text/javascript">
+    
+      $("#favoritelistings-datatable-wrapper").on('click', '#remove-favorite-listing' ,function(event) {
+        event.preventDefault();
+        var listing_id = $(this).data('listingid');
+
+        DeleteListingAsFavoritebyGreylady(listing_id, function () {
+          alert('removed!! reloading....');
+          location.reload(true);
+        });
+
+
+      });
+
+  </script>
+
 @endsection 
 
 
