@@ -14,6 +14,10 @@
 
 Auth::routes();
 
+Route::get('/getting-started', function () {
+        return view('help.getting-started');
+    });
+
 Route::get('/home', function () {
         return view('home');
     });

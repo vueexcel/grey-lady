@@ -47,6 +47,20 @@
             <li><a href="../watchlist"><i class="fa fa-circle-o"></i>Watchlists Index</a></li>
           </ul>
         </li>
+        <li class="treeview active">
+          <a href="#">
+            <i class=""></i>
+            <span>Setup & Docs</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/getting-started"><i class="fa fa-circle-o"></i>Getting Started</a></li>
+            <li><a href="/#"><i class="fa fa-circle-o"></i>Download Chrome Extension</a></li>
+            <li><a href="/#"><i class="fa fa-circle-o"></i>Report a bug</a></li>
+          </ul>
+        </li>
         
       </ul>
     </section><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: -178.375px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 119.319px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
