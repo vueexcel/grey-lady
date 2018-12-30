@@ -31,7 +31,7 @@ config.favoritelistings.ajax = {
               'cap_rate': formatPercentage(cap_rate),
               'cash_on_cash': formatPercentage(cash_on_cash),
               'price': json.items[i].details.price,
-              'zip': json.items[i].details.location.address,
+              'zip': json.items[i].details.location.zip,
               'actions': config.listings.get.actions_column(json.items[i]) 
             })
           }
