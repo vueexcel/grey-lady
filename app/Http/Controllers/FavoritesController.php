@@ -28,7 +28,7 @@ class FavoritesController extends Controller
 
         $ids_as_string = implode(',', $ids_as_array);
 
-        return view('explore.explore-favorites-zips')->with('favorite_ids', $ids_as_string);
+        return view('favorites.explore-favorites-zips')->with('favorite_ids', $ids_as_string);
         
     }
 
@@ -38,7 +38,7 @@ class FavoritesController extends Controller
 
         $json_favorite_ids = json_encode( $FavoriteListings->toArray() );
 
-        return view('explore.explore-favorites')->with('favorite_ids', $json_favorite_ids);        
+        return view('favorites.explore-favorites-listings')->with('favorite_ids', $json_favorite_ids);        
     }
 
 }
