@@ -26,14 +26,6 @@
 
 @section('footer-scripts')
 
-  <!-- page script -->
-
-  <script type="text/javascript">
-    
-    
-    
-  </script>
-
   <script src="/js/favoritezips.js"></script>
 
 @endsection 
@@ -41,7 +33,11 @@
 
 
 @section('header-scripts')
-<meta name="csrf-token" content="{{ csrf_token() }}">
+  <!-- page script -->
+  <script type="text/javascript">
+    var favorite_zip_ids = '{!! $favorite_ids !!}';
+  </script>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
 @endsection 
