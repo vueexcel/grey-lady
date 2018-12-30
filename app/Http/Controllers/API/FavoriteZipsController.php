@@ -38,18 +38,18 @@ class FavoriteZipsController extends BaseController
     {
         $input = $request->all();
 
-
         $validator = Validator::make($input, [
             'zip_code' => 'required',
-            'zip_code_town' => 'required'
+            'zip_code_town' => 'required',
+            'greylady_id' => 'required'
         ]);
-
 
         if($validator->fails()){
             return $this->sendError('Validation Error.', $validator->errors());       
         }
 
         $input['user_id'] = Auth::id();
+
         $FavoriteZips = FavoriteZips::updateOrCreate($input);
 
 
@@ -101,7 +101,8 @@ class FavoriteZipsController extends BaseController
 
         $validator = Validator::make($input, [
             'zip_code' => 'required',
-            'zip_code_town' => 'required'
+            'zip_code_town' => 'required',
+            'greylady_id' => 'required'
         ]);
 
 
@@ -115,6 +116,7 @@ class FavoriteZipsController extends BaseController
 
             $FavoriteZips->zip_code = $input['zip_code'];
             $FavoriteZips->zip_code_town = $input['zip_code_town'];
+            $FavoriteZips->greylady_id = $input['greylady_id'];
             $FavoriteZips->user_id = Auth::id();
             $FavoriteZips->save();
 
