@@ -15,8 +15,6 @@ config.favoritelistings.ajax = {
           var cash_on_cash = '';
           for( var i=0; i< json.items.length; i++){
 
-            console.log(json.items[i]);
-
             if (json.items[i].calculated_fields[0]) {
               cap_rate = json.items[i].calculated_fields[0].financial_information.cap_rate;
             }
@@ -24,8 +22,6 @@ config.favoritelistings.ajax = {
             if (json.items[i].calculated_fields[0] && json.items[i].calculated_fields[0].financial_information.cash_on_cash) {
               cash_on_cash = json.items[i].calculated_fields[0].financial_information.cash_on_cash;
             } 
-
-            // console.log(json.items[i]);
             
             return_data.push({
               'date_added': formatDate(json.items[i].createdAt),
