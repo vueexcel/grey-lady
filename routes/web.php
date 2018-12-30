@@ -31,15 +31,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/explore', function () {
         return view('explore.explore');
     });
-    Route::get('/explore/favorites/zips', function () {
-        return view('explore.explore-favorites-zips');
-    });
-    Route::get('/explore/favorites/listings', function () {
-        return view('explore.explore-favorites');
-    });
+    
+    Route::get('/explore/favorites/zips', 'FavoritesController@zips');
+    Route::get('/explore/favorites/listings', 'FavoritesController@listings');
+    
     Route::get('/explore/{zip}', 'ZipController@details');
-
-
 
     Route::get('/listings', function () {
         return view('listings');
