@@ -23,7 +23,9 @@ class FavoritesController extends Controller
         $ids_as_array = array();
 
         foreach ($favorites_as_array as $key => $item) {
-            $ids_as_array[] = $item['greylady_id'];
+            if (!empty($item['greylady_id'])) {
+                $ids_as_array[] = $item['greylady_id'];    
+            }
         }
 
         $ids_as_string = implode(',', $ids_as_array);
@@ -41,7 +43,9 @@ class FavoritesController extends Controller
         $ids_as_array = array();
 
         foreach ($favorites_as_array as $key => $item) {
-            $ids_as_array[] = $item['greylady_id'];
+            if (!empty($item['greylady_id'])) {
+                $ids_as_array[] = $item['greylady_id'];
+            }
         }
 
         $ids_as_string = implode(',', $ids_as_array);
