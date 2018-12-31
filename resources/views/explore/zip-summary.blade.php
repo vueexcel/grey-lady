@@ -40,30 +40,44 @@
               
               @if ( property_exists($bed_zip_stats, "average_price") )
                 <td>{{ formatLargeCurrency($bed_zip_stats->average_price) }}</td> 
+              @else 
+                 <td>-</td> 
               @endif
 
               @if ( property_exists($bed_zip_stats, "average_baths") )
                 <td>{{ number_format($bed_zip_stats->average_baths, 1) }}</td> 
+              @else 
+                 <td>-</td> 
               @endif
 
               @if ( property_exists($bed_zip_stats, "average_sqft") )                              
-                <td>{{ number_format($bed_zip_stats->average_sqft,0) or 0 }}</td> 
+                <td>{{ number_format($bed_zip_stats->average_sqft,0) or 0 }}</td>
+              @else 
+                 <td>-</td> 
               @endif
 
               @if ( property_exists($bed_zip_stats, "average_cap_rate") )
                 <td>{{ formatPercentage($bed_zip_stats->average_cap_rate) }}</td> 
+              @else 
+                 <td>-</td> 
               @endif
 
               @if ( property_exists($bed_zip_stats, "average_cash_on_cash") )
                 <td>{{ formatPercentage($bed_zip_stats->average_cash_on_cash) }}</td> 
+              @else 
+                 <td>-</td> 
               @endif
 
               @if ( property_exists($bed_zip_stats, "average_revenue") )
                 <td> <a target="_blank" href="https://api.greyladyproject.com/api/v1/report?zip={{$zip[0]->details->zip}}&maxBed={{$bed}}&minBeds={{$bed}}"> {{ formatLargeCurrency($bed_zip_stats->average_revenue) }}</a></td> 
+              @else 
+                 <td>-</td> 
               @endif
               
               @if ( property_exists($bed_zip_stats, "number_of_listings") )
                 <td> <a target="_blank" href="/listings?zip={{$zip[0]->details->zip}}&maxBed={{$bed}}&minBed={{$bed}}">{{ $bed_zip_stats->number_of_listings }}</a></td> 
+              @else 
+                 <td>-</td> 
               @endif
             </tr>
           
