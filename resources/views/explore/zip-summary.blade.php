@@ -37,13 +37,34 @@
 
             <tr>
               <td>{{ $bed }}</td> 
-              <td>{{ formatLargeCurrency($bed_zip_stats->average_price) }}</td> 
-              <td>{{ number_format($bed_zip_stats->average_baths, 1) }}</td> 
-              <td>{{ number_format($bed_zip_stats->average_sqft,0) }}</td> 
-              <td>{{ formatPercentage($bed_zip_stats->average_cap_rate) }}</td> 
-              <td>{{ formatPercentage($bed_zip_stats->average_cash_on_cash) }}</td> 
-              <td> <a target="_blank" href="https://api.greyladyproject.com/api/v1/report?zip={{$zip[0]->details->zip}}&maxBed={{$bed}}&minBeds={{$bed}}"> {{ formatLargeCurrency($bed_zip_stats->average_revenue) }}</a></td> 
-              <td> <a target="_blank" href="/listings?zip={{$zip[0]->details->zip}}&maxBed={{$bed}}&minBed={{$bed}}">{{ $bed_zip_stats->number_of_listings }}</a></td> 
+              
+              @if ( property_exists($bed_zip_stats, "average_price") )
+                <td>{{ formatLargeCurrency($bed_zip_stats->average_price) }}</td> 
+              @endif
+
+              @if ( property_exists($bed_zip_stats, "average_baths") )
+                <td>{{ number_format($bed_zip_stats->average_baths, 1) }}</td> 
+              @endif
+
+              @if ( property_exists($bed_zip_stats, "average_sqft") )                              
+                <td>{{ number_format($bed_zip_stats->average_sqft,0) or 0 }}</td> 
+              @endif
+
+              @if ( property_exists($bed_zip_stats, "average_cap_rate") )
+                <td>{{ formatPercentage($bed_zip_stats->average_cap_rate) }}</td> 
+              @endif
+
+              @if ( property_exists($bed_zip_stats, "average_cash_on_cash") )
+                <td>{{ formatPercentage($bed_zip_stats->average_cash_on_cash) }}</td> 
+              @endif
+
+              @if ( property_exists($bed_zip_stats, "average_revenue") )
+                <td> <a target="_blank" href="https://api.greyladyproject.com/api/v1/report?zip={{$zip[0]->details->zip}}&maxBed={{$bed}}&minBeds={{$bed}}"> {{ formatLargeCurrency($bed_zip_stats->average_revenue) }}</a></td> 
+              @endif
+              
+              @if ( property_exists($bed_zip_stats, "number_of_listings") )
+                <td> <a target="_blank" href="/listings?zip={{$zip[0]->details->zip}}&maxBed={{$bed}}&minBed={{$bed}}">{{ $bed_zip_stats->number_of_listings }}</a></td> 
+              @endif
             </tr>
           
           @endforeach
