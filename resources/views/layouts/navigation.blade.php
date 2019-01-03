@@ -57,7 +57,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/getting-started"><i class="fa fa-circle-o"></i>Getting Started</a></li>
-            <li><a href="/#"><i class="fa fa-circle-o"></i>Download Chrome Extension</a></li>
+            <li><a href="/chrome-extension-download-instructions"><i class="fa fa-circle-o"></i>Download Chrome Extension</a></li>
             <li><a href="/#"><i class="fa fa-circle-o"></i>Report a bug</a></li>
           </ul>
         </li>
