@@ -18,13 +18,14 @@
       <h3>Next, some very quick instructions on how to get started:</h3>
 
       <ul>
-        <li>Need to put some stuff here...</li>
+        <li>Click around on the listing data collected zips in <a href="/explore?town=worcester">Worcester</a> and <a href="/explore?town=Boston">Boston</a>. Those are the only that work now. More to come in the future.</li>
+        <li><a href="/chrome-extension-download-instructions">Download the chrome plugin</a> (only works on Redfin).</li>
       </ul>
 
       <h3>Known Problems</h3>
 
       <ul>
-        <li>Need to put some stuff here...</li>
+        <li>A lot. Would help if you reported them as you found them... = )</li>
       </ul>
 
     </div>
