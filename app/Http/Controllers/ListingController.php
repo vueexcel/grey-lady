@@ -38,8 +38,6 @@ class ListingController extends Controller
 
           $zip = \App\Http\Helpers\ZipAPIHelper::getZipDetails($listing->details->location->zip);
 
-          // dd($listing);
-
           return view('listings.details.base', ['listing' => $listing, 'zip' => $zip]);
 
         } catch (RequestException $re) {

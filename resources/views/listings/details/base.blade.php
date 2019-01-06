@@ -54,9 +54,10 @@
   <!-- page script -->
   <script type="text/javascript">
     var explore_details_zip = '{{$zip[0]->details->zip}}';
+    {{-- var api_listing_information = {{ json_encode($listing) }}; --}}
   </script>
   <script src="/js/listings.js"></script>
-  <script src="/js/explore-details.js"></script>
+  {{-- <script src="/js/listings-details.js"></script> --}}
 
 
 @endsection 

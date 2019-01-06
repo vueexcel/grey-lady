@@ -1,6 +1,8 @@
 <div class="box box-default">
 	<div class="box-body">
 
+		<h4>Basic Details</h4>
+
             <div class="col-sm-3 col-xs-6">
               <div class="description-block">
                 <h5 class="description-header">{{ $listing->details->beds }}</h5>

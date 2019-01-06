@@ -1,99 +1,114 @@
-$( function () {
+renderJumpTo();
 
-	// console.log(listing_details);
+function renderJumpTo () {
 
-	if (listing_details && listing_details.id && listing_details.type) {
+  console.log('worked');
 
-		getListingDetails(listing_details.id, listing_details.type, function (data) {
-			// console.log(data);
-			if (data) {
-				renderListingDetails(data);
-			} else {
-				alert('there was an error');
-			}
+	var listing = api_listing_information;
+	var location = api_listing_information.details.location;
+	var html = '';
 
-		});
-	}
+  	html += '<select class="form-control select2" id="portal-jump-to" name="jumpTo">';
+  	html += '<option value="">Jump to....</option>';
 
-});
+  	var base_greylady_url = '//app.greyladyproject.com';
+  	var base_zillow_url = 'https://zillow.com';
+  	var base_trulia_url = 'https://trulia.com';
+  	var base_redfin_url = 'https://redfin.com';
+  	var base_realtor_url = 'https://realtor.com';
+  	var base_google_url = 'https://www.google.com/search?q=';
 
+  	var searches = {};
+  	searches.app = {};
+  	searches.redfin = {};
+  	searches.trulia = {};
+  	searches.zillow = {};
+  	searches.realtor = {};
+  	searches.google = {};
 
-function renderListingDetails (listing_object) {
+  	searches.app.label = 'In App';
+  	searches.google.label = 'Search Google';
+  	searches.redfin.label = 'On Redfin';
+  	searches.trulia.label = 'On Trulia';
+  	searches.zillow.label = 'On Zillow';
+  	searches.realtor.label = 'On Realtor';
 
-	var basics = listing_object.listing_information;
-	var calcs = listing_object.calculated_fields[0];
+  	searches.app.options = [];
+  	searches.redfin.options = [];
+  	searches.trulia.options = [];
+  	searches.zillow.options = [];
+  	searches.realtor.options = [];
+  	searches.google.options = [];
 
-	$('#address').html(basics.address);
-	$('#city').html(basics.city);
-	$('#state').html(basics.state);
-	$('#zip').html(basics.zip);
+  	searches.app.options.push({label: location.zip + ' + ' + listing.details.beds +' beds + Rentals', url: base_greylady_url + "/listings?zip=" + location.zip + "&minBed=" + listing.details.beds + "&maxBed=" + listing.details.beds + "&type=rent"});
+  	searches.app.options.push({label: location.zip + ' + ' + listing.details.beds +' beds + Sales', url: base_greylady_url + "/listings?zip=" + location.zip + "&minBed=" + listing.details.beds + "&maxBed=" + listing.details.beds + "&type=sell"});
+	searches.app.options.push({label: location.zip + ' + ' + listing.details.beds +' beds', url: base_greylady_url + "/listings?zip=" + location.zip + "&minBed=" + listing.details.beds + "&maxBed=" + listing.details.beds});
+	searches.app.options.push({label: location.zip, url: base_greylady_url + "/listings?zip=" + location.zip});
+  	searches.app.options.push({label: 'Listing: ' + location.address, url: base_greylady_url + "listing/" + listing.id});
+
+  	
+  	//https://www.redfin.com/zipcode/01604/filter/min-beds=3,max-beds=3
+  	searches.redfin.options.push({label: location.zip + ' + ' + listing.details.beds +' beds + For Sale', url: base_redfin_url + "/zipcode/" + location.zip + "/filter/min-beds=" + listing.details.beds + ",max-beds=" + listing.details.beds});
+	searches.redfin.options.push({label: location.zip, url: base_redfin_url + "/zipcode/" + location.zip});
+	searches.redfin.options.push({label: 'Listing: ' + location.address, url: base_google_url + "redfin.com " + location.address + " " + location.zip });
+  	
+
+  	// /https://www.zillow.com/homes/01604_rb/3-_beds/
+  	// https://www.zillow.com/homes/for_rent/01604_rb/3-_beds/
+  	// https://www.zillow.com/homes/for_sale/01604_rb/3-_beds/
+  	searches.zillow.options.push({label: location.zip + ' + ' + listing.details.beds +' beds + Rentals', url: base_zillow_url + "/homes/for_rent/01604_" + location.zip + "/" + listing.details.beds + "-_beds/"});
+  	searches.zillow.options.push({label: location.zip + ' + ' + listing.details.beds +' beds + For Sale', url: base_zillow_url + "/homes/for_sale/01604_" + location.zip + "/" + listing.details.beds + "-_beds/"});
+  	searches.zillow.options.push({label: location.zip + ' + ' + listing.details.beds +' beds + All', url: base_zillow_url + "/homes/01604_" + location.zip + "/" + listing.details.beds + "-_beds/"});
+	searches.zillow.options.push({label: location.zip, url: base_zillow_url + "/homes/01604_" + location.zip + "/"});
+	searches.zillow.options.push({label: 'Listing: ' + location.address, url: base_google_url + "zillow.com " + location.address + " " + location.zip });
+  	
 	
+	// https://www.trulia.com/for_sale/01604_zip/3p_beds/
+	// https://www.trulia.com/for_rent/01604_zip/3_beds/
+	searches.trulia.options.push({label: location.zip + ' + ' + listing.details.beds +' beds + For Rent', url: base_trulia_url + "/for_rent/" + location.zip + "_zip/" + listing.details.beds + "_beds/"});
+	searches.trulia.options.push({label: location.zip + ' + ' + listing.details.beds +' beds + For Sale', url: base_trulia_url + "/for_sale/" + location.zip + "_zip/" + listing.details.beds + "_beds/"});
+	searches.trulia.options.push({label: location.zip, url: base_trulia_url + "/for_sale/" + location.zip + "_zip/"});
+	searches.trulia.options.push({label: 'Listing: ' + location.address, url: base_google_url + "trulia.com " + location.address + " " + location.zip });
 
-	//add basic information to the page. 
-	var basic_information_html = '';
-	basic_information_html += '<span>Price: ' + basics.price + '</span>';
-	basic_information_html += '<span>Beds: ' + basics.minBeds + '</span>';
-	basic_information_html += '<span>Baths: ' + basics.baths + '</span>';
-	basic_information_html += '<span>Sqft: ' + basics.area + '</span>';
-	basic_information_html += '<span>Created on: ' + formatDate(basics.createdAt) + '</span>';
+	// https://www.realtor.com/realestateandhomes-search/01604/beds-3-3
+	// https://www.realtor.com/apartments/01604/beds-3-3
+	searches.realtor.options.push({label: location.zip + ' + ' + listing.details.beds +' beds + For Rent', url: base_realtor_url + "/apartments/" + location.zip + "/beds-" + listing.details.beds + "-" + listing.details.beds});
+	searches.realtor.options.push({label: location.zip + ' + ' + listing.details.beds +' beds + For Sale', url: base_realtor_url + "/realestateandhomes-search/" + location.zip + "/beds-" + listing.details.beds + "-" + listing.details.beds});
+	searches.realtor.options.push({label: location.zip, url: base_realtor_url + "/apartments/" + location.zip});
+	searches.realtor.options.push({label: 'Listing: ' + location.address, url: base_google_url + "realtor.com " + location.address + " " + location.zip });
 
-	$('#basic-information').html(basic_information_html);
-
-	//add financial information to the page. 
-	var financial = calcs.financial_information;
-	var financial_info_html = '';
-	financial_info_html += '<span><b>Cap Rate:</b> ' + formatPercentage(financial.cap_rate) + '</span>';
-	financial_info_html += '<span><b>Cash on Cash:</b> ' + formatPercentage(financial.cash_on_cash) + '</span>';
-	financial_info_html += '<span><b>Debt Coverage:</b> ' + formatPercentage(financial.debt_coverage_ratio) + '</span>';
-	financial_info_html += '<span><b>Rent to Value:</b> ' + formatPercentage(financial.rent_to_value) + '</span>';
-
-	$('#financial-info').html(financial_info_html);
-
-	// Mortgage Information
-	var mortgage = calcs.mortgage_information;
-	var mortgage_info_html = '';
-	mortgage_info_html += '<span><b>Total Price:</b> ' + accounting.formatMoney(mortgage.price, "$", 0) + '</span>';
-	mortgage_info_html += '<span><b>Downpayment:</b> ' + accounting.formatMoney(mortgage.downpayment, "$", 0) + '</span>';
-	mortgage_info_html += '<span><b>Loan Amount:</b> ' + accounting.formatMoney(mortgage.loan_amount, "$", 0) + '</span>';
-	mortgage_info_html	 += '<span><b>Monthly Payment:</b> ' + accounting.formatMoney(mortgage.monthly.Payment, "$", 0) + '</span>';
-
-	$('#mortgage-info').html(mortgage_info_html);
+	searches.google.options.push({label: 'Schools in ' + location.zip, url: base_google_url + "Shools ranking in " + location.zip });
+	searches.google.options.push({label: 'Listing Agent', url: base_google_url + "real estate agent " + listing.details.ListAgentFirstName + ' ' + listing.details.ListAgentLastName + ' ' + location.zip});
+	searches.google.options.push({label: 'Mortgage in ' + location.zip, url: base_google_url + "real estate lending in " + location.zip});
+	searches.google.options.push({label: 'Mortgage in ' + location.city, url: base_google_url + "real estate lending in " + location.city});
+	searches.google.options.push({label: 'Property Managers in ' + location.city, url: base_google_url + "property managers in " + location.city});
 
 
-	// Operating P&L
-	var pnl = calcs.operating_profit_and_loss.monthly;
-	var pnl_info_html = '';
-	pnl_info_html += '<span><b>Revenue:</b> ' + accounting.formatMoney(pnl.revenue, "$", 0) + '</span>';
-	pnl_info_html += '<span><b>Lost to vacancy:</b> ' + accounting.formatMoney(pnl.loss_to_vacancy, "$", 0) + '</span>';
-	pnl_info_html += '<span><b>Operating Income:</b> ' + accounting.formatMoney(pnl.operating_income, "$", 0) + '</span>';
-	pnl_info_html += '<span><b>Operating Expenses:</b> ' + accounting.formatMoney(pnl.operating_expenses, "$", 0) + '</span>';
-	pnl_info_html += '<span><b>Net Operating Income:</b> ' + accounting.formatMoney(pnl.net_operating_income, "$", 0) + '</span>';
-	pnl_info_html += '<span><b>Mortgage payment:</b> ' + accounting.formatMoney(pnl.mortgage_payment, "$", 0) + '</span>';
-	pnl_info_html += '<span><b>Cash profit:</b> ' + accounting.formatMoney(pnl.cash_profit, "$", 0) + '</span>';
-	
+  	for ( portal in searches ) {
 
-	$('#operating-pl').html(pnl_info_html);
+  		html += '<optgroup label="' + searches[portal].label + '">';
 
-	
+  		for (var i = searches[portal].options.length - 1; i >= 0; i--) {
+
+  			html += '<option value="' + searches[portal].options[i].url + '">' + searches[portal].options[i].label + '</option>';
+
+  		}
 
 
+  		html += '</optgroup>';
 
-}
+  	}
 
+  	console.log(html);
 
-function getListingDetails (listing_id, listing_type, success_function) {
-	
-	$.ajax({
-		url: config.listings.details.url + '/' + listing_id + '/' + listing_type,
-		type: 'GET'
-	})
-	.done(function (data) {
-		success_function(data)
-	})
-	.fail(function() {
-		console.log("error");
-	})
-	.always(function() {
-		console.log("complete");
+	document.getElementById('jump-to-wrapper').innerHTML = html;	
+
+	$('#portal-jump-to').on('change', function () {
+		var url = $(this).val();
+		console.log('jump to url:');
+		console.log(url);
+		window.open(url);
 	});
+
+
 }
