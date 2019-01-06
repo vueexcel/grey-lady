@@ -166,7 +166,7 @@ config.listings.ajax = {
             return_data.push({
               'date_added': formatDate(json.items[i].createdAt),
               'address': json.items[i].details.location.address,
-              'sqft': json.items[i].details.LivingArea,
+              'sqft': json.items[i].details.livingArea,
               'beds': json.items[i].details.beds,
               'cap_rate': formatPercentage(cap_rate),
               'cash_on_cash': formatPercentage(cash_on_cash),
