@@ -23,7 +23,7 @@
       <h3>Installation Instructions</h3>
 
       <ul>
-        <li>Download the <a href="https://drive.google.com/file/d/1cxMA7CaZedZrViE1W8LOBckmFw0ExS-i/view?usp=sharing">zip file for the current</a> build. It's permission controlled by google right now.</li>
+        <li>Download the <a href="https://drive.google.com/file/d/1STaTZoPu1_BmWvs8K9tFpnQwfnELoWDE/view?usp=sharing">zip file for the current (0.1.2)</a> build. It's permission controlled by google right now.</li>
         <li>Follow the instructions <a href="https://blog.hunter.io/how-to-install-a-chrome-extension-without-using-the-chrome-web-store-31902c780034">in this article</a> under <b>"Method 1"</b></li>
       </ul>
 
@@ -34,6 +34,12 @@
         <li>It wont calculate financial stats if there's not at least 5 rental listings matching the zip / bedroom of the listing you are looking at. This is because it uses those 5 to calculate an average rent in that bed / zip.</li>
         <li>It hasn't been tested for different property types. It doesn't work for land or multifamily.</li>
         <li>Its generally bugy. Sometimes it just doesn't work or it doesn't calculate financail stats. </li>
+      </ul>
+
+      <h3>Older Builds</h3>
+
+      <ul>
+        <li>0.1.1 - <a href="https://drive.google.com/file/d/1cxMA7CaZedZrViE1W8LOBckmFw0ExS-i/view?usp=sharing">Drive Download</a></li>
       </ul>
 
     </div>
