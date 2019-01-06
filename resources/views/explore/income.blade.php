@@ -3,7 +3,7 @@
     
     <h4>Income</h4>
 
-    @if (isset($zip[0]->details->income))
+    @if ( isset($zip[0]->details->income) && !empty( (array) $zip[0]->details->income) )
 
       <ul>
 
@@ -14,6 +14,10 @@
       @endforeach
 
       </ul>
+
+    @else 
+
+      <p>No income data available</p>
 
     @endif  
 

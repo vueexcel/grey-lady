@@ -260,5 +260,13 @@ config.listings.get.search_params = {
 		'label'	: 'Max Price',
 		'placeholder' : '',
 		'value' : ''
+	},
+	'limit': {
+		'param' : 'limit',
+		'type'	: 'textfield',
+		'label'	: 'Limit',
+		'placeholder' : '',
+		'value' : '20'
 	}
+
 }

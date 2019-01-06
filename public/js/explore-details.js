@@ -53,6 +53,13 @@ config.listings.get.search_params = {
     'placeholder' : '',
     'value' : explore_details_zip
   },
+  'limit': {
+    'param' : 'limit',
+    'type'  : 'textfield',
+    'label' : 'Limit',
+    'placeholder' : '',
+    'value' : '20'
+  }
 }
 
 

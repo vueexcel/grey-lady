@@ -62,9 +62,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/listings', function () {
         return view('listings');
     });
-    Route::get('/listings/details', function () {
-        return view('listings-details');
-    });
+    Route::get('/listing/{id}', 'ListingController@details');
     Route::get('/listings/create', function () {
         return view('listings-create');
     });
