@@ -25,6 +25,8 @@
 
   @include('listings.details.agent')
 
+  @include('listings.details.source')
+
   @include('explore.housing')
 
   @include('explore.income')
