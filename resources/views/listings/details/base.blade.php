@@ -56,7 +56,8 @@
   <!-- page script -->
   <script type="text/javascript">
     var explore_details_zip = '{{$zip[0]->details->zip}}';
-    {{-- var api_listing_information = {{ json_encode($listing) }}; --}}
+    {{-- var api_listing_information = jQuery.parseJSON("{{ json_encode( (array) $listing) }}");  --}}
+    // console.log(api_listing_information);
   </script>
   <script src="/js/listings.js"></script>
   <script src="/js/explore-details.js"></script>
