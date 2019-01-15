@@ -126,7 +126,7 @@ config.listings.get.actions_column = function (listing_item) {
 	},
 	]);
 
-	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + listing_item.id + '&type=sell">Details</a>';
+	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/' + listing_item.id + '">Details</a>';
 	return html_to_return;
 }
 
