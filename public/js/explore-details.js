@@ -74,7 +74,7 @@ function reCalculateAllBeds (beds_array) {
   console.log('function called');
   console.log(beds_array.length);
     
-
+  return false;
   
   if (beds_array.length > 0) {
     
