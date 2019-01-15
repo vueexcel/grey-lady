@@ -19,7 +19,7 @@ $( function () {
 	config.zips.get.actions_column = function (zip_item) {
 	  var html_to_return = '';
 	  html_to_return += '<a type="button" class="btn btn-default" href="/explore/' + zip_item.details.zip + '">Details</a>';
-	  html_to_return += '<a type="button" class="btn btn-default" href="#' + zip_item.details.zip + '">+Fav</a>';
+	  // html_to_return += '<a type="button" class="btn btn-default" href="#' + zip_item.details.zip + '">+Fav</a>';
 	  html_to_return += makeDropDownButton('API', [
 	    {
 	      'text' : 'Zip Details',
