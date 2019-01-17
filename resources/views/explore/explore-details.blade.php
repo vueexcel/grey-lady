@@ -21,6 +21,8 @@
   
   @include('explore.actions')
 
+  @include('explore.header-watchlist')
+
   @include('explore.housing')
 
   @include('explore.income')
@@ -71,18 +73,10 @@
 
   <div class="explore-details-header">
     <h3><span>Explore > {{ $zip[0]->details->zip }}</span></h3>
-    <span class="city-and-state">({{ $zip[0]->details->place_name }}, {{ $zip[0]->details->state_abbreviation }})</span>
+    {{-- <span class="city-and-state">({{ $zip[0]->details->place_name }}, {{ $zip[0]->details->state_abbreviation }})</span> --}}
     <div class="navbar-custom-menu">
         
         @include('explore.explore-cap-calc')
-
-      <div class="watchlist-section">
-
-        @include('explore.header-watchlist')
-        
-      </div>
-      
-
 
     </div>
   </div>
