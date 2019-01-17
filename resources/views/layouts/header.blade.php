@@ -16,16 +16,12 @@
         <span class="icon-bar"></span>
       </a>
 
-
-      @yield('page-title')
-
       <div class="right-nav-bar">
         <span><a href="/logout">Logout</a></span>
       </div>
 
+      @yield('page-title')
+
     </nav>
-
-
-
 
   </header>
