@@ -227,7 +227,7 @@ config.listings.get.search_params = {
 		'placeholder' : '',
 		'value' : ''
 	},
-	'sell': {
+	'type': {
 		'param' : 'type',
 		'type'	: 'dropdown',
 		'options' : [

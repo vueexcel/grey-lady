@@ -9,7 +9,7 @@ function renderSearchForm (config_type, request_type, div_id) {
 
 	var query_string = getUrlVars();
 
-	// console.log(search_params);
+	// console.log('Query string URL: ');	
 	// console.log(query_string);
 
 	for (query_item in query_string) {
@@ -17,6 +17,9 @@ function renderSearchForm (config_type, request_type, div_id) {
 			search_params[query_item].value = query_string[query_item];
 		}
 	}
+
+	// console.log('Updated search params: ');
+	// console.log(search_params);
 
 	search_form_html += '<form id="' + config_type + '_search_form" >';
 
@@ -91,7 +94,7 @@ function buildDropDown (search_param_item) {
 	html_to_return += '<select class="form-control select2" name="' + search_param_item.param + '">'
 
 	for (var i = search_param_item.options.length - 1; i >= 0; i--) {
-		if (search_param_item.options[i].selected) {
+		if (search_param_item.value == search_param_item.options[i].value) {
 			html_to_return += '<option value="'+search_param_item.options[i].value +'" selected>'+search_param_item.options[i].text +'</option>';
 		} else {
 			html_to_return += '<option value="'+search_param_item.options[i].value +'">'+search_param_item.options[i].text +'</option>';	
