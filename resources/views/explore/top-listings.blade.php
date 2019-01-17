@@ -20,7 +20,7 @@
 
               <tr>
                 {{-- <th>{{ $coc_listing->id }}</th> --}}
-                <td><a target="_Blank" href="/listings/details?id={{ $coc_listing->id }}&type=sell"> {{ $coc_listing->address }} </a></td> 
+                <td><a target="_Blank" href="/listing/{{ $coc_listing->id }}"> {{ $coc_listing->address }} </a></td> 
                 <td>{{ $coc_listing->beds }}</td> 
                 <td>{{ formatPercentage($coc_listing->cash_on_cash, 1) }}</td> 
               </tr>
@@ -56,7 +56,7 @@
           @foreach ($zip[0]->calculated_fields->best_listings->by_cap_rate as $coc_listing)
 
               <tr>
-                <td><a target="_Blank" href="/listings/details?id={{ $coc_listing->id }}&type=sell"> {{ $coc_listing->address }} </a></td> 
+                <td><a target="_Blank" href="/listing/{{ $coc_listing->id }}"> {{ $coc_listing->address }} </a></td> 
                 <td>{{ $coc_listing->beds }}</td> 
                 <td>{{ formatPercentage($coc_listing->cap_rate, 1) }}</td> 
               </tr>
