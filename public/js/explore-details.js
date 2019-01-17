@@ -71,17 +71,13 @@ $("#explore-details-recalc-all-stats").bind('click', function () {
 
 function reCalculateAllBeds (beds_array) {
 
-  console.log('function called');
+  console.log('function called reCalculateAllBeds');
   console.log(beds_array.length);
     
-  return false;
-  
   if (beds_array.length > 0) {
-    
-    
 
     // var recalculate_listings_api = 'https://api.greyladyproject.com/api/v1/recalculate/listings?zip=' + explore_details_zip;
-    var recalculate_listings_api = 'https://app.greyladyproject.com/api/secure?url=recalculate/listings&zip=' + explore_details_zip;
+    var recalculate_listings_api = '/api/secure?url=recalculate/listings&zip=' + explore_details_zip;
     recalculate_listings_api += '&minBed=' + beds_array[0];
     recalculate_listings_api += '&maxBed=' + beds_array[0];
 
@@ -89,6 +85,8 @@ function reCalculateAllBeds (beds_array) {
     console.log(recalculate_listings_api);
 
     beds_array.shift()
+
+    console.log('Recalculating for beds: ' + beds_array.length);
 
     $.get(recalculate_listings_api, reCalculateAllBeds(beds_array) );
 
@@ -98,7 +96,7 @@ function reCalculateAllBeds (beds_array) {
 
     setTimeout(function () {
 
-      $.get('https://app.greyladyproject.com/api/secure?url=recalculate/zips?zip=' + explore_details_zip, function () {
+      $.get('/api/secure?url=recalculate/zips&zip=' + explore_details_zip, function () {
         alert('recalculation worked! Reloading...');
         location.reload(true);
       });
