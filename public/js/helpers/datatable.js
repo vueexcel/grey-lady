@@ -51,7 +51,11 @@ function createDataTable (config_item) {
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false,
-      'pageLength'   : 100
+      'pageLength'   : 100,
+  	'dom': 'Bfrtip',
+    'buttons': [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+    ]
     });
 
 }

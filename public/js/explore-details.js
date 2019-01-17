@@ -65,7 +65,7 @@ config.listings.get.search_params = {
 
 $("#explore-details-recalc-all-stats").bind('click', function () {
 
-  reCalculateAllBeds([1,2,3,4,5,6,7,8,9,10,11,12]);
+  reCalculateAllBeds([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
 
 });
 
@@ -101,7 +101,7 @@ function reCalculateAllBeds (beds_array) {
         location.reload(true);
       });
 
-    }, 1000)
+    }, 1500)
 
     
 

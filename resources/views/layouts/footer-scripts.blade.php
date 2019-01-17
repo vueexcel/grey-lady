@@ -35,6 +35,13 @@
 <!-- DataTables -->
 <script src="/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="/js/helpers/datatables.js/dataTables.buttons.min.js"></script>
+<script src="/js/helpers/datatables.js/pdfmake.min.js"></script>
+<script src="/js/helpers/datatables.js/vfs_fonts.js"></script>
+<script src="/js/helpers/datatables.js/jszip.min.js"></script>
+<script src="/js/helpers/datatables.js/buttons.print.min.js"></script>
+<script src="/js/helpers/datatables.js/buttons.html5.min.js"></script>
+<script src="/js/helpers/datatables.js/buttons.flash.min.js"></script>
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
