@@ -69,7 +69,7 @@
               @endif
 
               @if ( property_exists($bed_zip_stats, "average_revenue") )
-                <td> <a target="_blank" href="https://api.greyladyproject.com/api/v1/report?zip={{$zip[0]->details->zip}}&maxBed={{$bed}}&minBeds={{$bed}}"> {{ formatLargeCurrency($bed_zip_stats->average_revenue) }}</a></td> 
+                <td> <a target="_blank" href="/listings?zip={{$zip[0]->details->zip}}&minBed={{$bed}}&maxBed={{$bed}}&type=rent"> {{ formatLargeCurrency($bed_zip_stats->average_revenue) }}</a></td> 
               @else 
                  <td>-</td> 
               @endif
