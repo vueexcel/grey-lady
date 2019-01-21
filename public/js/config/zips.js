@@ -150,7 +150,7 @@ config.zips.get.search_params = {
 		'type'	: 'textfield',
 		'label'	: 'Town',
 		'placeholder' : '',
-		'value' : 'Worcester'
+		'value' : ''
 	},
 	'stateAbbreviation': {
 		'param' : 'stateAbbreviation',

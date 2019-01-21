@@ -28,9 +28,12 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/explore"><i class="fa fa-circle-o"></i>Explore all Zips</a></li>
+            <li><a href="/explore?stateAbbreviation=ME"><i class="fa fa-circle-o"></i>Maine</a></li>
+            <li><a href="/explore?stateAbbreviation=NH"><i class="fa fa-circle-o"></i>New Hampshire</a></li>
+            <li><a href="/explore?stateAbbreviation=VT"><i class="fa fa-circle-o"></i>Vermont</a></li>
+            <li><a href="/explore?stateAbbreviation=MA"><i class="fa fa-circle-o"></i>Massachusetts</a></li>
             <li><a href="/explore?town=worcester"><i class="fa fa-circle-o"></i>Worcester, MA</a></li>
             <li><a href="/explore?town=Boston"><i class="fa fa-circle-o"></i>Boston, MA</a></li>
-            <li><a href="/explore?town=McLean"><i class="fa fa-circle-o"></i>McLean, VA</a></li>
           </ul>
         </li>
         <li class="treeview active">
