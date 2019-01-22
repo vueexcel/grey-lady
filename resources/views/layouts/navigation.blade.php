@@ -62,6 +62,8 @@
             <li><a href="/getting-started"><i class="fa fa-circle-o"></i>Getting Started</a></li>
             <li><a href="/chrome-extension-download-instructions"><i class="fa fa-circle-o"></i>Download Chrome Extension</a></li>
             <li><a href="/#"><i class="fa fa-circle-o"></i>Report a bug</a></li>
+            <li><a target=_Blank href="https://my.apify.com/"><i class="fa fa-circle-o"></i>Apify Dashboard</a></li>
+            <li><a target=_Blank href="https://drive.google.com/drive/u/1/folders/1J6VbLYVkZNQegBFvPA6FnjT2WRyROlAt"><i class="fa fa-circle-o"></i>Google Drive Folder</a></li>
           </ul>
         </li>
         
