@@ -8,7 +8,7 @@
         <li class="treeview active">
           <a href="/explore">
             <i class="fa fa-check-circle-o"></i>
-            <span>Favorite</span>
+            <span>Favorites</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
