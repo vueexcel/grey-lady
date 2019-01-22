@@ -9,7 +9,7 @@
 				@endif	
 
 				@if ( isset($listing->source->source_link) )
-					<a target=_blank href="{{ $listing->source->source_link }}">Found on</a>
+					<a target=_blank href="https://{{ $listing->source->source }}{{ $listing->source->source_link }}">Found on</a>
 				@endif	
 			</p>
 	</div>
