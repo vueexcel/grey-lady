@@ -75,7 +75,7 @@
               @endif
               
               @if ( property_exists($bed_zip_stats, "number_of_listings") )
-                <td> <a target="_blank" href="/listings?zip={{$zip[0]->details->zip}}&maxBed={{$bed}}&minBed={{$bed}}">{{ $bed_zip_stats->number_of_listings }}</a></td> 
+                <td> <a target="_blank" href="/listings?zip={{$zip[0]->details->zip}}&maxBed={{$bed}}&minBed={{$bed}}&type=sell">{{ $bed_zip_stats->number_of_listings }}</a></td> 
               @else 
                  <td>-</td> 
               @endif
