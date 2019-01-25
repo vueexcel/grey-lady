@@ -8,6 +8,8 @@
 <script src="/js/helpers/datatable.js"></script>
 <script src="/js/helpers/create-and-edit.js"></script>
 <script src="/js/helpers/greylady-app.js"></script>
+<script src="/js/helpers/numeral.js"></script>
+<script src="/js/helpers/util.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/config/listings.js"></script>
 <script src="/js/config/zips.js"></script>

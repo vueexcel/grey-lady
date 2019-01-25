@@ -166,12 +166,12 @@ config.listings.ajax = {
             return_data.push({
               'date_added': formatDate(json.items[i].createdAt),
               'address': json.items[i].details.location.address,
+              'zip': '<a target=_Blank href="/explore/'+json.items[i].details.location.zip+'">' + json.items[i].details.location.zip + '</a>',
               'sqft': json.items[i].details.livingArea,
               'beds': json.items[i].details.beds,
               'cap_rate': formatPercentage(cap_rate),
               'cash_on_cash': formatPercentage(cash_on_cash),
-              'price': json.items[i].details.price,
-              'zip': json.items[i].details.location.address,
+              'price': formatCurrency(json.items[i].details.price, 3),
               'actions': config.listings.get.actions_column(json.items[i]) 
             })
           }
@@ -180,7 +180,7 @@ config.listings.ajax = {
       };
 
 
-config.listings.columns =  [ 'actions', 'zip', 'price', 'cash_on_cash', 'cap_rate', 'beds', 'sqft', 'address', 'date_added'];
+config.listings.columns =  [ 'actions', 'price', 'cash_on_cash', 'cap_rate', 'sqft', 'beds', 'zip', 'address', 'date_added'];
 // config.listings.get.columns_defs =  [{ "width": "150px", "target": 0 }];
 // config.listings.columns =  [ {'data':'actions', 'wdith': '200px'}, {'data':'zip'}, {'data':'price'}, {'data':'cash_on_cash'}, {'data':'cap_rate'}, {'data':'beds'}, {'data':'sqft'}, {'data':'address'}, {'data':'date_added'}];
 
