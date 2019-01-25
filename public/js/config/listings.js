@@ -165,8 +165,8 @@ config.listings.ajax = {
             
             return_data.push({
               'date_added': formatDate(json.items[i].createdAt),
-              'address': json.items[i].details.location.address,
-              'zip': '<a target=_Blank href="/explore/'+json.items[i].details.location.zip+'">' + json.items[i].details.location.zip + '</a>',
+              'address': '<a href="/listing/'+json.items[i].id+'">' + json.items[i].details.location.address + '</a>',
+              'zip': '<a href="/explore/'+json.items[i].details.location.zip+'">' + json.items[i].details.location.zip + '</a>',
               'sqft': json.items[i].details.livingArea,
               'beds': json.items[i].details.beds,
               'cap_rate': formatPercentage(cap_rate),

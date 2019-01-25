@@ -1,4 +1,10 @@
-config.listings.columns =  [ 'zip', 'price', 'cap_rate', 'beds', 'address', ];
+config.listings.columns =  [ 'actions', 'zip', 'price', 'cap_rate', 'beds', 'address', ];
+
+config.listings.get.actions_column = function (listing_item) {
+  var html_to_return = '';
+  html_to_return += '<a type="button" class="btn btn-default" target=_blank href="http://trulia.com' + listing_item.source.source_link + '">Source</a>';
+  return html_to_return;
+}
 
 config.listings.ajax.dataSrc = function (json) {
     var return_data = new Array();
@@ -13,12 +19,12 @@ config.listings.ajax.dataSrc = function (json) {
       }
       
       return_data.push({
-        'address': json.items[i].details.location.address,
+        'address': '<a href="/listing/'+json.items[i].id+'">' + json.items[i].details.location.address + '</a>',
         'beds': json.items[i].details.beds,
         'cap_rate': formatPercentage(cap_rate),
         'price': json.items[i].details.price,
         'zip': json.items[i].details.location.zip,
-        // 'actions': config.listings.get.actions_column(json.items[i]) 
+        'actions': config.listings.get.actions_column(json.items[i]) 
       })
     }
     return return_data;
