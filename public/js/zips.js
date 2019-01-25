@@ -6,8 +6,8 @@ $( function () {
 	      for( var i=0; i< json.length; i++){
 	        return_data.push({
 	          // 'date_added': formatDate(json[i].createdAt),
-	          'zip': json[i].details.zip,
-	          'area': json[i].details.place_name + ', ' + json[i].details.state_abbreviation,
+	          'zip': '<a target=_Blank href="/explore/'+json[i].details.zip+'">' + json[i].details.zip + '</a>',
+	          'area': '<a target=_Blank href="/explore/?town=' + json[i].details.place_name + '&stateAbbreviation=' + json[i].details.state_abbreviation + '" >' + json[i].details.place_name + ', ' + json[i].details.state_abbreviation + '</a>',
 	          'cap by bed': formatZipCalculations(json[i]),
 	          'watchlist' : makeWatchListButtons(json[i]),
 	          'actions': config.zips.get.actions_column(json[i])
