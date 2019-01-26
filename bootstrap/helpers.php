@@ -62,3 +62,20 @@ function formatProgressBar($percentage, $color = 'blue') {
 
 	return $string_to_return;
 }
+
+
+function formatPropertyDetailsBlock($value, $label) {
+
+	$string_to_return = '';
+
+	if ( !empty($value)) {
+		$string_to_return .= '<div class="col-sm-3 col-xs-6">';
+		$string_to_return .= '<div class="description-block">';
+		$string_to_return .= '<h5 class="description-header">' . $value . '</h5>';
+		$string_to_return .= '<span class="description-text">'.$label.'</span>';
+		$string_to_return .= '</div>';
+		$string_to_return .= '</div>';
+	}
+	
+	return $string_to_return;
+}

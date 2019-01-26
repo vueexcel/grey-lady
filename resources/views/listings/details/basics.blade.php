@@ -1,6 +1,8 @@
 <div class="box box-default">
 	<div class="box-body">
 
+{{-- {{dd($listing)}} --}}
+
 		<h4>Basic Details</h4>
 
             <div class="col-sm-3 col-xs-6">
@@ -46,4 +48,37 @@
             </div>
 		
 	</div>
+</div>
+
+
+
+
+<div class="box box-default">
+  <div class="box-body">
+
+    <h4>Description</h4>
+
+    @if ( isset($listing->details->PublicRemarks) )
+
+      <p>{{$listing->details->PublicRemarks}}</p>
+
+    @else 
+
+      <p>None available</p>
+
+    @endif
+
+  </div>
+</div>
+
+<div class="box box-default">
+  <div class="box-body">
+
+    <h4>Other Information</h4>
+
+    
+
+    {!! formatPropertyDetailsBlock( $listing->details->YearBuilt, 'Year Built' ) !!}
+
+  </div>
 </div>
