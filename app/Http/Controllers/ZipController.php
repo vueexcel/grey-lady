@@ -44,6 +44,8 @@ class ZipController extends Controller
               $content[0]->watchlist->rent->lastCrawlFormatted = $formatted_time;
           } else {
               
+              
+                $content[0]->watchlist->rent = (object)[];
               $content[0]->watchlist->rent->lastCrawlFormatted = 'no time yet';
 
           }
@@ -56,6 +58,7 @@ class ZipController extends Controller
               $content[0]->watchlist->sell->lastCrawlFormatted = $formatted_time;
           } else {
               if (isset($content[0]->watchlist->sell)) {
+                $content[0]->watchlist->sell = (object)[];
                 $content[0]->watchlist->sell->lastCrawlFormatted = 'no time yet';
               } else {
                 $content[0]->watchlist->sell = false;
