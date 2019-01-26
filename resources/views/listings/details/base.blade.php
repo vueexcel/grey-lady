@@ -23,9 +23,9 @@
 
 <div class=" col-md-4">
 
-  @include('listings.details.agent')
-
   @include('listings.details.source')
+
+  @include('listings.details.agent')
 
   @include('explore.housing')
 

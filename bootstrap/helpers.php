@@ -79,3 +79,16 @@ function formatPropertyDetailsBlock($value, $label) {
 	
 	return $string_to_return;
 }
+
+function makeButton ($text, $link) {
+	
+	$string_to_return = '';
+
+	if (isset($link)) {
+
+		$string_to_return .= '<a type="button" class="btn btn-default" href="'.$link.'">'.$text.'</a>';
+	
+	}
+
+	return $string_to_return;
+}

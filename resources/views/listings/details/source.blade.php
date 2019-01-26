@@ -1,16 +1,15 @@
 <div class="box box-default">
 	<div class="box-body">
-		<h4>Found on:</h4>
 
-			<p>{{ $listing->source->source }} - 
+		{!! makeButton('Source', $listing->source->source_pdp) !!}
+		{!! makeButton('SRP Link', $listing->source->source_link) !!}	
 
-				@if ( isset($listing->source->source_pdp) )
-					<a target=_blank href="{{ $listing->source->source_pdp }}">PDP Link</a> /	
-				@endif	
+		<div class='row' style="padding-bottom: 15px"></div>
 
-				@if ( isset($listing->source->source_link) )
-					<a target=_blank href="https://{{ $listing->source->source }}{{ $listing->source->source_link }}">Found on</a>
-				@endif	
-			</p>
+		{!! makeButton($listing->details->location->zip . ' Details', '/explore/' . $listing->details->location->zip) !!}	
+		{!! makeButton('Zips in ' . $listing->details->location->city, '/explore/?town=' . $listing->details->location->city) !!}	
+
 	</div>
 </div>
+
+
