@@ -2,7 +2,7 @@
 	<div class="box-body">
 
 
-		<h4>Basic Details</h4>
+		<h4>Basic Listing Details</h4>
 
     {!! formatPropertyDetailsBlock( $listing->details->purchaseType, 'Purchase Type' ) !!}
     {!! formatPropertyDetailsBlock( $listing->details->beds, 'Beds' ) !!}
