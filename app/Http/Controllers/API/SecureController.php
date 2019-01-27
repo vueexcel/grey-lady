@@ -118,7 +118,7 @@ class SecureController extends BaseController
             ]);
 
             $response = [
-                'api_response' => $apiRequest->getBody()->getContents(),
+                'api_response' => json_decode($apiRequest->getBody()->getContents()),
                 'version' => $current_chrome_plugin
             ];
 
