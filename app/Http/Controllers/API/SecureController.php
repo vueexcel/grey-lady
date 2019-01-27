@@ -117,10 +117,12 @@ class SecureController extends BaseController
                 'headers' => ['apiKey' => 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ'],
             ]);
 
-            return array(
+            $response = [
                 'api_response' => $apiRequest->getBody()->getContents(),
                 'version' => $current_chrome_plugin
-            );
+            ];
+
+            return response()->json($response, 200);
 
         } else {
             
