@@ -84,4 +84,48 @@ class SecureController extends BaseController
         }
              
     }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function bootup(Request $request)
+    {
+        $client = new GuzzleHttpClient();
+        $input = $request->all();
+        $query = array();
+        $current_chrome_plugin = array(
+            'version' => '0.1.2',
+            'download_link' => 'https://drive.google.com/file/d/1STaTZoPu1_BmWvs8K9tFpnQwfnELoWDE/view'
+        );
+
+
+        if ($input['url']) {
+
+            $url = 'https://api.greyladyproject.com/api/v1/' . $input['url'];
+
+            unset($input['url']);
+
+            foreach ($input as $key => $value) {
+                $query[$key] = $value;
+            }
+
+            $apiRequest = $client->request('POST', $url, [
+                'form_params' => $query,
+                'headers' => ['apiKey' => 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ'],
+            ]);
+
+            return array(
+                'api_response' => $apiRequest->getBody()->getContents(),
+                'version' => $current_chrome_plugin
+            );
+
+        } else {
+            
+            return false;
+        }
+             
+    }
 }

@@ -27,6 +27,7 @@ Route::get('user/all', 'API\UsersController@allInfo')->middleware('auth:api');
 
 Route::get('secure', 'API\SecureController@get')->middleware('auth:api');
 Route::post('secure', 'API\SecureController@post')->middleware('auth:api');
+Route::post('secure/bootup', 'API\SecureController@bootup')->middleware('auth:api');
 
 Route::get('user', 'API\UsersController@show')->middleware('auth:api');
 
