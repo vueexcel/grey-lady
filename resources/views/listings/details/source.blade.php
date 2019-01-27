@@ -1,8 +1,13 @@
 <div class="box box-default">
 	<div class="box-body">
 
-		{!! makeButton('Source', $listing->source->source_pdp) !!}
-		{!! makeButton('SRP Link', $listing->source->source_link) !!}	
+		@if (  isset($listing->source->source_pdp)) 
+			{!! makeButton('Source', $listing->source->source_pdp) !!}
+		@endif
+
+		@if (  isset($listing->source->source_link)) 
+			{!! makeButton('SRP Link', $listing->source->source_link) !!}	
+		@endif
 
 		<div class='row' style="padding-bottom: 15px"></div>
 
