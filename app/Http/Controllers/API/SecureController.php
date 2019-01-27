@@ -98,7 +98,7 @@ class SecureController extends BaseController
         $query = array();
         $current_chrome_plugin = array(
             'version' => '0.1.2',
-            'download_link' => 'https://drive.google.com/file/d/1STaTZoPu1_BmWvs8K9tFpnQwfnELoWDE/view'
+            'download_link' => 'http://greylady-app.test/chrome-extension-download-instructions/latest'
         );
 
 

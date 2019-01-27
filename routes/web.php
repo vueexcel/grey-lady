@@ -36,6 +36,10 @@ Route::get('/chrome-extension-download-instructions', function () {
         return view('help.chrome-extension-download');
     });
 
+Route::get('/chrome-extension-download-instructions/latest', function () {
+        return view('help.chrome-extension-download-latest');
+    });
+
 Route::get('/home', function () {
         return view('home');
     });
