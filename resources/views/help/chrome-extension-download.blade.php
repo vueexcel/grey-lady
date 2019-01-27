@@ -23,7 +23,7 @@
       <h3>Installation Instructions</h3>
 
       <ul>
-        <li>Download the <a href="http://greylady-app.test/chrome-extension-download-instructions/latest">latest version here</a>. It's permission controlled by google right now. You might need to request access to it.</li>
+        <li>Download the <a href="/chrome-extension-download-instructions/latest">latest version here</a>. It's permission controlled by google right now. You might need to request access to it.</li>
         <li>Follow the instructions <a href="https://blog.hunter.io/how-to-install-a-chrome-extension-without-using-the-chrome-web-store-31902c780034">in this article</a> under <b>"Method 1"</b></li>
       </ul>
 
