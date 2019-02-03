@@ -11,5 +11,5 @@ Route::group([
     'middleware' => ['web', config('backpack.base.middleware_key', 'admin')],
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
-    CRUD::resource('parseError', 'parseErrorCrudController');
+    CRUD::resource('parseerror', 'parseerrorcrudcontroller');
 }); // this should be the absolute last line of this file

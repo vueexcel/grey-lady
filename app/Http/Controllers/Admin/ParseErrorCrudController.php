@@ -24,8 +24,8 @@ class ParseErrorCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\ParseError');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/parseError');
-        $this->crud->setEntityNameStrings('parseError', 'Parsing Errors');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/parseerror');
+        $this->crud->setEntityNameStrings('Parse Error', 'Parsing Errors');
 
         /*
         |--------------------------------------------------------------------------
@@ -57,6 +57,6 @@ class ParseErrorCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-        
+
     }
 }
