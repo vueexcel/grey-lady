@@ -34,7 +34,19 @@ class parseerrorcrudcontroller extends CrudController
         */
 
         // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
+
+          $this->crud->setColumns(['created_at', 'url', 'missingFields', 'caughtErrors']);
+          // $this->crud->addField([
+          //   'name' => 'name',
+          //   'type' => 'text',
+          //   'label' => "Tag name"
+          // ]);
+          // $this->crud->addField([
+          //   'name' => 'slug',
+          //   'type' => 'text',
+          //   'label' => "URL Segment (slug)"
+          // ]);
 
         // add asterisk for fields that are required in ParseErrorRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
