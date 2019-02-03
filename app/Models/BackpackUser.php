@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\User;
 use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
+use Spatie\Permission\Traits\HasRoles;
 use Tightenco\Parental\HasParentModel;
 
 class BackpackUser extends User
