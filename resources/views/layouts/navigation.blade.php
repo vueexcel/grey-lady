@@ -64,6 +64,7 @@
             <li><a target=_Blank href="https://github.com/MatthewBarba/greylady-app/issues"><i class="fa fa-circle-o"></i>Report a bug</a></li>
             <li><a target=_Blank href="https://my.apify.com/"><i class="fa fa-circle-o"></i>Apify Dashboard</a></li>
             <li><a target=_Blank href="https://drive.google.com/drive/u/1/folders/1J6VbLYVkZNQegBFvPA6FnjT2WRyROlAt"><i class="fa fa-circle-o"></i>Google Drive Folder</a></li>
+            <li><a target=_Blank href="https://papertrailapp.com/systems/greyladyapp/events"><i class="fa fa-circle-o"></i>Hosted Logs</a></li>
           </ul>
         </li>
         
