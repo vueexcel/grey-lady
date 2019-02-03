@@ -57,5 +57,6 @@ class ParseErrorCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
+        
     }
 }
