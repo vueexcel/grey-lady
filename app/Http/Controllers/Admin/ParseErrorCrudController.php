@@ -14,7 +14,7 @@ use Backpack\CRUD\CrudPanel;
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class ParseErrorCrudController extends CrudController
+class parseerrorcrudcontroller extends CrudController
 {
     public function setup()
     {
