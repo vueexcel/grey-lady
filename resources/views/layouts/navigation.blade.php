@@ -38,6 +38,35 @@
         </li>
         <li class="treeview active">
           <a href="#">
+            <i class="fa fa-paper-plane"></i>
+            <span>Setup & Docs</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/getting-started"><i class="fa fa-circle-o"></i>Getting Started</a></li>
+            <li><a href="/chrome-extension-download-instructions"><i class="fa fa-circle-o"></i>Download Chrome Extension</a></li>
+            <li><a target=_Blank href="https://github.com/MatthewBarba/greylady-app/issues"><i class="fa fa-circle-o"></i>Report a bug</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class=""></i>
+            <span>Admin</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a target=_Blank href="https://my.apify.com/"><i class="fa fa-circle-o"></i>Apify Dashboard</a></li>
+            <li><a target=_Blank href="https://drive.google.com/drive/u/1/folders/1J6VbLYVkZNQegBFvPA6FnjT2WRyROlAt"><i class="fa fa-circle-o"></i>Google Drive Folder</a></li>
+            <li><a target=_Blank href="https://papertrailapp.com/systems/greyladyapp/events"><i class="fa fa-circle-o"></i>Hosted Logs</a></li>
+            <li><a target=_Blank href="/admin/"><i class="fa fa-circle-o"></i>Admin Panel</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
             <i class=""></i>
             <span>CRUD Views</span>
             <span class="pull-right-container">
@@ -48,24 +77,6 @@
             <li><a href="../listings"><i class="fa fa-circle-o"></i>Listings Index</a></li>
             <li><a href="../zips"><i class="fa fa-circle-o"></i>Zips Index</a></li>
             <li><a href="../watchlist"><i class="fa fa-circle-o"></i>Watchlists Index</a></li>
-          </ul>
-        </li>
-        <li class="treeview active">
-          <a href="#">
-            <i class=""></i>
-            <span>Setup & Docs</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="/getting-started"><i class="fa fa-circle-o"></i>Getting Started</a></li>
-            <li><a href="/chrome-extension-download-instructions"><i class="fa fa-circle-o"></i>Download Chrome Extension</a></li>
-            <li><a target=_Blank href="https://github.com/MatthewBarba/greylady-app/issues"><i class="fa fa-circle-o"></i>Report a bug</a></li>
-            <li><a target=_Blank href="https://my.apify.com/"><i class="fa fa-circle-o"></i>Apify Dashboard</a></li>
-            <li><a target=_Blank href="https://drive.google.com/drive/u/1/folders/1J6VbLYVkZNQegBFvPA6FnjT2WRyROlAt"><i class="fa fa-circle-o"></i>Google Drive Folder</a></li>
-            <li><a target=_Blank href="https://papertrailapp.com/systems/greyladyapp/events"><i class="fa fa-circle-o"></i>Hosted Logs</a></li>
-            <li><a target=_Blank href="/admin/"><i class="fa fa-circle-o"></i>Admin Panel</a></li>
           </ul>
         </li>
         
