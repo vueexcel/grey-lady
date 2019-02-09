@@ -13,6 +13,29 @@ function formatPercentage(number_to_format, digits = 3) {
 
 }
 
+function makeSourceLink( listing_item ) {
+
+	var link;
+
+	if (listing_item.source &&
+	 	listing_item.source.source && 
+	 	ValidURL(listing_item.source.source) && 
+	 	listing_item.source.source_link
+	 ) {
+		link = listing_item.source.source + listing_item.source.source_link;
+	} else {
+		link = listing_item.source.source_link;
+	}
+
+
+	if ( (link.indexOf('http') == -1) && (link.indexOf('https') == -1)) {
+		link = 'https://' + link;
+	}
+
+	return link;
+
+}
+
 function makeDropDownButton(main_button_text, dropdown_buttons) {
 
 	var html_to_return = '';
@@ -46,4 +69,19 @@ function getUrlVars()
         vars[hash[0]] = hash[1];
     }
     return vars;
+}
+
+function ValidURL(str) {
+  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+    '(\\:\\d+)?(\/[-a-z\\d%_.~+]*)*'+ // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+    '(\\#[-a-z\\d_]*)?$','i'); // fragment locater
+  if(!pattern.test(str)) {
+    alert("Please enter a valid URL.");
+    return false;
+  } else {
+    return true;
+  }
 }

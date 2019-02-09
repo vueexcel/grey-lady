@@ -113,18 +113,10 @@ config.listings.create.search_params = {
 
 config.listings.get.actions_column = function (listing_item) {
 	var html_to_return = '';
-	// console.log(listing_item);
+	
+	console.log(listing_item);
 
-	html_to_return += makeDropDownButton('API Calls', [
-	{
-		'text': 'to Trulia',
-		'link': 'http://trulia.com' + listing_item.source.source_link
-	},
-	{
-		'text': 'Get Zip API',
-		'link': '//api.greyladyproject.com/api/v1/zip?zip=' + listing_item.details.location.zip
-	},
-	]);
+	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="' + makeSourceLink(listing_item) + '">Source</a>';
 
 	html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listing/' + listing_item.id + '">Details</a>';
 	return html_to_return;
