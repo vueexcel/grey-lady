@@ -5,7 +5,9 @@
 			{!! makeButton('Source', $listing->source->source_pdp) !!}
 		@endif
 
-		@if (  isset($listing->source->source_link)) 
+		@if (  isset($listing->source->source_link) && isset($listing->source->source) ) 
+			{!! makeButton('SRP Link', 'https://' . $listing->source->source . $listing->source->source_link) !!}	
+		@elseif ( isset($listing->source->source_link) )
 			{!! makeButton('SRP Link', $listing->source->source_link) !!}	
 		@endif
 
