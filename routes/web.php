@@ -58,6 +58,8 @@ Route::group(['middleware' => 'auth'], function() {
         return view('explore.explore');
     });
     
+    Route::get('/scenario/run/{id}', 'ScenarioController@run');
+
     Route::get('/explore/favorites/zips', 'FavoritesController@zips');
     Route::get('/explore/favorites/listings', 'FavoritesController@listings');
     
