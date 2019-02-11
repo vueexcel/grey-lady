@@ -110,7 +110,7 @@
         if ( object[key] < 10 ) {
           html += '<li><b>' + key + ': </b>' + formatPercentage(object[key]) + '</li>';  
         } else if ( object[key] > 10 ) {
-          html += '<li><b>' + key + ': </b>' + formatCurrency(object[key]) + '</li>';  
+          html += '<li><b>' + key + ': </b>' + formatCurrency(object[key], 2) + '</li>';  
         }
 
         
