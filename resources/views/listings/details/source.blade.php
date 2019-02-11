@@ -1,6 +1,11 @@
 <div class="box box-default">
 	<div class="box-body">
 
+			
+		@if (  $listing->details->purchaseType == 'sell' && $listing->details->price > 0) 
+			{!! makeButton('Run Scenario', '/scenario/run/' . $listing->id) !!}
+		@endif
+
 		@if (  isset($listing->source->source_pdp)) 
 			{!! makeButton('Source', $listing->source->source_pdp) !!}
 		@endif
