@@ -6,28 +6,13 @@
 
 <div id="message-area"></div>
 
-<div class=" col-md-4">
-
-  @include('listings.general.simple')
-
-  <div class="row"></div>
-
-  @include('scenario.controls')  
-
-</div>
-<div class=" col-md-4">
-
-  @include('scenario.new-scenario')  
-
-</div>
-<div class=" col-md-4">
-
-  @include('scenario.base-scenario')      
-
+<div class=" col-md-5">
+  @include('scenario.controls')    
 </div>
 
-
-
+<div class=" col-md-7">
+  @include('scenario.table')
+</div>
 
 @endsection
 
@@ -43,7 +28,7 @@
     getFinancialScenario();
 
 
-    $('form input').on('change', function () {
+    $('#scenario-control input').on('change', function () {
     
       updateFormDisplayValues();      
       getFinancialScenario();
@@ -55,7 +40,16 @@
       var form = $( '#scenario-control input' ).each(function(index, el) {
 
         var id = 'span#' + el.name;
-        $(id).html(el.value);
+
+        if (el.value < 10) {
+
+          $(id).html( formatPercentage(el.value) )
+          
+        } else {
+
+          $(id).html( formatCurrency(el.value, 3) );  
+        }
+        
         
       });
 
@@ -63,7 +57,7 @@
 
     function getFinancialScenario () {
 
-      var form_values = $( '#scenario-control' ).serialize();
+      var form_values = $( '#scenario-control-form' ).serialize();
 
       var url = '/api/secure?url=scenario&listing_id=' + listing_id + '&' + form_values;
 
@@ -83,41 +77,62 @@
 
 
     function buildFinancialForms (data) {
-      $('#new-scenario').html(' ');        
-      $('#base-scenario').html(' ');        
+      
+      $('#scenario-table').html(' ');
 
+      var html = ''
+      html += '<table>';
+      html += '<tr>';
+      html += '<td><b>Metric</b></td>';
+      html += '<td><b>New Scenario</b></td>';
+      html += '<td><b>Base Scenarios</b></td>';
+      html += '<td><b>Difference</b></td>';
+      html += '</tr>';
 
-      buildListFromObject(data.new_calculated_fields.financial_information, 'Financial Information', '#new-scenario');
-      buildListFromObject(data.new_calculated_fields.mortgage_information, 'Mortgage Information', '#new-scenario');
-      buildListFromObject(data.new_calculated_fields.operating_profit_and_loss.monthly, 'Operating P&L', '#new-scenario');
+      html += buildTableFromObjects(data.new_calculated_fields.financial_information,data.calculated_fields[0].financial_information, 'Financial Information', '#scenario-table');
+      html += buildTableFromObjects(data.new_calculated_fields.mortgage_information,data.calculated_fields[0].mortgage_information, 'Mortgage Information', '#scenario-table');
+      html += buildTableFromObjects(data.new_calculated_fields.operating_profit_and_loss.monthly, data.calculated_fields[0].operating_profit_and_loss.monthly, 'Operating P&L', '#scenario-table');
 
+      html += '</table>';
 
-      buildListFromObject(data.calculated_fields[0].financial_information, 'Financial Information', '#base-scenario');
-      buildListFromObject(data.calculated_fields[0].mortgage_information, 'Mortgage Information', '#base-scenario');
-      buildListFromObject(data.calculated_fields[0].operating_profit_and_loss.monthly, 'Operating P&L', '#base-scenario');
+      $('#scenario-table').append(html);
+
     }
 
-    function buildListFromObject (object, title, appendTo ) {
+    function buildTableFromObjects(new_object, base_object, title, appendTo) {
 
-      var html = '';
-      html += '<h5>' + title + '</h5>';
-      html += '<ul>';
+      var html = ''      
 
-      html += '</ul>';
+      for (key in new_object) {
 
-      for (key in object) {
 
-        if ( object[key] < 10 ) {
-          html += '<li><b>' + key + ': </b>' + formatPercentage(object[key]) + '</li>';  
-        } else if ( object[key] > 10 ) {
-          html += '<li><b>' + key + ': </b>' + formatCurrency(object[key], 2) + '</li>';  
+        if (typeof new_object[key] !== 'object') {
+
+            html += '<tr>';
+            html += '<td><b>' + key + '</b></td>';
+
+            if ( new_object[key] < 10 ) {
+
+              html += '<td>' + formatPercentage(new_object[key]) + '</td>';
+              html += '<td>' + formatPercentage(base_object[key]) + '</td>';
+              html += '<td>' + formatPercentage((base_object[key] - new_object[key])) + '</td>';
+          
+            
+            } else if ( new_object[key] > 10 ) {
+
+              html += '<td>' + formatCurrency(new_object[key],3) + '</td>';
+              html += '<td>' + formatCurrency(base_object[key], 3) + '</td>';
+              html += '<td>' + formatCurrency((base_object[key] - new_object[key]), 3) + '</td>';
+            
+            }
+
+          html += '</tr>';
+
         }
-
-        
+      
       }
 
-      $(html).appendTo(appendTo);
-
+      return html;
     }
 
 
@@ -136,13 +151,28 @@
     #scenario-control span {
       float: left;
       margin: 5px;
-      width: 50px;
+      width: 25px;
     }    
     #scenario-control input {
-      width: 150px;
+      width: 100px;
       float: left;
       margin: 5px;
     }    
+
+    table {
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100%;
+      border-collapse: collapse;
+      border: solid #e0e0dc;
+      border-width: 1px 0 0 1px;
+    }
+
+    table td {
+      border: solid #e0e0dc;
+      border-width: 0 1px 1px 0;
+      padding: 6px 8px;
+    }
 
   </style>
 

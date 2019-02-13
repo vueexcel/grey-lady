@@ -17,14 +17,14 @@ function formatPercentage($number_to_format, $places_to_format = false) {
 
 }
 
-function formatLargeCurrency($num) {
+function formatLargeCurrency($num, $digits = 2) {
 
 	 if($num>10000) {
 
         return "$" . formatLargeNumber($num);
 
   } else {
-  	return "$" . number_format($num, 2);
+  	return "$" . number_format($num, $digits);
   }
 
   return $num;
