@@ -1,6 +1,3 @@
-
-var listing_id = '{{ $listing->id }}';
-
 updateFormDisplayValues();      
 getFinancialScenario();
 
@@ -65,6 +62,8 @@ function buildFinancialForms (data) {
   html += '<td><b>Base Scenarios</b></td>';
   html += '<td><b>Difference</b></td>';
   html += '</tr>';
+
+  data = data[0];
 
   html += buildTableFromObjects(data.new_calculated_fields.financial_information,data.calculated_fields[0].financial_information, 'Financial Information', '#scenario-table');
   html += buildTableFromObjects(data.new_calculated_fields.mortgage_information,data.calculated_fields[0].mortgage_information, 'Mortgage Information', '#scenario-table');

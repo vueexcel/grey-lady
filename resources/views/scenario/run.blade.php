@@ -34,6 +34,9 @@
 
 @section('footer-scripts')
 
+  <script type="text/javascript">
+    var listing_id = '{{ $listing->id }}';
+  </script>
   <script src="/js/scenario.js"></script>
 
 @endsection 
