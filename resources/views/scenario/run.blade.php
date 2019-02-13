@@ -1,6 +1,15 @@
 
 @extends('layouts.app')
 
+@section('page-title')
+
+  <div class="explore-details-header">
+    <h3>Scenario Runner for <span>{{ $listing->details->location->address }}</span></h3>
+  </div>
+
+
+@endsection
+
 
 @section('content')
 
@@ -36,13 +45,3 @@
   <link rel="stylesheet" href="/css/scenario.css">
 
 @endsection 
-
-
-@section('page-title')
-
-  <div class="explore-details-header">
-    <h3>Scenario Runner for <span>{{ $listing->details->location->address }}</span></h3>
-  </div>
-
-
-@endsection
