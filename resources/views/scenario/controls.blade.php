@@ -66,15 +66,6 @@
 	</table>
 
 
-
-
-		{{-- {{dd($listing)}} --}}
-
-		{{-- https://api.greyladyproject.com/api/v1/scenario?listing_id=5c262da9ebc45ad4a20beb64&monthly_rent=10&downpayment_percentage=0.2&interest_rate=20&Opex_percentage=0.255&purchase_price=100000&rennovation_costs=10000&finance_renovation_costs=true --}}
-
-
-
-
 	</div>
 </div>
 
