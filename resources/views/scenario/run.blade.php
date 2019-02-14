@@ -26,7 +26,7 @@
 
   <div class="row"></div>
 
-  @include('scenario.request-response')
+  @include('bug-reporter.api-bug')
 
 
 @endsection
