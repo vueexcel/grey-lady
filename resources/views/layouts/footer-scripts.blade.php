@@ -10,10 +10,12 @@
 <script src="/js/helpers/greylady-app.js"></script>
 <script src="/js/helpers/numeral.js"></script>
 <script src="/js/helpers/util.js"></script>
+<script src="/js/helpers/clipboard.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/config/listings.js"></script>
 <script src="/js/config/zips.js"></script>
 <script src="/js/config/watchlists.js"></script>
+<script src="/js/bug-reporter.js"></script>
 
 
 

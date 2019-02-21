@@ -4,6 +4,12 @@
     bottom: 10px;
     right: 10px;
   }
+
+  .bug-reporter textarea {
+    width: 100%;
+    height: 100px;
+  }
+
   .code-snippet {
     background: #f4f4f4;
     border: 1px solid #ddd;
@@ -21,8 +27,15 @@
     word-wrap: break-word;
   }
   .code-snippet.short {
-    height: 200px;
+    height: 100px;
     overflow-y: scroll;
+  }
+
+  .hidden-but-visible {
+    position: absolute;
+    left: -99999px;
+    bottom: -99999px;
+    font-size: 5px;
   }
 </style>
 
@@ -35,7 +48,7 @@
 </div>
 
 
-<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+<div class="modal fade bug-reporter" tabindex="-1" role="dialog" id="myModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -47,8 +60,7 @@
         @yield('body')
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        @yield('buttons')
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
