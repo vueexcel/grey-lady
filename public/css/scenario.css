@@ -1,3 +1,7 @@
+.scenario-control-wrapper {
+  position: fixed !important;
+  width: 440px;
+}
 #scenario-control div {
   float: left;
 }    
@@ -13,6 +17,13 @@
 }    
 #scenario-control input {
   margin: 5px;
+}
+
+#projection-table {
+  overflow-x: scroll;
+}
+#projection-table td {
+  min-width: 75px;
 }    
 
 table {

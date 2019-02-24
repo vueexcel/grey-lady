@@ -21,6 +21,9 @@
 
   <div class=" col-md-7">
     @include('scenario.table')
+
+    @include('scenario.projections')
+
   </div>
 
 
