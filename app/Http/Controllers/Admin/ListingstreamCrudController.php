@@ -14,7 +14,7 @@ use Backpack\CRUD\CrudPanel;
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class ListingstreamCrudController extends CrudController
+class listingstreamCrudController extends CrudController
 {
     public function setup()
     {
