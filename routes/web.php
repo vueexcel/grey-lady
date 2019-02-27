@@ -57,6 +57,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/explore', function () {
         return view('explore.explore');
     });
+    Route::get('/explore/export', function () {
+        return view('explore.export');
+    });
     
     Route::get('/scenario/run/{id}', 'ScenarioController@run');
 
