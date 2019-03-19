@@ -8,14 +8,8 @@
 <div class="box box-default">
   <div class="box-body">
   	<div id="message-area"></div>
-  	<a href="/explore/export{{ str_replace(Request::url(), '', Request::fullUrl()) }}" class="btn btn-primary">Export</a>
-    <div style="overflow: auto">
+  	
 
-      <div id="zips-search-form"></div>
-    
-      <div id="zips-datatable-wrapper"></div>  
-
-    </div>
   </div>
   <!-- /.box-body -->
 </div>

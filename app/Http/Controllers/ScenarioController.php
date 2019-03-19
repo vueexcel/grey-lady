@@ -32,7 +32,6 @@ class ScenarioController extends Controller
            $apiRequest = $client->request('GET', 'https://api.greyladyproject.com/api/v1/listings/' . $id, [
                  'headers' => ['apiKey' => 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ'],
           ]);
-
           $response = json_decode($apiRequest->getBody()->getContents());
           $listing = $response[0];
 

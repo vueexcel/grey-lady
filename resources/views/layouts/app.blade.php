@@ -11,8 +11,10 @@
 
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+
 <body class="hold-transition skin-blue fixed">
-<div class="wrapper">
+
+<div id="app" class="wrapper">
 
   <header class="main-header">
     <?php echo View::make('layouts.header') ?>

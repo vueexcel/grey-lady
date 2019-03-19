@@ -83,8 +83,7 @@
 
         $curentPageLink.parents('li').addClass('active');
     </script>
-
     <!-- JavaScripts -->
     {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
-</body>
+</body>                                         
 </html>
