@@ -34,24 +34,21 @@ function getFinancialScenario () {
   var form_values = $( '#scenario-control-form' ).serialize();
 
   var url = '/api/secure?url=scenario&listing_id=' + listing_id + '&' + form_values;
-
   $('#request').html(url);
-
+  
   $.get(url, function(data) {
     
     $('#response').html(data);
-
+    
     data = jQuery.parseJSON(data);
-
+    localStorage.setItem('30YearsData',JSON.stringify(data));
     buildFinancialForms(data);
-
   });
 
 }
 
 
 function buildFinancialForms (data) {
-  
   $('#scenario-table').html(' ');
 
   var html = ''
@@ -87,7 +84,7 @@ function buildTableFromObjects(new_object, base_object, title, appendTo) {
         html += '<tr>';
         html += '<td><b>' + key + '</b></td>';
 
-        if ( new_object[key] < 10 ) {
+        if ( new_object[key] < 10 && new_object[key] > 0 ) {
 
           html += '<td>' + formatPercentage(new_object[key]) + '</td>';
           html += '<td>' + formatPercentage(base_object[key]) + '</td>';

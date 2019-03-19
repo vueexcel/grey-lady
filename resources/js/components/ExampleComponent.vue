@@ -8,7 +8,10 @@
                     <div class="card-body">
                         I'm an example component.
                     </div>
-                </div>
+                    <h1>
+                        Welcome! Vue 
+                    </h1>
+                </div> 
             </div>
         </div>
     </div>

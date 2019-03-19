@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\Exception\RequestException;
 use App\Http\Controllers\API\BaseController as BaseController;
+use App\Models\listingstream;
 use Validator;
 
 
@@ -117,8 +118,24 @@ class SecureController extends BaseController
                 'headers' => ['apiKey' => 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ'],
             ]);
 
+            $listing = json_decode($apiRequest->getBody()->getContents());
+
+            // dd($listing);
+
+            $location = isset($listing->cretedlistingItemResponse[0]->details->location) ? $listing->cretedlistingItemResponse[0]->details->location : false;
+            $source = isset($listing->cretedlistingItemResponse[0]->source) ? $listing->cretedlistingItemResponse[0]->source : false;
+            $purchaseType = isset($listing->cretedlistingItemResponse[0]->details->purchaseType) ? $listing->cretedlistingItemResponse[0]->details->purchaseType : false;
+            $address = $location->address . ' ' . $location->city . ', ' . $location->state . ' ' . $location->zip;
+
+            $newListingStream = listingstream::create(array(
+                'address' => $address,
+                'link' => $source->source_pdp,
+                'site' => $source->source,
+                'purchaseType' => $purchaseType
+            ));
+
             $response = [
-                'api_response' => json_decode($apiRequest->getBody()->getContents()),
+                'api_response' => $listing,
                 'version' => $current_chrome_plugin
             ];
 

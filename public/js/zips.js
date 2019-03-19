@@ -1,4 +1,4 @@
-$( function () {
+
 
 	config.zips.columns =  [ 'actions', 'watchlist', 'cap by bed', 'area', 'zip'];
 		config.zips.ajax.dataSrc = function (json) {
@@ -62,6 +62,6 @@ $( function () {
 
   createDataTable('zips');
 
-});
+
 
 

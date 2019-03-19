@@ -60,6 +60,17 @@ function createDataTable (config_item) {
 
 }
 
+function returnCapforBed(zip_item, bed) {
+	var cap_to_return = 'n/a';
+
+	if (zip_item && zip_item.calculated_fields && zip_item.calculated_fields.by_beds && zip_item.calculated_fields.by_beds[bed]) {
+		cap_to_return = formatPercentage(zip_item.calculated_fields.by_beds[bed].average_cap_rate,1)
+	}
+
+	return cap_to_return;
+
+}
+
 function formatZipCalculations(zip_item) {
 
 	var html_to_return = '';

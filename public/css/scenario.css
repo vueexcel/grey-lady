@@ -1,6 +1,6 @@
 .scenario-control-wrapper {
-  position: fixed !important;
-  width: 440px;
+  /* position: fixed !important;
+  width: 440px; */
 }
 #scenario-control div {
   float: left;

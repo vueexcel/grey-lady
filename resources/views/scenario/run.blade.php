@@ -1,6 +1,9 @@
 
 @extends('layouts.app')
-
+<?php
+// echo "<pre>";
+// print_r($listing); die; 
+?>
 @section('page-title')
 
   <div class="explore-details-header">
@@ -13,23 +16,23 @@
 
 @section('content')
 
-  <div id="message-area"></div>
 
+  <div id="message-area"></div>
   <div class=" col-md-5">
     @include('scenario.controls')    
   </div>
 
   <div class=" col-md-7">
     @include('scenario.table')
-
-    @include('scenario.projections')
-
+    <div>
+    </div>
   </div>
-
-
   <div class="row"></div>
-
+  <div >
+    <table-component/>
+  </div>
   @include('bug-reporter.api-bug')
+
 
 
 @endsection
