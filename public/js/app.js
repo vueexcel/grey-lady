@@ -14037,7 +14037,7 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(52);
 
 
 /***/ }),
@@ -48933,11 +48933,11 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(52)
+  __webpack_require__(57)
 }
 var normalizeComponent = __webpack_require__(11)
 /* script */
-var __vue_script__ = __webpack_require__(45)
+var __vue_script__ = __webpack_require__(50)
 /* template */
 var __vue_template__ = __webpack_require__(56)
 /* template functional */
@@ -48945,7 +48945,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-4f92185a"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -48978,113 +48978,9 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      yearData: null
-    };
-  },
-  created: function created() {
-    this.getData();
-  },
-
-  computed: {},
-  methods: {
-    getData: function getData() {
-      var _this = this;
-
-      var interval = setInterval(function () {
-        var data = JSON.parse(localStorage.getItem('30YearsData'));
-        if (data) {
-          _this.yearData = data[0]['new_calculated_fields_for_30years'];
-          _this.year();
-          clearInterval(interval);
-        }
-      }, 1000);
-    },
-    year: function year() {
-      var d = new Date();
-      var n = d.getFullYear();
-      var yearArray = [];
-      for (var i = 0; i < this.yearData.length; i++) {
-        this.yearData[i]['year'] = n;
-        ++n;
-      }
-    }
-  }
-});
-
-/***/ }),
+/* 45 */,
 /* 46 */,
 /* 47 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 48 */,
-/* 49 */
 /***/ (function(module, exports) {
 
 /*
@@ -49166,49 +49062,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 50 */,
-/* 51 */,
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(53);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(54)("2cf9e446", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f92185a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./tableComponent.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f92185a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./tableComponent.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(49)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.header[data-v-4f92185a]{\n  white-space: nowrap;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 54 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -49227,7 +49081,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(55)
+var listToStyles = __webpack_require__(49)
 
 /*
 type StyleObject = {
@@ -49436,7 +49290,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 55 */
+/* 49 */
 /***/ (function(module, exports) {
 
 /**
@@ -49469,6 +49323,132 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+window.addEventListener('data', function (data) {
+  console.log(data.detail, '**************************');
+});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      yearData: null
+    };
+  },
+  created: function created() {
+    this.getData();
+    // this.yearData1 = localStorage.getItem('30YearsData')
+  },
+
+  computed: {},
+  // watch:{
+  //   yearData1(newName) {
+  //     console.log(localStorage.getItem('30YearsData'),'8888888888888888888')
+  //   // localStorage.name = newName;
+  //   }
+  // },
+  methods: {
+    getData: function getData() {
+      var _this = this;
+
+      var interval = setInterval(function () {
+        var data = JSON.parse(localStorage.getItem('30YearsData'));
+        if (data) {
+          _this.yearData = data[0]['new_calculated_fields_for_30years'];
+          _this.year();
+          clearInterval(interval);
+        }
+      }, 1000);
+    },
+    year: function year() {
+      var d = new Date();
+      var n = d.getFullYear();
+      var yearArray = [];
+      for (var i = 0; i < this.yearData.length; i++) {
+        this.yearData[i]['year'] = n;
+        ++n;
+      }
+    }
+  }
+});
+
+/***/ }),
+/* 51 */,
+/* 52 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 53 */,
+/* 54 */,
+/* 55 */,
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49476,24 +49456,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("h1", [_vm._v("30 Years Data")]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: " justify-content-center",
-        staticStyle: { "overflow-x": "auto" }
-      },
-      [
-        _c("table", { staticClass: "table bg-light" }, [
+  return _c("div", { staticClass: "box box-default" }, [
+    _c("div", { staticClass: "box-body" }, [
+      _c("h4", [_vm._v("30 Years Data")]),
+      _vm._v(" "),
+      _c("div", { staticStyle: { "overflow-x": "auto" } }, [
+        _c("table", { staticClass: "table-bordered" }, [
           _vm._m(0),
           _vm._v(" "),
           _c(
             "tbody",
             _vm._l(_vm.yearData, function(data, index) {
               return _c("tr", { key: index }, [
-                _c("th", [_vm._v(_vm._s(data.year))]),
+                _c("td", [_vm._v(_vm._s(data.year))]),
                 _vm._v(" "),
                 _c("td", [
                   _vm._v(_vm._s(data.financial_information.cap_rate) + "%")
@@ -49603,8 +49578,8 @@ var render = function() {
             0
           )
         ])
-      ]
-    )
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -49612,79 +49587,43 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "thead-dark" }, [
+    return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Year")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Year")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Cap Rate")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Cap Rate")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Cash on Cash")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Cash on Cash")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Rent To Value")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Rent To Value")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Debt Coverage Ratio")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Debt Coverage Ratio")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Price")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Price")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Downpayment")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Downpayment")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Loan Amount")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Loan Amount")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Total Equity Needed")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Total Equity Needed")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Property Value")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Property Value")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Equity")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Equity")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Revenue")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Revenue")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Loss To Vacancy")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Loss To Vacancy")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Operating Income")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Operating Income")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Operating Expenses")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Operating Expenses")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Net Operating Income\t")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Net Operating Income\t")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Mortgage Payment")
-        ]),
+        _c("th", { staticClass: "header" }, [_vm._v("Mortgage Payment")]),
         _vm._v(" "),
-        _c("th", { staticClass: "header", attrs: { scope: "col" } }, [
-          _vm._v("Cash Profit")
-        ])
+        _c("th", { staticClass: "header" }, [_vm._v("Cash Profit")])
       ])
     ])
   }
@@ -49697,6 +49636,46 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-4f92185a", module.exports)
   }
 }
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(58);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(48)("30ffcfda", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f92185a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./tableComponent.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f92185a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./tableComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(47)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.header {\n  padding: 6px 8px;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

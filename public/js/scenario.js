@@ -32,8 +32,9 @@ function updateFormDisplayValues () {
 function getFinancialScenario () {
 
   var form_values = $( '#scenario-control-form' ).serialize();
-
+ 
   var url = '/api/secure?url=scenario&listing_id=' + listing_id + '&' + form_values;
+
   $('#request').html(url);
   
   $.get(url, function(data) {
@@ -41,7 +42,10 @@ function getFinancialScenario () {
     $('#response').html(data);
     
     data = jQuery.parseJSON(data);
+    
     localStorage.setItem('30YearsData',JSON.stringify(data));
+    const event = new CustomEvent('data',{detail : data})
+    window.dispatchEvent(event)
     buildFinancialForms(data);
   });
 

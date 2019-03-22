@@ -14,7 +14,7 @@
 
 <body class="hold-transition skin-blue fixed">
 
-<div id="app" class="wrapper">
+<div class="wrapper">
 
   <header class="main-header">
     <?php echo View::make('layouts.header') ?>
@@ -47,6 +47,7 @@
     </div>
     <!-- /.container -->
   </footer>
+
 </div>
 <!-- ./wrapper -->
 

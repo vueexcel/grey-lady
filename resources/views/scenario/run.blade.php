@@ -28,10 +28,14 @@
     </div>
   </div>
   <div class="row"></div>
-  <div >
-    <table-component/>
+  <div id="app">
+    <div class="col-md-12">
+      <table-component/>
+    </div>
   </div>
-  @include('bug-reporter.api-bug')
+  <div>
+    @include('bug-reporter.api-bug')
+  </div>
 
 
 
