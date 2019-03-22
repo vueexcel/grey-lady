@@ -43,7 +43,6 @@ function getFinancialScenario () {
     
     data = jQuery.parseJSON(data);
     
-    localStorage.setItem('30YearsData',JSON.stringify(data));
     const event = new CustomEvent('data',{detail : data})
     window.dispatchEvent(event)
     buildFinancialForms(data);
