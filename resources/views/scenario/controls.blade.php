@@ -65,9 +65,9 @@
 				<tr>
 					<td>
 						Opex_percentage
-						<input type="range" name="Opex_percentage" min="0" max="1" value="{{ $listing->calculated_fields[0]->settings_used->operational_expenses }}" step="0.01">
+						<input type="range" name="opex_percentage" min="0" max="1" value="{{ $listing->calculated_fields[0]->settings_used->operational_expenses }}" step="0.01">
 					</td>
-					<td><span class="scenario-value" id="Opex_percentage"></span></td>
+					<td><span class="scenario-value" id="opex_percentage"></span></td>
 					<td><span>{{ formatPercentage($listing->calculated_fields[0]->settings_used->operational_expenses) }}</span></td>
 				</tr>
 				<tr>
