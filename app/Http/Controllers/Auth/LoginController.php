@@ -28,7 +28,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/explore/favorites/zips';
+    // protected $redirectTo = '/explore/favorites/zips';
+    protected $redirectTo = '/dashboard';
+
 
     /**
      * Create a new controller instance.
@@ -42,6 +44,7 @@ class LoginController extends Controller
 
     public function logout(Request $request) {
       Auth::logout();
+      $request->session()->forget('plain_password');
       return redirect('/login');
     }
 }

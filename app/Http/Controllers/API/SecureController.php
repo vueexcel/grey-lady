@@ -4,6 +4,7 @@
 
 namespace App\Http\Controllers\API;
 
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client as GuzzleHttpClient;
@@ -102,7 +103,6 @@ class SecureController extends BaseController
             'download_link' => 'http://greylady-app.test/chrome-extension-download-instructions/latest'
         );
 
-
         if ($input['url']) {
 
             $url = 'https://api.greyladyproject.com/api/v1/' . $input['url'];
@@ -138,7 +138,8 @@ class SecureController extends BaseController
                 'api_response' => $listing,
                 'version' => $current_chrome_plugin
             ];
-
+            // die($newListingStream);
+            
             return response()->json($response, 200);
 
         } else {

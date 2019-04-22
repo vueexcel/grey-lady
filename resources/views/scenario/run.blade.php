@@ -1,9 +1,6 @@
 
 @extends('layouts.app')
-<?php
-// echo "<pre>";
-// print_r($listing); die; 
-?>
+
 @section('page-title')
 
   <div class="explore-details-header">

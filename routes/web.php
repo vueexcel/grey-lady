@@ -32,14 +32,14 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/getting-started', function () {
         return view('help.getting-started');
     });
-Route::get('/chrome-extension-download-instructions', function () {
+    Route::get('/chrome-extension-download-instructions', function () {
         return view('help.chrome-extension-download');
     });
-
-Route::get('/chrome-extension-download-instructions/latest', function () {
+    
+    Route::get('/chrome-extension-download-instructions/latest', function () {
         return view('help.chrome-extension-download-latest');
     });
-
+    
 Route::get('/home', function () {
         return view('home');
     });
@@ -49,7 +49,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::group(['middleware' => 'auth'], function() {
 
-
+    Route::get('/dashboard', 'DashboardController@index');
 
     Route::get('/', function () {
         return view('explore.explore');
@@ -89,7 +89,6 @@ Route::group(['middleware' => 'auth'], function() {
     });
 
 
-
     Route::get('/watchlist', function () {
         return view('watchlists');
     });
@@ -99,7 +98,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     
 
-    // Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 
 
 
