@@ -19,7 +19,7 @@ class listingstream extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['address', 'link', 'site', 'purchaseType'];
+    protected $fillable = ['address', 'link', 'site', 'purchaseType', 'user_id'];
     // protected $hidden = [];
     // protected $dates = [];
 

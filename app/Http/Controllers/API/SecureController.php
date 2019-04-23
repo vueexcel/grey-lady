@@ -97,6 +97,7 @@ class SecureController extends BaseController
     {
         $client = new GuzzleHttpClient();
         $input = $request->all();
+        $user = auth()->user();
         $query = array();
         $current_chrome_plugin = array(
             'version' => '0.1.3',
@@ -131,7 +132,8 @@ class SecureController extends BaseController
                 'address' => $address,
                 'link' => $source->source_pdp,
                 'site' => $source->source,
-                'purchaseType' => $purchaseType
+                'purchaseType' => $purchaseType,
+                'user_id' => $user->id
             ));
 
             $response = [
