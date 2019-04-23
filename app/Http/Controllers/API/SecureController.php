@@ -100,8 +100,8 @@ class SecureController extends BaseController
         $user = auth()->user();
         $query = array();
         $current_chrome_plugin = array(
-            'version' => '0.1.3',
-            'download_link' => 'http://greylady-app.test/chrome-extension-download-instructions/latest'
+            'version' => '0.1.4',
+            'download_link' => 'https://app.greyladyproject.com/chrome-extension-download-instructions/latest'
         );
 
         if ($input['url']) {
