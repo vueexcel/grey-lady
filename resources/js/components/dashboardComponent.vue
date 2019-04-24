@@ -135,7 +135,7 @@ export default {
 .address{
     font-size: 15px;
 }
-a{
+.item a{
     text-decoration: underline;
 }
 </style>

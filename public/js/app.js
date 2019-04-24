@@ -49770,7 +49770,7 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n.font_size{\n    font-size: 14px;\n}\n.set_title{\n    font-size: 15px;\n    font-weight: bold;\n}\n.column_50{\n    padding: 0px 15px;\n    width: 55%;\n    -webkit-box-flex: 0;\n}\n.column_40{\n    padding: 0px 15px;\n    width: 45%;\n    -webkit-box-flex: 0;\n}\n.stream{\n    background-color: white;\n    border: 2px solid #DCDCDC;\n    padding-left: 15px;\n}\n.heading{\n    margin-bottom: 1rem ;\n}\n.item{\n    padding-bottom: 0.9rem;\n    padding-top: 1rem;\n}\n.display_container{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.news{\n    margin-top:1.5rem;\n    padding: 0rem 1.5rem;\n}\n.time{\n    font-size: 12px;\n    color: grey;\n}\n.address{\n    font-size: 15px;\n}\na{\n    text-decoration: underline;\n}\n", ""]);
+exports.push([module.i, "\n.font_size{\n    font-size: 14px;\n}\n.set_title{\n    font-size: 15px;\n    font-weight: bold;\n}\n.column_50{\n    padding: 0px 15px;\n    width: 55%;\n    -webkit-box-flex: 0;\n}\n.column_40{\n    padding: 0px 15px;\n    width: 45%;\n    -webkit-box-flex: 0;\n}\n.stream{\n    background-color: white;\n    border: 2px solid #DCDCDC;\n    padding-left: 15px;\n}\n.heading{\n    margin-bottom: 1rem ;\n}\n.item{\n    padding-bottom: 0.9rem;\n    padding-top: 1rem;\n}\n.display_container{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.news{\n    margin-top:1.5rem;\n    padding: 0rem 1.5rem;\n}\n.time{\n    font-size: 12px;\n    color: grey;\n}\n.address{\n    font-size: 15px;\n}\n.item a{\n    text-decoration: underline;\n}\n", ""]);
 
 // exports
 
