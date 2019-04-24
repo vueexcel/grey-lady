@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+var moment = require('moment');
 
 /**
  * The following block of code may be used to automatically register your
@@ -31,5 +32,6 @@ Vue.component('dashboard-component',require('./components/dashboardComponent.vue
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    moment: moment
 });
