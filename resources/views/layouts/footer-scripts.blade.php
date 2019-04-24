@@ -17,7 +17,7 @@
 <script src="/js/config/watchlists.js"></script>
 <script src="/js/bug-reporter.js"></script>
 
-<script src="/js/app.js?123123"></script>
+<script src="/js/app.js"></script>
 
 
 
