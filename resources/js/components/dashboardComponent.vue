@@ -6,9 +6,9 @@
                     <table class="table">
                         <tr class="" v-for="(data, index) in showData" :key="index">
                             <td class="item" width="25%"><span class="time">{{data.timeDifference}} ago</span></td>
-                            <td class="item" width="50%"><a href="" class="address">{{data.address}}</a></td>
+                            <td class="item" width="50%"><a :href="data.link" target="_blank" class="address">{{data.address}}</a></td>
                             <td class="item text-center" width="5%">on</td>
-                            <td class="item text-center" width="15%"><a href="" class="address">{{data.site}}</a></td>
+                            <td class="item text-center" width="15%"><a :href="data.host" target="_blank" class="address">{{data.site}}</a></td>
                         </tr>
                     </table> 
                 </div>
@@ -51,8 +51,11 @@ export default {
     },
     computed: {
         showData() {
+            var host = ''
             if(this.data.length){
                 this.data.forEach(element => {
+                    host = new URL(element.link)
+                    element['host'] = host.protocol + '//'+host.host
                     element.address = element.address.charAt(0).toUpperCase() + element.address.slice(1);
                     element.site = element.site.charAt(0).toUpperCase() + element.site.slice(1);
                     let time =  this.getTimeDifference(element.updated_at)
