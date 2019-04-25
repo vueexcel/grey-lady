@@ -2,16 +2,15 @@
         <div class="display_container">
             <div class="column_50">
                 <h2 class="heading">Stream</h2>
-                <div class="stream" v-if="showData.length"> 
-                    <tr class="" v-for="(data, index) in showData" :key="index">
-                        <div class="item">
-                            <span class="font_size"><span class="time">{{data.timeDifference}}</span>
-                                &nbsp;  <a href="" class="address">{{data.address}}</a>
-                                &nbsp;  on &nbsp;
-                                <a href="" class="address">{{data.site}}</a>
-                            </span>
-                        </div>
-                    </tr>
+                <div class="stream" v-if="showData.length">
+                    <table class="table">
+                        <tr class="" v-for="(data, index) in showData" :key="index">
+                            <td class="item" width="25%"><span class="time">{{data.timeDifference}} ago</span></td>
+                            <td class="item" width="50%"><a href="" class="address">{{data.address}}</a></td>
+                            <td class="item text-center" width="5%">on</td>
+                            <td class="item text-center" width="15%"><a href="" class="address">{{data.site}}</a></td>
+                        </tr>
+                    </table> 
                 </div>
                 <div class="stream" v-else>
                     <div class="item">Nothing Available</div>
@@ -26,7 +25,7 @@
                                 <div class="set_title">
                                     {{news.title}}
                                 </div>
-                                <div><span v-if="news.created_at"> {{news.created_at}}</span>
+                                <div class="time"><span v-if="news.time"> {{news.time}}</span>
                                 <span v-else>No date</span></div>
                                 <div class="">
                                     {{news.body}}
@@ -63,23 +62,49 @@ export default {
             return this.data
         },
         newsShow(){
+            if(this.news.length){
+                this.news.map(news =>{
+                    news['time'] = moment(news.created_at).format('DD-MM-YYYY')
+                })
+            }
             return this.news
         },
     },
     methods: {
         getTimeDifference(updatedTime) {
+            var timearray = []
             let currentTime = moment(new Date())
             let updated_Time = moment(new Date(updatedTime))
             var duration = moment.duration(updated_Time.diff(currentTime))
-            var hourDifference = Math.round(duration.asMinutes())/60;
-            hourDifference = hourDifference.toFixed(2)
-            var timearray = hourDifference.split('.')
-            if(hourDifference < 0){
-                return Number(timearray[0])*-1 + ' hour ' + Number(timearray[1]) + ' min '
-            } else{
-                return Number(timearray[0]) + ' hour ' + Number(timearray[1]) + ' min '
+            if(Math.round(duration.asDays()) === 0){
+                var hourDifference = (Math.round(duration.asMinutes()))
+                if(hourDifference < -60){
+                    var hourDifference = (hourDifference/60).toFixed(2);     
+                    var timearray = hourDifference.split('.');
+                    return Number(timearray[0])*-1 + ' hour ' + Number(timearray[1]) + ' min '
+                } else {
+                    hourDifference = hourDifference.toFixed(2)
+                    var timearray = hourDifference.split('.')
+                    return Number(timearray[0])*-1 + ' min ' + Number(timearray[1]) + ' sec '
+                }
+            } else if (Math.round(duration.asDays()) < -30 && Math.round(duration.asDays()) > -365){
+                var monthDifference = (duration.asDays()/30).toFixed(3)
+                let montharray = monthDifference.split('.')
+                var daysDifference = (duration.asDays()%30).toFixed(3)
+                let daysArray = daysDifference.split('.')
+                timearray[0] = Number(montharray[0])*-1
+                timearray[1] = Number(daysArray[0])*-1
+                return Number(timearray[0]) + ' month ' + Number(timearray[1]) + ' days '
+            } else if(Math.round(duration.asDays()) < -365){
+                var yearDifference = duration.asYears().toFixed(2)
+                let timearray = yearDifference.split('.')
+                return Number(timearray[0])*-1 + ' year ' + Number(timearray[1]) + ' day '
+            } else {
+                var daysDifference = duration.asDays().toFixed(2)
+                let timearray = daysDifference.split('.')
+                return Number(timearray[0])*-1 + ' day ' 
             }
-        },
+        }
     },
     mounted () {
         
@@ -88,9 +113,6 @@ export default {
 </script>
 
 <style>
-.font_size{
-    font-size: 14px;
-}
 .set_title{
     font-size: 15px;
     font-weight: bold;
@@ -137,5 +159,8 @@ export default {
 }
 .item a{
     text-decoration: underline;
+}
+.time{
+    color: grey;
 }
 </style>
