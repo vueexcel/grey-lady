@@ -11,3 +11,4 @@
     </ul>
   </li>
 <li><a href='{{ backpack_url('listingstream') }}'><i class='fa fa-tag'></i> <span>Listing Stream</span></a></li>
+<li><a href='{{ backpack_url('newsandupdates') }}'><i class='fa fa-tag'></i> <span>News And Updates</span></a></li>
