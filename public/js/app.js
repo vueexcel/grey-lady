@@ -66952,9 +66952,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (Math.round(duration.asDays()) === 0) {
                 var hourDifference = Math.round(duration.asMinutes());
                 if (hourDifference < -60) {
-                    var hourDifference = (hourDifference / 60).toFixed(2);
-                    var timearray = hourDifference.split('.');
-                    return Number(timearray[0]) * -1 + ' hour ' + Number(timearray[1]) + ' min ';
+                    var hours = (hourDifference / 60).toFixed(2);
+                    var minDifference = hourDifference % 60;
+                    var hoursArray = hours.split('.');
+                    timearray[0] = Number(hoursArray[0]) * -1;
+                    timearray[1] = Number(minDifference) * -1;
+                    return Number(timearray[0]) + ' hour ' + Number(timearray[1]) + ' min ';
                 } else {
                     hourDifference = hourDifference.toFixed(2);
                     var timearray = hourDifference.split('.');
