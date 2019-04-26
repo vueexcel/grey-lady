@@ -41,7 +41,13 @@ class NewsAndUpdatesCrudController extends CrudController
             'name' => 'body',
             'type' => 'simplemde',
             'label' => "Body"
-        ]);      
+        ]);
+        $this->crud->addField([
+            'name' => 'type',
+            'type' => 'select_from_array',
+            'label' => 'Type',
+            'options' => ['App', 'Plugin']
+        ]);
         
 
         // add asterisk for fields that are required in NewsAndUpdatesRequest
