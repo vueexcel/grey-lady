@@ -15,9 +15,11 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $userid = auth()->id();
-        $news = NewsAndUpdates::all()->toJson();
+        $news = NewsAndUpdates::orderBy('id', 'desc')->get()->toJson();
+        $app = NewsAndUpdates::where('type', 'app')->orderBy('id', 'desc')->get()->toJson();
         $stream = listingstream::where('user_id', $userid)->get()->toJson();           
         View::share('news', $news);
+        View::share('greylady_app', $app);
         return view('dashboard')->with('stream', $stream);     
     }
 }
