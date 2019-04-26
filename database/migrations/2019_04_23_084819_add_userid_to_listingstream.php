@@ -13,9 +13,13 @@ class AddUseridToListingstream extends Migration
      */
     public function up()
     {
-        Schema::table('listingstream', function (Blueprint $table) {
-            $table->string('user_id');
-        });
+        if (Schema::hasTable('listingstream')) {
+            Schema::table('listingstream', function (Blueprint $table) {
+                if (!Schema::hasColumn('listingstream', 'user_id')) {
+                    $table->string('user_id');
+                }
+            });
+        }
     }
 
     /**

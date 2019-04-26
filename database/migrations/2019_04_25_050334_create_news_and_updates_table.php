@@ -13,12 +13,14 @@ class CreateNewsAndUpdatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('news_and_updates', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->string('body');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('news_and_updates')) {
+            Schema::create('news_and_updates', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('title');
+                $table->string('body');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
