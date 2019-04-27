@@ -21,7 +21,6 @@ var moment = require('moment');
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('table-component',require('./components/tableComponent.vue'));
 Vue.component('dashboard-component',require('./components/dashboardComponent.vue'));
-Vue.component('footer-component',require('./components/footerComponent.vue'));
   
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
