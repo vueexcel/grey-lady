@@ -6,9 +6,9 @@
                     <table class="table">
                         <tr class="" v-for="(data, index) in showData" :key="index">
                             <td class="item" width="25%"><span class="time">{{data.timeDifference}} ago</span></td>
-                            <td class="item" width="50%"><a :href="data.link" target="_blank" class="address">{{data.address}}</a></td>
-                            <td class="item text-center" width="5%">on</td>
-                            <td class="item text-center" width="15%"><a :href="data.host" target="_blank" class="address">{{data.site}}</a></td>
+                            <td class="item" width="45%"><a :href="data.link" target="_blank" class="address">{{data.address}}</a></td>
+                            <!-- <td class="item text-center" width="10%">on</td> -->
+                            <td class="item text-left" width="20%"><span>on </span><a :href="data.host" target="_blank" class="address">{{data.site}}</a></td>
                         </tr>
                     </table> 
                 </div>
@@ -19,8 +19,8 @@
             <div class="column_40">
                 <h2 class="heading">News & Updates</h2>
                 <div class="stream">
-                    <div v-if="newsShow.length" class="news">
-                        <div v-for="news in newsShow" :key="news.id">
+                    <ul v-if="newsShow.length" class="news">
+                        <li v-for="news in newsShow.slice().reverse()" :key="news.id">
                             <div class="heading">
                                 <div class="set_title">
                                     {{news.title}}
@@ -31,8 +31,8 @@
                                     {{news.body}}
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                     <div v-else class="item">
                         No information is available
                     </div>
@@ -57,7 +57,7 @@ export default {
                     host = new URL(element.link)
                     element['host'] = host.protocol + '//'+host.host
                     element.address = element.address.charAt(0).toUpperCase() + element.address.slice(1);
-                    element.site = element.site.charAt(0).toUpperCase() + element.site.slice(1);
+                    element.site = element.site.charAt(0).toUpperCase() + element.site.slice(1)+ '.com';
                     let time =  this.getTimeDifference(element.updated_at)
                    element['timeDifference'] = time
                 });
@@ -67,13 +67,17 @@ export default {
         newsShow(){
             if(this.news.length){
                 this.news.map(news =>{
-                    news['time'] = moment(news.created_at).format('DD-MM-YYYY')
+                    news.title = this.capitalize_Words(news.title)
+                    news['time'] = moment(news.created_at).format('MMMM DD,YYYY')
                 })
             }
             return this.news
         },
     },
     methods: {
+        capitalize_Words(str){
+            return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        },
         getTimeDifference(updatedTime) {
             var timearray = []
             let currentTime = moment(new Date())
@@ -120,8 +124,9 @@ export default {
 
 <style>
 .set_title{
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 4px 0px;
 }
 .column_50{
     padding: 0px 15px;
@@ -137,7 +142,7 @@ export default {
 .stream{
     background-color: white;
     border: 2px solid #DCDCDC;
-    padding-left: 15px;
+    padding: 15px;
 }
 
 .heading{
@@ -153,20 +158,39 @@ export default {
 }
 
 .news{
-    margin-top:1.5rem;
+    margin-top:1.3rem;
     padding: 0rem 1.5rem; 
+    list-style-type: none;
 }
 .time{
-    font-size: 12px;
+    font-size: 13px;
     color: grey;
+    font-weight: 600;
+    margin: 3px 0px;
 }
 .address{
     font-size: 15px;
+    padding-left: 3px;
 }
 .item a{
     text-decoration: underline;
+    color: #3D85BD;
 }
 .time{
     color: grey;
+}
+
+.type{
+    float: right;
+}
+
+.type button{
+    background-color: #3D85BD;
+    border-radius: 4px;
+    color: white;
+}
+
+.news li{
+    margin-bottom: 25px;
 }
 </style>
