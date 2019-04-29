@@ -4,7 +4,7 @@
                 <h2 class="heading">Stream</h2>
                 <div class="stream" v-if="showData.length">
                     <table class="table">
-                        <tr class="" v-for="(data, index) in showData" :key="index">
+                        <tr class="" v-for="(data, index) in showData.slice().reverse()" :key="index">
                             <td class="item" width="25%"><span class="time">{{data.timeDifference}} ago</span></td>
                             <td class="item" width="45%"><a :href="data.link" target="_blank" class="address">{{data.address}}</a></td>
                             <!-- <td class="item text-center" width="10%">on</td> -->
@@ -54,6 +54,7 @@ export default {
             var host = ''
             if(this.data.length){
                 this.data.forEach(element => {
+                    console.log(element)
                     host = new URL(element.link)
                     element['host'] = host.protocol + '//'+host.host
                     element.address = element.address.charAt(0).toUpperCase() + element.address.slice(1);
