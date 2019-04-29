@@ -49,7 +49,9 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::group(['middleware' => 'auth'], function() {
 
-    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/dashboard', function(){
+        return view('dashboard');
+    });
 
     Route::get('/', function () {
         return view('explore.explore');
