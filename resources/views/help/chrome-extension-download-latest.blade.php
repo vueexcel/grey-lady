@@ -3,10 +3,7 @@
 
 
 @section('content')
-  <?php
-  print_r($news);
-  die; 
-  ?>
+
   <div id="app">
       <chrome-component :news="{{ $news }}"/>
   </div>
