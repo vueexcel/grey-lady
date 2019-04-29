@@ -66853,7 +66853,7 @@ exports = module.exports = __webpack_require__(141)(false);
 
 
 // module
-exports.push([module.i, "\n.set_title{\n    font-size: 15px;\n    font-weight: bold;\n}\n.column_50{\n    padding: 0px 15px;\n    width: 55%;\n    -webkit-box-flex: 0;\n}\n.column_40{\n    padding: 0px 15px;\n    width: 45%;\n    -webkit-box-flex: 0;\n}\n.stream{\n    background-color: white;\n    border: 2px solid #DCDCDC;\n    padding-left: 15px;\n}\n.heading{\n    margin-bottom: 1rem ;\n}\n.item{\n    padding-bottom: 0.9rem;\n    padding-top: 1rem;\n}\n.display_container{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.news{\n    margin-top:1.5rem;\n    padding: 0rem 1.5rem;\n}\n.time{\n    font-size: 12px;\n    color: grey;\n}\n.address{\n    font-size: 15px;\n}\n.item a{\n    text-decoration: underline;\n}\n.time{\n    color: grey;\n}\n", ""]);
+exports.push([module.i, "\n.set_title{\n    font-size: 18px;\n    font-weight: 600;\n    margin: 4px 0px;\n}\n.column_50{\n    padding: 0px 15px;\n    width: 55%;\n    -webkit-box-flex: 0;\n}\n.column_40{\n    padding: 0px 15px;\n    width: 45%;\n    -webkit-box-flex: 0;\n}\n.stream{\n    background-color: white;\n    border: 2px solid #DCDCDC;\n    padding: 15px;\n}\n.heading{\n    margin-bottom: 1rem ;\n}\n.item{\n    padding-bottom: 0.9rem;\n    padding-top: 1rem;\n}\n.display_container{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.news{\n    margin-top:1.3rem;\n    padding: 0rem 1.5rem; \n    list-style-type: none;\n}\n.time{\n    font-size: 13px;\n    color: grey;\n    font-weight: 600;\n    margin: 3px 0px;\n}\n.address{\n    font-size: 15px;\n    padding-left: 3px;\n}\n.item a{\n    text-decoration: underline;\n    color: #3D85BD;\n}\n.time{\n    color: grey;\n}\n.type{\n    float: right;\n}\n.type button{\n    background-color: #3D85BD;\n    border-radius: 4px;\n    color: white;\n}\n.news li{\n    margin-bottom: 25px;\n}\n", ""]);
 
 // exports
 
@@ -66927,7 +66927,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     host = new URL(element.link);
                     element['host'] = host.protocol + '//' + host.host;
                     element.address = element.address.charAt(0).toUpperCase() + element.address.slice(1);
-                    element.site = element.site.charAt(0).toUpperCase() + element.site.slice(1);
+                    element.site = element.site.charAt(0).toUpperCase() + element.site.slice(1) + '.com';
                     var time = _this.getTimeDifference(element.updated_at);
                     element['timeDifference'] = time;
                 });
@@ -66935,15 +66935,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.data;
         },
         newsShow: function newsShow() {
+            var _this2 = this;
+
             if (this.news.length) {
                 this.news.map(function (news) {
-                    news['time'] = __WEBPACK_IMPORTED_MODULE_0_moment___default()(news.created_at).format('DD-MM-YYYY');
+                    news.title = _this2.capitalize_Words(news.title);
+                    news['time'] = __WEBPACK_IMPORTED_MODULE_0_moment___default()(news.created_at).format('MMMM DD,YYYY');
                 });
             }
             return this.news;
         }
     },
     methods: {
+        capitalize_Words: function capitalize_Words(str) {
+            return str.replace(/\w\S*/g, function (txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+        },
         getTimeDifference: function getTimeDifference(updatedTime) {
             var timearray = [];
             var currentTime = __WEBPACK_IMPORTED_MODULE_0_moment___default()(new Date());
@@ -67002,7 +67010,7 @@ var render = function() {
             _c(
               "table",
               { staticClass: "table" },
-              _vm._l(_vm.showData, function(data, index) {
+              _vm._l(_vm.showData.slice().reverse(), function(data, index) {
                 return _c("tr", { key: index }, [
                   _c("td", { staticClass: "item", attrs: { width: "25%" } }, [
                     _c("span", { staticClass: "time" }, [
@@ -67010,7 +67018,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "item", attrs: { width: "50%" } }, [
+                  _c("td", { staticClass: "item", attrs: { width: "45%" } }, [
                     _c(
                       "a",
                       {
@@ -67023,17 +67031,9 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "td",
-                    { staticClass: "item text-center", attrs: { width: "5%" } },
-                    [_vm._v("on")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "td",
-                    {
-                      staticClass: "item text-center",
-                      attrs: { width: "15%" }
-                    },
+                    { staticClass: "item text-left", attrs: { width: "20%" } },
                     [
+                      _c("span", [_vm._v("on ")]),
                       _c(
                         "a",
                         {
@@ -67060,10 +67060,10 @@ var render = function() {
       _c("div", { staticClass: "stream" }, [
         _vm.newsShow.length
           ? _c(
-              "div",
+              "ul",
               { staticClass: "news" },
-              _vm._l(_vm.newsShow, function(news) {
-                return _c("div", { key: news.id }, [
+              _vm._l(_vm.newsShow.slice().reverse(), function(news) {
+                return _c("li", { key: news.id }, [
                   _c("div", { staticClass: "heading" }, [
                     _c("div", { staticClass: "set_title" }, [
                       _vm._v(

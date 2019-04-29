@@ -37,6 +37,12 @@ class NewsAndUpdatesCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'body',
+            'type' => 'simplemde',
+            'label' => "Body"
+        ]);      
+        
 
         // add asterisk for fields that are required in NewsAndUpdatesRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
