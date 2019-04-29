@@ -20,8 +20,7 @@ class AppServiceProvider extends ServiceProvider
         {
             $userid = auth()->id();
             $news = NewsAndUpdates::orderBy('id', 'desc')->get()->toJson();
-            $app = NewsAndUpdates::where('type', 'app')->orderBy('id', 'desc')->get()->toJson();
-            $stream = listingstream::where('user_id', $userid)->get()->toJson();           
+            $stream = listingstream::where('user_id', $userid)->orderBy('id', 'desc')->get()->toJson();
             $view->with([
                 'news' => $news, 
                 'stream' => $stream
