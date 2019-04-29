@@ -4,7 +4,7 @@
                 <h2 class="heading">Stream</h2>
                 <div class="stream" v-if="showData.length">
                     <table class="table">
-                        <tr class="" v-for="(data, index) in showData.slice().reverse()" :key="index">
+                        <tr class="" v-for="(data, index) in showData" :key="index">
                             <td class="item" width="25%"><span class="time">{{data.timeDifference}} ago</span></td>
                             <td class="item" width="45%"><a :href="data.link" target="_blank" class="address">{{data.address}}</a></td>
                             <!-- <td class="item text-center" width="10%">on</td> -->
@@ -20,7 +20,7 @@
                 <h2 class="heading">News & Updates</h2>
                 <div class="stream">
                     <ul v-if="newsShow.length" class="news">
-                        <li v-for="news in newsShow.slice().reverse()" :key="news.id">
+                        <li v-for="news in newsShow" :key="news.id">
                             <div class="heading">
                                 <div class="set_title">
                                     {{news.title}}
@@ -176,10 +176,6 @@ export default {
     text-decoration: underline;
     color: #3D85BD;
 }
-.time{
-    color: grey;
-}
-
 .type{
     float: right;
 }

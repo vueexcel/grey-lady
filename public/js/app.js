@@ -66853,7 +66853,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n.set_title{\n    font-size: 18px;\n    font-weight: 600;\n    margin: 4px 0px;\n}\n.column_50{\n    padding: 0px 15px;\n    width: 55%;\n    -webkit-box-flex: 0;\n}\n.column_40{\n    padding: 0px 15px;\n    width: 45%;\n    -webkit-box-flex: 0;\n}\n.stream{\n    background-color: white;\n    border: 2px solid #DCDCDC;\n    padding: 15px;\n}\n.heading{\n    margin-bottom: 1rem ;\n}\n.item{\n    padding-bottom: 0.9rem;\n    padding-top: 1rem;\n}\n.display_container{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.news{\n    margin-top:1.3rem;\n    padding: 0rem 1.5rem; \n    list-style-type: none;\n}\n.time{\n    font-size: 13px;\n    color: grey;\n    font-weight: 600;\n    margin: 3px 0px;\n}\n.address{\n    font-size: 15px;\n    padding-left: 3px;\n}\n.item a{\n    text-decoration: underline;\n    color: #3D85BD;\n}\n.time{\n    color: grey;\n}\n.type{\n    float: right;\n}\n.type button{\n    background-color: #3D85BD;\n    border-radius: 4px;\n    color: white;\n}\n.news li{\n    margin-bottom: 25px;\n}\n", ""]);
+exports.push([module.i, "\n.set_title{\n    font-size: 18px;\n    font-weight: 600;\n    margin: 4px 0px;\n}\n.column_50{\n    padding: 0px 15px;\n    width: 55%;\n    -webkit-box-flex: 0;\n}\n.column_40{\n    padding: 0px 15px;\n    width: 45%;\n    -webkit-box-flex: 0;\n}\n.stream{\n    background-color: white;\n    border: 2px solid #DCDCDC;\n    padding: 15px;\n}\n.heading{\n    margin-bottom: 1rem ;\n}\n.item{\n    padding-bottom: 0.9rem;\n    padding-top: 1rem;\n}\n.display_container{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.news{\n    margin-top:1.3rem;\n    padding: 0rem 1.5rem; \n    list-style-type: none;\n}\n.time{\n    font-size: 13px;\n    color: grey;\n    font-weight: 600;\n    margin: 3px 0px;\n}\n.address{\n    font-size: 15px;\n    padding-left: 3px;\n}\n.item a{\n    text-decoration: underline;\n    color: #3D85BD;\n}\n.type{\n    float: right;\n}\n.type button{\n    background-color: #3D85BD;\n    border-radius: 4px;\n    color: white;\n}\n.news li{\n    margin-bottom: 25px;\n}\n", ""]);
 
 // exports
 
@@ -67010,7 +67010,7 @@ var render = function() {
             _c(
               "table",
               { staticClass: "table" },
-              _vm._l(_vm.showData.slice().reverse(), function(data, index) {
+              _vm._l(_vm.showData, function(data, index) {
                 return _c("tr", { key: index }, [
                   _c("td", { staticClass: "item", attrs: { width: "25%" } }, [
                     _c("span", { staticClass: "time" }, [
@@ -67062,7 +67062,7 @@ var render = function() {
           ? _c(
               "ul",
               { staticClass: "news" },
-              _vm._l(_vm.newsShow.slice().reverse(), function(news) {
+              _vm._l(_vm.newsShow, function(news) {
                 return _c("li", { key: news.id }, [
                   _c("div", { staticClass: "heading" }, [
                     _c("div", { staticClass: "set_title" }, [
@@ -67196,7 +67196,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n.box.box-default{\n    border: 2px solid #d2d6de;\n}\n.body{\n    padding: 10px 40px;\n}\n.body h3{\n    margin-bottom: 35px;\n    font-weight: 600;\n}\n.button{\n    float: right;\n}\n.button a{\n    font-size: 18px;\n    background-color: #3D85BD;\n    color: white;\n    border: none;\n    border-radius: 4px;\n    padding: 10px 15px;\n}\n.instruction{\n    margin-bottom: 35px;\n    font-weight: 600;\n    font-size: 18px;\n}\nul.dashed {\n  list-style-type: none;\n  padding-left: 0px;\n  font-size: 15px;\n}\nul.dashed > li {\n  text-indent: -5px;\n  margin-left: 5px;\n}\nul.dashed > li:before {\n  content: \"-\";\n  font-weight: bold;\n  text-indent: -5px;\n  padding-right: 5px;\n}\n.main_list{\n    list-style-type: none;\n}\n.main_list h4{\n    font-weight: 600;\n}\n.main_list .link{\n    margin-left: 15px;\n}\n", ""]);
+exports.push([module.i, "\n.box.box-default{\n    border: 2px solid #d2d6de;\n}\n.body{\n    padding: 10px 40px;\n}\n.body h3{\n    margin-bottom: 35px;\n    font-weight: 600;\n}\n.button{\n    float: right;\n}\n.button a{\n    font-size: 18px;\n    background-color: #3D85BD;\n    color: white;\n    border: none;\n    border-radius: 4px;\n    padding: 10px 15px;\n}\n.instruction{\n    margin-bottom: 35px;\n    font-weight: 600;\n    font-size: 18px;\n}\nul.dashed {\n  list-style-type: none;\n  padding-left: 0px;\n  font-size: 15px;\n}\nul.dashed > li {\n  text-indent: -5px;\n  margin-left: 5px;\n}\nul.dashed > li:before {\n  content: \"-\";\n  font-weight: bold;\n  text-indent: -5px;\n  padding-right: 5px;\n}\n.main_list{\n    list-style-type: none;\n    padding-left: 0px;\n}\n.main_list .news_list{\n    margin-bottom: 40px;\n}\n.main_list h4{\n    font-weight: 600;\n}\n.main_list .link{\n    margin-left: 15px;\n}\n.time{\n    font-size: 13px;\n    color: grey;\n    font-weight: 600;\n    margin: 3px 0px;\n}\n.news_content{\n    margin-bottom: 15px;\n}\n", ""]);
 
 // exports
 
@@ -67207,6 +67207,8 @@ exports.push([module.i, "\n.box.box-default{\n    border: 2px solid #d2d6de;\n}\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
 //
 //
 //
@@ -67254,6 +67256,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -67265,9 +67269,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         newsToShow: function newsToShow() {
-            console.log(this.news);
-
-            return this.news;
+            var newsArray = [];
+            for (var i = 0; i <= this.news.length; i++) {
+                if (i !== 0) {
+                    if (this.news[i]) {
+                        this.news[i]['time'] = __WEBPACK_IMPORTED_MODULE_0_moment___default()(this.news[i].created_at).format('MMMM DD,YYYY');
+                        newsArray.push(this.news[i]);
+                    }
+                }
+            }
+            return newsArray;
         }
     }
 });
@@ -67281,31 +67292,74 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("div", { staticClass: "box box-default" }, [
+      _c("div", { staticClass: "box-body body" }, [
+        _c("h3", [
+          _vm._v(_vm._s(_vm.news[0].title) + " \n                "),
+          _c("span", { staticClass: "button" }, [
+            _c(
+              "a",
+              { attrs: { target: "_blank", href: _vm.news[0].download_link } },
+              [_vm._v("Download Zip File")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "instruction" }, [
+          _vm._v(_vm._s(_vm.news[0].body)),
+          _c(
+            "a",
+            { attrs: { href: "/chrome-extension-download-instructions" } },
+            [_vm._v("link to instructions")]
+          ),
+          _vm._v(". Here's what's new:")
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "box box-default" }, [
       _c("div", { staticClass: "box-body body" }, [
         _c("h3", [_vm._v("Older Builds")]),
         _vm._v(" "),
-        _c("ul", { staticClass: "main_list" }, [
-          _c("li", [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", [
-              _vm._v(
-                "\n                        " +
-                  _vm._s(_vm.newsToShow) +
-                  "\n                    "
-              )
-            ]),
-            _vm._v(" "),
-            _vm._m(2)
-          ]),
-          _vm._v(" "),
-          _vm._m(3),
-          _vm._v(" "),
-          _vm._m(4)
-        ])
+        _c(
+          "ul",
+          { staticClass: "main_list" },
+          _vm._l(_vm.newsToShow, function(news, index) {
+            return _c("li", { key: index, staticClass: "news_list" }, [
+              news
+                ? _c("h4", [
+                    _vm._v(
+                      _vm._s(news.title) + " : \n                        "
+                    ),
+                    _c("span", { staticClass: "link" }, [
+                      _c("a", { attrs: { href: news.download_link } }, [
+                        _vm._v("(Drive Download)")
+                      ])
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [
+                news.time
+                  ? _c("span", [_vm._v(" " + _vm._s(news.time))])
+                  : _c("span", [_vm._v("No date")])
+              ]),
+              _vm._v(" "),
+              news
+                ? _c("div", [
+                    _c("div", { staticClass: "news_content" }, [
+                      _vm._v(" " + _vm._s(news.body))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1, true)
+                  ])
+                : _vm._e()
+            ])
+          }),
+          0
+        )
       ])
     ])
   ])
@@ -67315,85 +67369,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box box-default" }, [
-      _c("div", { staticClass: "box-body body" }, [
-        _c("h3", [
-          _vm._v("Download the Latest Version \n                "),
-          _c("span", { staticClass: "button" }, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  target: "_blank",
-                  href:
-                    "https://drive.google.com/file/d/1ys_V3i0NuWopAddK0HTfXI6M4iN8uBUw/view"
-                }
-              },
-              [_vm._v("Download Zip File")]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "instruction" }, [
-          _vm._v(
-            "Here's a link to the latest version of the plugin. If you don't know how to install the plugin, here's a "
-          ),
-          _c(
-            "a",
-            { attrs: { href: "/chrome-extension-download-instructions" } },
-            [_vm._v("link to instructions")]
-          ),
-          _vm._v(". Here's what's new:")
-        ]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "dashed" }, [
-          _c("li", [
-            _vm._v(
-              "Major update to handle Chrome's new(ish) CORS standards. Was a breaking change for the plugin."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "New parser for Zillow. Appears like they had an A/B test going. Which changed PDP HTML structure. Only tested it on for sale listings. Multis / rentals likely don't work."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Direct linking to the scenario tool back in the app for faster access."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(
-              "Better error handling / messaging for common cases like not authed in app, etc.."
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [_vm._v("Few minor UI tweaks / bug fixes.")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h4", [
-      _vm._v("0.1.3 - Release notes: \n                        "),
-      _c("span", { staticClass: "link" }, [
-        _c(
-          "a",
-          {
-            attrs: {
-              href:
-                "https://drive.google.com/file/d/1-he2Nh44MXjuDpwDhL75a9Gjd_EBBPzi/view?usp=sharing"
-            }
-          },
-          [_vm._v("(Drive Download)")]
+    return _c("ul", { staticClass: "dashed" }, [
+      _c("li", [
+        _vm._v(
+          "Major update to handle Chrome's new(ish) CORS standards. Was a breaking change for the plugin."
         )
-      ])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "New parser for Zillow. Appears like they had an A/B test going. Which changed PDP HTML structure. Only tested it on for sale listings. Multis / rentals likely don't work."
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "Direct linking to the scenario tool back in the app for faster access."
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "Better error handling / messaging for common cases like not authed in app, etc.."
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [_vm._v("Few minor UI tweaks / bug fixes.")])
     ])
   },
   function() {
@@ -67430,48 +67431,6 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("li", [_vm._v("lots of little tweaks and bug fixes.")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _vm._v("0.1.2 - "),
-      _c(
-        "a",
-        {
-          attrs: {
-            href:
-              "https://drive.google.com/file/d/1STaTZoPu1_BmWvs8K9tFpnQwfnELoWDE/view?usp=sharing"
-          }
-        },
-        [_vm._v("Drive Download")]
-      ),
-      _vm._v(
-        " - For sale listings worked for all major portals, financial stats appeared, zip stats appeared."
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _vm._v("0.1.1 - "),
-      _c(
-        "a",
-        {
-          attrs: {
-            href:
-              "https://drive.google.com/file/d/1cxMA7CaZedZrViE1W8LOBckmFw0ExS-i/view?usp=sharing"
-          }
-        },
-        [_vm._v("Drive Download")]
-      ),
-      _vm._v(
-        " - First shared version. Basic interface, only worked for redfin listings."
-      )
     ])
   }
 ]
