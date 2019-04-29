@@ -4,7 +4,7 @@
 
 @section('content')
   <?php
-  print_r($news);
+    print_r($news);
   die; 
   ?>
   <div id="app">
