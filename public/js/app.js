@@ -66924,7 +66924,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var host = '';
             if (this.data.length) {
                 this.data.forEach(function (element) {
-                    console.log(element);
                     host = new URL(element.link);
                     element['host'] = host.protocol + '//' + host.host;
                     element.address = element.address.charAt(0).toUpperCase() + element.address.slice(1);
