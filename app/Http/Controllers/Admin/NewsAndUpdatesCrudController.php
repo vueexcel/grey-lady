@@ -46,7 +46,7 @@ class NewsAndUpdatesCrudController extends CrudController
             'name' => 'type',
             'type' => 'select_from_array',
             'label' => 'Type',
-            'options' => ['App', 'Plugin']
+            'options' => [ 'app' => 'App', 'plugin' => 'Plugin']
         ]);
         
 

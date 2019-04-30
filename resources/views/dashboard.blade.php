@@ -14,5 +14,5 @@
   <div id="app">
     <dashboard-component  :data="{{ $stream }}" :news="{{ $news }}"/>
   </div>
-
+  
 @endsection

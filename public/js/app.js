@@ -5120,110 +5120,6 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-var utils = __webpack_require__(1);
-var normalizeHeaderName = __webpack_require__(152);
-
-var DEFAULT_CONTENT_TYPE = {
-  'Content-Type': 'application/x-www-form-urlencoded'
-};
-
-function setContentTypeIfUnset(headers, value) {
-  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-    headers['Content-Type'] = value;
-  }
-}
-
-function getDefaultAdapter() {
-  var adapter;
-  if (typeof XMLHttpRequest !== 'undefined') {
-    // For browsers use XHR adapter
-    adapter = __webpack_require__(12);
-  } else if (typeof process !== 'undefined') {
-    // For node use HTTP adapter
-    adapter = __webpack_require__(12);
-  }
-  return adapter;
-}
-
-var defaults = {
-  adapter: getDefaultAdapter(),
-
-  transformRequest: [function transformRequest(data, headers) {
-    normalizeHeaderName(headers, 'Content-Type');
-    if (utils.isFormData(data) ||
-      utils.isArrayBuffer(data) ||
-      utils.isBuffer(data) ||
-      utils.isStream(data) ||
-      utils.isFile(data) ||
-      utils.isBlob(data)
-    ) {
-      return data;
-    }
-    if (utils.isArrayBufferView(data)) {
-      return data.buffer;
-    }
-    if (utils.isURLSearchParams(data)) {
-      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-      return data.toString();
-    }
-    if (utils.isObject(data)) {
-      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-      return JSON.stringify(data);
-    }
-    return data;
-  }],
-
-  transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch (e) { /* Ignore */ }
-    }
-    return data;
-  }],
-
-  /**
-   * A timeout in milliseconds to abort a request. If set to 0 (default) a
-   * timeout is not created.
-   */
-  timeout: 0,
-
-  xsrfCookieName: 'XSRF-TOKEN',
-  xsrfHeaderName: 'X-XSRF-TOKEN',
-
-  maxContentLength: -1,
-
-  validateStatus: function validateStatus(status) {
-    return status >= 200 && status < 300;
-  }
-};
-
-defaults.headers = {
-  common: {
-    'Accept': 'application/json, text/plain, */*'
-  }
-};
-
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-  defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
-});
-
-module.exports = defaults;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports) {
 
 /*
@@ -5305,7 +5201,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -5531,6 +5427,110 @@ function applyToTag (styleElement, obj) {
   }
 }
 
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+var utils = __webpack_require__(1);
+var normalizeHeaderName = __webpack_require__(152);
+
+var DEFAULT_CONTENT_TYPE = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+};
+
+function setContentTypeIfUnset(headers, value) {
+  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+    headers['Content-Type'] = value;
+  }
+}
+
+function getDefaultAdapter() {
+  var adapter;
+  if (typeof XMLHttpRequest !== 'undefined') {
+    // For browsers use XHR adapter
+    adapter = __webpack_require__(12);
+  } else if (typeof process !== 'undefined') {
+    // For node use HTTP adapter
+    adapter = __webpack_require__(12);
+  }
+  return adapter;
+}
+
+var defaults = {
+  adapter: getDefaultAdapter(),
+
+  transformRequest: [function transformRequest(data, headers) {
+    normalizeHeaderName(headers, 'Content-Type');
+    if (utils.isFormData(data) ||
+      utils.isArrayBuffer(data) ||
+      utils.isBuffer(data) ||
+      utils.isStream(data) ||
+      utils.isFile(data) ||
+      utils.isBlob(data)
+    ) {
+      return data;
+    }
+    if (utils.isArrayBufferView(data)) {
+      return data.buffer;
+    }
+    if (utils.isURLSearchParams(data)) {
+      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+      return data.toString();
+    }
+    if (utils.isObject(data)) {
+      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+      return JSON.stringify(data);
+    }
+    return data;
+  }],
+
+  transformResponse: [function transformResponse(data) {
+    /*eslint no-param-reassign:0*/
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (e) { /* Ignore */ }
+    }
+    return data;
+  }],
+
+  /**
+   * A timeout in milliseconds to abort a request. If set to 0 (default) a
+   * timeout is not created.
+   */
+  timeout: 0,
+
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN',
+
+  maxContentLength: -1,
+
+  validateStatus: function validateStatus(status) {
+    return status >= 200 && status < 300;
+  }
+};
+
+defaults.headers = {
+  common: {
+    'Accept': 'application/json, text/plain, */*'
+  }
+};
+
+utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+  defaults.headers[method] = {};
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+});
+
+module.exports = defaults;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
 /* 7 */
@@ -31182,7 +31182,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(144);
-module.exports = __webpack_require__(191);
+module.exports = __webpack_require__(196);
 
 
 /***/ }),
@@ -52860,7 +52860,7 @@ module.exports = __webpack_require__(149);
 var utils = __webpack_require__(1);
 var bind = __webpack_require__(10);
 var Axios = __webpack_require__(151);
-var defaults = __webpack_require__(4);
+var defaults = __webpack_require__(6);
 
 /**
  * Create an instance of Axios
@@ -52943,7 +52943,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(4);
+var defaults = __webpack_require__(6);
 var utils = __webpack_require__(1);
 var InterceptorManager = __webpack_require__(160);
 var dispatchRequest = __webpack_require__(161);
@@ -53482,7 +53482,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(1);
 var transformData = __webpack_require__(162);
 var isCancel = __webpack_require__(14);
-var defaults = __webpack_require__(4);
+var defaults = __webpack_require__(6);
 var isAbsoluteURL = __webpack_require__(163);
 var combineURLs = __webpack_require__(164);
 
@@ -66416,7 +66416,7 @@ var content = __webpack_require__(177);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("30ffcfda", content, false, {});
+var update = __webpack_require__(5)("30ffcfda", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -66435,7 +66435,7 @@ if(false) {
 /* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -66829,7 +66829,7 @@ var content = __webpack_require__(183);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("0d6c1e08", content, false, {});
+var update = __webpack_require__(5)("0d6c1e08", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -66848,12 +66848,12 @@ if(false) {
 /* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n.set_title{\n    font-size: 18px;\n    font-weight: 600;\n    margin: 4px 0px;\n}\n.column_50{\n    padding: 0px 15px;\n    width: 55%;\n    -webkit-box-flex: 0;\n}\n.column_40{\n    padding: 0px 15px;\n    width: 45%;\n    -webkit-box-flex: 0;\n}\n.stream{\n    background-color: white;\n    border: 2px solid #DCDCDC;\n    padding: 15px;\n}\n.heading{\n    margin-bottom: 1rem ;\n}\n.item{\n    padding-bottom: 0.9rem;\n    padding-top: 1rem;\n}\n.display_container{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.news{\n    margin-top:1.3rem;\n    padding: 0rem 1.5rem; \n    list-style-type: none;\n}\n.time{\n    font-size: 13px;\n    color: grey;\n    font-weight: 600;\n    margin: 3px 0px;\n}\n.address{\n    font-size: 15px;\n    padding-left: 3px;\n}\n.item a{\n    text-decoration: underline;\n    color: #3D85BD;\n}\n.type{\n    float: right;\n}\n.type button{\n    background-color: #3D85BD;\n    border-radius: 4px;\n    color: white;\n}\n.news li{\n    margin-bottom: 25px;\n}\n", ""]);
+exports.push([module.i, "\n.set_title {\n  font-size: 18px;\n  font-weight: 600;\n  margin: 4px 0px;\n}\n.column_50 {\n  padding: 0px 15px;\n  width: 55%;\n  -webkit-box-flex: 0;\n}\n.column_40 {\n  padding: 0px 15px;\n  width: 45%;\n  -webkit-box-flex: 0;\n}\n.stream {\n  background-color: white;\n  border: 2px solid #dcdcdc;\n  padding: 15px;\n}\n.heading {\n  margin-bottom: 1rem;\n}\n.item {\n  padding-bottom: 0.9rem;\n  padding-top: 1rem;\n}\n.display_container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.news {\n  margin-top: 1.3rem;\n  padding: 0rem 1.5rem;\n  list-style-type: none;\n}\n.time {\n  font-size: 13px;\n  color: grey;\n  font-weight: 600;\n  margin: 3px 0px;\n}\n.address {\n  font-size: 15px;\n  padding-left: 3px;\n}\n.item a {\n  text-decoration: underline;\n  color: #3d85bd;\n}\n.type {\n  float: right;\n}\n.type button {\n  background-color: #3d85bd;\n  border-radius: 4px;\n  color: white;\n}\n.news li {\n  margin-bottom: 25px;\n}\n/* button CSS */\n.button {\n  float: right;\n}\n.button a {\n  font-size: 16px;\n  text-transform: capitalize;\n  background-color: #3d85bd;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  padding: 6px 12px;\n}\n", ""]);
 
 // exports
 
@@ -66909,88 +66909,99 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "dashboard",
-    props: {
-        data: { type: Array },
-        news: { type: Array }
-    },
-    computed: {
-        showData: function showData() {
-            var _this = this;
+  name: "dashboard",
+  props: {
+    data: { type: Array },
+    news: { type: Array }
+  },
+  created: function created() {},
 
-            var host = '';
-            if (this.data.length) {
-                this.data.forEach(function (element) {
-                    host = new URL(element.link);
-                    element['host'] = host.protocol + '//' + host.host;
-                    element.address = element.address.charAt(0).toUpperCase() + element.address.slice(1);
-                    element.site = element.site.charAt(0).toUpperCase() + element.site.slice(1) + '.com';
-                    var time = _this.getTimeDifference(element.updated_at);
-                    element['timeDifference'] = time;
-                });
-            }
-            return this.data;
-        },
-        newsShow: function newsShow() {
-            var _this2 = this;
+  computed: {
+    showData: function showData() {
+      var _this = this;
 
-            if (this.news.length) {
-                this.news.map(function (news) {
-                    news.title = _this2.capitalize_Words(news.title);
-                    news['time'] = __WEBPACK_IMPORTED_MODULE_0_moment___default()(news.created_at).format('MMMM DD,YYYY');
-                });
-            }
-            return this.news;
-        }
+      var host = "";
+      if (this.data.length) {
+        this.data.forEach(function (element) {
+          host = new URL(element.link);
+          element["host"] = host.protocol + "//" + host.host;
+          element.address = element.address.charAt(0).toUpperCase() + element.address.slice(1);
+          element.site = element.site.charAt(0).toUpperCase() + element.site.slice(1) + ".com";
+          var time = _this.getTimeDifference(element.updated_at);
+          element["timeDifference"] = time;
+        });
+      }
+      return this.data;
     },
-    methods: {
-        capitalize_Words: function capitalize_Words(str) {
-            return str.replace(/\w\S*/g, function (txt) {
-                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-            });
-        },
-        getTimeDifference: function getTimeDifference(updatedTime) {
-            var timearray = [];
-            var currentTime = __WEBPACK_IMPORTED_MODULE_0_moment___default()(new Date());
-            var updated_Time = __WEBPACK_IMPORTED_MODULE_0_moment___default()(new Date(updatedTime));
-            var duration = __WEBPACK_IMPORTED_MODULE_0_moment___default.a.duration(updated_Time.diff(currentTime));
-            if (Math.round(duration.asDays()) === 0) {
-                var hourDifference = Math.round(duration.asMinutes());
-                if (hourDifference < -60) {
-                    var hours = (hourDifference / 60).toFixed(2);
-                    var minDifference = hourDifference % 60;
-                    var hoursArray = hours.split('.');
-                    timearray[0] = Number(hoursArray[0]) * -1;
-                    timearray[1] = Number(minDifference) * -1;
-                    return Number(timearray[0]) + ' hour ' + Number(timearray[1]) + ' min ';
-                } else {
-                    hourDifference = hourDifference.toFixed(2);
-                    var timearray = hourDifference.split('.');
-                    return Number(timearray[0]) * -1 + ' min ' + Number(timearray[1]) + ' sec ';
-                }
-            } else if (Math.round(duration.asDays()) < -30 && Math.round(duration.asDays()) > -365) {
-                var monthDifference = (duration.asDays() / 30).toFixed(3);
-                var montharray = monthDifference.split('.');
-                var daysDifference = (duration.asDays() % 30).toFixed(3);
-                var daysArray = daysDifference.split('.');
-                timearray[0] = Number(montharray[0]) * -1;
-                timearray[1] = Number(daysArray[0]) * -1;
-                return Number(timearray[0]) + ' month ' + Number(timearray[1]) + ' days ';
-            } else if (Math.round(duration.asDays()) < -365) {
-                var yearDifference = duration.asYears().toFixed(2);
-                var _timearray = yearDifference.split('.');
-                return Number(_timearray[0]) * -1 + ' year ' + Number(_timearray[1]) + ' day ';
-            } else {
-                var daysDifference = duration.asDays().toFixed(2);
-                var _timearray2 = daysDifference.split('.');
-                return Number(_timearray2[0]) * -1 + ' day ';
-            }
-        }
+    newsShow: function newsShow() {
+      var _this2 = this;
+
+      if (this.news.length) {
+        this.news.map(function (news) {
+          news.title = _this2.capitalize_Words(news.title);
+          news["time"] = __WEBPACK_IMPORTED_MODULE_0_moment___default()(news.created_at).format("MMMM DD,YYYY");
+        });
+      }
+      return this.news;
+    }
+  },
+  methods: {
+    capitalize_Words: function capitalize_Words(str) {
+      return str.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
     },
-    mounted: function mounted() {}
+    getTimeDifference: function getTimeDifference(updatedTime) {
+      var timearray = [];
+      var currentTime = __WEBPACK_IMPORTED_MODULE_0_moment___default()(new Date());
+      var updated_Time = __WEBPACK_IMPORTED_MODULE_0_moment___default()(new Date(updatedTime));
+      var duration = __WEBPACK_IMPORTED_MODULE_0_moment___default.a.duration(updated_Time.diff(currentTime));
+      if (Math.round(duration.asDays()) === 0) {
+        var hourDifference = Math.round(duration.asMinutes());
+        if (hourDifference < -60) {
+          var hours = (hourDifference / 60).toFixed(2);
+          var minDifference = hourDifference % 60;
+          var hoursArray = hours.split(".");
+          timearray[0] = Number(hoursArray[0]) * -1;
+          timearray[1] = Number(minDifference) * -1;
+          return Number(timearray[0]) + " hour " + Number(timearray[1]) + " min ";
+        } else {
+          hourDifference = hourDifference.toFixed(2);
+          var timearray = hourDifference.split(".");
+          return Number(timearray[0]) * -1 + " min " + Number(timearray[1]) + " sec ";
+        }
+      } else if (Math.round(duration.asDays()) < -30 && Math.round(duration.asDays()) > -365) {
+        var monthDifference = (duration.asDays() / 30).toFixed(3);
+        var montharray = monthDifference.split(".");
+        var daysDifference = (duration.asDays() % 30).toFixed(3);
+        var daysArray = daysDifference.split(".");
+        timearray[0] = Number(montharray[0]) * -1;
+        timearray[1] = Number(daysArray[0]) * -1;
+        return Number(timearray[0]) + " month " + Number(timearray[1]) + " days ";
+      } else if (Math.round(duration.asDays()) < -365) {
+        var yearDifference = duration.asYears().toFixed(2);
+        var _timearray = yearDifference.split(".");
+        return Number(_timearray[0]) * -1 + " year " + Number(_timearray[1]) + " day ";
+      } else {
+        var daysDifference = duration.asDays().toFixed(2);
+        var _timearray2 = daysDifference.split(".");
+        return Number(_timearray2[0]) * -1 + " day ";
+      }
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -67033,7 +67044,8 @@ var render = function() {
                     "td",
                     { staticClass: "item text-left", attrs: { width: "20%" } },
                     [
-                      _c("span", [_vm._v("on ")]),
+                      _c("span", [_vm._v("on")]),
+                      _vm._v(" "),
                       _c(
                         "a",
                         {
@@ -67067,34 +67079,38 @@ var render = function() {
                   _c("div", { staticClass: "heading" }, [
                     _c("div", { staticClass: "set_title" }, [
                       _vm._v(
-                        "\n                            " +
+                        "\n              " +
                           _vm._s(news.title) +
-                          "\n                        "
-                      )
+                          "\n              "
+                      ),
+                      _c("span", { staticClass: "button" }, [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              target: "_blank",
+                              href: news.download_link
+                            }
+                          },
+                          [_vm._v(_vm._s(news.type))]
+                        )
+                      ])
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "time" }, [
                       news.time
-                        ? _c("span", [_vm._v(" " + _vm._s(news.time))])
+                        ? _c("span", [_vm._v(_vm._s(news.time))])
                         : _c("span", [_vm._v("No date")])
                     ]),
                     _vm._v(" "),
-                    _c("div", {}, [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(news.body) +
-                          "\n                        "
-                      )
-                    ])
+                    _c("div", {}, [_vm._v(_vm._s(news.body))])
                   ])
                 ])
               }),
               0
             )
           : _c("div", { staticClass: "item" }, [
-              _vm._v(
-                "\n                No information is available\n            "
-              )
+              _vm._v("No information is available")
             ])
       ])
     ])
@@ -67172,7 +67188,7 @@ var content = __webpack_require__(188);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("d925556c", content, false, {});
+var update = __webpack_require__(5)("d925556c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -67191,12 +67207,12 @@ if(false) {
 /* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n.box.box-default{\n    border: 2px solid #d2d6de;\n}\n.body{\n    padding: 10px 40px;\n}\n.body h3{\n    margin-bottom: 35px;\n    font-weight: 600;\n}\n.button{\n    float: right;\n}\n.button a{\n    font-size: 18px;\n    background-color: #3D85BD;\n    color: white;\n    border: none;\n    border-radius: 4px;\n    padding: 10px 15px;\n}\n.instruction{\n    margin-bottom: 35px;\n    font-weight: 600;\n    font-size: 18px;\n}\nul.dashed {\n  list-style-type: none;\n  padding-left: 0px;\n  font-size: 15px;\n}\nul.dashed > li {\n  text-indent: -5px;\n  margin-left: 5px;\n}\nul.dashed > li:before {\n  content: \"-\";\n  font-weight: bold;\n  text-indent: -5px;\n  padding-right: 5px;\n}\n.main_list{\n    list-style-type: none;\n    padding-left: 0px;\n}\n.main_list .news_list{\n    margin-bottom: 40px;\n}\n.main_list h4{\n    font-weight: 600;\n}\n.main_list .link{\n    margin-left: 15px;\n}\n.time{\n    font-size: 13px;\n    color: grey;\n    font-weight: 600;\n    margin: 3px 0px;\n}\n.news_content{\n    margin-bottom: 15px;\n}\n", ""]);
+exports.push([module.i, "\n.box.box-default {\n  border: 2px solid #d2d6de;\n}\n.body {\n  padding: 10px 40px;\n}\n.body h3 {\n  margin-bottom: 35px;\n  font-weight: 600;\n}\n.button {\n  float: right;\n}\n.button a {\n  font-size: 18px;\n  background-color: #3d85bd;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  padding: 10px 15px;\n}\n.instruction {\n  margin-bottom: 35px;\n  font-weight: 600;\n  font-size: 18px;\n}\nul.dashed {\n  list-style-type: none;\n  padding-left: 0px;\n  font-size: 15px;\n}\nul.dashed > li {\n  text-indent: -5px;\n  margin-left: 5px;\n}\nul.dashed > li:before {\n  content: \"-\";\n  font-weight: bold;\n  text-indent: -5px;\n  padding-right: 5px;\n}\n.main_list {\n  list-style-type: none;\n  padding-left: 0px;\n}\n.main_list .news_list {\n  margin-bottom: 40px;\n}\n.main_list h4 {\n  font-weight: 600;\n}\n.main_list .link {\n  margin-left: 15px;\n}\n.time {\n  font-size: 13px;\n  color: grey;\n  font-weight: 600;\n  margin: 3px 0px;\n}\n.news_content {\n  margin-bottom: 15px;\n}\n", ""]);
 
 // exports
 
@@ -67257,30 +67273,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('calling');
-    },
+  mounted: function mounted() {},
 
-    props: {
-        news: { type: Array }
-    },
-    computed: {
-        newsToShow: function newsToShow() {
-            var newsArray = [];
-            for (var i = 0; i <= this.news.length; i++) {
-                if (i !== 0) {
-                    if (this.news[i]) {
-                        this.news[i]['time'] = __WEBPACK_IMPORTED_MODULE_0_moment___default()(this.news[i].created_at).format('MMMM DD,YYYY');
-                        newsArray.push(this.news[i]);
-                    }
-                }
-            }
-            return newsArray;
+  props: {
+    news: { type: Array }
+  },
+  computed: {
+    newsToShow: function newsToShow() {
+      var newsArray = [];
+      for (var i = 0; i <= this.news.length; i++) {
+        if (i !== 0) {
+          if (this.news[i]) {
+            this.news[i]["time"] = __WEBPACK_IMPORTED_MODULE_0_moment___default()(this.news[i].created_at).format("MMMM DD,YYYY");
+            newsArray.push(this.news[i]);
+          }
         }
+      }
+      return newsArray;
     }
+  }
 });
 
 /***/ }),
@@ -67295,7 +67317,7 @@ var render = function() {
     _c("div", { staticClass: "box box-default" }, [
       _c("div", { staticClass: "box-body body" }, [
         _c("h3", [
-          _vm._v(_vm._s(_vm.news[0].title) + " \n                "),
+          _vm._v("\n        " + _vm._s(_vm.news[0].title) + "\n        "),
           _c("span", { staticClass: "button" }, [
             _c(
               "a",
@@ -67306,13 +67328,13 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "instruction" }, [
-          _vm._v(_vm._s(_vm.news[0].body)),
+          _vm._v("\n        " + _vm._s(_vm.news[0].body) + "\n        "),
           _c(
             "a",
             { attrs: { href: "/chrome-extension-download-instructions" } },
             [_vm._v("link to instructions")]
           ),
-          _vm._v(". Here's what's new:")
+          _vm._v(". Here's what's new:\n      ")
         ]),
         _vm._v(" "),
         _vm._m(0)
@@ -67331,26 +67353,30 @@ var render = function() {
               news
                 ? _c("h4", [
                     _vm._v(
-                      _vm._s(news.title) + " : \n                        "
+                      "\n            " + _vm._s(news.title) + " :\n            "
                     ),
                     _c("span", { staticClass: "link" }, [
-                      _c("a", { attrs: { href: news.download_link } }, [
-                        _vm._v("(Drive Download)")
-                      ])
+                      _c(
+                        "a",
+                        {
+                          attrs: { target: "_blank", href: news.download_link }
+                        },
+                        [_vm._v("(Download)")]
+                      )
                     ])
                   ])
                 : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "time" }, [
                 news.time
-                  ? _c("span", [_vm._v(" " + _vm._s(news.time))])
+                  ? _c("span", [_vm._v(_vm._s(news.time))])
                   : _c("span", [_vm._v("No date")])
               ]),
               _vm._v(" "),
               news
                 ? _c("div", [
                     _c("div", { staticClass: "news_content" }, [
-                      _vm._v(" " + _vm._s(news.body))
+                      _vm._v(_vm._s(news.body))
                     ]),
                     _vm._v(" "),
                     _vm._m(1, true)
@@ -67444,7 +67470,12 @@ if (false) {
 }
 
 /***/ }),
-/* 191 */
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
