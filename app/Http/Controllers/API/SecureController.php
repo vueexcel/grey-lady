@@ -5,6 +5,7 @@
 namespace App\Http\Controllers\API;
 
 use DB;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client as GuzzleHttpClient;
@@ -96,22 +97,27 @@ class SecureController extends BaseController
      */
     public function bootup(Request $request)
     {
-        $client = new GuzzleHttpClient();
-        $input = $request->all();
-        $user = auth()->user();
-        $query = array();
-        $plugin = NewsAndUpdates::select('version', 'download_link')->where('type', 'plugin')->orderBy('id', 'desc')->get()->toArray();        
-        $current_chrome_plugin = array(
-            'version' => $plugin[0]['version'],
-            'download_link' => $plugin[0]['download_link']
-        );
-
-        if ($input['url']) {
+        try {
+            $client = new GuzzleHttpClient();
+            $input = $request->all();
+            $user = auth()->user();
+            $query = array();
+            $plugin = NewsAndUpdates::select('version', 'download_link')->where('type', 'plugin')->orderBy('id', 'desc')->get()->toArray();        
+            $current_chrome_plugin = array(
+                'version' => $plugin[0]['version'],
+                'download_link' => $plugin[0]['download_link']
+            );            
 
             $url = 'https://api.greyladyproject.com/api/v1/' . $input['url'];
 
             unset($input['url']);
 
+            if( !array_key_exists('url', $input) ){
+                if( sizeof($input) < 1 ){
+                    throw new Exception('Request Payload is not present');
+                }
+            }
+            
             foreach ($input as $key => $value) {
                 $query[$key] = $value;
             }
@@ -122,8 +128,6 @@ class SecureController extends BaseController
             ]);
 
             $listing = json_decode($apiRequest->getBody()->getContents());
-
-            // dd($listing);
 
             $location = isset($listing->cretedlistingItemResponse[0]->details->location) ? $listing->cretedlistingItemResponse[0]->details->location : false;
             $source = isset($listing->cretedlistingItemResponse[0]->source) ? $listing->cretedlistingItemResponse[0]->source : false;
@@ -142,14 +146,11 @@ class SecureController extends BaseController
                 'api_response' => $listing,
                 'version' => $current_chrome_plugin
             ];
-            // die($newListingStream);
             
             return response()->json($response, 200);
 
-        } else {
-            
-            return false;
-        }
-             
+        } catch( Exception $ex) {
+            return response()->json(['error' => $ex->getMessage()]);
+        }          
     }
 }
