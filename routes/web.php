@@ -32,17 +32,15 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/getting-started', function () {
         return view('help.getting-started');
     });
-    Route::get('/chrome-extension-download-instructions', function () {
-        return view('help.chrome-extension-download');
-    });
+Route::get('/chrome-extension-download-instructions', function () {
+    return view('help.chrome-extension-download');
+});
+
+Route::get('/chrome-extension-download-instructions/latest', function () {
+    return view('help.chrome-extension-download-latest');
+});
     
-    Route::get('/chrome-extension-download-instructions/latest', function () {
-        return view('help.chrome-extension-download-latest');
-    });
-    
-Route::get('/home', function () {
-        return view('home');
-    });
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
@@ -50,10 +48,8 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/dashboard', 'DashboardController@index');
-
-    Route::get('/', function () {
-        return view('explore.explore');
-    });
+    Route::get('/', 'DashboardController@index');
+    
     Route::get('/explore', function () {
         return view('explore.explore');
     });
