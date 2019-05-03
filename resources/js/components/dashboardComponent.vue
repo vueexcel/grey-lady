@@ -31,8 +31,8 @@
             <div class="heading">
               <div class="set_title">
                 {{news.title}}
-                <span class="button">
-                  <a target="_blank" :href="news.download_link">{{ news.type }}</a>
+                <span class="button" v-if="news.version">
+                  <a>{{ news.type }}</a>
                 </span>
               </div>
 
