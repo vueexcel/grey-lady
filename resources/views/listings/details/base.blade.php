@@ -63,14 +63,16 @@
     $('#delete-listing').on('click', function(event) {
       event.preventDefault();
 
-      var listing_id = $(this).data('listing-id')
+      if (confirm('Are you sure you want to delete this listing?')) {
 
-      deleteListing(listing_id, function (response) {
-          alert('Listing Deleted');
-         history.go(-1);
-      })
-    
+        var listing_id = $(this).data('listing-id')
 
+        deleteListing(listing_id, function (response) {
+            alert('Listing Deleted');
+           history.go(-1);
+        })
+
+      }
 
     });
 
