@@ -47,57 +47,64 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::group(['middleware' => 'auth'], function() {
 
+    //beta users get access to these views
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('/', 'DashboardController@index');
+    Route::get('/scenario/run/{id}', 'ScenarioController@run');
+    Route::get('/explore/favorites/zips', 'FavoritesController@zips');
+    Route::get('/explore/favorites/listings', 'FavoritesController@listings');
+    Route::get('/home', 'HomeController@index');
+
     
+    
+    //only admin users get access to these roles. 
     Route::get('/explore', function () {
+        $user = Auth::user();
+        abort_unless($user->hasRole('admin'), 403);
         return view('explore.explore');
     });
     Route::get('/explore/export', function () {
+        $user = Auth::user();
+        abort_unless($user->hasRole('admin'), 403);
         return view('explore.export');
     });
-    
-    Route::get('/scenario/run/{id}', 'ScenarioController@run');
-
-    Route::get('/explore/favorites/zips', 'FavoritesController@zips');
-    Route::get('/explore/favorites/listings', 'FavoritesController@listings');
-    
     Route::get('/explore/{zip}', 'ZipController@details');
-
     Route::get('/listings', function () {
+        $user = Auth::user();
+        abort_unless($user->hasRole('admin'), 403);
         return view('listings');
     });
     Route::get('/listing/{id}', 'ListingController@details');
     Route::get('/listings/create', function () {
+        $user = Auth::user();
+        abort_unless($user->hasRole('admin'), 403);
         return view('listings-create');
     });
-
-
-
     Route::get('/zips', function () {
+        $user = Auth::user();
+        abort_unless($user->hasRole('admin'), 403);
         return view('zips');
     });
     Route::get('/zips/details', function () {
+        $user = Auth::user();
+        abort_unless($user->hasRole('admin'), 403);
         return view('zips-details');
     });
     Route::get('/zips/create', function () {
+        $user = Auth::user();
+        abort_unless($user->hasRole('admin'), 403);
         return view('zips-create');
     });
-
-
     Route::get('/watchlist', function () {
+        $user = Auth::user();
+        abort_unless($user->hasRole('admin'), 403);
         return view('watchlists');
     });
     Route::get('/watchlists/create', function () {
+        $user = Auth::user();
+        abort_unless($user->hasRole('admin'), 403);
         return view('watchlists-create');
     });
-
-    
-
-    Route::get('/home', 'HomeController@index')->name('home');
-
-
-
 });
 
 
