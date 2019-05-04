@@ -20,8 +20,7 @@
 
 		{!! makeButton($listing->details->location->zip . ' Details', '/explore/' . $listing->details->location->zip) !!}	
 		{!! makeButton('Zips in ' . $listing->details->location->city, '/explore/?town=' . $listing->details->location->city) !!}	
+		<a id='delete-listing' data-listing-id="{{$listing->id}}" type="button" class="btn btn-default" href="#">Delete Listing</a>
 
 	</div>
 </div>
-
-

@@ -1,3 +1,15 @@
+function deleteListing(listing_id, callback) {
+
+	var api_url = 'https://api.greyladyproject.com/api/v1/listings/' + listing_id;
+	var data_to_send = {};
+
+	makeGreyLadyRequest(api_url, 'DELETE', data_to_send, false, function (response) {
+		callback(response);
+	});
+
+
+}
+
 function getListingDetailsFromGreylady (listing_id, purchase_type, callback) {
 
 	// console.log('Getting Listing Details for '+listing_id+' from Greylady.....');
@@ -103,7 +115,8 @@ function addListingtoGreylady (create_listing_data, callback) {
 
 function makeGreyLadyRequest (url, type, data, auth_required, success = false, fail = false) {
 
-	var headers = {};
+	var headers = {apiKey: 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ'};
+
 
 	if (!success) {
 		success = function () {

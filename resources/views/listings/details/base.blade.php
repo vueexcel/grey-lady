@@ -58,7 +58,24 @@
     var explore_details_zip = '{{$zip[0]->details->zip}}';
     {{-- var api_listing_information = jQuery.parseJSON("{{ json_encode( (array) $listing) }}");  --}}
     // console.log(api_listing_information);
+    
+  
+    $('#delete-listing').on('click', function(event) {
+      event.preventDefault();
+
+      var listing_id = $(this).data('listing-id')
+
+      deleteListing(listing_id, function (response) {
+          alert('Listing Deleted');
+         history.go(-1);
+      })
+    
+
+
+    });
+
   </script>
+
   <script src="/js/listings.js"></script>
   <script src="/js/explore-details.js"></script>
   {{-- <script src="/js/listings-details.js"></script> --}}
