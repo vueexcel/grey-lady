@@ -67258,7 +67258,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -67298,23 +67297,21 @@ var render = function() {
       _c("div", { staticClass: "box-body body" }, [
         _c("h3", [
           _vm._v("\n        " + _vm._s(_vm.news[0].title) + "\n        "),
-          _c("span", { staticClass: "button" }, [
-            _c(
-              "a",
-              { attrs: { target: "_blank", href: _vm.news[0].download_link } },
-              [_vm._v("Download Zip File")]
-            )
-          ])
+          _vm.news[0].download_link
+            ? _c("span", { staticClass: "button" }, [
+                _c(
+                  "a",
+                  {
+                    attrs: { target: "_blank", href: _vm.news[0].download_link }
+                  },
+                  [_vm._v("Download Zip File")]
+                )
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "instruction" }, [
-          _vm._v("\n        " + _vm._s(_vm.news[0].body) + "\n        "),
-          _c(
-            "a",
-            { attrs: { href: "/chrome-extension-download-instructions" } },
-            [_vm._v("link to instructions")]
-          ),
-          _vm._v(". Here's what's new:\n      ")
+          _vm._v("\n        " + _vm._s(_vm.news[0].body) + "\n      ")
         ])
       ])
     ]),

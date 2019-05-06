@@ -4,13 +4,12 @@
       <div class="box-body body">
         <h3>
           {{news[0].title}}
-          <span class="button">
+          <span class="button" v-if="news[0].download_link">
             <a target="_blank" :href="news[0].download_link">Download Zip File</a>
           </span>
         </h3>
         <p class="instruction">
-          {{news[0].body}}
-          <a href="/chrome-extension-download-instructions">link to instructions</a>. Here's what's new:
+          {{ news[0].body }}
         </p>
       </div>
     </div>
