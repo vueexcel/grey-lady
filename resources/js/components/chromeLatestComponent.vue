@@ -8,7 +8,7 @@
             <a target="_blank" :href="news[0].download_link">Download Zip File</a>
           </span>
         </h3>
-        <p class="instruction">
+        <p class="instruction" v-html="news[0].body">
           {{ news[0].body }}
         </p>
       </div>
@@ -29,7 +29,7 @@
               <span v-else>No date</span>
             </div>
             <div v-if="news">
-              <div class="news_content">{{news.body}}</div>
+              <div class="news_content" v-html="news.body">{{news.body}}</div>
             </div>
           </li>
         </ul>
@@ -41,6 +41,11 @@
 <script>
 import moment, { min } from "moment";
 export default {
+  data() {
+    return {
+      legacySystemHTML: ``
+    }
+  },
   mounted() {
   },
   props: {
@@ -52,7 +57,7 @@ export default {
       for (var i = 0; i <= this.news.length; i++) {
         if (i !== 0) {
           if (this.news[i]) {
-            if( this.news[i]['type'].toLowerCase() == 'plugin' ){
+            if( this.news[i].type == 'plugin' ){
               this.news[i]["time"] = moment(this.news[i].created_at).format(
                 "MMMM DD,YYYY"
               );

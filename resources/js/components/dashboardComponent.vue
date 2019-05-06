@@ -40,7 +40,7 @@
                 <span v-if="news.time">{{news.time}}</span>
                 <span v-else>No date</span>
               </div>
-              <div class>{{news.body}}</div>
+              <div class v-html="news.body">{{news.body}}</div>
             </div>
           </li>
         </ul>

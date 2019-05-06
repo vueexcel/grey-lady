@@ -67096,7 +67096,9 @@ var render = function() {
                         : _c("span", [_vm._v("No date")])
                     ]),
                     _vm._v(" "),
-                    _c("div", {}, [_vm._v(_vm._s(news.body))])
+                    _c("div", { domProps: { innerHTML: _vm._s(news.body) } }, [
+                      _vm._v(_vm._s(news.body))
+                    ])
                   ])
                 ])
               }),
@@ -67261,6 +67263,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      legacySystemHTML: ""
+    };
+  },
   mounted: function mounted() {},
 
   props: {
@@ -67272,7 +67279,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       for (var i = 0; i <= this.news.length; i++) {
         if (i !== 0) {
           if (this.news[i]) {
-            if (this.news[i]['type'].toLowerCase() == 'plugin') {
+            if (this.news[i].type == 'plugin') {
               this.news[i]["time"] = __WEBPACK_IMPORTED_MODULE_0_moment___default()(this.news[i].created_at).format("MMMM DD,YYYY");
               newsArray.push(this.news[i]);
             }
@@ -67310,9 +67317,14 @@ var render = function() {
             : _vm._e()
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "instruction" }, [
-          _vm._v("\n        " + _vm._s(_vm.news[0].body) + "\n      ")
-        ])
+        _c(
+          "p",
+          {
+            staticClass: "instruction",
+            domProps: { innerHTML: _vm._s(_vm.news[0].body) }
+          },
+          [_vm._v("\n        " + _vm._s(_vm.news[0].body) + "\n      ")]
+        )
       ])
     ]),
     _vm._v(" "),
@@ -67357,9 +67369,14 @@ var render = function() {
               _vm._v(" "),
               news
                 ? _c("div", [
-                    _c("div", { staticClass: "news_content" }, [
-                      _vm._v(_vm._s(news.body))
-                    ])
+                    _c(
+                      "div",
+                      {
+                        staticClass: "news_content",
+                        domProps: { innerHTML: _vm._s(news.body) }
+                      },
+                      [_vm._v(_vm._s(news.body))]
+                    )
                   ])
                 : _vm._e()
             ])
