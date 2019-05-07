@@ -52,7 +52,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard', function(){
         return view('dashboard');
     });
-    Route::get('/', 'DashboardController@index');
+    Route::get('/', function(){
+        return view('dashboard');
+    });
     Route::get('/scenario/run/{id}', 'ScenarioController@run');
     Route::get('/explore/favorites/zips', 'FavoritesController@zips');
     Route::get('/explore/favorites/listings', 'FavoritesController@listings');
