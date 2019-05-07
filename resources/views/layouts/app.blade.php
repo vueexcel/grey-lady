@@ -29,23 +29,16 @@
     <div class="container">
 
       <!-- Main content -->
-      <section class="content">
-        
-        @yield('content')
-
+      <section class="content">        
+        @yield('content') 
       </section>
       <!-- /.content -->
     </div>
     <!-- /.container -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="container">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 0.1
-      </div>
-    </div>
-    <!-- /.container -->
+  <footer class="main-footer">    
+    <?php echo View::make('layouts.footer') ?>
   </footer>
 
 </div>
@@ -54,6 +47,7 @@
   <?php echo View::make('layouts.footer-scripts') ?>
 
   @yield('footer-scripts')
+  
 
 </body>
 </html>

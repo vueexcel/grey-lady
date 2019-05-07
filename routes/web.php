@@ -47,13 +47,17 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::group(['middleware' => 'auth'], function() {
 
+
     //beta users get access to these views
-    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/dashboard', function(){
+        return view('dashboard');
+    });
     Route::get('/', 'DashboardController@index');
     Route::get('/scenario/run/{id}', 'ScenarioController@run');
     Route::get('/explore/favorites/zips', 'FavoritesController@zips');
     Route::get('/explore/favorites/listings', 'FavoritesController@listings');
     Route::get('/home', 'HomeController@index');
+
 
     
     

@@ -19,7 +19,7 @@ class NewsAndUpdates extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['title', 'body', 'created_at'];
+    protected $fillable = ['title', 'body', 'type', 'version', 'download_link', 'created_at'];
     // protected $hidden = [];
     // protected $dates = [];
 

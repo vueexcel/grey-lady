@@ -11,6 +11,7 @@ use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\Exception\RequestException;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\listingstream;
+use App\Models\NewsAndUpdates;
 use Validator;
 
 
@@ -99,9 +100,10 @@ class SecureController extends BaseController
         $input = $request->all();
         $user = auth()->user();
         $query = array();
+        $plugin = NewsAndUpdates::select('version', 'download_link')->where('type', 'plugin')->orderBy('id', 'desc')->get()->toArray();        
         $current_chrome_plugin = array(
-            'version' => '0.1.4',
-            'download_link' => 'https://app.greyladyproject.com/chrome-extension-download-instructions/latest'
+            'version' => $plugin[0]['version'],
+            'download_link' => $plugin[0]['download_link']
         );
 
         if ($input['url']) {

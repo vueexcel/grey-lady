@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\ListingstreamRequest as StoreRequest;
-use App\Http\Requests\ListingstreamRequest as UpdateRequest;
+use App\Http\Requests\NewsAndUpdatesRequest as StoreRequest;
+use App\Http\Requests\NewsAndUpdatesRequest as UpdateRequest;
 use Backpack\CRUD\CrudPanel;
 
 
 /**
- * Class ListingstreamCrudController
+ * Class NewsAndUpdatesCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
@@ -41,10 +41,16 @@ class NewsAndUpdatesCrudController extends CrudController
             'name' => 'body',
             'type' => 'simplemde',
             'label' => "Body"
-        ]);      
+        ]);
+        $this->crud->addField([
+            'name' => 'type',
+            'type' => 'select_from_array',
+            'label' => 'Type',
+            'options' => [ 'app' => 'App', 'plugin' => 'Plugin']
+        ]);
         
 
-        // add asterisk for fields that are required in ListingstreamRequest
+        // add asterisk for fields that are required in NewsAndUpdatesRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
