@@ -31,8 +31,8 @@
             <div class="heading">
               <div class="set_title">
                 {{news.title}}
-                <span class="button">
-                  <a target="_blank" :href="news.download_link">{{ news.type }}</a>
+                <span class="button" v-if="news.version">
+                  <a>{{ news.type }}</a>
                 </span>
               </div>
 
@@ -40,7 +40,7 @@
                 <span v-if="news.time">{{news.time}}</span>
                 <span v-else>No date</span>
               </div>
-              <div class>{{news.body}}</div>
+              <div class v-html="news.body">{{news.body}}</div>
             </div>
           </li>
         </ul>
