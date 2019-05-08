@@ -102,6 +102,17 @@ class SecureController extends BaseController
             $input = $request->all();
             $user = auth()->user();
             $query = array();
+
+            $validator = Validator::make($input['details'], [
+                'beds' => 'required|numeric|min:1',
+                'baths' => 'required|numeric|min:1',
+                'price' => 'required|numeric|min:1',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['error' => $validator->errors()]);      
+            }
+            
             $plugin = NewsAndUpdates::select('version', 'download_link')->where('type', 'plugin')->orderBy('id', 'desc')->get()->toArray();        
             $current_chrome_plugin = array(
                 'version' => $plugin[0]['version'],
