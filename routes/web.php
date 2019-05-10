@@ -32,11 +32,11 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/getting-started', function () {
         return view('help.getting-started');
     });
-Route::get('/chrome-extension-download-instructions', function () {
+Route::get('/plugin/instructions', function () {
     return view('help.chrome-extension-download');
 });
 
-Route::get('/chrome-extension-download-instructions/latest', function () {
+Route::get('/plugin/latest', function () {
     return view('help.chrome-extension-download-latest');
 });
     

@@ -29,7 +29,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/getting-started"><i class="fa fa-circle-o"></i>Getting Started</a></li>
-            <li><a href="/chrome-extension-download-instructions"><i class="fa fa-circle-o"></i>Download Chrome Extension</a></li>
+            <li><a href="/plugin/latest"><i class="fa fa-circle-o"></i>Plugin Releases</a></li>
+            <li><a href="/plugin/instructions"><i class="fa fa-circle-o"></i>Plugin Download Instructions</a></li>
             @role('admin')
             <li><a target=_Blank href="https://github.com/MatthewBarba/greylady-app/issues"><i class="fa fa-circle-o"></i>Report a bug</a></li>
             @endrole
