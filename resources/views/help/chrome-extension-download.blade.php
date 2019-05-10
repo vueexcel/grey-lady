@@ -11,34 +11,26 @@
 
       <h1>How to Install the Chrome Extension (the Plugin):</h1>
 
-      <ul>
-        <li>Use <a href="/plugin/latest">this link to download</a> the latest zip file to your computer.</li>
-      </ul>
+      <p>1. Use <a href="/plugin/latest">this link to download</a> the latest zip file to your computer.</p>
 
-      <h3>What does it do?</h3>
+      <p>2. Once you have your folder saved on the desktop, go to chrome://extensions (or find it in your menu in more tools > extensions), then activate the developer mode on the top right corner of the page:</p>
 
-      <p>It's a chrome plguin. It injects an interface when looking at property detail pages on real estate websites (just redfin for now). The interface gives you financial stats like cap rate, cashflow, etc.. as well as cencus information about the zip code. </p>
+      <img src="/images/how-to-1.png" width=600>
 
-      <p> The financial calculations are crude right now. It's using average rent for listings matching zip and bedroom to calculate revenue and a % to calculate operating expenses. In the future we'll make it smarter, give inputs to changes the assumptions, etc..</p>
+      <p>3. To install the extension, you next have to indicate where it is on your computer.</p>
 
-      <p>Here's what it looks like:</p>
-      <img width=1000px src="/images/chrome-plugin.jpeg">
+      <p>a) Click on the “Load unpacked” button near the top left of the page:</p>
 
-      <h3>Installation Instructions</h3>
+      <img src="/images/how-to-2.png" width=600>
 
-      <ul>
-        <li>Download the <a href="/chrome-extension-download-instructions/latest">latest version here</a>. It's permission controlled by google right now. You might need to request access to it.</li>
-        <li>Follow the instructions <a href="https://blog.hunter.io/how-to-install-a-chrome-extension-without-using-the-chrome-web-store-31902c780034">in this article</a> under <b>"Method 1"</b></li>
-      </ul>
+      <p>b) Find the file “greylady-plugin” and select that folder</p>
+      <p>c) It should look like this when you click the “select folder” button:</p>
 
-      <h3>Known Problems</h3>
+      <img src="/images/how-to-3.png" width=600>
 
-      <ul>
-        <li>It doesn't work on Zillow, Realtor.com or Trulia.com. Working on this now.</li>
-        <li>It wont calculate financial stats if there's not at least 5 rental listings matching the zip / bedroom of the listing you are looking at. This is because it uses those 5 to calculate an average rent in that bed / zip.</li>
-        <li>It hasn't been tested for different property types. It doesn't work for land or multifamily.</li>
-        <li>Its generally bugy. Sometimes it just doesn't work or it doesn't calculate financail stats. </li>
-      </ul>
+      <p>4. When completed, your page should look like the picture below, with the plugin now loaded into your chrome extensions:</p>
+
+      <img src="/images/how-to-4.png" width=600>
 
     </div>
   </div>
