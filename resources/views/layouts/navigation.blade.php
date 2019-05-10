@@ -1,11 +1,19 @@
-
-
 <!-- sidebar: style can be found in sidebar.less -->
     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 343px;"><section class="sidebar" style="overflow: hidden; width: auto; height: 343px;">
+
+      <div class="user-panel">
+        <a class="pull-left image" href="#">
+          <img src="{{ Auth::user()->getGravatarAttribute() }}" class="img-circle" alt="User Image">
+        </a>
+        <div class="pull-left info">
+          <p>{{ Auth::user()->name }}</p>
+          <a href="/logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a></small></small>
+        </div>
+      </div>
       
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu tree" data-widget="tree">
-        <li><a href="/dashboard"><i class="fa fa-circle-o"></i>Dashboard</a></li>
+        <li class=" active"><a href="/dashboard"><i class="fa fa-circle-o"></i>Dashboard</a></li>
         <li class="treeview active">
           <a href="/explore">
             <i class="fa fa-check-circle-o"></i>
