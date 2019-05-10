@@ -27,4 +27,16 @@ function convertSquareFeetToAcres (square_feet) {
 	var acres = numeral(square_feet).value() * 0.000023;
 	return numeral(acres).format('0.00');
 }
+function formatCurrencyToDigits(value){
+	if( isNaN(value) ){
+		if( value.indexOf('k') > -1 ){
+			return parseFloat(value) * 1000;
+		}
+	} else {
+		return parseFloat(value);		
+	}
+}
+function formatPercentageToDigits( value, range ){	
+	return ( parseFloat(value) / 100 ) * range;
+}
 
