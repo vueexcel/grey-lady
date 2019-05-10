@@ -9,7 +9,11 @@
   <div class="box-body">
     <div style="overflow: auto">
 
-      <h1>Downloading the Chrome Extension</h1>
+      <h1>How to Install the Chrome Extension (the Plugin):</h1>
+
+      <ul>
+        <li>Use <a href="/plugin/latest">this link to download</a> the latest zip file to your computer.</li>
+      </ul>
 
       <h3>What does it do?</h3>
 
