@@ -2,30 +2,59 @@ updateFormDisplayValues();
 getFinancialScenario();
 
 
-$('#scenario-control input').on('change', function () {
+$('#scenario-control input.range-value').on('change', function () {
 
   updateFormDisplayValues();      
   getFinancialScenario();
 
 });
 
+$('#scenario-control input.scenario-value').on('change', function (event) {
+  
+  updateFormManualValues( event );
+  getFinancialScenario();
+  updateFormDisplayValues();
+
+});
+
 function updateFormDisplayValues () {
 
-  var form = $( '#scenario-control input' ).each(function(index, el) {
+  var form = $( '#scenario-control input.range-value' ).each(function(index, el) {
 
-    var id = 'span#' + el.name;
+    var id = 'input.scenario-value#' + el.name;
+    
+    if (el.value < 10) {      
 
-    if (el.value < 10) {
-
-      $(id).html( formatPercentage(el.value) )
+      $(id).val( formatPercentage(el.value) );
+      // $(id).html( formatPercentage(el.value) )
       
     } else {
 
-      $(id).html( formatCurrency(el.value, 3) );  
+      $(id).val( formatCurrency(el.value, 3) );
+      // $(id).html( formatCurrency(el.value, 3) );  
     }
-    
-    
+        
   });
+
+}
+
+function updateFormManualValues( event ) {
+
+  var value, range_id;
+  value = event.target.value;
+  range_id = '#' + event.target.id + '_range';
+  if( isNaN( value ) ){
+
+    if( value.indexOf('$') > -1 ){    
+      $(range_id).val( formatCurrencyToDigits( value.substr(1) ) );    
+    } 
+    if( value.indexOf('%') > -1 ) {
+      $(range_id).val( formatPercentageToDigits( parseFloat(value), $(range_id).attr('max') ) );  
+    }
+
+  } else {
+    $(range_id).val( formatCurrencyToDigits( parseFloat( value ) ) );
+  }
 
 }
 
