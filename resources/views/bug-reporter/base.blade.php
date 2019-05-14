@@ -41,7 +41,7 @@
 
 
 <!-- Button trigger modal -->
-<div class="report-bug-wrapper">
+{{-- <div class="report-bug-wrapper">
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Report Bug
   </button>  
@@ -64,4 +64,4 @@
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div><!-- /.modal --> --}}
