@@ -172,7 +172,7 @@ config.listings.ajax = {
       };
 
 
-config.listings.columns =  [ 'actions', 'price', 'cash_on_cash', 'cap_rate', 'sqft', 'beds', 'zip', 'address', 'date_added'];
+config.listings.columns =  [ 'actions','cash_on_cash', 'cap_rate', 'sqft', 'beds',  'price',  'zip', 'address', 'date_added'];
 // config.listings.get.columns_defs =  [{ "width": "150px", "target": 0 }];
 // config.listings.columns =  [ {'data':'actions', 'wdith': '200px'}, {'data':'zip'}, {'data':'price'}, {'data':'cash_on_cash'}, {'data':'cap_rate'}, {'data':'beds'}, {'data':'sqft'}, {'data':'address'}, {'data':'date_added'}];
 

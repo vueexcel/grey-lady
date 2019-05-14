@@ -24,15 +24,21 @@ config.favoritelistings.ajax = {
         if (json.items[i].calculated_fields[0] && json.items[i].calculated_fields[0].financial_information.cash_on_cash) {
           cash_on_cash = json.items[i].calculated_fields[0].financial_information.cash_on_cash;
         } 
+
+        console.log(json.items[i].details);
+
+        var full_address = json.items[i].details.location.address;
+        full_address += ' ' + json.items[i].details.location.city;
+        full_address += ', ' + json.items[i].details.location.state;
         
         return_data.push({
           'date_added': formatDate(json.items[i].createdAt),
-          'address': json.items[i].details.location.address,
-          'sqft': json.items[i].details.LivingArea,
-          'beds': json.items[i].details.beds,
+          'address': full_address,
+          'sqft': json.items[i].details.LivingArea ? json.items[i].details.LivingArea : 'n/a', 
+          'beds': json.items[i].details.beds ? json.items[i].details.beds : 'n/a',
           'cap_rate': formatPercentage(cap_rate),
           'cash_on_cash': formatPercentage(cash_on_cash),
-          'price': json.items[i].details.price,
+          'price': formatCurrency(json.items[i].details.price, 5),
           'zip': json.items[i].details.location.zip,
           'actions': config.favoritelistings.get.actions_column(json.items[i]) 
         })
@@ -44,8 +50,9 @@ config.favoritelistings.ajax = {
 config.favoritelistings.get.actions_column = function (listing_item) {
   var html_to_return = '';
   
-  html_to_return += '<a id="remove-favorite-listing" data-listingid="'+listing_item.id+'" type="button" class="btn btn-default" href="#">Remove</a>';
-  html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + listing_item.id + '&type=sell">Details</a>';
+  html_to_return += '<a id="remove-favorite-listing" data-listingid="'+listing_item.id+'" type="button" class="btn btn-default" href="#">Remove Favorite</a>';
+  html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/scenario/run/' + listing_item.id + '">Run Scenario</a>';
+  // html_to_return += '<a type="button" class="btn btn-default" target=_blank href="/listings/details?id=' + listing_item.id + '&type=sell">Details</a>';
 
   return html_to_return;
 }
