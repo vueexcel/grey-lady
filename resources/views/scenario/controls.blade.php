@@ -53,7 +53,7 @@
 						<!-- {{ $listing->calculated_fields[0]->operating_profit_and_loss->monthly->revenue * 1.5 }} -->
 						<!-- {{ $listing->calculated_fields[0]->operating_profit_and_loss->monthly->revenue }} -->
 						<!-- 100 -->
-						<input id="monthly_rent_range" class="range-value" type="range" name="monthly_rent" min="0" max="500000" value="0" step="10000">
+						<input id="monthly_rent_range" class="range-value" type="range" name="monthly_rent" min="0" max="10000" value="0" step="25">
 					</td>
 					<td width="90"><input type="text" class="scenario-value" id="monthly_rent" value="0"></td>
 					<td><span>{{ formatLargeCurrency($listing->calculated_fields[0]->operating_profit_and_loss->monthly->revenue) }}</span></td>
