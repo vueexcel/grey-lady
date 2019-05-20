@@ -47,6 +47,12 @@
   <?php echo View::make('layouts.footer-scripts') ?>
 
   @yield('footer-scripts')
+
+  <script type="text/javascript">
+  
+    $('#myModal').modal('show');
+
+  </script>
   
 
 </body>

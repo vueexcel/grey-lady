@@ -49,6 +49,7 @@
 <script src="/js/helpers/datatables.js/buttons.print.min.js"></script>
 <script src="/js/helpers/datatables.js/buttons.html5.min.js"></script>
 <script src="/js/helpers/datatables.js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js"></script>
 
 
 
