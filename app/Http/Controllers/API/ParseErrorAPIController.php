@@ -37,7 +37,7 @@ class ParseErrorAPIController extends BaseController
         //     return $this->sendError('Validation Error.', $validator->errors());       
         // }
 
-        // $input['user_id'] = Auth::id();
+        $input['user_id'] = Auth::id();
 
         $parseError = ParseError::create($input);
 

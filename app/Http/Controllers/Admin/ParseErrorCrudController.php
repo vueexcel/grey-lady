@@ -36,7 +36,18 @@ class parseerrorcrudcontroller extends CrudController
         // TODO: remove setFromDb() and manually define Fields and Columns
         // $this->crud->setFromDb();
 
-          $this->crud->setColumns(['created_at', 'url', 'missingFields', 'caughtErrors']);
+          $this->crud->setColumns(['created_at', 'user_id', 'url', 'missingFields', 'caughtErrors']);
+
+          // $this->crud->addFilter([ // select2 filter
+          //   'name' => 'user_id',
+          //   'type' => 'select2',
+          //   'label'=> 'User Email'
+          // ], function() {
+          //     return \app\Models\ParseError::all()->unique('name')->pluck('email', 'id')->toArray();
+          // }, function($value) { // if the filter is active
+          //     // $this->crud->addClause('where', 'status', $value);
+          // });
+
           // $this->crud->addField([
           //   'name' => 'name',
           //   'type' => 'text',

@@ -19,7 +19,7 @@ class ParseError extends Model
     protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['url', 'missingFields', 'caughtErrors'];
+    protected $fillable = ['url', 'missingFields', 'caughtErrors', 'user_id'];
     // protected $hidden = [];
     // protected $dates = [];
 
