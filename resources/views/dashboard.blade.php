@@ -3,7 +3,7 @@
 @section('page-title')
 
   <div>
-    <h3>Dashboard</h3>
+    <h3 data-step="1" data-intro="This is a tooltip!">Dashboard</h3>
   </div>
 
 
