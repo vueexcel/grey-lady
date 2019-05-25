@@ -1,8 +1,12 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
+
 <!-- jQuery 3 -->
 <script src="/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
 
 
 <!-- Custom Scripts for the project -->
+
 <script src="/js/helpers/general.js"></script>
 <script src="/js/helpers/search-form.js"></script>
 <script src="/js/helpers/datatable.js"></script>
@@ -49,7 +53,6 @@
 <script src="/js/helpers/datatables.js/buttons.print.min.js"></script>
 <script src="/js/helpers/datatables.js/buttons.html5.min.js"></script>
 <script src="/js/helpers/datatables.js/buttons.flash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js"></script>
 
 
 
@@ -63,3 +66,5 @@
 
   gtag('config', 'UA-131322874-1');
 </script>
+
+<script src="/js/modal-and-walkthrough.js"></script>

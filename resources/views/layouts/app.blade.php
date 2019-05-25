@@ -39,6 +39,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">    
     <?php echo View::make('layouts.footer') ?>
+    <?php echo View::make('modal.welcome') ?>
   </footer>
 
 </div>
@@ -47,12 +48,6 @@
   <?php echo View::make('layouts.footer-scripts') ?>
 
   @yield('footer-scripts')
-
-  <script type="text/javascript">
-  
-    $('#myModal').modal('show');
-
-  </script>
   
 
 </body>
