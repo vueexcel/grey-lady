@@ -24,6 +24,34 @@
       </div>
     </div>
     <div class="column_40">
+      <div class="">
+          <span class="deal">Deals</span>
+          <span class="all">view all</span>
+      </div>
+      <div class="stream">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Deal Name</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>123 Main Deal</td>
+              <td><a class="text-primary" href="#">Details </a></td>
+            </tr>
+            <tr>
+              <td>Jacob</td>
+              <td><a class="text-primary" href="#">Details </a></td>
+            </tr>
+            <tr>
+              <td>Larry the Bird</td>
+              <td><a class="text-primary" href="#">Details </a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <h2 class="heading">News &amp; Updates</h2>
       <div class="stream">
         <ul v-if="newsShow.length" class="news">
@@ -58,8 +86,7 @@ export default {
     data: { type: Array },
     news: { type: Array }
   },
-  created() {
-  },
+  created() {},
   computed: {
     showData() {
       var host = "";
@@ -228,5 +255,18 @@ export default {
   border: none;
   border-radius: 4px;
   padding: 6px 12px;
+}
+
+.deal{
+  font-size: 30px;
+}
+.all{
+  float: right;
+  color: blue;
+  padding-top: 15px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 15px;
+  font-size: 15px;
 }
 </style>

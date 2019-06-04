@@ -66853,7 +66853,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n.set_title {\n  font-size: 18px;\n  font-weight: 600;\n  margin: 4px 0px;\n}\n.column_50 {\n  padding: 0px 15px;\n  width: 55%;\n  -webkit-box-flex: 0;\n}\n.column_40 {\n  padding: 0px 15px;\n  width: 45%;\n  -webkit-box-flex: 0;\n}\n.stream {\n  background-color: white;\n  border: 2px solid #dcdcdc;\n  padding: 15px;\n}\n.heading {\n  margin-bottom: 1rem;\n}\n.item {\n  padding-bottom: 0.9rem;\n  padding-top: 1rem;\n}\n.display_container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.news {\n  margin-top: 1.3rem;\n  padding: 0rem 1.5rem;\n  list-style-type: none;\n}\n.time {\n  font-size: 13px;\n  color: grey;\n  font-weight: 600;\n  margin: 3px 0px;\n}\n.address {\n  font-size: 15px;\n  padding-left: 3px;\n}\n.item a {\n  text-decoration: underline;\n  color: #3d85bd;\n}\n.type {\n  float: right;\n}\n.type button {\n  background-color: #3d85bd;\n  border-radius: 4px;\n  color: white;\n}\n.news li {\n  margin-bottom: 25px;\n}\n/* button CSS */\n.button {\n  float: right;\n}\n.button a {\n  font-size: 16px;\n  text-transform: capitalize;\n  background-color: #3d85bd;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  padding: 6px 12px;\n}\n", ""]);
+exports.push([module.i, "\n.set_title {\n  font-size: 18px;\n  font-weight: 600;\n  margin: 4px 0px;\n}\n.column_50 {\n  padding: 0px 15px;\n  width: 55%;\n  -webkit-box-flex: 0;\n}\n.column_40 {\n  padding: 0px 15px;\n  width: 45%;\n  -webkit-box-flex: 0;\n}\n.stream {\n  background-color: white;\n  border: 2px solid #dcdcdc;\n  padding: 15px;\n}\n.heading {\n  margin-bottom: 1rem;\n}\n.item {\n  padding-bottom: 0.9rem;\n  padding-top: 1rem;\n}\n.display_container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.news {\n  margin-top: 1.3rem;\n  padding: 0rem 1.5rem;\n  list-style-type: none;\n}\n.time {\n  font-size: 13px;\n  color: grey;\n  font-weight: 600;\n  margin: 3px 0px;\n}\n.address {\n  font-size: 15px;\n  padding-left: 3px;\n}\n.item a {\n  text-decoration: underline;\n  color: #3d85bd;\n}\n.type {\n  float: right;\n}\n.type button {\n  background-color: #3d85bd;\n  border-radius: 4px;\n  color: white;\n}\n.news li {\n  margin-bottom: 25px;\n}\n/* button CSS */\n.button {\n  float: right;\n}\n.button a {\n  font-size: 16px;\n  text-transform: capitalize;\n  background-color: #3d85bd;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  padding: 6px 12px;\n}\n.deal{\n  font-size: 30px;\n}\n.all{\n  float: right;\n  color: blue;\n  padding-top: 15px;\n  text-decoration: underline;\n  cursor: pointer;\n  margin-right: 15px;\n  font-size: 15px;\n}\n", ""]);
 
 // exports
 
@@ -66866,6 +66866,34 @@ exports.push([module.i, "\n.set_title {\n  font-size: 18px;\n  font-weight: 600;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -67067,6 +67095,10 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "column_40" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
       _c("h2", { staticClass: "heading" }, [_vm._v("News & Updates")]),
       _vm._v(" "),
       _c("div", { staticClass: "stream" }, [
@@ -67111,7 +67143,66 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c("span", { staticClass: "deal" }, [_vm._v("Deals")]),
+      _vm._v(" "),
+      _c("span", { staticClass: "all" }, [_vm._v("view all")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "stream" }, [
+      _c("table", { staticClass: "table table-bordered" }, [
+        _c("thead", [
+          _c("tr", [
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Deal Name")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Actions")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tbody", [
+          _c("tr", [
+            _c("td", [_vm._v("123 Main Deal")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("a", { staticClass: "text-primary", attrs: { href: "#" } }, [
+                _vm._v("Details ")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("Jacob")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("a", { staticClass: "text-primary", attrs: { href: "#" } }, [
+                _vm._v("Details ")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("Larry the Bird")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("a", { staticClass: "text-primary", attrs: { href: "#" } }, [
+                _vm._v("Details ")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
