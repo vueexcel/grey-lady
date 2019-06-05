@@ -239,8 +239,12 @@ class SecureController extends BaseController
     public function getDeals()
     {
         try {
-            $deals = Deals::all()->toArray();
-            return response()->json($deals, 200);
+            $deals = Deals::all()->toArray();            
+            $response = [
+                'api_response' => $deals
+            ];
+
+            return response()->json($response, 200);
 
         } catch( Exception $ex ) {
             return response()->json(['error' => $ex->getMessage()]);
