@@ -19,7 +19,7 @@ class Deals extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['user_id', 'name', 'description'];
+    protected $fillable = ['user_id', 'name', 'description', 'beds', 'baths', 'price', 'living_area'];
     // protected $hidden = [];
     // protected $dates = [];
 

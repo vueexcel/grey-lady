@@ -210,15 +210,25 @@ class SecureController extends BaseController
 
             $listing = json_decode($apiRequest->getBody()->getContents());
             $location = isset($listing->cretedlistingItemResponse[0]->details->location) ? $listing->cretedlistingItemResponse[0]->details->location : false;
-            $address = $location->address . ' ' . $location->city . ', ' . $location->state . ' ' . $location->zip;
+            $address = $location->address . ' ' . $location->city . ', ' . $location->state . ' ' . $location->zip . ', ' . $location->county;
+            $beds = isset($listing->cretedlistingItemResponse[0]->details->beds) ? $listing->cretedlistingItemResponse[0]->details->beds : false;
+            $baths = isset($listing->cretedlistingItemResponse[0]->details->baths) ? $listing->cretedlistingItemResponse[0]->details->baths : false;
+            $price = isset($listing->cretedlistingItemResponse[0]->details->price) ? $listing->cretedlistingItemResponse[0]->details->price : false;
+            $area = isset($listing->cretedlistingItemResponse[0]->details->livingArea) ? $listing->cretedlistingItemResponse[0]->details->livingArea : false;
+            $units = isset($listing->cretedlistingItemResponse[0]->details->livingAreaUnits) ? $listing->cretedlistingItemResponse[0]->details->livingAreaUnits : false;
+            $living_area = $area . ' ' . $units;
 
-            $deal = "New Deal";
-            $newDeal = [
-                'user_id' => $user->id,
-                'name' => $deal,
-                'description' => $address
+            $deal_name = "New Deal";
+            $deal = [
+                'user_id' => 6,
+                'name' => $deal_name,
+                'description' => $address,
+                'beds' => $beds,
+                'baths' => $baths,
+                'price' => $price,
+                'living_area' => $living_area
             ];
-            $newDeal = Deals::create($newDeal);
+            $deal = Deals::create($deal);
             
             $response = [
                 'api_response' => $listing
