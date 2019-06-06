@@ -31,6 +31,7 @@ Route::post('secure/bootup', 'API\SecureController@bootup')->middleware('auth:ap
 
 Route::get('secure/getDeals', 'API\SecureController@getDeals')->middleware('auth:api');
 Route::post('secure/createDeals', 'API\SecureController@createDeals')->middleware('auth:api');
+Route::delete('secure/deleteDeals/{id}', 'API\SecureController@deleteDeals')->middleware('auth:api');
 
 Route::post('parsingError', 'API\ParseErrorAPIController@store')->middleware('auth:api');
 

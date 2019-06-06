@@ -221,7 +221,7 @@ class SecureController extends BaseController
             $newDeal = Deals::create($newDeal);
             
             $response = [
-                'api_response' => $newDeal
+                'api_response' => $listing
             ];
 
             return response()->json($response, 200);
@@ -249,5 +249,27 @@ class SecureController extends BaseController
         } catch( Exception $ex ) {
             return response()->json(['error' => $ex->getMessage()]);
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteDeals($id)
+    {
+        try {
+            $deal = Deals::find($id);
+            if ( is_null($deal) || $deal->user_id !== Auth::id() ) {
+                return $this->sendError('Deal not found.');
+            }
+            $deal->delete();
+
+            return $this->sendResponse($deal->toArray(), 'Deal deleted successfully.');
+
+        } catch( Exception $ex ) {
+            return response()->json(['error' => $ex->getMessage()]);
+        }
+        
     }
 }

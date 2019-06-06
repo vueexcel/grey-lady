@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Deals;
 use App\Models\listingstream;
 use App\Models\NewsAndUpdates;
 use Illuminate\Support\Facades\View;
@@ -21,9 +22,11 @@ class AppServiceProvider extends ServiceProvider
             $userid = auth()->id();
             $news = NewsAndUpdates::orderBy('id', 'desc')->get()->toJson();
             $stream = listingstream::where('user_id', $userid)->orderBy('id', 'desc')->get()->toJson();
+            $deals = Deals::where('user_id', $userid)->get()->toJson();
             $view->with([
                 'news' => $news, 
-                'stream' => $stream
+                'stream' => $stream,
+                'deals' => $deals
             ]);
         }); 
         
