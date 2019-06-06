@@ -14,6 +14,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu tree" data-widget="tree">
         <li class=" active"><a href="/dashboard"><i class="fa fa-circle-o"></i>Dashboard</a></li>
+        <li class=" active"><a href="/deals"><i class="fa fa-circle-o"></i>Deals</a></li>
         <li class="treeview active">
           <a href="/explore">
             <i class="fa fa-check-circle-o"></i>
