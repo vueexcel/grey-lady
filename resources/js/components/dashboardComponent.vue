@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="column_40">
-      <div class="">
+      <div class="deal_head">
           <span class="deal">Deals</span>
           <span class="all">view all</span>
       </div>
@@ -37,17 +37,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>123 Main Deal</td>
-              <td><a class="text-primary" href="#">Details </a></td>
-            </tr>
-            <tr>
-              <td>Jacob</td>
-              <td><a class="text-primary" href="#">Details </a></td>
-            </tr>
-            <tr>
-              <td>Larry the Bird</td>
-              <td><a class="text-primary" href="#">Details </a></td>
+            <tr v-for="(deal,index) in deals" :key="index">
+              <td>{{deal.name}}</td>
+              <td><a class="text-primary" href="/deals" :id="deal.name">Details </a></td>
             </tr>
           </tbody>
         </table>
@@ -84,7 +76,8 @@ export default {
   name: "dashboard",
   props: {
     data: { type: Array },
-    news: { type: Array }
+    news: { type: Array },
+    deals:{ type: Array}
   },
   created() {},
   computed: {
@@ -268,5 +261,10 @@ export default {
   cursor: pointer;
   margin-right: 15px;
   font-size: 15px;
+}
+
+.deal_head{
+  margin-top: 1.2rem;
+  margin-bottom: 0.7rem;
 }
 </style>

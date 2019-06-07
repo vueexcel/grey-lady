@@ -12,7 +12,7 @@
 
 @section('content')
   <div id="app">
-    <dashboard-component  :data="{{ $stream }}" :news="{{ $news }}"/>
+    <dashboard-component  :data="{{ $stream }}" :news="{{ $news }}" :deals="{{  $deals  }}"/>
   </div>
   
 @endsection
