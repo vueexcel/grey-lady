@@ -59,11 +59,9 @@ Route::group(['middleware' => 'auth'], function() {
         return view('dashboard');
     });
     Route::get('/deals', function(){
-        return view('deals');
+        return view('deals.deals');
     });
-    Route::get('/deal/{id}', function(){
-        return view('deal');
-    });
+    Route::get('/deal/{id}', 'DealsController@deal');
     Route::get('/scenario/run/{id}', 'ScenarioController@run');
     Route::get('/explore/favorites/zips', 'FavoritesController@zips');
     Route::get('/explore/favorites/listings', 'FavoritesController@listings');
