@@ -220,7 +220,7 @@ class SecureController extends BaseController
 
             $deal_name = "New Deal";
             $deal = [
-                'user_id' => 6,
+                'user_id' => $user->id,
                 'name' => $deal_name,
                 'description' => $address,
                 'beds' => $beds,

@@ -13,3 +13,4 @@
 <li><a href='{{ backpack_url('listingstream') }}'><i class='fa fa-tag'></i> <span>Listing Stream</span></a></li>
 <li><a href='{{ backpack_url('newsandupdates') }}'><i class='fa fa-tag'></i> <span>News And Updates</span></a></li>
 <li><a href='{{ backpack_url('deals') }}'><i class='fa fa-tag'></i> <span>Deals</span></a></li>
+<li><a href='{{ backpack_url('scenario') }}'><i class='fa fa-tag'></i> <span>Scenario</span></a></li>

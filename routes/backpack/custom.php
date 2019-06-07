@@ -16,4 +16,5 @@ Route::group([
     CRUD::resource('dashboard', 'DashboardCrudController');
     CRUD::resource('newsandupdates', 'NewsAndUpdatesCrudController');
     CRUD::resource('deals', 'DealsCrudController');
+    CRUD::resource('scenario', 'ScenarioCrudController');
 }); // this should be the absolute last line of this file
