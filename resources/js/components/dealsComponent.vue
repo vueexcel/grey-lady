@@ -9,11 +9,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>deal.name</td>
-          <td>property</td>
+        <tr v-for="(deal, index) in deals" :key="index">
+          <td>{{deal.name}}</td>
+          <td>{{deal.description}}</td>
           <td>
-            <a class="text-primary" href="#">Details</a>
+            <span><a class="text-primary" href="#">Details</a> / <a class="text-primary" href="#">Delete</a></span>
           </td>
         </tr>
       </tbody>
@@ -22,7 +22,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    deals: {
+      type: Array,
+      default: []
+    },
+  },
+};
 </script>
 
 <style>

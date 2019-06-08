@@ -26,7 +26,7 @@
     <div class="column_40">
       <div class="deal_head">
           <span class="deal">Deals</span>
-          <span class="all">view all</span>
+          <span class="all"><a class="text-primary" href="deals" > View All </a></span>
       </div>
       <div class="stream">
         <table class="table table-bordered">
@@ -39,7 +39,7 @@
           <tbody>
             <tr v-for="(deal,index) in deals" :key="index">
               <td>{{deal.name}}</td>
-              <td><a class="text-primary" href="/deals" :id="deal.name">Details </a></td>
+              <td><a class="text-primary" :href="'/deal/'+deal.id" > Details </a></td>
             </tr>
           </tbody>
         </table>

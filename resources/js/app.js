@@ -24,6 +24,8 @@ Vue.component('table-component', require('./components/tableComponent.vue'));
 Vue.component('dashboard-component', require('./components/dashboardComponent.vue'));
 Vue.component('chrome-component', require('./components/chromeLatestComponent.vue'));
 Vue.component('deals-component', require('./components/dealsComponent.vue'))
+Vue.component('detail-component', require('./components/dealsDetailComponent.vue'))
+
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 

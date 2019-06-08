@@ -13,10 +13,9 @@ class DealsController extends Controller
     public function deal($id)
     {
         $userid = auth()->id();
-        $deal = Deals::where('id', $id)->where('user_id', $userid)->get()->toArray();
-        if( sizeof($deal) > 0 ){
-            $scenarios = Scenario::where('deal_id', $id)->get()->toArray();
-        }        
+        $deal = Deals::where('id', $id)->where('user_id', $userid)->get()->toJson();
+        $scenarios = Scenario::where('deal_id', $id)->get()->toJson();
+        
         return view('deals.dealdetails')->with([
             'deal' => $deal,
             'scenarios' => $scenarios
