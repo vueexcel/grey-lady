@@ -29,7 +29,7 @@
           <span class="all"><a class="text-primary" href="deals" > View All </a></span>
       </div>
       <div class="stream">
-        <table class="table table-bordered">
+        <table class="table table-bordered" v-if="deals.length">
           <thead>
             <tr>
               <th scope="col">Deal Name</th>
@@ -43,6 +43,11 @@
             </tr>
           </tbody>
         </table>
+        <div v-if="!deals.length" class="item">
+          <p class="no_info">
+             No information is available
+          </p>
+        </div>
       </div>
       <h2 class="heading">News &amp; Updates</h2>
       <div class="stream">
@@ -266,5 +271,9 @@ export default {
 .deal_head{
   margin-top: 1.2rem;
   margin-bottom: 0.7rem;
+}
+
+.no_info{
+  font-weight: bold;
 }
 </style>

@@ -10,7 +10,7 @@
 
 @section('content')
 <div id="app">
-    <detail-component :deal="{{ $deal }}"/>
+    <detail-component :deal="{{ $deal }}" :scenario="{{ $scenarios }}"/>
 </div>
 
 @endsection

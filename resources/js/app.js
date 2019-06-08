@@ -9,8 +9,9 @@ require('./bootstrap');
 window.Vue = require('vue');
 var moment = require('moment');
 import VueRouter from 'vue-router';
+import BootstrapVue from 'bootstrap-vue'
+Vue.use(BootstrapVue)
 window.Vue.use(VueRouter);
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
