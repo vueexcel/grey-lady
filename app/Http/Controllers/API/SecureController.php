@@ -14,6 +14,7 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\listingstream;
 use App\Models\NewsAndUpdates;
 use App\Models\Deals;
+use App\Models\Scenario;
 use Validator;
 
 
@@ -284,4 +285,59 @@ class SecureController extends BaseController
         }
         
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createScenario()
+    {
+        try {
+            $data = request()->all();
+            $validator = Validator::make($data, [
+                'deal_id' => 'required',
+                'scenario_name' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['error' => $validator->errors()]);      
+            }   
+
+            $scenario = Scenario::where('scenario_name', $data['scenario_name'])->count();
+
+            if( $scenario > 0 ){
+                return response()->json([ 'data' => [], 'message' => 'Scenario Already Exist.']);
+            }
+
+            $scenario = Scenario::create($data);
+            return $this->sendResponse($scenario, 'Scenario Created successfully.');
+
+        } catch( Exception $ex ) {
+            return response()->json(['error' => $ex->getMessage()]);
+        }      
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteScenario($id)
+    {
+        try {
+            $scenario = Scenario::find($id);
+            if ( is_null($scenario) ) {
+                return $this->sendError('Scenario not found.');
+            }
+            $scenario->delete();
+
+            return $this->sendResponse($scenario->toArray(), 'Scenario deleted successfully.');
+
+        } catch( Exception $ex ) {
+            return response()->json(['error' => $ex->getMessage()]);
+        }
+    }
+
+
 }

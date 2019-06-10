@@ -29,6 +29,9 @@ Route::get('secure', 'API\SecureController@get')->middleware('auth:api');
 Route::post('secure', 'API\SecureController@post')->middleware('auth:api');
 Route::post('secure/bootup', 'API\SecureController@bootup')->middleware('auth:api');
 
+Route::post('secure/createScenario', 'API\SecureController@createScenario')->middleware('auth:api');
+Route::delete('secure/deleteScenario/{id}', 'API\SecureController@deleteScenario')->middleware('auth:api');
+
 Route::get('secure/getDeals', 'API\SecureController@getDeals')->middleware('auth:api');
 Route::post('secure/createDeals', 'API\SecureController@createDeals')->middleware('auth:api');
 Route::delete('secure/deleteDeals/{id}', 'API\SecureController@deleteDeals')->middleware('auth:api');
