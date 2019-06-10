@@ -22,55 +22,64 @@
           Scenarios for
           <span>{{deal[0].name}}</span>
         </h1>
-        <div class="bg-white">
+        <div>
           <table class="table table-bordered">
             <thead>
-              <tr>
+              <tr class="row-fixed">
                 <th scope="col" class="font-weight-bold font_size">Actions</th>
-                <th scope="col"><span class="text-primary font-weight-bold font_size">Details / Delete</span></th>
-                <th scope="col"><span class="text-primary font-weight-bold font_size">Details / Delete</span></th>
-                <th scope="col"><span class="text-primary font-weight-bold font_size">Details / Delete</span></th>
+                <th scope="col">
+                  <span class="head">Scenario Name</span>
+                </th>
+                <th scope="col">
+                  <span class="head">Purchase Price</span>
+                </th>
+                <th scope="col">
+                  <span class="head">Renovation (incl. in mortgage )</span>
+                </th>
+                <th>
+                  <Strong>Total Cost</Strong>
+                </th>
+                <th scope="col">
+                  <span class="head">After Repair Value</span>
+                </th>
+                <th scope="col">
+                  <span class="head">Amount Financed</span>
+                </th>
+                <th scope="col">
+                  <span class="head">Loan to value</span>
+                </th>
+                <th scope="col">
+                  <Strong>Donwpayment</Strong>
+                </th>
+                <th scope="col">
+                  <span class="head">Closing Cost</span>
+                </th>
+                <th scope="col">
+                  <span class="head">Renovation (Not inc. in mortgage)</span>
+                </th>
+                <th scope="col">Total cash needed</th>
+                <th scope="col">
+                  <span class="head">Monthly mortgage payment (30yr)</span>
+                </th>
               </tr>
             </thead>
             <tbody>
-              {{scenarioArray}}
-              <tr>
-                <td class="column_size">Scenario Name</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td class="column_size">Purchase Price</td>
-              </tr>
-              <tr>
-                <td class="column_size">Renovation (incl. in mortgage )</td>
-              </tr>
-              <tr>
-                <td class="column_size"><Strong>Total Cost</Strong></td>
-              </tr>
-              <tr>
-                <td class="column_size">After Repair Value</td>
-              </tr>
-              <tr>
-                <td class="column_size">Amount Financed</td>
-              </tr>
-              <tr>
-                <td class="column_size">Loan to value</td>
-              </tr>
-              <tr>
-                <td class="column_size"><Strong>Donwpayment</Strong></td>
-              </tr>
-              <tr>
-                <td class="column_size">Closing Cost</td>
-              </tr>
-              <tr>
-                <td class="column_size">Renvation (Not inc. in mortgage)</td>
-              </tr>
-              <tr>
-                <td class="column_size">Total cash needed</td>
-              </tr>
-              <tr>
-                <td class="column_size">Monthly mortgage payment (30yr)</td>
+              <tr v-for="dataScenario in scenario" :key="dataScenario.id">
+                <td>
+                  <span class="text-primary font-weight-bold font_size">Details / Delete</span>
+                  <td ><span>{{dataScenario.scenario_name}}</span></td>
+                  <td><span>{{dataScenario.purchase_price}}</span></td>
+                  <td><span>{{dataScenario.renovation_inc_mortgage}}</span></td>
+                  <td><span>{{dataScenario.total_cost}} </span></td>
+                  <td><span>{{dataScenario.after_repair_value}}</span></td>
+                  <td><span>{{dataScenario.amount_financed}}</span></td>
+                  <td><span>{{dataScenario.loan_to_value}}</span></td>
+                  <td><span>{{dataScenario.downpayment}}</span></td>
+                  <td><span>{{dataScenario.closing_costs}}</span></td>
+                  <td><span>{{dataScenario.renovation_not_inc_mortgage}}</span></td>
+                  <td><span>{{dataScenario.total_cash_needed}}</span></td>
+                  <td><span>{{dataScenario.monthly_mortgage_payment_30yr}}</span></td>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -84,20 +93,11 @@
 export default {
   props: {
     deal: { type: Array },
-    scenario:{type: Array}
+    scenario: { type: Array }
   },
   computed: {
     dealObject() {
       return this.deal;
-    },
-    scenarioArray(){
-      this.scenario.forEach(scenario => {
-        for(var key in scenario){
-          console.log(scenario[key], key);
-          
-        }
-      });
-      return this.scenario
     }
   }
 };
@@ -115,7 +115,7 @@ export default {
   font-size: 15px;
 }
 
-.column_size{
+.column_size {
   font-size: 12px;
 }
 
@@ -132,5 +132,47 @@ export default {
 
 .right {
   float: right;
+}
+
+.head {
+  font-weight: 400;
+}
+
+.table {
+  background-color: #fff;
+}
+
+/* thead {
+  float: left;
+}
+
+thead th {
+  display: block;
+}
+table {
+  display: flex;
+} */
+/* thead {
+  float: left;   
+}
+
+thead th {
+  display: block;   
+}
+
+tbody {
+  float: right;   
+} */
+/* thead > tr {
+  display: block;
+  float: left;
+} */
+/* tbody > tr {
+  display: block;
+} */
+.table>tbody>tr>td>tr>span{
+  padding: 8px;
+  line-height: 1.42857143;
+  border-bottom-width: 2px;
 }
 </style>
