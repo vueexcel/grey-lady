@@ -98601,7 +98601,7 @@ var render = function() {
           return _c("tr", { key: index }, [
             _c("td", [_vm._v(_vm._s(deal.name))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(deal.description))]),
+            _c("td", [_vm._v(_vm._s(deal.property_address))]),
             _vm._v(" "),
             _c("td", [
               _c("span", [
@@ -98737,7 +98737,7 @@ exports = module.exports = __webpack_require__(32)(false);
 
 
 // module
-exports.push([module.i, "\n.deal_box {\n  background-color: #fff;\n  border: 2px solid #dcdcdc;\n  padding: 20px 15px;\n  min-height: 200px;\n}\n.font_size {\n  font-size: 15px;\n}\n.column_size{\n  font-size: 12px;\n}\n.address {\n  margin-left: 15px;\n  margin-top: 25px;\n  font-size: 18px;\n  font-weight: 600;\n}\n.left {\n  float: left;\n}\n.right {\n  float: right;\n}\n", ""]);
+exports.push([module.i, "\n.deal_box {\n  background-color: #fff;\n  border: 2px solid #dcdcdc;\n  padding: 20px 15px;\n  min-height: 200px;\n}\n.font_size {\n  font-size: 15px;\n}\n.column_size {\n  font-size: 12px;\n}\n.address {\n  margin-left: 15px;\n  margin-top: 25px;\n  font-size: 18px;\n  font-weight: 600;\n}\ntable {\n  position: relative;\n  width: 100%;\n  max-width: 100%;\n  background-color: #fff;\n  overflow: hidden;\n  border-collapse: collapse;\n}\n\n/*thead*/\nthead {\n  position: relative;\n  display: block; /*seperates the header from the body allowing it to be positioned*/\n  width: 1010px;\n  overflow: visible;\n}\nthead th {\n  background-color: #fff;\n  min-width: 253px;\n  height: 32px;\n  border: 1px solid #dcdcdc;\n}\nthead th:nth-child(1) {\n  /*first cell in the header*/\n  position: relative;\n  display: block; /*seperates the first cell in the header from the header*/\n}\n\n/*tbody*/\ntbody {\n  position: relative;\n  display: block; /*seperates the tbody from the header*/\n  width: 1010px;\n  height: 500px;\n  overflow-x: scroll;\n}\ntbody td {\n  min-width: 253px;\n}\ntbody tr td:nth-child(1) {\n  /*the first cell in each tr*/\n  position: relative;\n  display: block; /*seperates the first column from the tbody*/\n  height: 40px;\n  border: 1px solid #dcdcdc;\n  background-color: #fff;\n}\n.first_col{\n  width: 200px;\n  padding-left: 8px;\n  font-size: 15px;\n}\n.link{\n  font-size: 15px;\n  text-align: center;\n}\n.body_col{\n  text-align: center;\n  border: 1px solid #dcdcdc;\n  font-size: 15px;\n}\n", ""]);
 
 // exports
 
@@ -98830,7 +98830,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
+$(document).ready(function () {
+  $("tbody").scroll(function (e) {
+    //detect a scroll event on the tbody
+    $("thead").css("left", -$("tbody").scrollLeft()); //fix the thead relative to the body scrolling
+    $("thead th:nth-child(1)").css("left", $("tbody").scrollLeft()); //fix the first cell of the header
+    $("tbody td:nth-child(1)").css("left", $("tbody").scrollLeft()); //fix the first column of tdbody
+  });
+});
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     deal: { type: Array },
@@ -98840,11 +98886,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     dealObject: function dealObject() {
       return this.deal;
     },
-    scenarioArray: function scenarioArray() {
+    arrayScenario: function arrayScenario() {
+
       this.scenario.forEach(function (scenario) {
-        for (var key in scenario) {
-          console.log(scenario[key], key);
-        }
+        scenario.purchase_price = "$" + scenario.purchase_price;
+        scenario.renovation_inc_mortgage = "$" + scenario.renovation_inc_mortgage;
+        scenario.total_cost = "$" + scenario.total_cost;
+        scenario.after_repair_value = "$" + scenario.after_repair_value;
+        scenario.amount_financed = "$" + scenario.amount_financed;
+        scenario.loan_to_value = "%" + scenario.loan_to_value;
+        scenario.downpayment = "$" + scenario.downpayment;
+        scenario.closing_costs = "$" + scenario.closing_costs;
+        scenario.renovation_not_inc_mortgage = "$" + scenario.renovation_not_inc_mortgage;
+        scenario.total_cash_needed = "$" + scenario.total_cash_needed;
+        scenario.monthly_mortgage_payment_30yr = "$" + scenario.monthly_mortgage_payment_30yr;
       });
       return this.scenario;
     }
@@ -98904,52 +98959,207 @@ var render = function() {
           _c("span", [_vm._v(_vm._s(_vm.deal[0].name))])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "bg-white" }, [
-          _c("table", { staticClass: "table table-bordered" }, [
-            _vm._m(0),
+        _c("table", [
+          _c("thead", [
+            _c(
+              "tr",
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._l(_vm.scenario, function(scene, index) {
+                  return _c("th", { key: index }, [_vm._m(1, true)])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("tbody", [
+            _c(
+              "tr",
+              [
+                _c("td", { staticClass: "first_col" }, [
+                  _vm._v("Scenario Name")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _vm._v(_vm._s(scenairo.scenario_name))
+                  ])
+                })
+              ],
+              2
+            ),
             _vm._v(" "),
-            _c("tbody", [
-              _vm._v(
-                "\n            " + _vm._s(_vm.scenarioArray) + "\n            "
-              ),
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
-              _vm._m(3),
-              _vm._v(" "),
-              _c("tr", [
-                _c(
-                  "td",
-                  { staticClass: "column_size" },
-                  [_c("Strong", [_vm._v("Total Cost")])],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _vm._m(4),
-              _vm._v(" "),
-              _vm._m(5),
-              _vm._v(" "),
-              _vm._m(6),
-              _vm._v(" "),
-              _c("tr", [
-                _c(
-                  "td",
-                  { staticClass: "column_size" },
-                  [_c("Strong", [_vm._v("Donwpayment")])],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _vm._m(7),
-              _vm._v(" "),
-              _vm._m(8),
-              _vm._v(" "),
-              _vm._m(9),
-              _vm._v(" "),
-              _vm._m(10)
-            ])
+            _c(
+              "tr",
+              [
+                _c("td", { staticClass: "first_col" }, [
+                  _vm._v("Purchase Price")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _vm._v(_vm._s(scenairo.purchase_price))
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "tr",
+              [
+                _c("td", { staticClass: "first_col" }, [
+                  _vm._v("Renovation (incl. in mortgage )")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _vm._v(_vm._s(scenairo.renovation_inc_mortgage))
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "tr",
+              [
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _c("strong", [_vm._v(_vm._s(scenairo.total_cost))])
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "tr",
+              [
+                _c("td", { staticClass: "first_col" }, [
+                  _vm._v("After Repair Value")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _vm._v(_vm._s(scenairo.after_repair_value))
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "tr",
+              [
+                _c("td", { staticClass: "first_col" }, [
+                  _vm._v("Amount Financed")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _vm._v(_vm._s(scenairo.amount_financed))
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "tr",
+              [
+                _c("td", { staticClass: "first_col" }, [
+                  _vm._v("Loan To Value")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _vm._v(_vm._s(scenairo.loan_to_value))
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "tr",
+              [
+                _vm._m(3),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _c("strong", [_vm._v(_vm._s(scenairo.downpayment))])
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "tr",
+              [
+                _c("td", { staticClass: "first_col" }, [
+                  _vm._v("Closing Costs")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _vm._v(_vm._s(scenairo.closing_costs))
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "tr",
+              [
+                _c("td", { staticClass: "first_col" }, [
+                  _vm._v("Renovation (Not Inc Mortgage)")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _vm._v(_vm._s(scenairo.renovation_not_inc_mortgage))
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "tr",
+              [
+                _vm._m(4),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _c("strong", [_vm._v(_vm._s(scenairo.total_cash_needed))])
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "tr",
+              [
+                _c("td", { staticClass: "first_col" }, [
+                  _vm._v("Monthly mortgage payment (30yr)")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.arrayScenario, function(scenairo, index) {
+                  return _c("td", { key: index, staticClass: "body_col" }, [
+                    _vm._v(_vm._s(scenairo.monthly_mortgage_payment_30yr))
+                  ])
+                })
+              ],
+              2
+            )
           ])
         ])
       ])
@@ -98961,131 +99171,42 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c(
-          "th",
-          {
-            staticClass: "font-weight-bold font_size",
-            attrs: { scope: "col" }
-          },
-          [_vm._v("Actions")]
-        ),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [
-          _c(
-            "span",
-            { staticClass: "text-primary font-weight-bold font_size" },
-            [_vm._v("Details / Delete")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [
-          _c(
-            "span",
-            { staticClass: "text-primary font-weight-bold font_size" },
-            [_vm._v("Details / Delete")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [
-          _c(
-            "span",
-            { staticClass: "text-primary font-weight-bold font_size" },
-            [_vm._v("Details / Delete")]
-          )
-        ])
-      ])
+    return _c(
+      "th",
+      { staticClass: "first_col", staticStyle: { "font-size": "15px" } },
+      [_c("strong", [_vm._v("Action")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "link" }, [
+      _c("a", { attrs: { href: "" } }, [_vm._v("Detail / Delete")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { staticClass: "column_size" }, [_vm._v("Scenario Name")]),
-      _vm._v(" "),
-      _c("td"),
-      _vm._v(" "),
-      _c("td")
+    return _c("td", { staticClass: "first_col" }, [
+      _c("strong", [_vm._v("Total Cost")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { staticClass: "column_size" }, [_vm._v("Purchase Price")])
+    return _c("td", { staticClass: "first_col" }, [
+      _c("strong", [_vm._v("Downpayment")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { staticClass: "column_size" }, [
-        _vm._v("Renovation (incl. in mortgage )")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { staticClass: "column_size" }, [_vm._v("After Repair Value")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { staticClass: "column_size" }, [_vm._v("Amount Financed")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { staticClass: "column_size" }, [_vm._v("Loan to value")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { staticClass: "column_size" }, [_vm._v("Closing Cost")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { staticClass: "column_size" }, [
-        _vm._v("Renvation (Not inc. in mortgage)")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { staticClass: "column_size" }, [_vm._v("Total cash needed")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { staticClass: "column_size" }, [
-        _vm._v("Monthly mortgage payment (30yr)")
-      ])
+    return _c("td", { staticClass: "first_col" }, [
+      _c("strong", [_vm._v("Total Cash Needed")])
     ])
   }
 ]

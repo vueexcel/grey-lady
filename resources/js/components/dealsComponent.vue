@@ -11,7 +11,7 @@
       <tbody>
         <tr v-for="(deal, index) in deals" :key="index">
           <td>{{deal.name}}</td>
-          <td>{{deal.description}}</td>
+          <td>{{deal.property_address}}</td>
           <td>
             <span><a class="text-primary" :href="'/deal/'+deal.id">Details</a> / <a class="text-primary" href="#">Delete</a></span>
           </td>

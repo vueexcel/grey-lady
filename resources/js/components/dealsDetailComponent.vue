@@ -22,74 +22,111 @@
           Scenarios for
           <span>{{deal[0].name}}</span>
         </h1>
-        <div>
-          <table class="table table-bordered">
-            <thead>
-              <tr class="row-fixed">
-                <th scope="col" class="font-weight-bold font_size">Actions</th>
-                <th scope="col">
-                  <span class="head">Scenario Name</span>
-                </th>
-                <th scope="col">
-                  <span class="head">Purchase Price</span>
-                </th>
-                <th scope="col">
-                  <span class="head">Renovation (incl. in mortgage )</span>
-                </th>
-                <th>
-                  <Strong>Total Cost</Strong>
-                </th>
-                <th scope="col">
-                  <span class="head">After Repair Value</span>
-                </th>
-                <th scope="col">
-                  <span class="head">Amount Financed</span>
-                </th>
-                <th scope="col">
-                  <span class="head">Loan to value</span>
-                </th>
-                <th scope="col">
-                  <Strong>Donwpayment</Strong>
-                </th>
-                <th scope="col">
-                  <span class="head">Closing Cost</span>
-                </th>
-                <th scope="col">
-                  <span class="head">Renovation (Not inc. in mortgage)</span>
-                </th>
-                <th scope="col">Total cash needed</th>
-                <th scope="col">
-                  <span class="head">Monthly mortgage payment (30yr)</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="dataScenario in scenario" :key="dataScenario.id">
-                <td>
-                  <span class="text-primary font-weight-bold font_size">Details / Delete</span>
-                  <td ><span>{{dataScenario.scenario_name}}</span></td>
-                  <td><span>{{dataScenario.purchase_price}}</span></td>
-                  <td><span>{{dataScenario.renovation_inc_mortgage}}</span></td>
-                  <td><span>{{dataScenario.total_cost}} </span></td>
-                  <td><span>{{dataScenario.after_repair_value}}</span></td>
-                  <td><span>{{dataScenario.amount_financed}}</span></td>
-                  <td><span>{{dataScenario.loan_to_value}}</span></td>
-                  <td><span>{{dataScenario.downpayment}}</span></td>
-                  <td><span>{{dataScenario.closing_costs}}</span></td>
-                  <td><span>{{dataScenario.renovation_not_inc_mortgage}}</span></td>
-                  <td><span>{{dataScenario.total_cash_needed}}</span></td>
-                  <td><span>{{dataScenario.monthly_mortgage_payment_30yr}}</span></td>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th class="first_col" style="font-size:15px;">
+                <strong>Action</strong>
+              </th>
+              <th v-for="(scene,index) in scenario" :key="index">
+                <div class="link">
+                  <a href>Detail / Delete</a>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="first_col">Scenario Name</td>
+              <td class="body_col" v-for="(scenairo,index) in arrayScenario" :key="index">{{scenairo.scenario_name}}</td>
+            </tr>
+            <tr>
+              <td class="first_col">Purchase Price</td>
+              <td  class="body_col" v-for="(scenairo,index) in arrayScenario" :key="index">{{scenairo.purchase_price}}</td>
+            </tr>
+            <tr>
+              <td class="first_col">Renovation (incl. in mortgage )</td>
+              <td
+              class="body_col"
+                v-for="(scenairo,index) in arrayScenario"
+                :key="index"
+              >{{scenairo.renovation_inc_mortgage}}</td>
+            </tr>
+            <tr>
+              
+              <td class="first_col"><strong>Total Cost</strong></td>
+              <td class="body_col" v-for="(scenairo,index) in arrayScenario" :key="index"><strong>{{scenairo.total_cost}}</strong></td>
+            </tr>
+            <tr>
+              <td class="first_col">After Repair Value</td>
+              <td 
+              class="body_col"
+                v-for="(scenairo,index) in arrayScenario"
+                :key="index"
+              >{{scenairo.after_repair_value}}</td>
+            </tr>
+            <tr>
+              <td class="first_col">Amount Financed</td>
+              <td
+              class="body_col"
+                v-for="(scenairo,index) in arrayScenario"
+                :key="index"
+              >{{scenairo.amount_financed}}</td>
+            </tr>
+            <tr>
+              <td class="first_col">Loan To Value</td>
+              <td class="body_col" v-for="(scenairo,index) in arrayScenario" :key="index">{{scenairo.loan_to_value}}</td>
+            </tr>
+            <tr>
+              <td class="first_col"><strong>Downpayment</strong></td>
+              <td class="body_col" v-for="(scenairo,index) in arrayScenario" :key="index"><strong>{{scenairo.downpayment}}</strong></td>
+            </tr>
+            <tr>
+              <td class="first_col">Closing Costs</td>
+              <td class="body_col" v-for="(scenairo,index) in arrayScenario" :key="index">{{scenairo.closing_costs}}</td>
+            </tr>
+            <tr>
+              <td class="first_col">Renovation (Not Inc Mortgage)</td>
+              <td
+              class="body_col"
+                v-for="(scenairo,index) in arrayScenario"
+                :key="index"
+              >{{scenairo.renovation_not_inc_mortgage}}</td>
+            </tr>
+            <tr>
+              <td class="first_col">
+                <strong>Total Cash Needed</strong>
+              </td>
+              <td
+              class="body_col"
+                v-for="(scenairo,index) in arrayScenario"
+                :key="index"
+              ><strong>{{scenairo.total_cash_needed}}</strong></td>
+            </tr>
+            <tr>
+              <td class="first_col">Monthly mortgage payment (30yr)</td>
+              <td
+              class="body_col"
+                v-for="(scenairo,index) in arrayScenario"
+                :key="index"
+              >{{scenairo.monthly_mortgage_payment_30yr}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+$(document).ready(function() {
+  $("tbody").scroll(function(e) {
+    //detect a scroll event on the tbody
+    $("thead").css("left", -$("tbody").scrollLeft()); //fix the thead relative to the body scrolling
+    $("thead th:nth-child(1)").css("left", $("tbody").scrollLeft()); //fix the first cell of the header
+    $("tbody td:nth-child(1)").css("left", $("tbody").scrollLeft()); //fix the first column of tdbody
+  });
+});
 export default {
   props: {
     deal: { type: Array },
@@ -98,6 +135,26 @@ export default {
   computed: {
     dealObject() {
       return this.deal;
+    },
+    arrayScenario() {
+      
+      this.scenario.forEach(scenario => {
+        scenario.purchase_price = "$" + scenario.purchase_price;
+        scenario.renovation_inc_mortgage =
+          "$" + scenario.renovation_inc_mortgage;
+        scenario.total_cost = "$" + scenario.total_cost;
+        scenario.after_repair_value = "$" + scenario.after_repair_value;
+        scenario.amount_financed = "$" + scenario.amount_financed;
+        scenario.loan_to_value = "%" + scenario.loan_to_value;
+        scenario.downpayment = "$" + scenario.downpayment;
+        scenario.closing_costs = "$" + scenario.closing_costs;
+        scenario.renovation_not_inc_mortgage =
+          "$" + scenario.renovation_not_inc_mortgage;
+        scenario.total_cash_needed = "$" + scenario.total_cash_needed;
+        scenario.monthly_mortgage_payment_30yr =
+          "$" + scenario.monthly_mortgage_payment_30yr;
+      });
+      return this.scenario;
     }
   }
 };
@@ -126,53 +183,74 @@ export default {
   font-weight: 600;
 }
 
-.left {
-  float: left;
+
+
+table {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  border-collapse: collapse;
 }
 
-.right {
-  float: right;
+/*thead*/
+thead {
+  position: relative;
+  display: block; /*seperates the header from the body allowing it to be positioned*/
+  width: 1010px;
+  overflow: visible;
 }
 
-.head {
-  font-weight: 400;
+thead th {
+  background-color: #fff;
+  min-width: 253px;
+  height: 32px;
+  border: 1px solid #dcdcdc;
 }
 
-.table {
+thead th:nth-child(1) {
+  /*first cell in the header*/
+  position: relative;
+  display: block; /*seperates the first cell in the header from the header*/
+}
+
+/*tbody*/
+tbody {
+  position: relative;
+  display: block; /*seperates the tbody from the header*/
+  width: 1010px;
+  height: 500px;
+  overflow-x: scroll;
+}
+
+tbody td {
+  min-width: 253px;
+}
+
+tbody tr td:nth-child(1) {
+  /*the first cell in each tr*/
+  position: relative;
+  display: block; /*seperates the first column from the tbody*/
+  height: 40px;
+  border: 1px solid #dcdcdc;
   background-color: #fff;
 }
 
-/* thead {
-  float: left;
+.first_col{
+  width: 200px;
+  padding-left: 8px;
+  font-size: 15px;
 }
 
-thead th {
-  display: block;
-}
-table {
-  display: flex;
-} */
-/* thead {
-  float: left;   
+.link{
+  font-size: 15px;
+  text-align: center;
 }
 
-thead th {
-  display: block;   
-}
-
-tbody {
-  float: right;   
-} */
-/* thead > tr {
-  display: block;
-  float: left;
-} */
-/* tbody > tr {
-  display: block;
-} */
-.table>tbody>tr>td>tr>span{
-  padding: 8px;
-  line-height: 1.42857143;
-  border-bottom-width: 2px;
+.body_col{
+  text-align: center;
+  border: 1px solid #dcdcdc;
+  font-size: 15px;
 }
 </style>
