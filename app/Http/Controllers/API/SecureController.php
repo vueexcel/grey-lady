@@ -249,6 +249,50 @@ class SecureController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
+    public function updateDeals($id)
+    {
+        try {
+            $data = request()->all();
+            if( array_key_exists('name', $data) ){
+                $validator = Validator::make($data, [
+                    'name' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    return response()->json(['error' => $validator->errors()]);      
+                }
+            }
+
+            $userid = Auth::id();
+            $deal = Deals::find($id);
+            if ( is_null($deal) ) {
+                return $this->sendError('Deal not found.');
+            } else {
+                if( $deal->user_id != $userid ){
+                    return $this->sendError('Deal not found.');
+                }
+            }
+
+            if( array_key_exists('name', $data) ){
+                $deal->name = $data['name'];
+            }
+            if( array_key_exists('description', $data) ){
+                $deal->description = $data['description'] ? $data['description'] : "";
+            }
+            $deal->save();
+
+            return $this->sendResponse($deal->toArray(), 'Deal updated successfully.');
+
+        } catch( Exception $ex ) {
+            return response()->json(['error' => $ex->getMessage()]);
+        }        
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getDeals()
     {
         try {
@@ -273,10 +317,21 @@ class SecureController extends BaseController
     {
         try {
             $deal = Deals::find($id);
-            if ( is_null($deal) || $deal->user_id !== Auth::id() ) {
+            $userid = Auth::id();
+            $scenarios = Scenario::where('deal_id', $id)->get();
+
+            if ( is_null($deal) ) {
                 return $this->sendError('Deal not found.');
+            } else {
+                if( $deal->user_id != $userid ){
+                    return $this->sendError('Deal not found.');
+                }
             }
+
             $deal->delete();
+            if( sizeof($scenarios->toArray()) > 0 ){
+                Scenario::where('deal_id', $id)->delete();
+            }
 
             return $this->sendResponse($deal->toArray(), 'Deal deleted successfully.');
 
@@ -304,10 +359,10 @@ class SecureController extends BaseController
                 return response()->json(['error' => $validator->errors()]);      
             }   
 
-            $scenario = Scenario::where('scenario_name', $data['scenario_name'])->count();
+            $scenario = Scenario::where('scenario_name', $data['scenario_name']);
 
-            if( $scenario > 0 ){
-                return response()->json([ 'data' => [], 'message' => 'Scenario Already Exist.']);
+            if( $scenario->count() > 0 ){
+                return response()->json([ 'data' => $scenario->get()->toArray(), 'message' => 'Scenario Already Exist.']);
             }
 
             $scenario = Scenario::create($data);
@@ -333,6 +388,51 @@ class SecureController extends BaseController
             $scenario->delete();
 
             return $this->sendResponse($scenario->toArray(), 'Scenario deleted successfully.');
+
+        } catch( Exception $ex ) {
+            return response()->json(['error' => $ex->getMessage()]);
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateScenario($id)
+    {
+        try {
+            $data = request()->all();
+            if( array_key_exists('scenario_name', $data) ){
+                $validator = Validator::make($data, [
+                    'scenario_name' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    return response()->json(['error' => $validator->errors()]);      
+                }
+            }
+
+            $userid = Auth::id();
+            $scenario = Scenario::find($id);
+            if ( !is_null($scenario) ) {
+                $deal = Deals::where([ ['id', '=', $scenario->deal_id], ['user_id', '=', $userid] ])->get();
+                if ( sizeof($deal->toArray()) < 1 ) {
+                    return $this->sendError('Scenario not found.');
+                }
+            } else {
+                return $this->sendError('Scenario not found.');
+            }
+
+            if( array_key_exists('scenario_name', $data) ){
+                $scenario->scenario_name = $data['scenario_name'];
+            }
+            if( array_key_exists('scenario_notes', $data) ){
+                $scenario->scenario_notes = $data['scenario_notes'] ? $data['scenario_notes'] : "";
+            }
+            $scenario->save();
+
+            return $this->sendResponse($scenario->toArray(), 'Scenario updated successfully.');
 
         } catch( Exception $ex ) {
             return response()->json(['error' => $ex->getMessage()]);

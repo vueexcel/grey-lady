@@ -32,7 +32,8 @@ class Scenario extends Model
         'closing_costs',
         'renovation_not_inc_mortgage',
         'total_cash_needed',
-        'monthly_mortgage_payment_30yr'
+        'monthly_mortgage_payment_30yr',
+        'scenario_notes'
     ];
     // protected $hidden = [];
     // protected $dates = [];
