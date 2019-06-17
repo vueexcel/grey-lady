@@ -210,6 +210,7 @@ class SecureController extends BaseController
             ]);
 
             $listing = json_decode($apiRequest->getBody()->getContents());
+            $listing_id = isset($listing->cretedlistingItemResponse[0]->id) ? $listing->cretedlistingItemResponse[0]->id : false;
             $location = isset($listing->cretedlistingItemResponse[0]->details->location) ? $listing->cretedlistingItemResponse[0]->details->location : false;
             $address = $location->address . ' ' . $location->city . ', ' . $location->state . ' ' . $location->zip . ', ' . $location->county;
             $beds = isset($listing->cretedlistingItemResponse[0]->details->beds) ? $listing->cretedlistingItemResponse[0]->details->beds : false;
@@ -223,6 +224,7 @@ class SecureController extends BaseController
             $description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
             $deal = [
                 'user_id' => $user->id,
+                'listing_id' => $listing_id,
                 'name' => $deal_name,
                 'property_address' => $address,
                 'description' => $description,
@@ -307,6 +309,26 @@ class SecureController extends BaseController
             return response()->json(['error' => $ex->getMessage()]);
         }
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dealDetails($id)
+    {
+        try {
+            $deal = Deals::find($id)->toArray();
+            $scenarios = Scenario::where('deal_id', $id)->get()->toArray();
+            $deal['scenarios'] = $scenarios;
+            
+            return $this->sendResponse($deal, '');
+
+        } catch(Exception $ex) {
+            return response()->json(['error' => $ex->getMessage()]);
+        }
+    }
+    
 
     /**
      * Display a listing of the resource.

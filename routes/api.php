@@ -33,9 +33,10 @@ Route::post('secure/createScenario', 'API\SecureController@createScenario')->mid
 Route::delete('secure/deleteScenario/{id}', 'API\SecureController@deleteScenario')->middleware('auth:api');
 Route::put('secure/updateScenario/{id}', 'API\SecureController@updateScenario')->middleware('auth:api');
 
+Route::get('secure/dealDetails/{id}', 'API\SecureController@dealDetails')->middleware('auth:api');
 Route::get('secure/getDeals', 'API\SecureController@getDeals')->middleware('auth:api');
 Route::post('secure/createDeals', 'API\SecureController@createDeals')->middleware('auth:api');
-Route::put('secure/updateDeal/{id}', 'API\SecureController@updateDeals');
+Route::put('secure/updateDeal/{id}', 'API\SecureController@updateDeals')->middleware('auth:api');
 Route::delete('secure/deleteDeals/{id}', 'API\SecureController@deleteDeals')->middleware('auth:api');
 
 Route::post('parsingError', 'API\ParseErrorAPIController@store')->middleware('auth:api');

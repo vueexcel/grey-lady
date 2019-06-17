@@ -35,7 +35,7 @@ class Scenario extends Model
         'monthly_mortgage_payment_30yr',
         'scenario_notes'
     ];
-    // protected $hidden = [];
+    protected $hidden = ['created_at', 'updated_at'];
     // protected $dates = [];
 
     /*
