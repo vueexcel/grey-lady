@@ -18,10 +18,16 @@
     </div>
     <div class="mt-5">
       <div class="mt-5">
-        <h1>
-          Scenarios for
-          <span>{{deal[0].name}}</span>
-        </h1>
+        <div class="table_heading">
+          <span class="width_50">
+            Scenarios for
+            <span>{{deal[0].name}}</span>
+          </span>
+          <div class="view_all">
+            <a href=""> Create New Scenario</a>
+          </div>
+        </div>
+
         <table>
           <thead>
             <tr>
@@ -30,7 +36,7 @@
               </th>
               <th v-for="(scene,index) in scenario" :key="index">
                 <div class="link">
-                  <a href>Detail / Delete</a>
+                  <a :href="'/scenario/run/'+scene.id">Detail </a> <a href="#" @click="deleteScenario(scene)">/ Delete</a>
                 </div>
               </th>
             </tr>
@@ -137,7 +143,6 @@ export default {
       return this.deal;
     },
     arrayScenario() {
-      
       this.scenario.forEach(scenario => {
         scenario.purchase_price = "$" + scenario.purchase_price;
         scenario.renovation_inc_mortgage =
@@ -156,7 +161,21 @@ export default {
       });
       return this.scenario;
     }
-  }
+  },
+  methods: {
+   async deleteScenario(scenario) {
+      let url  = `/api/secure/deleteScenario/${scenario.id}`
+      try {
+        let response = await this.axios.delete(url)
+      console.log(response);
+
+      } catch(error){
+        console.log(error);
+        
+      }
+      
+    }
+  },
 };
 </script>
 
@@ -252,5 +271,22 @@ tbody tr td:nth-child(1) {
   text-align: center;
   border: 1px solid #dcdcdc;
   font-size: 15px;
+}
+
+.width_50{
+  max-width: 50%;
+  font-size: 25px;
+}
+
+.table_heading{
+padding-top: 20px;
+padding-bottom: 10px;
+}
+
+.view_all{
+  float:right;
+  margin-top: 5px;
+  font-size: 20px;
+  text-decoration: underline;
 }
 </style>

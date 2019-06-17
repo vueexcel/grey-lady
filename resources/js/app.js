@@ -10,6 +10,12 @@ window.Vue = require('vue');
 var moment = require('moment');
 import VueRouter from 'vue-router';
 import BootstrapVue from 'bootstrap-vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import VueSwal from 'vue-swal'
+
+Vue.use(VueSwal)
+Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue)
 window.Vue.use(VueRouter);
 /**

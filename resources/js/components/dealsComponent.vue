@@ -13,7 +13,10 @@
           <td>{{deal.name}}</td>
           <td>{{deal.property_address}}</td>
           <td>
-            <span><a class="text-primary" :href="'/deal/'+deal.id">Details</a> / <a class="text-primary" href="#">Delete</a></span>
+            <span>
+              <a class="text-primary" :href="'/deal/'+deal.id">Details</a> /
+              <a class="text-primary" href="#" @click="deleteDeal(deal)">Delete</a>
+            </span>
           </td>
         </tr>
       </tbody>
@@ -27,8 +30,45 @@ export default {
     deals: {
       type: Array,
       default: []
-    },
+    }
   },
+  methods: {
+    deleteDeal(deal) {
+      this.$swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this deal!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          this.deleteByApi(deal)
+          
+        } else {
+          swal("Your deal is safe!");
+        }
+      });
+    },
+    async deleteByApi(deal){
+      let url = `/api/secure/deleteDeals/${deal.id}`;
+      try {
+            let response = await this.axios.delete(url);
+            if (response) {
+              this.$emit("deletedDeal", true);
+              swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success"
+              });
+            }
+          } catch (error) {
+            if(error.response.data.message){
+              swal(error.response.data.message)
+            } else {
+              swal("Your deal can not delete due to server issue!");
+            }
+            
+          }
+    }
+  }
 };
 </script>
 
