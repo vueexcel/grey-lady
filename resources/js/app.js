@@ -13,7 +13,13 @@ import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueSwal from 'vue-swal'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
+Vue.use(Vuetify,{
+    iconfont: 'md'
+})
 Vue.use(VueSwal)
 Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue)

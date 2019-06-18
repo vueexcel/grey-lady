@@ -29,7 +29,7 @@
           <span class="all"><a class="text-primary" href="deals" > View All </a></span>
       </div>
       <div class="stream">
-        <table class="table table-bordered" v-if="deals.length">
+        <table class="table table-bordered" v-if="dealToShow.length">
           <thead>
             <tr>
               <th scope="col">Deal Name</th>
@@ -37,13 +37,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(deal,index) in deals" :key="index">
+            <tr v-for="(deal,index) in dealToShow" :key="index">
               <td>{{deal.name}}</td>
               <td><a class="text-primary" :href="'/deal/'+deal.id" > Details </a></td>
             </tr>
           </tbody>
         </table>
-        <div v-if="!deals.length" class="item">
+        <div v-if="!dealToShow.length" class="item">
           <p class="no_info">
              No information is available
           </p>
@@ -103,6 +103,17 @@ export default {
         });
       }
       return this.data;
+    },
+    dealToShow(){
+      let dealFiveArray = []
+      if(this.deals.length){
+        this.deals.forEach((deal,index) =>{
+          if(index < 5){
+            dealFiveArray.push(deal)
+          }
+        })
+      }
+      return dealFiveArray
     },
     newsShow() {
       if (this.news.length) {
