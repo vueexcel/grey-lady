@@ -31,7 +31,7 @@
         <table>
           <thead>
             <tr>
-              <th class="first_col" style="font-size:15px;">
+              <th class="first_col" style="font-size:17px;">
                 <strong>Action</strong>
               </th>
               <th v-for="(scene,index) in scenario" :key="index">
@@ -184,7 +184,7 @@ export default {
   background-color: #fff;
   border: 2px solid #dcdcdc;
   padding: 20px 15px;
-  min-height: 200px;
+  display: -webkit-box;
 }
 
 .font_size {
@@ -231,7 +231,6 @@ thead th {
 thead th:nth-child(1) {
   /*first cell in the header*/
   position: relative;
-  display: block; /*seperates the first cell in the header from the header*/
 }
 
 /*tbody*/
@@ -239,7 +238,7 @@ tbody {
   position: relative;
   display: block; /*seperates the tbody from the header*/
   width: 1010px;
-  height: 500px;
+  height: 448px;
   overflow-x: scroll;
 }
 
@@ -250,16 +249,15 @@ tbody td {
 tbody tr td:nth-child(1) {
   /*the first cell in each tr*/
   position: relative;
-  display: block; /*seperates the first column from the tbody*/
-  height: 40px;
   border: 1px solid #dcdcdc;
   background-color: #fff;
 }
 
 .first_col{
   width: 200px;
-  padding-left: 8px;
+  padding: 7px !important;
   font-size: 15px;
+  padding-left: 15px !important;
 }
 
 .link{

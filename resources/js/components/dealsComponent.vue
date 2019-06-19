@@ -1,6 +1,12 @@
 <template>
   <div class="stream">
-    <v-data-table :headers="headers" :items="dealsArray" class="elevation-1">
+    <v-data-table :headers="headers" :items="dealsArray" must-sort
+        :pagination.sync="pagination"
+        :rows-per-page-items="pagination.rowsPerPageItems"
+        :total-items="pagination.totalItems"
+        :loading="loading"
+        class="elevation-1"
+    >
       <template v-slot:items="props">
         <td>{{ props.item.name }}</td>
         <td class>{{ props.item.property_address }}</td>
@@ -20,6 +26,14 @@ import Vue from "vue";
 export default {
   data() {
     return {
+      pagination: {
+      descending: true,
+      page: 1,
+      rowsPerPage: 5,
+      sortBy: 'fat',
+      totalItems: 0,
+      rowsPerPageItems: [5,10, 100]
+    },
       headers: [
         {
           text: "Deal Name",
@@ -100,5 +114,11 @@ export default {
 .head {
   font-size: 14px !important;
   font-weight: bold !important;
+}
+
+.v-menu .menuable__content__active{
+  left: 0px !important;
+  top: 40px !important;
+
 }
 </style>
