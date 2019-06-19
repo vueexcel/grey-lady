@@ -298,7 +298,7 @@ class SecureController extends BaseController
     public function getDeals()
     {
         try {
-            $deals = Deals::all()->toArray();            
+            $deals = Deals::orderBy('id', 'DESC')->get()->toArray();
             $response = [
                 'api_response' => $deals
             ];
@@ -319,7 +319,7 @@ class SecureController extends BaseController
     {
         try {
             $deal = Deals::find($id)->toArray();
-            $scenarios = Scenario::where('deal_id', $id)->get()->toArray();
+            $scenarios = Scenario::where('deal_id', $id)->orderBy('id', 'DESC')->get()->toArray();
             $deal['scenarios'] = $scenarios;
             
             return $this->sendResponse($deal, '');
