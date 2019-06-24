@@ -29,6 +29,7 @@ class ScenarioController extends Controller
 
         try {
 
+          $data = [];
           $client = new GuzzleHttpClient();
           $scenario_id = request()->get('scenario_id');
           
@@ -37,17 +38,27 @@ class ScenarioController extends Controller
           ]);
           $response = json_decode($apiRequest->getBody()->getContents());
           $listing = $response[0];
+          $data['listing'] = $listing;
 
           $zip = \App\Http\Helpers\ZipAPIHelper::getZipDetails($listing->details->location->zip);
-          $deal = Deals::where('listing_id', $id)->first();
-          $scenario = Scenario::where('id', $scenario_id)->where('deal_id', $deal->id)->first();
+          $data['zip'] = $zip;
+
+          $deal = Deals::where('listing_id', $id);
+          if( $deal->count() > 0 ){
+            $deal = $deal->first();
+            $data['deal'] = $deal->toJson();
+            $scenario = Scenario::where('id', $scenario_id)->where('deal_id', $deal->id);
+            if( $scenario->count() > 0 ){
+              $scenario = $scenario->first();
+              $data['scenario'] = $scenario->toJson();
+            } else {
+              $data['scenario'] = null;
+            }
+          } else {
+            $data['deal'] = null;
+          }
           
-          return view('scenario.run', [
-            'listing' => $listing, 
-            'zip' => $zip, 
-            'deal' => $deal->toJson(), 
-            'scenario' => $scenario->toJson()
-          ]);
+          return view('scenario.run', $data);
 
         } catch (RequestException $re) {
           dd($re);
