@@ -13,11 +13,13 @@ class User extends Migration
      */
     public function up()
     {
-        //
-
-        Schema::table('users', function($table) {
-            $table->string('phone');
-        });
+        if (Schema::hasTable('users')) {
+            Schema::table('users', function($table) {
+                if(!Schema::hasColumn('users', 'phone')){
+                    $table->string('phone');
+                }
+            });
+        }
     }
 
     /**
@@ -27,7 +29,6 @@ class User extends Migration
      */
     public function down()
     {
-        //
         Schema::table('users', function($table) {
             $table->dropColumn('phone');
         });

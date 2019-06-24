@@ -12,13 +12,15 @@ class CreateParseErrorTable extends Migration
      */
     public function up()
     {
-        Schema::create('parseError', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('url');
-            $table->json('missingFields');
-            $table->longText('caughtErrors');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('parseError')) {
+            Schema::create('parseError', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('url');
+                $table->json('missingFields');
+                $table->longText('caughtErrors');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

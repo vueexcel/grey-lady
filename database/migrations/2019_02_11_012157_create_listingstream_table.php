@@ -12,14 +12,16 @@ class CreateListingstreamTable extends Migration
      */
     public function up()
     {
-        Schema::create('listingstream', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('address');
-            $table->string('link');
-            $table->string('site');
-            $table->string('purchaseType');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('listingstream')) {
+            Schema::create('listingstream', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('address');
+                $table->string('link');
+                $table->string('site');
+                $table->string('purchaseType');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

@@ -13,9 +13,13 @@ class AddUseridToParseError extends Migration
      */
     public function up()
     {
-        Schema::table('parseError', function (Blueprint $table) {
-            $table->integer('user_id');
-        });
+        if (Schema::hasTable('parseError')) {
+            Schema::table('parseError', function (Blueprint $table) {
+                if (!Schema::hasColumn('parseError', 'user_id')) {
+                    $table->integer('user_id');
+                }
+            });
+        }
     }
 
     /**

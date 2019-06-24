@@ -13,15 +13,15 @@ class FavoriteZips extends Migration
      */
     public function up()
     {
-        //
-
-        Schema::create('favorite_zips', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->string('zip_code');
-            $table->text('zip_code_town');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('favorite_zips')) {
+            Schema::create('favorite_zips', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('user_id');
+                $table->string('zip_code');
+                $table->text('zip_code_town');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

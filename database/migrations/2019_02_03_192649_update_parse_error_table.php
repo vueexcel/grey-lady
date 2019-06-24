@@ -13,10 +13,16 @@ class UpdateParseErrorTable extends Migration
      */
     public function up()
     {
-        Schema::table('parseError', function (Blueprint $table) {
-            $table->longText('missingFields')->nullable()->change();
-            $table->longText('caughtErrors')->nullable()->change();
-        });
+        if (Schema::hasTable('parseError')) {
+            Schema::table('parseError', function (Blueprint $table) {
+                if(!Schema::hasColumn('parseError', 'missingFields')){
+                    $table->longText('missingFields')->nullable()->change();
+                }
+                if(!Schema::hasColumn('parseError', 'caughtErrors')){
+                    $table->longText('caughtErrors')->nullable()->change();
+                }
+            });
+        }
     }
 
     /**
@@ -26,6 +32,9 @@ class UpdateParseErrorTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('parseError', function($table) {
+            $table->dropColumn('missingFields');
+            $table->dropColumn('caughtErrors');
+        });
     }
 }

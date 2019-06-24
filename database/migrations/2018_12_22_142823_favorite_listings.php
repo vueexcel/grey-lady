@@ -13,15 +13,15 @@ class FavoriteListings extends Migration
      */
     public function up()
     {
-        //
-
-        Schema::create('favorite_listings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->string('listing_id');
-            $table->text('listing_address');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('favorite_listings')) {
+            Schema::create('favorite_listings', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('user_id');
+                $table->string('listing_id');
+                $table->text('listing_address');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -31,8 +31,6 @@ class FavoriteListings extends Migration
      */
     public function down()
     {
-        //
         Schema::dropIfExists('favorite_listings');
-
     }
 }
