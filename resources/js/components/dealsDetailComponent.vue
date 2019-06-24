@@ -36,7 +36,7 @@
               </th>
               <th v-for="(scene,index) in scenario" :key="index">
                 <div class="link">
-                  <a :href="'/scenario/run/'+scene.id">Detail </a> <a href="#" @click="deleteScenario(scene)">/ Delete</a>
+                  <a :href="'/scenario/run/'+dealObject[0]['listing_id'] + '?scenario_id='+scene.id">Detail </a> <a href="#" @click="deleteScenario(scene)">/ Delete</a>
                 </div>
               </th>
             </tr>
@@ -164,17 +164,43 @@ export default {
   },
   methods: {
    async deleteScenario(scenario) {
+      this.$swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this scenario!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          this.deleteScenarioByApi(scenario);
+        } else {
+          swal("Your scenario is safe!");
+        }
+      });
+      
+      
+    },
+    async deleteScenarioByApi(scenario){
       let url  = `/api/secure/deleteScenario/${scenario.id}`
       try {
         let response = await this.axios.delete(url)
-      console.log(response);
-
+        if(response){
+          swal("Poof! Your scenario has been deleted!", {
+            icon: "success"
+          });
+          this.arrayScenario.forEach((scenariotoSplice, index) => {
+            if (scenario.id === scenariotoSplice.id) {
+              this.arrayScenario.splice(index, 1);
+              this.$forceUpdate();
+            }
+          });
+        }
       } catch(error){
-        console.log(error);
-        
+        swal("Scenario can not be deleted! :(");
       }
-      
     }
+  },
+  created () {
   },
 };
 </script>

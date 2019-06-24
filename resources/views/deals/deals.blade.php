@@ -5,7 +5,6 @@
   <div>
     <h3 data-step="1" data-intro="This is a tooltip!">Deals</h3>
   </div>
-
 @endsection
 
 

@@ -81,8 +81,7 @@ export default {
       try {
         let response = await this.axios.delete(url);
         if (response) {
-          this.$emit("deletedDeal", true);
-          swal("Poof! Your imaginary file has been deleted!", {
+          swal("Poof! Your deal has been deleted!", {
             icon: "success"
           });
           this.dealsArray.forEach((dealtoSplice, index) => {
