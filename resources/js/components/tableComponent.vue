@@ -1,15 +1,43 @@
 <template>
   <div>
     <div class="text-xs-right">
-      <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="excel">
-          <span class="font-weight-bold">Export to Excel</span>
+      <!-- <download-excel
+        class="btn btn-default pa-0"
+        :type="'csv'"
+        :data="data"
+        :fields="json_fields"
+        name="excel.csv"
+      >
+      <div>-->
+      <v-btn color="blue text-lighten ma-0 excel" style="min-width:25px; color: #fff;">
+        <a
+          class="font-weight-bold"
+          style=" color: #fff;"
+          :href="encodedUri"
+          download="my_data.csv"
+        >DOWNLOAD</a>
       </v-btn>
-      <v-btn small class="blue text-lighten ma-0" style="min-width:100px; color: #fff;" @click="save">
-          <span class="font-weight-bold">Save</span>
+      <!-- </div>
+      </download-excel>-->
+      <v-btn small class="blue text-lighten ma-0" style=" color: #fff;" @click="save">
+        <span class="font-weight-bold">Save</span>
       </v-btn>
     </div>
 
-    <div class="headline mb-0 font-weight-bold">Scenario Name</div>
+    <div class="headline mb-0 font-weight-bold" v-if="!editScenario">{{scenario.scenario_name}} <span @click="editSceanrioName">
+    <i class="fa  fa-pencil ml-2"></i>
+      </span></div>
+      <div v-else class="headline mb-0 font-weight-bold w-25">
+        <v-flex xs4>
+        <v-text-field
+            v-model="scenario.scenario_name"
+            :rules="nameRules"
+            label="Scenario name"
+            required
+            @keypress.enter="saveScenarioName"
+          ></v-text-field>
+        </v-flex>
+      </div>
     <v-card>
       <v-layout>
         <v-flex xs6>
@@ -50,11 +78,26 @@
               </v-flex>
               <v-flex xs5>
                 <div class="pa-3">
-                  <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="decrement('purchase')">
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="decrement('purchase')"
+                  >
                     <span class="font-weight-bold">-</span>
                   </v-btn>
-                  <input type="text" class="input_class" v-model="purchase">
-                  <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="increment('purchase')">
+                  <input
+                    type="text"
+                    class="input_class"
+                    v-model="purchase"
+                    v-on:keyup.enter="callApi()"
+                  >
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="increment('purchase')"
+                  >
                     <span class="font-weight-bold">+</span>
                   </v-btn>
                 </div>
@@ -67,17 +110,31 @@
               </v-flex>
               <v-flex xs5>
                 <div class="pa-3">
-                  <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="decrement('rennovation')">
-                  <span class="font-weight-bold">-</span>
-                </v-btn>
-                <input type="text" class="input_class" v-model="rennovation">
-                <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="increment('rennovation')">
-                  <span class="font-weight-bold">+</span>
-                </v-btn>
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="decrement('rennovation')"
+                  >
+                    <span class="font-weight-bold">-</span>
+                  </v-btn>
+                  <input
+                    type="text"
+                    class="input_class"
+                    v-model="rennovation"
+                    v-on:keyup.enter="callApi()"
+                  >
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="increment('rennovation')"
+                  >
+                    <span class="font-weight-bold">+</span>
+                  </v-btn>
                 </div>
               </v-flex>
             </v-layout>
-
 
             <v-layout>
               <v-flex xs7>
@@ -85,13 +142,28 @@
               </v-flex>
               <v-flex xs5>
                 <div class="pa-3">
-                  <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="decrement('target')">
-                  <span class="font-weight-bold">-</span>
-                </v-btn>
-                <input type="text" class="input_class" v-model="target">
-                <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="increment('target')">
-                  <span class="font-weight-bold">+</span>
-                </v-btn>
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="decrement('target')"
+                  >
+                    <span class="font-weight-bold">-</span>
+                  </v-btn>
+                  <input
+                    type="text"
+                    class="input_class"
+                    v-model="target"
+                    v-on:keyup.enter="callApi()"
+                  >
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="increment('target')"
+                  >
+                    <span class="font-weight-bold">+</span>
+                  </v-btn>
                 </div>
               </v-flex>
             </v-layout>
@@ -102,13 +174,28 @@
               </v-flex>
               <v-flex xs5>
                 <div class="pa-3">
-                  <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="decrement('monthly_rent')">
-                  <span class="font-weight-bold">-</span>
-                </v-btn>
-                <input type="text" class="input_class" v-model="monthly_rent">
-                <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="increment('monthly_rent')">
-                  <span class="font-weight-bold">+</span>
-                </v-btn>
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="decrement('monthly_rent')"
+                  >
+                    <span class="font-weight-bold">-</span>
+                  </v-btn>
+                  <input
+                    type="text"
+                    class="input_class"
+                    v-model="monthly_rent"
+                    v-on:keyup.enter="callApi()"
+                  >
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="increment('monthly_rent')"
+                  >
+                    <span class="font-weight-bold">+</span>
+                  </v-btn>
                 </div>
               </v-flex>
             </v-layout>
@@ -119,13 +206,28 @@
               </v-flex>
               <v-flex xs5>
                 <div class="pa-3">
-                  <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="decrement('downpayment')">
-                  <span class="font-weight-bold">-</span>
-                </v-btn>
-                <input type="text" class="input_class" v-model="downpayment">
-                <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="increment('downpayment')">
-                  <span class="font-weight-bold">+</span>
-                </v-btn>
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="decrement('downpayment')"
+                  >
+                    <span class="font-weight-bold">-</span>
+                  </v-btn>
+                  <input
+                    type="text"
+                    class="input_class"
+                    v-model="downpayment"
+                    v-on:keyup.enter="callApi()"
+                  >
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="increment('downpayment')"
+                  >
+                    <span class="font-weight-bold">+</span>
+                  </v-btn>
                 </div>
               </v-flex>
             </v-layout>
@@ -136,13 +238,28 @@
               </v-flex>
               <v-flex xs5>
                 <div class="pa-3">
-                  <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;"  @click="decrement('operating_expense')">
-                  <span class="font-weight-bold">-</span>
-                </v-btn>
-                <input type="text" class="input_class" v-model="operating_expense">
-                <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="increment('operating_expense')">
-                  <span class="font-weight-bold">+</span>
-                </v-btn>
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="decrement('operating_expense')"
+                  >
+                    <span class="font-weight-bold">-</span>
+                  </v-btn>
+                  <input
+                    type="text"
+                    class="input_class"
+                    v-model="operating_expense"
+                    v-on:keyup.enter="callApi()"
+                  >
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="increment('operating_expense')"
+                  >
+                    <span class="font-weight-bold">+</span>
+                  </v-btn>
                 </div>
               </v-flex>
             </v-layout>
@@ -153,13 +270,28 @@
               </v-flex>
               <v-flex xs5>
                 <div class="pa-3">
-                  <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;"   @click="decrement('mortage_IR')">
-                  <span class="font-weight-bold">-</span>
-                </v-btn>
-                <input type="text" class="input_class" v-model="mortage_IR">
-                <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="increment('mortage_IR')">
-                  <span class="font-weight-bold">+</span>
-                </v-btn>
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="decrement('mortage_IR')"
+                  >
+                    <span class="font-weight-bold">-</span>
+                  </v-btn>
+                  <input
+                    type="text"
+                    class="input_class"
+                    v-model="mortage_IR"
+                    v-on:keyup.enter="callApi()"
+                  >
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="increment('mortage_IR')"
+                  >
+                    <span class="font-weight-bold">+</span>
+                  </v-btn>
                 </div>
               </v-flex>
             </v-layout>
@@ -170,13 +302,28 @@
               </v-flex>
               <v-flex xs5>
                 <div class="pa-3">
-                  <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;"  @click="decrement('closing_cost')">
-                  <span class="font-weight-bold">-</span>
-                </v-btn>
-                <input type="text" class="input_class" v-model="closing_cost">
-                <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="increment('closing_cost')">
-                  <span class="font-weight-bold">+</span>
-                </v-btn>
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="decrement('closing_cost')"
+                  >
+                    <span class="font-weight-bold">-</span>
+                  </v-btn>
+                  <input
+                    type="text"
+                    class="input_class"
+                    v-model="closing_cost"
+                    v-on:keyup.enter="callApi()"
+                  >
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="increment('closing_cost')"
+                  >
+                    <span class="font-weight-bold">+</span>
+                  </v-btn>
                 </div>
               </v-flex>
             </v-layout>
@@ -187,13 +334,28 @@
               </v-flex>
               <v-flex xs5>
                 <div class="pa-3">
-                  <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;"  @click="decrement('monthly_recurring_cost')">
-                  <span class="font-weight-bold">-</span>
-                </v-btn>
-                <input type="text" class="input_class" v-model="recurring_cost">
-                <v-btn small class="blue text-lighten ma-0" style="min-width:25px; color: #fff;" @click="increment('monthly_recurring_cost')">
-                  <span class="font-weight-bold">+</span>
-                </v-btn>
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="decrement('monthly_recurring_cost')"
+                  >
+                    <span class="font-weight-bold">-</span>
+                  </v-btn>
+                  <input
+                    type="text"
+                    class="input_class"
+                    v-model="recurring_cost"
+                    v-on:keyup.enter="callApi()"
+                  >
+                  <v-btn
+                    small
+                    class="blue text-lighten ma-0"
+                    style="min-width:25px; color: #fff;"
+                    @click="increment('monthly_recurring_cost')"
+                  >
+                    <span class="font-weight-bold">+</span>
+                  </v-btn>
                 </div>
               </v-flex>
             </v-layout>
@@ -203,64 +365,138 @@
           <div class="headline">Overview</div>
           <v-card>
             <v-layout>
-              <v-flex xs10>
-                <div class="name pa-1 pl-3 mt-3">Purchase Price</div>
-                <div class="name pa-1 pl-3">Rennovation Cost</div>
-                <hr class="mt-1 mb-1">
-                <div class="pa-1 name pl-3">Total Cost</div>
-                <div class="pa-1 name pl-3">After Repair Value</div>
-                <div class="pa-1 name pl-3">LTV</div>
-                <div class="pa-1 name pl-3">Amount Financed</div>
-                <hr class="mt-1 mb-1">
-                <div class="pa-1 name pl-3">Downpayment</div>
-                <div class="pa-1 name pl-3">Closing Costs</div>
-                <hr class="mt-1 mb-1">
-                <div class="pa-1 name pl-3 d-block">
-                  Total Cash Needed
-                  <span>(Reno incl. in mortgage)</span>
-                </div>
-                <div class="pa-1 namepl-3">Monthly Mortgage Payment</div>
-                <hr class="mt-1 mb-1">
-                <div class="pa-1 name pl-3">Total Cash Needed</div>
-                <div class="pa-1 name pl-3">Monthly Mortgage Payment</div>
+              <v-flex xs8>
+                <div class="pa-2 overview mt-2">Purchase Price</div>
               </v-flex>
-              <v-flex xs2>
-                <div class="text-xs-right pa-1 mt-3 pr-3">$150,00</div>
-                <div class="text-xs-right pa-1 pr-3">$150,00</div>
-                <hr class="mt-1 mb-1">
-                <div class="text-xs-right pa-1 pr-3">$150,00</div>
-                <div class="text-xs-right pa-1 pr-3">$150,00</div>
-                <div class="text-xs-right pa-1 pr-3">$150,00</div>
-                <div class="text-xs-right pa-1 pr-3">$150,00</div>
-                <hr class="mt-1 mb-1">
-                <div class="text-xs-right pa-1 pr-3">$150,00</div>
-                <div class="text-xs-right pa-1 pr-3">$150,00</div>
-                <hr class="mt-1 mb-1">
-                <div class="text-xs-right pa-1 pr-3">$150,00</div>
-                <div class="text-xs-right pa-1 pr-3">$150,00</div>
-                <hr class="mt-1 mb-1">
-                <div class="text-xs-right pa-1 pr-3">$150,00</div>
-                <div class="text-xs-right pa-1 pr-3">$150,00</div>
+              <v-flex xs5>
+                <div class="text-xs-right pa-1 pl-2 mt-2 pr-3">${{purchase}}</div>
+              </v-flex>
+            </v-layout>
+            <v-layout>
+              <v-flex xs8>
+                <div class="pa-1 pl-2 overview">Rennovation Cost</div>
+              </v-flex>
+              <v-flex xs5>
+                <div class="text-xs-right pa-1 pl-2 pr-3">${{rennovation}}</div>
+              </v-flex>
+            </v-layout>
+            <hr class="ma-0">
+            <v-layout>
+              <v-flex xs8>
+                <div class="pa-1 pl-2 overview">
+                  <strong>Total Cost</strong>
+                </div>
+              </v-flex>
+              <v-flex xs5>
+                <div class="text-xs-right pa-1 pl-2 pr-3">
+                  <strong>${{total}}</strong>
+                </div>
+              </v-flex>
+            </v-layout>
+            <v-layout>
+              <v-flex xs8>
+                <div class="pa-1 pl-2 overview">After Repair Value</div>
+              </v-flex>
+              <v-flex xs5>
+                <div class="text-xs-right pa-1 pl-2 pr-3">${{rennovation}}</div>
+              </v-flex>
+            </v-layout>
+            <v-layout>
+              <v-flex xs8>
+                <div class="pa-1 pl-2 overview">LTV</div>
+              </v-flex>
+              <v-flex xs5>
+                <!-- <div
+                  class="text-xs-right pa-1 pl-2 pr-3"
+                  v-if="dataArray.length"
+                >${{dataArray[0].new_calculated_fields.operating_profit_and_loss.monthly.loss_to_vacancy}}</div>-->
+              </v-flex>
+            </v-layout>
+            <v-layout>
+              <v-flex xs8>
+                <div class="pa-1 pl-2 overview">Amount Financed</div>
+              </v-flex>
+              <v-flex xs5>
+                <div class="text-xs-right pa-1 pl-2 pr-3">$150,00</div>
+              </v-flex>
+            </v-layout>
+            <hr class="ma-0">
+            <v-layout>
+              <v-flex xs8>
+                <div class="pa-1 pl-2 overview">Downpayment</div>
+              </v-flex>
+              <v-flex xs5>
+                <!-- <div
+                  class="text-xs-right pa-1 pl-2 pr-3"
+                  v-if="dataArray.length"
+                >${{dataArray[0].new_calculated_fields.mortgage_information.downpayment}}</div>-->
+              </v-flex>
+            </v-layout>
+            <v-layout>
+              <v-flex xs8>
+                <div class="pa-1 pl-2 overview">Closing Costs</div>
+              </v-flex>
+              <v-flex xs5>
+                <div class="text-xs-right pa-1 pl-2 pr-3">$150,00</div>
+              </v-flex>
+            </v-layout>
+            <hr class="ma-0">
+            <v-layout>
+              <v-flex xs8>
+                <div class="pa-1 pl-2 overview">Total Cash Needed</div>
+                <div class="pl-2">(Reno incl. in mortgage)</div>
+              </v-flex>
+              <v-flex xs5>
+                <div class="text-xs-right pa-1 pl-2 pr-3">$150,00</div>
+              </v-flex>
+            </v-layout>
+            <v-layout>
+              <v-flex xs8>
+                <div class="pa-1 pl-2 overview">Monthly Mortgage Payment</div>
+              </v-flex>
+              <v-flex xs5>
+                <div class="text-xs-right pa-1 pl-2 pr-3">$150,00</div>
+              </v-flex>
+            </v-layout>
+            <hr class="ma-0">
+            <v-layout>
+              <v-flex xs8>
+                <div class="pa-1 pl-2 overview">Total Cash Needed</div>
+                <div class="pl-2">(Reno not incl. in mortgage)</div>
+              </v-flex>
+              <v-flex xs5>
+                <div class="text-xs-right pa-1 pl-2 pr-3">$150,00</div>
+              </v-flex>
+            </v-layout>
+            <v-layout>
+              <v-flex xs8>
+                <div class="pa-1 pl-2 overview">Monthly Mortgage Payment</div>
+              </v-flex>
+              <v-flex xs5>
+                <!-- <div
+                  class="text-xs-right pa-1 pl-2 pr-3"
+                  v-if="dataArray.length"
+                >${{dataArray[0].new_calculated_fields.mortgage_information.monthly.payment !== 'NaN' ? dataArray[0].new_calculated_fields.mortgage_information.monthly.payment : 0 }}</div>-->
               </v-flex>
             </v-layout>
           </v-card>
-          <div class="headline mt-4 mb-2">BRRR Stats</div>
+          <div class="headline mt-2 mb-2">BRRR Stats</div>
           <v-card>
             <v-layout>
               <v-flex xs4>
-                <div class="d-block pa-3 text-md-center">
+                <div class="d-block pa-1 text-md-center">
                   <div>$200K</div>
                   <div>Total Cash Required</div>
                 </div>
               </v-flex>
               <v-flex xs4>
-                <div class="d-block pa-3 text-md-center">
+                <div class="d-block pa-1 text-md-center">
                   <div>$420K</div>
                   <div>Min. ARV</div>
                 </div>
               </v-flex>
               <v-flex xs4>
-                <div class="d-block pa-3 text-md-center">
+                <div class="d-block pa-1 text-md-center">
                   <div>-$200K</div>
                   <div>Cashflow @100% role</div>
                 </div>
@@ -276,154 +512,128 @@
           <v-flex class="align-content-space-between d-flex">
             <v-flex class="headline" xs6>Cash flow and Metrics</v-flex>
             <v-flex class="text-xs-right" xs6>
-            <a href="#" class="text-blue mr-2 anchor">1 Year monthly</a>
-            <a href="#" class="text-blue mr-2 anchor">Major Year</a>
-            <a href="#" class="text-blue anchor">Thirty Year</a>
-
-            </v-flex> 
+              <a class="text-blue mr-2 anchor" @click="selectDuration(1)">1 Year monthly</a>
+              <a class="text-blue mr-2 anchor" @click="selectDuration(5)">Major Year</a>
+              <a class="text-blue anchor" @click="selectDuration(30)">Thirty Year</a>
+            </v-flex>
           </v-flex>
-            <table>
-          <thead>
-            <tr>
-              <th class="first_col" style="font-size:17px;">
-              </th>
-              <th v-for="n in 30" :key="n">
-                <div class="link">
-                  <span class="text-blue">Year {{n}}</span>
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <div v-if="dataArray.length">
-            <tr>
-              <td class="first_col">Gross Rent</td>
-                <td class="body_col" v-for="(data,index) in dataArray[0].new_calculated_fields_for_30years" :key="index">
-                  <span>{{data.financial_information.rent_to_value}}</span>
-                </td>
-              </tr>
-            <tr>
-              <td class="first_col">Vacancy</td>
-              <td class="body_col" v-for="(data,index) in dataArray[0].new_calculated_fields_for_30years" :key="index">
-                <span>{{data.operating_profit_and_loss.monthly.loss_to_vacancy}}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="first_col">Operating Income</td>
-              <td class="body_col" v-for="(data,index) in dataArray[0].new_calculated_fields_for_30years" :key="index">
-                <span>{{Number(data.operating_profit_and_loss.monthly.operating_income)}}</span>
-              </td>
-            </tr>
-            <tr>
-              
-              <td class="first_col"><strong>Operating Expenses</strong></td>
-              <td class="body_col" v-for="(data,index) in dataArray[0].new_calculated_fields_for_30years" :key="index">
-                <span>{{data.operating_profit_and_loss.monthly.operating_expenses}}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="first_col">Net Operating Income</td>
-              <td class="body_col" v-for="(data,index) in dataArray[0].new_calculated_fields_for_30years" :key="index">
-                <span>{{data.operating_profit_and_loss.monthly.net_operating_income}}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="first_col">Loan Payments</td>
-              <td class="body_col" v-for="(data,index) in dataArray[0].new_calculated_fields_for_30years" :key="index">
-                <span>{{data.mortgage_information.loan_amount}}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="first_col">Cash flow</td>
-              <td class="body_col" v-for="(data,index) in dataArray[0].new_calculated_fields_for_30years" :key="index">
-                <span>{{data.financial_information.cash_on_cash}}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="first_col"><strong>Cap Rate</strong></td>
-              <td class="body_col" v-for="(data,index) in dataArray[0].new_calculated_fields_for_30years" :key="index">
-                <span>{{data.financial_information.cap_rate}}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="first_col">Cash on Cash</td>
-              <td class="body_col" v-for="(data,index) in dataArray[0].new_calculated_fields_for_30years" :key="index">
-                <span>{{data.financial_information.cash_on_cash}}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="first_col">Rent to Value</td>
-              <td class="body_col" v-for="(data,index) in dataArray[0].new_calculated_fields_for_30years" :key="index">
-                <span>{{data.financial_information.rent_to_value}}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="first_col">
-                <strong>Loan to value</strong>
-              </td>
-              <td class="body_col" v-for="(data,index) in dataArray[0].new_calculated_fields_for_30years" :key="index">
-                <span>123</span>
-              </td>
-            </tr>
-            </div>
-          </tbody>
-        </table>
-        </v-flex>
-      </v-layout>
-    </div>
-    <!-- <div class="box box-default">
-      <div class="box-body">
-        <h4>30 Years Data</h4>
-        <div style="overflow-x: auto">
-          <table class="table-bordered">
+          <table>
             <thead>
               <tr>
-                <th class="header">Year</th>
-                <th class="header">Cap Rate</th>
-                <th class="header">Cash on Cash</th>
-                <th class="header">Rent To Value</th>
-                <th class="header">Debt Coverage Ratio</th>
-                <th class="header">Price</th>
-                <th class="header">Downpayment</th>
-                <th class="header">Loan Amount</th>
-                <th class="header">Total Equity Needed</th>
-                <th class="header">Property Value</th>
-                <th class="header">Equity</th>
-                <th class="header">Revenue</th>
-                <th class="header">Loss To Vacancy</th>
-                <th class="header">Operating Income</th>
-                <th class="header">Operating Expenses</th>
-                <th class="header">Net Operating Income</th>
-                <th class="header">Mortgage Payment</th>
-                <th class="header">Cash Profit</th>
+                <th class="first_col" style="font-size:17px;"></th>
+                <th v-for="n in 30" :key="n">
+                  <div class="link">
+                    <span class="text-blue">Year {{n}}</span>
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(data, index) in yearData" :key="index">
-                <td>{{data.year}}</td>
-                <td>{{data.financial_information.cap_rate}}%</td>
-                <td>{{data.financial_information.cash_on_cash}}%</td>
-                <td>{{data.financial_information.rent_to_value}}%</td>
-                <td>{{data.financial_information.debt_coverage_ratio}}%</td>
-                <td>${{data.mortgage_information.price}}</td>
-                <td>${{data.mortgage_information.downpayment}}</td>
-                <td>${{data.mortgage_information.loan_amount}}</td>
-                <td>${{data.mortgage_information.total_equity_needed}}</td>
-                <td>${{data.mortgage_information.property_value}}</td>
-                <td>${{data.mortgage_information.equity}}</td>
-                <td>${{data.operating_profit_and_loss.monthly.revenue}}</td>
-                <td>${{data.operating_profit_and_loss.monthly.loss_to_vacancy}}</td>
-                <td>${{data.operating_profit_and_loss.monthly.operating_income}}</td>
-                <td>${{data.operating_profit_and_loss.monthly.operating_expenses}}</td>
-                <td>${{data.operating_profit_and_loss.monthly.net_operating_income}}</td>
-                <td>${{data.operating_profit_and_loss.monthly.mortgage_payment}}</td>
-                <td>${{data.operating_profit_and_loss.monthly.cash_profit}}</td>
-              </tr>
+              <div v-if="dataArray.length">
+                <tr>
+                  <td class="first_col">Gross Rent</td>
+                  <td class="body_col" v-for="(data,index) in arrayToShow" :key="index">
+                    <span>
+                      $
+                      {{data.operating_profit_and_loss.monthly.revenue !== 'NaN'
+                      ? data.operating_profit_and_loss.monthly.revenue : 0}}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="first_col">Vacancy</td>
+                  <td class="body_col" v-for="(data,index) in arrayToShow" :key="index">
+                    <span>${{data.operating_profit_and_loss.monthly.loss_to_vacancy !== 'NaN' ? data.operating_profit_and_loss.monthly.loss_to_vacancy : 0}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="first_col">Operating Income</td>
+                  <td class="body_col" v-for="(data,index) in arrayToShow" :key="index">
+                    <span>
+                      $
+                      {{data.operating_profit_and_loss.monthly.operating_income !== 'NaN' ?
+                      data.operating_profit_and_loss.monthly.operating_income :
+                      0}}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="first_col">
+                    <strong>Operating Expenses</strong>
+                  </td>
+                  <td class="body_col" v-for="(data,index) in arrayToShow" :key="index">
+                    <span>
+                      $
+                      {{data.operating_profit_and_loss.monthly.operating_expenses !== "NaN" ?
+                      data.operating_profit_and_loss.monthly.operating_expenses
+                      : 0}}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="first_col">Net Operating Income</td>
+                  <td class="body_col" v-for="(data,index) in arrayToShow" :key="index">
+                    <span>${{data.operating_profit_and_loss.monthly.net_operating_income !== "NaN" ? data.operating_profit_and_loss.monthly.net_operating_income : 0}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="first_col">Loan Payments</td>
+                  <td class="body_col" v-for="(data,index) in arrayToShow" :key="index">
+                    <span>${{data.mortgage_information.loan_amount !== 'NaN' ? data.mortgage_information.loan_amount : 0}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="first_col">Cash flow</td>
+                  <td class="body_col" v-for="(data,index) in arrayToShow" :key="index">
+                    <span>${{data.financial_information.cash_on_cash !== 'NaN' ? data.financial_information.cash_on_cash : 0}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="first_col">
+                    <strong>Cap Rate</strong>
+                  </td>
+                  <td class="body_col" v-for="(data,index) in arrayToShow" :key="index">
+                    <span>
+                      {{data.financial_information.cap_rate !== 'NaN' ?
+                      data.financial_information.cap_rate
+                      : 0}}%
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="first_col">Cash on Cash</td>
+                  <td class="body_col" v-for="(data,index) in arrayToShow" :key="index">
+                    <span>
+                      {{data.financial_information.cash_on_cash !== 'NaN' ?
+                      data.financial_information.cash_on_cash :
+                      0}}%
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="first_col">Rent to Value</td>
+                  <td class="body_col" v-for="(data,index) in arrayToShow" :key="index">
+                    <span>
+                      {{data.financial_information.rent_to_value !== 'NaN' ?
+                      data.financial_information.rent_to_value :
+                      0}}x
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="first_col">
+                    <strong>Loan to value</strong>
+                  </td>
+                  <td class="body_col" v-for="(data,index) in arrayToShow" :key="index">
+                    <span>{{data.loan_to_value}}x</span>
+                  </td>
+                </tr>
+              </div>
             </tbody>
           </table>
-        </div>
-      </div>
-    </div> -->
+        </v-flex>
+      </v-layout>
+    </div>
   </div>
 </template>
 
@@ -432,17 +642,27 @@
   padding: 6px 8px;
 }
 
+.overview {
+  font-size: 15px;
+}
+
+.excel {
+  height: 28px;
+  font-size: 13px;
+}
+
 .input_class {
   border: 1px solid #d2d6de;
   width: 60px;
   vertical-align: middle;
 }
 
-.name{
+.name {
   font-size: 15px;
 }
 
-.anchor{
+.anchor {
+  cursor: pointer;
   text-decoration: underline;
   font-size: 15px;
 }
@@ -496,36 +716,36 @@ tbody tr td:nth-child(1) {
   background-color: #fff;
 }
 
-.first_col{
+.first_col {
   width: 200px;
   padding: 7px !important;
   font-size: 15px;
   padding-left: 15px !important;
 }
 
-.link{
+.link {
   font-size: 15px;
   text-align: center;
 }
 
-.body_col{
+.body_col {
   text-align: center;
   border: 1px solid #dcdcdc;
   font-size: 15px;
 }
 
-.width_50{
+.width_50 {
   max-width: 50%;
   font-size: 25px;
 }
 
-.table_heading{
-padding-top: 20px;
-padding-bottom: 10px;
+.table_heading {
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
-.view_all{
-  float:right;
+.view_all {
+  float: right;
   margin-top: 5px;
   font-size: 20px;
   text-decoration: underline;
@@ -547,16 +767,21 @@ export default {
   data() {
     return {
       yearData: null,
-      purchase: 1500,
-      rennovation:1520,
-      target:1500,
-      monthly_rent:1500,
-      downpayment:15,
-      operating_expense:1500,
-      mortage_IR:1500,
-      closing_cost:1500,
-      recurring_cost:1500,
-      dataArray: []
+      purchase: 150000,
+      rennovation: 0,
+      target: 150000,
+      monthly_rent: 1500,
+      downpayment: 25,
+      operating_expense: 15,
+      mortage_IR: 5,
+      closing_cost: 10000,
+      recurring_cost: 0,
+      dataArray: [],
+      duration: 30,
+      arrayToShow: [],
+      data: [],
+      encodedUri: [],
+      editScenario : false
     };
   },
   props: {
@@ -574,56 +799,299 @@ export default {
     }
   },
   created() {
-    this.callApi();
-    window.addEventListener("data", data => {
-      this.yearData = data.detail[0]["new_calculated_fields_for_30years"];
-      this.year();
-    });
+    this.callFunction();
   },
   computed: {
+    total() {
+      return Number(this.purchase) + Number(this.rennovation);
+    }
   },
   methods: {
-    decrement(value){
-      if(value === 'purchase'){
-        this.purchase--
-      } else if(value === 'rennovation'){
-        this.rennovation--
-      } else if (value === 'target') {
-        this.target--
-      } else if(value === 'monthly_rent'){
-        this.monthly_rent--
-      } else if (value === 'downpayment') {
-        this.downpayment--
-      } else if (value === 'operating_expense') {
-        this.operating_expense--
-      } else if(value === 'mortage_IR'){
-        this.mortage_IR--
-      } else if (value === 'closing_cost') {
-        this.closing_cost--
-      } else if(value === 'monthly_recurring_cost'){
-        this.recurring_cost--
-      }
+    async callFunction() {
+      await this.callApi();
+      await this.setdataArray();
     },
-    increment(value){
-      if(value === 'purchase'){
-        this.purchase++
-      } else if(value === 'rennovation'){
-        this.rennovation++
-      } else if (value === 'target') {
-        this.target++
-      } else if(value === 'monthly_rent'){
-        this.monthly_rent++
-      } else if (value === 'downpayment') {
-        this.downpayment++
-      } else if (value === 'operating_expense') {
-        this.operating_expense++
-      } else if(value === 'mortage_IR'){
-        this.mortage_IR++
-      } else if (value === 'closing_cost') {
-        this.closing_cost++
-      } else if(value === 'monthly_recurring_cost'){
-        this.recurring_cost++
+    decrement(value) {
+      if (value === "purchase") {
+        this.purchase--;
+      } else if (value === "rennovation") {
+        this.rennovation--;
+      } else if (value === "target") {
+        this.target--;
+      } else if (value === "monthly_rent") {
+        this.monthly_rent--;
+      } else if (value === "downpayment") {
+        this.downpayment--;
+      } else if (value === "operating_expense") {
+        this.operating_expense--;
+      } else if (value === "mortage_IR") {
+        this.mortage_IR--;
+      } else if (value === "closing_cost") {
+        this.closing_cost--;
+      } else if (value === "monthly_recurring_cost") {
+        this.recurring_cost--;
       }
+      this.callApi();
+    },
+    increment(value) {
+      if (value === "purchase") {
+        this.purchase++;
+      } else if (value === "rennovation") {
+        this.rennovation++;
+      } else if (value === "target") {
+        this.target++;
+      } else if (value === "monthly_rent") {
+        this.monthly_rent++;
+      } else if (value === "downpayment") {
+        this.downpayment++;
+      } else if (value === "operating_expense") {
+        this.operating_expense++;
+      } else if (value === "mortage_IR") {
+        this.mortage_IR++;
+      } else if (value === "closing_cost") {
+        this.closing_cost++;
+      } else if (value === "monthly_recurring_cost") {
+        this.recurring_cost++;
+      }
+      this.callApi();
+    },
+    setdataArray() {
+      let grossRent = [];
+      let vacancy = [];
+      let operatingIncome = [];
+      let operatingExpense = [];
+      let netOperatingIncome = [];
+      let loanPayment = [];
+      let cashFlow = [];
+      let capRate = []
+      let cashOnCash = []
+      let rentToLoan = []
+      let loanToValue = []
+
+
+      let fivegrossRent = [];
+      let fivevacancy = [];
+      let fiveoperatingIncome = [];
+      let fiveoperatingExpense = [];
+      let fivenetOperatingIncome = [];
+      let fiveloanPayment = [];
+      let fivecashFlow = []
+      const rows = [
+        [
+          "Property Address",
+          "Beds",
+          "Baths",
+          "Square Feet",
+          "Deal Name",
+          "Deal Description",
+          "Scenario Name",
+          "Purchase_Price",
+          "Rennovation Cost",
+          "Target ARV",
+          "Downpayment",
+          "Mortgage Interest Rate 30Yr",
+          "Closing_cost",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ];
+      let emptyObj = [];
+      for (var key in this.deal) {
+        if (key === "property_address") {
+          emptyObj[0] = this.deal[key].replace(/,/g, "");
+        } else if (key === "beds") {
+          emptyObj[1] = this.deal[key];
+        } else if (key === "baths") {
+          emptyObj[2] = this.deal[key];
+        } else if (key === "living_area") {
+          emptyObj[3] = this.deal[key];
+        } else if (key === "name") {
+          emptyObj[4] = this.deal[key];
+        } else if (key === "description") {
+          emptyObj[5] = this.deal[key].replace(/(\r\n|\n|\r)/gm, " ");
+        }
+      }
+      for (var key in this.scenario) {
+        if (key === "scenario_name") {
+          emptyObj[6] = this.scenario[key];
+        } else if (key === "purchase_price") {
+          emptyObj[7] = this.scenario[key];
+        } else if (key === "renovation_inc_mortgage") {
+          emptyObj[8] =
+            this.scenario["renovation_inc_mortgage"] +
+            this.scenario["renovation_not_inc_mortgage"];
+        } else if (key === "after_repair_value") {
+          emptyObj[9] = this.scenario[key];
+        } else if (key === "downpayment") {
+          emptyObj[10] = this.scenario[key];
+        } else if (key === "monthly_mortgage_payment_30yr") {
+          emptyObj[11] = this.scenario[key];
+        } else if (key === "closing_costs") {
+          emptyObj[12] = this.scenario[key];
+        }
+      }
+      rows.push(emptyObj);
+      let obj = [];
+      rows.push(obj);
+      rows.push(obj);
+      let thirtyyear = [];
+      for (let index = 0; index < 31; index++) {
+        if (index === 0) {
+          thirtyyear.push("30 Years");
+        } else {
+          thirtyyear.push(`Year${index}`);
+        }
+      }
+      rows.push(thirtyyear);
+      grossRent[0] = "Gross Rent";
+      vacancy[0] = "Vacancy";
+      operatingIncome[0] = "Operatig Income";
+      operatingExpense[0] = "Operating Expense";
+      netOperatingIncome[0] = "Net Operating Income";
+      loanPayment[0] = "Loan Payment";
+      cashFlow[0] = "Cash Flow";
+      loanToValue[0] = 'Loan to value'
+      cashOnCash[0] = 'Cash On Cash'
+      capRate[0] = 'Cap Rate (%)'
+      this.dataArray[0].new_calculated_fields_for_30years.forEach(
+        (data, index) => {
+          console.log(data);
+          loanToValue[index+1] = data.loan_to_value
+          cashOnCash[index + 1] = data.financial_information.cash_on_cash
+          capRate[index + 1] = data.financial_information.cap_rate
+          operatingIncome[index + 1] =
+            data.operating_profit_and_loss.monthly.operating_income !== "NaN"
+              ? data.operating_profit_and_loss.monthly.operating_income
+              : 0;
+          operatingExpense[index + 1] =
+            data.operating_profit_and_loss.monthly.operating_expenses !== "NaN"
+              ? data.operating_profit_and_loss.monthly.operating_expense
+              : 0;
+          netOperatingIncome[index + 1] =
+            data.operating_profit_and_loss.monthly.net_operating_income !== 'NaN' ? data.operating_profit_and_loss.monthly.net_operating_income : 0;
+          loanPayment[index + 1] = data.mortgage_information.loan_amount !== "NaN" ? data.mortgage_information.loan_amount : 0;
+          cashFlow[index + 1] = data.financial_information.cash_on_cash !== "NaN" ? data.financial_information.cash_on_cash : 0;
+          vacancy[index + 1] = data.settings_used.vacancy_rate !== "NaN" ? data.settings_used.vacancy_rate : 0;
+          grossRent[index + 1] =
+            Number(data.settings_used.missing_data.rentals_have!== "NaN" ? data.settings_used.missing_data.rentals_have : 0) +
+            Number(data.settings_used.missing_data.rentals_needed !== "NaN" ? data.settings_used.missing_data.rentals_needed : 0);
+        }
+      );
+      rows.push(grossRent);
+      rows.push(vacancy);
+      rows.push(operatingIncome);
+      rows.push(operatingExpense);
+      rows.push(netOperatingIncome);
+      rows.push(loanPayment);
+      rows.push(cashFlow);
+      rows.push(capRate)
+      rows.push(cashOnCash)
+      rows.push(loanToValue)
+      // for 5 years
+
+      rows.push(obj);
+      rows.push(obj);
+      let fiveyear = []
+      for (let index = 0; index < 6; index++) {
+        if (index === 0) {
+          fiveyear.push("5 Years");
+        } else {
+          fiveyear.push(`Year${index}`);
+        }
+      }
+      rows.push(fiveyear)
+      fivegrossRent[0] = "Gross Rent";
+      fivevacancy[0] = "Vacancy";
+      fiveoperatingIncome[0] = "Operatig Income";
+      fiveoperatingExpense[0] = "Operating Expense";
+      fivenetOperatingIncome[0] = "Net Operating Income";
+      fiveloanPayment[0] = "Loan Payment";
+      fivecashFlow[0] = "Cash Flow";
+      this.dataArray[0].new_calculated_fields_for_30years.forEach(
+        (data, index) => {
+          if(index < 5){
+            fiveoperatingIncome[index + 1] =
+              data.operating_profit_and_loss.monthly.operating_income !== "NaN"
+                ? data.operating_profit_and_loss.monthly.operating_income
+                : 0;
+            fiveoperatingExpense[index + 1] =
+              data.operating_profit_and_loss.monthly.operating_expenses !== "NaN"
+                ? data.operating_profit_and_loss.monthly.operating_expense
+                : 0;
+            fivenetOperatingIncome[index + 1] =
+              data.operating_profit_and_loss.monthly.net_operating_income !== "NaN" ? data.operating_profit_and_loss.monthly.net_operating_income : 0;
+            fiveloanPayment[index + 1] = data.mortgage_information.loan_amount !== "NaN" ? data.mortgage_information.loan_amount  : 0;
+            fivecashFlow[index + 1] = data.financial_information.cash_on_cash !== "NaN" ? data.financial_information.cash_on_cash : 0;
+            fivevacancy[index + 1] = data.settings_used.vacancy_rate !== "NaN" ? data.settings_used.vacancy_rate : 0;
+            fivegrossRent[index + 1] =
+              Number(data.settings_used.missing_data.rentals_have !== "NaN" ? data.settings_used.missing_data.rentals_have : 0) +
+              Number(data.settings_used.missing_data.rentals_needed !== "NaN" ? data.settings_used.missing_data.rentals_needed : 0);
+          }
+        }
+      );
+      rows.push(fivegrossRent);
+      rows.push(fivevacancy);
+      rows.push(fiveoperatingIncome);
+      rows.push(fiveoperatingExpense);
+      rows.push(fivenetOperatingIncome);
+      rows.push(fiveloanPayment);
+      rows.push(fivecashFlow);
+
+
+      // 30 years calculation 
+      rows.push(obj)
+      rows.push(obj)
+      rows.push(obj)
+      let thirtyyearCalc = [
+        "Year","Interest","Total Interest","Principal","Total Equity","Total Payment","% Pricipal" , "", ""
+      ]
+      rows.push(thirtyyearCalc)
+      let arrayTocalculate = []
+        let count = 1
+      for (let index = 0; index < 30; index++) {
+        arrayTocalculate = []
+        for (let i = 0; i < 9; i++) {
+          if(i === 0){
+            arrayTocalculate.push(count)
+            count++
+          } else {
+            arrayTocalculate.push(0)
+          }
+        }
+        rows.push(arrayTocalculate)
+      }
+      let csvContent =
+        "data:text/csv;charset=utf-8," + rows.map(e => e.join(",")).join("\n");
+      this.encodedUri = encodeURI(csvContent);
+    },
+    editSceanrioName(){
+      this.editScenario = !this.editScenario
+    },
+    async saveScenarioName(){
+      let url = `/api/secure/updateScenario/${this.scenario.id}`
+      try{
+        let response = await this.axios.put(url,{
+          scenario_name : this.scenario.scenario_name
+        })
+      } catch(error){
+      }
+      this.editScenario =false
+      
     },
     async callApi() {
       let payload = {
@@ -646,19 +1114,42 @@ export default {
       }`;
       try {
         let response = await this.axios.get(url);
-        this.dataArray = response.data
+        this.dataArray = response.data;
+        this.dataArray[0].new_calculated_fields_for_30years.forEach(data => {
+          data["loan_to_value"] = 1 - Number(data.settings_used.downpayment);
+        });
+        this.arrayToShow = this.dataArray[0].new_calculated_fields_for_30years;
       } catch (error) {
         console.log(error);
       }
     },
-    year() {
-      var d = new Date();
-      var n = d.getFullYear();
-      let yearArray = [];
-      for (var i = 0; i < this.yearData.length; i++) {
-        this.yearData[i]["year"] = n;
-        ++n;
+    selectDuration(duration) {
+      this.arrayToShow = [];
+      this.duration = duration;
+      if (duration === 5) {
+        this.dataArray[0].new_calculated_fields_for_30years;
+        for (
+          let i = 0;
+          i < this.dataArray[0].new_calculated_fields_for_30years.length;
+          i++
+        ) {
+          if (i < 5) {
+            this.arrayToShow.push(
+              this.dataArray[0].new_calculated_fields_for_30years[i]
+            );
+          }
+        }
+      } else if (duration === 30) {
+        this.arrayToShow = this.dataArray[0].new_calculated_fields_for_30years;
+      } else {
+        this.getDataforOneYear();
       }
+    },
+    getDataforOneYear() {
+      console.log("calling for 1 year");
+    },
+    save() {
+      console.log("yes save calling");
     }
   }
 };

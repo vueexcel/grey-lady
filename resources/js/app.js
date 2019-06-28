@@ -16,6 +16,7 @@ import VueSwal from 'vue-swal'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import JsonExcel from 'vue-json-excel'
 
 Vue.use(Vuetify,{
     iconfont: 'md',
@@ -29,6 +30,7 @@ Vue.use(Vuetify,{
   warning: '#FFC107'
     }
 })
+Vue.component('downloadExcel', JsonExcel)
 Vue.use(VueSwal)
 Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue)

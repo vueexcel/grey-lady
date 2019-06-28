@@ -4,7 +4,6 @@
         :pagination.sync="pagination"
         :rows-per-page-items="pagination.rowsPerPageItems"
         :total-items="pagination.totalItems"
-        :loading="loading"
         class="elevation-1"
     >
       <template v-slot:items="props">
